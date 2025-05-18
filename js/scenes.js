@@ -13,9 +13,9 @@ function preloadScenes() {
   scenes.field = loadImage('assets/images/scenes/field.png');
   scenes.flowers = loadImage('assets/images/scenes/flowers.png');
   scenes.flowers2 = loadImage('assets/images/scenes/flowers2.png');
-  scenes.garden = loadImage('assets/images/scenes/garden.png');
+  scenes.garden = loadImage('assets/images/scenes/vegetables.png');
   scenes.grass = loadImage('assets/images/scenes/grass.png');
-  scenes.greenhouseInside = loadImage('assets/images/scenes/greenhouse-inside.png');
+  scenes.greenhouseInside = loadImage('assets/images/scenes/greenhouseInside.png');
   scenes.loft = loadImage('assets/images/scenes/loft.png');
   scenes.loftEntrance = loadImage('assets/images/scenes/loftEntrance.png');
   scenes.mirror = loadImage('assets/images/scenes/mirror.png');
@@ -24,7 +24,7 @@ function preloadScenes() {
   scenes.pond2 = loadImage('assets/images/scenes/pond2.png');
   scenes.radioRoom = loadImage('assets/images/scenes/radioRoom.png');
   scenes.studio = loadImage('assets/images/scenes/studio.png');
-  scenes.swingScene = loadImage('assets/images/scenes/swingScene.png');
+  scenes.swingScene = loadImage('assets/images/scenes/swing.png');
   scenes.tunnel = loadImage('assets/images/scenes/tunnel.png');
 }
 
