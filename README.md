@@ -40,7 +40,12 @@ duck-rabbit-philosophy-game/
 ├── assets/
 │   ├── images/       # Game visuals
 │   └── audio/        # Sound effects (optional)
-├── js/               # Game logic scripts
+├── js/
+│   ├── characters.js
+│   ├── sceneCharacters.js  # Characters by scene
+│   ├── scenes.js
+│   ├── letters.js
+│   └── sketch.js
 ├── index.html        # Main HTML file
 └── style.css         # Styling
 ```
