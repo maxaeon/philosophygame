@@ -31,7 +31,19 @@ To run the game locally on your machine:
 git clone https://github.com/YOUR_GITHUB_USERNAME/duck-rabbit-philosophy-game.git
 ```
 
-2. Open the `index.html` file in your web browser.
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm start
+```
+
+4. Open `http://localhost:8080` (or the URL shown in the terminal) in your web browser.
 
 ## 📁 Project Structure
 
