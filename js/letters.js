@@ -24,8 +24,8 @@ function showLetterInfo(letter) {
   alert(`${letter.letter} for ${letter.concept}\n\n${letter.description}\n\nQuestion: ${letter.question}`);
 }
 
-function drawScene(scene) {
-  image(scenes[scene], 0, 0, width, height);
+// Draw letter indicators for the current scene
+function drawLetters(scene) {
   letters.forEach(l => {
     if (l.scene === scene) {
       ellipse(l.x, l.y, 30, 30);

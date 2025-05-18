@@ -16,7 +16,8 @@ function setup() {
 
 function draw() {
   background(220);
-  drawScene(currentScene);
+  drawScene(currentScene); // from scenes.js
+  drawLetters(currentScene); // from letters.js
   duck.display();
   rabbit.display();
   image(duckRabbitIcon, width - 70, 10, 60, 60);
