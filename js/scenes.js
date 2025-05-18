@@ -33,8 +33,12 @@ function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
     {name: 'batCave', x: 100, y: 200, w: 150, h: 150},
-    {name: 'greenhouse', x: 300, y: 200, w: 150, h: 150}
-    // Additional areas...
+    {name: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
+    // Additional areas
+    // Approximated coordinates based on map layout
+    {name: 'barn', x: 520, y: 160, w: 150, h: 150},
+    {name: 'bench', x: 180, y: 420, w: 120, h: 80},
+    {name: 'dogHouse', x: 610, y: 360, w: 120, h: 100}
   ];
 }
 
