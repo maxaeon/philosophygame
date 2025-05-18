@@ -1,9 +1,10 @@
 let currentScene = 'farmMap';
-let duck, rabbit, duckRabbitIcon;
+let characters = {};
+let duckRabbitIcon;
 
 function preload() {
-  duck = new Character('duck');
-  rabbit = new Character('rabbit');
+  characters.duck = new Character('duck');
+  characters.rabbit = new Character('rabbit');
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   preloadScenes();
   preloadLetters();
@@ -18,8 +19,9 @@ function draw() {
   background(220);
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
-  duck.display();
-  rabbit.display();
+  if (currentScene !== 'farmMap' && !currentScene.startsWith('barn')) {
+    drawSceneCharacters(currentScene);
+  }
   image(duckRabbitIcon, width - 70, 10, 60, 60);
 }
 

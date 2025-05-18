@@ -1,4 +1,23 @@
 let scenes = {};
+// Map of characters that appear in each scene with positioning and scale
+let sceneCharacters = {
+  batCave: [
+    {name: 'duck', x: 340, y: 380},
+    {name: 'rabbit', x: 420, y: 380}
+  ],
+  greenhouse: [
+    {name: 'duck', x: 360, y: 420},
+    {name: 'rabbit', x: 440, y: 420}
+  ],
+  picnic: [
+    {name: 'duck', x: 350, y: 460},
+    {name: 'rabbit', x: 430, y: 460}
+  ],
+  pond: [
+    {name: 'duck', x: 300, y: 400},
+    {name: 'rabbit', x: 380, y: 400}
+  ]
+};
 
 function preloadScenes() {
   scenes.farmMap = loadImage('assets/images/scenes/map.png');
@@ -39,6 +58,19 @@ function setupScenes() {
 
 function drawScene(scene) {
   image(scenes[scene], 0, 0, width, height);
+}
+
+// Draw characters for the given scene using the sceneCharacters map
+function drawSceneCharacters(scene) {
+  const entries = sceneCharacters[scene];
+  if (!entries) return;
+  entries.forEach(info => {
+    const char = characters[info.name];
+    if (char) {
+      const s = info.scale !== undefined ? info.scale : 0.35;
+      char.display(info.x, info.y, s);
+    }
+  });
 }
 
 function handleSceneClicks(mx, my) {
