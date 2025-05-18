@@ -2,6 +2,18 @@ let currentScene = 'farmMap';
 let duck, rabbit, donkey;
 let duckRabbitIcon, barnIcon;
 
+const orderedScenes = [
+  'farmMap',
+  'picnic', 'tunnel', 'pond', 'batCave', 'greenhouse', 'batCave',
+  'swing', 'swing2', 'greenhouse', 'batCave', 'farmMap',
+  'greenhouse', 'batCave', 'farmMap', 'greenhouse',
+  'batCave', 'farmMap', 'farmMap', 'greenhouse', 'batCave',
+  'farmMap', 'greenhouse', 'batCave', 'farmMap',
+  'greenhouse', 'farmMap'
+];
+let sceneIndex = 0;
+let continueBtn;
+
 function preload() {
   duck = new Character('duck');
   rabbit = new Character('rabbit');
@@ -21,6 +33,9 @@ function preload() {
 function setup() {
   createCanvas(800, 600);
   setupScenes();
+  continueBtn = document.getElementById('continueBtn');
+  continueBtn.addEventListener('click', advanceScene);
+  continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'block';
 }
 
 function draw() {
@@ -60,4 +75,18 @@ function mousePressed() {
 
 function showAdvice() {
   alert("Duck-Rabbit says: Think about things from a different perspective!");
+}
+
+function advanceScene() {
+  sceneIndex++;
+  if (sceneIndex >= orderedScenes.length) {
+    continueBtn.style.display = 'none';
+    return;
+  }
+  currentScene = orderedScenes[sceneIndex];
+  if (currentScene === 'farmMap') {
+    continueBtn.style.display = 'none';
+  } else {
+    continueBtn.style.display = 'none';
+  }
 }

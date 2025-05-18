@@ -209,12 +209,31 @@ function preloadLetters() {
     question: 'When do you feel full of zest?',
     x: 560, y: 520
   });
+
+  const placeholderScenes = [
+    'barn','barnInside','bench','dogHouse','donkey','field','flowers',
+    'flowers2','garden','grass','greenhouseInside','loft','loftEntrance',
+    'mirror','pond2','radioRoom','studio'
+  ];
+  placeholderScenes.forEach(s => {
+    letters.push({
+      scene: s,
+      letter: '?',
+      concept: 'Coming Soon',
+      description: '',
+      question: '',
+      x: 400, y: 300
+    });
+  });
 }
 
 function handleLetterClicks(mx, my) {
   letters.forEach(l => {
     if (l.scene === currentScene && dist(mx, my, l.x, l.y) < 20) {
       showLetterInfo(l);
+      if (typeof continueBtn !== 'undefined') {
+        continueBtn.style.display = 'block';
+      }
     }
   });
 }
