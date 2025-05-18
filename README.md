@@ -28,7 +28,7 @@ To run the game locally on your machine:
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/duck-rabbit-philosophy-game.git
+git clone https://github.com/<owner>/philosophygame.git
 ```
 
 2. Install the dependencies:
