@@ -50,3 +50,16 @@ function handleSceneClicks(mx, my) {
     });
   }
 }
+
+function drawSceneCharacters(scene) {
+  const chars = sceneCharacters[scene];
+  if (!Array.isArray(chars)) {
+    return;
+  }
+  chars.forEach(name => {
+    const charObj = window[name];
+    if (charObj && typeof charObj.display === 'function') {
+      charObj.display();
+    }
+  });
+}
