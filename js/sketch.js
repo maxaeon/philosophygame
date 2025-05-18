@@ -43,11 +43,7 @@ function draw() {
   background(220);
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
-  duck.display();
-  rabbit.display();
-  if (currentScene === 'barn') {
-    donkey.display();
-  }
+  drawSceneCharacters(currentScene); // from scenes.js
   if (currentScene === 'donkey') {
     image(barnIcon, 10, 10, 50, 50);
   }
