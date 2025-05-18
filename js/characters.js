@@ -1,16 +1,18 @@
 class Character {
-  constructor(name) {
+  constructor(name, states) {
     this.name = name;
     this.images = {};
     this.state = 'idle';
     this.x = random(100, 700);
     this.y = random(300, 500);
+    this.states = Array.isArray(states)
+      ? states
+      : ['left', 'right', 'talking', 'thinking'];
     this.preloadImages();
   }
 
   preloadImages() {
-    let states = ['left', 'right', 'talking', 'thinking'];
-    states.forEach(state => {
+    this.states.forEach(state => {
       this.images[state] = loadImage(`assets/images/${this.name}/${state}.png`);
     });
   }
