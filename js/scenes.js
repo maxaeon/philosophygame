@@ -2,7 +2,7 @@ let scenes = {};
 
 function preloadScenes() {
   scenes.farmMap = loadImage('assets/images/scenes/map.png');
-  scenes.batCave = loadImage('assets/images/scenes/cave.png');
+  scenes.cave = loadImage('assets/images/scenes/cave.png');
   scenes.greenhouse = loadImage('assets/images/scenes/greenhouse.png');
 
   scenes.barn = loadImage('assets/images/scenes/barn.png');
@@ -32,7 +32,7 @@ function preloadScenes() {
 function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
-    {name: 'batCave', x: 100, y: 200, w: 150, h: 150},
+    {name: 'cave', x: 100, y: 200, w: 150, h: 150},
     {name: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
     // Additional areas
     // Approximated coordinates based on map layout

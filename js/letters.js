@@ -26,7 +26,7 @@ function preloadLetters() {
     x: 450, y: 180
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'D',
     concept: 'Doubt',
     description: 'Not being sure about something.',
@@ -42,7 +42,7 @@ function preloadLetters() {
     x: 600, y: 200
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'F',
     concept: 'Freedom',
     description: 'Being able to choose for yourself.',
@@ -74,7 +74,7 @@ function preloadLetters() {
     x: 300, y: 320
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'J',
     concept: 'Justice',
     description: 'Being fair to everyone.',
@@ -98,7 +98,7 @@ function preloadLetters() {
     x: 400, y: 240
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'M',
     concept: 'Morality',
     description: 'Knowing right from wrong.',
@@ -122,7 +122,7 @@ function preloadLetters() {
     x: 200, y: 380
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'P',
     concept: 'Perspective',
     description: 'Seeing things in different ways.',
@@ -154,7 +154,7 @@ function preloadLetters() {
     x: 520, y: 330
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'T',
     concept: 'Truth',
     description: 'What is real and honest.',
@@ -178,7 +178,7 @@ function preloadLetters() {
     x: 650, y: 420
   });
   letters.push({
-    scene: 'batCave',
+    scene: 'cave',
     letter: 'W',
     concept: 'Wisdom',
     description: 'Using experience to make good choices.',

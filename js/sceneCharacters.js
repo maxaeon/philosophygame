@@ -1,7 +1,7 @@
 // Characters present in each scene
 // Keys are scene names and values are arrays of character variable names
 const defaultScenes = [
-  'farmMap','picnic','tunnel','pond','batCave','greenhouse','swing','swing2',
+  'farmMap','picnic','tunnel','pond','cave','greenhouse','swing','swing2',
   'barn','barnInside','bench','dogHouse','donkey','field','flowers','flowers2',
   'garden','grass','greenhouseInside','loft','loftEntrance','mirror','pond2',
   'radioRoom','studio'
