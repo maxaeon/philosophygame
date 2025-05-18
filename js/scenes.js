@@ -24,7 +24,8 @@ function preloadScenes() {
   scenes.pond2 = loadImage('assets/images/scenes/pond2.png');
   scenes.radioRoom = loadImage('assets/images/scenes/radioRoom.png');
   scenes.studio = loadImage('assets/images/scenes/studio.png');
-  scenes.swingScene = loadImage('assets/images/scenes/swing.png');
+  scenes.swing = loadImage('assets/images/scenes/swing.png');
+  scenes.swing2 = loadImage('assets/images/scenes/swing2.png');
   scenes.tunnel = loadImage('assets/images/scenes/tunnel.png');
 }
 
