@@ -1,0 +1,12 @@
+{
+  "name": "philosophygame",
+  "version": "1.0.0",
+  "description": "Interactive philosophy game for kids",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
