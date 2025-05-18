@@ -4,11 +4,11 @@ let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
   'farmMap',
-  'picnic', 'tunnel', 'pond', 'batCave', 'greenhouse', 'batCave',
-  'swing', 'swing2', 'greenhouse', 'batCave', 'farmMap',
-  'greenhouse', 'batCave', 'farmMap', 'greenhouse',
-  'batCave', 'farmMap', 'farmMap', 'greenhouse', 'batCave',
-  'farmMap', 'greenhouse', 'batCave', 'farmMap',
+  'picnic', 'tunnel', 'pond', 'cave', 'greenhouse', 'cave',
+  'swing', 'swing2', 'greenhouse', 'cave', 'farmMap',
+  'greenhouse', 'cave', 'farmMap', 'greenhouse',
+  'cave', 'farmMap', 'farmMap', 'greenhouse', 'cave',
+  'farmMap', 'greenhouse', 'cave', 'farmMap',
   'greenhouse', 'farmMap'
 ];
 let sceneIndex = 0;

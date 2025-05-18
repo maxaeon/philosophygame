@@ -11,7 +11,7 @@ Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game
 
 ## 🌟 Key Features
 
-* **Interactive exploration**: Navigate through various engaging scenes like the Sheep Field, Bat Cave, and Greenhouse.
+* **Interactive exploration**: Navigate through various engaging scenes like the Sheep Field, the Cave, and Greenhouse.
 * **Educational dialogues**: Duck and Rabbit guide thoughtful discussions on philosophical questions tailored for kids.
 * **Engaging visuals**: Cartoon farmyard characters and colorful backgrounds create an inviting environment for learning.
 
