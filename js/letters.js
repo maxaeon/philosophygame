@@ -44,8 +44,8 @@ function preloadLetters() {
   letters.push({
     scene: 'batCave',
     letter: 'F',
-    concept: 'Friends',
-    description: 'Being able to choose.',
+    concept: 'Freedom',
+    description: 'Being able to choose for yourself.',
     question: 'Why is freedom important?',
     x: 200, y: 400
   });
