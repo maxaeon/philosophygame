@@ -17,7 +17,8 @@ let continueBtn;
 function preload() {
   duck = new Character('duck');
   rabbit = new Character('rabbit');
-  donkey = new Character('donkey');
+  // Donkey only has a single placeholder image, so avoid loading default states
+  donkey = new Character('donkey', []);
   donkey.images['idle'] = loadImage('assets/images/donkey/placeholder.png');
   donkey.state = 'idle';
   donkey.x = 380;
