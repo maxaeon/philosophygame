@@ -28,7 +28,7 @@ To run the game locally on your machine:
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/<owner>/philosophygame.git
+git clone https://github.com/maxaeon/philosophygame.git
 ```
 
 2. Install the dependencies:
@@ -48,7 +48,7 @@ npm start
 ## 📁 Project Structure
 
 ```
-duck-rabbit-philosophy-game/
+philosophygame/
 ├── assets/
 │   ├── images/       # Game visuals
 │   └── audio/        # Sound effects (optional)
