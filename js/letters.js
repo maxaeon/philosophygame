@@ -2,7 +2,7 @@ let letters = [];
 
 function preloadLetters() {
   letters.push({
-    scene: 'batCave',
+    scene: 'picnic',
     letter: 'A',
     concept: 'Autonomy',
     description: 'Making your own decisions.',
@@ -10,7 +10,7 @@ function preloadLetters() {
     x: 400, y: 300
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'tunnel',
     letter: 'B',
     concept: 'Believing',
     description: 'Trusting something is true.',
@@ -18,7 +18,7 @@ function preloadLetters() {
     x: 150, y: 120
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'pond',
     letter: 'C',
     concept: 'Change',
     description: 'How things become different.',
@@ -44,13 +44,13 @@ function preloadLetters() {
   letters.push({
     scene: 'batCave',
     letter: 'F',
-    concept: 'Freedom',
+    concept: 'Friends',
     description: 'Being able to choose.',
     question: 'Why is freedom important?',
     x: 200, y: 400
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'swing',
     letter: 'G',
     concept: 'Goodness',
     description: 'Being kind and helpful.',
@@ -58,7 +58,7 @@ function preloadLetters() {
     x: 220, y: 250
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'swing2',
     letter: 'H',
     concept: 'Happiness',
     description: 'Feeling joy inside.',
