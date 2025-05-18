@@ -12,8 +12,19 @@ class Character {
   }
 
   preloadImages() {
+    const placeholder = `assets/images/${this.name}/placeholder.png`;
     this.states.forEach(state => {
-      this.images[state] = loadImage(`assets/images/${this.name}/${state}.png`);
+      const path = `assets/images/${this.name}/${state}.png`;
+      this.images[state] = loadImage(
+        path,
+        img => {
+          this.images[state] = img;
+        },
+        () => {
+          console.warn(`Missing ${path}, falling back to placeholder`);
+          this.images[state] = loadImage(placeholder);
+        }
+      );
     });
   }
 
