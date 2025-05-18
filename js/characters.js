@@ -23,3 +23,11 @@ class Character {
     this.state = newState;
   }
 }
+
+function handleCharacterClicks(mx, my) {
+  [duck, rabbit].forEach(char => {
+    if (mx > char.x && mx < char.x + 100 && my > char.y && my < char.y + 100) {
+      characterInteracted = true;
+    }
+  });
+}
