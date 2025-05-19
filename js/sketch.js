@@ -1,5 +1,5 @@
 let currentScene = 'farmMap';
-let duck, rabbit, donkey, sheep, sheepbaby;
+let duck, rabbit, donkey, sheep, sheepbaby, owl;
 let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
@@ -34,6 +34,8 @@ function preload() {
   sheepbaby.state = 'idle';
   sheepbaby.x = 520;
   sheepbaby.y = 440;
+
+  owl = new Character('owl');
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');
