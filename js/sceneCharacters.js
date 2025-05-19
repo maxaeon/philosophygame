@@ -16,6 +16,10 @@ defaultScenes.forEach(scene => {
 sceneCharacters.barn.push('donkey');
 sceneCharacters.donkey.push('donkey');
 
+['farmMap', 'field', 'barn'].forEach(scene => {
+  sceneCharacters[scene].push('sheep', 'sheepbaby');
+});
+
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
 }
