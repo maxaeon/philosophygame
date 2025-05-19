@@ -1,5 +1,5 @@
 let currentScene = 'farmMap';
-let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick;
+let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat;
 let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
@@ -56,6 +56,13 @@ function preload() {
   chick = new Character('chick', []);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
   chick.state = 'idle';
+
+  bat = new Character('bat', []);
+  bat.images['idle'] = loadImage('assets/images/bat/default.png');
+  bat.images['flap'] = loadImage('assets/images/bat/wings-flap.png');
+  bat.state = 'idle';
+  bat.x = 420;
+  bat.y = 180;
   // Optional: set x/y coordinates
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
