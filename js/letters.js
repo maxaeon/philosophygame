@@ -46,7 +46,7 @@ function preloadLetters() {
     letter: 'F',
     concept: 'Friend',
     description: 'Friends are people we love.',
-    question: 'Why makes someone a good friend?',
+    question: 'What makes someone a good friend?',
     x: 200, y: 400
   });
   letters.push({
