@@ -12,7 +12,7 @@ class Character {
   }
 
   preloadImages() {
-    const placeholder = `assets/images/${this.name}/placeholder.png`;
+    const placeholder = `assets/images/${this.name}/default.png`;
     this.states.forEach(state => {
       const path = `assets/images/${this.name}/${state}.png`;
       this.images[state] = loadImage(
