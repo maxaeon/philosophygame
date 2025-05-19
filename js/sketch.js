@@ -1,5 +1,7 @@
 let currentScene = 'farmMap';
-let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat;
+let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig;
+let letterGFound = false;
+let letterHFound = false;
 let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
@@ -64,6 +66,42 @@ function preload() {
   bat.x = 420;
   bat.y = 180;
   // Optional: set x/y coordinates
+
+  pig = {
+    images: {
+      swing1: loadImage('assets/images/pig/swing1.png'),
+      swing2: loadImage('assets/images/pig/swing2.png'),
+      neutral: loadImage('assets/images/pig/swing-neutral.png'),
+      up: loadImage('assets/images/pig/swing-up.png')
+    },
+    current: 'swing1',
+    lastSwitch: 0,
+    x: 360,
+    y: 420,
+    display() {
+      this.update();
+      image(this.images[this.current], this.x, this.y, 100, 100);
+    },
+    update() {
+      if ((currentScene === 'farmMap' || currentScene === 'swing') && !letterGFound) {
+        if (this.current !== 'swing1' && this.current !== 'swing2') {
+          this.current = 'swing1';
+        }
+        if (frameCount - this.lastSwitch > 60) {
+          this.current = this.current === 'swing1' ? 'swing2' : 'swing1';
+          this.lastSwitch = frameCount;
+        }
+      } else if (currentScene === 'swing2' && !letterHFound) {
+        if (this.current !== 'neutral' && this.current !== 'up') {
+          this.current = 'neutral';
+        }
+        if (frameCount - this.lastSwitch > 60) {
+          this.current = this.current === 'neutral' ? 'up' : 'neutral';
+          this.lastSwitch = frameCount;
+        }
+      }
+    }
+  };
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');
