@@ -33,6 +33,7 @@ sceneCharacters.loftEntrance.push('graytortiecat');
 });
 
 sceneCharacters.radioRoom.push('chick');
+sceneCharacters.barnInside.push('bat');
 
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
