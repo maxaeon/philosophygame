@@ -1,5 +1,5 @@
 let currentScene = 'farmMap';
-let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, chick;
+let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick;
 let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
@@ -46,6 +46,12 @@ function preload() {
   graytortiecat = new Character('graytortiecat', []);
   graytortiecat.images['idle'] = loadImage('assets/images/graytortiecat/default.png');
   graytortiecat.state = 'idle';
+
+  orangecat = new Character('orangecat', []);
+  orangecat.images['idle'] = loadImage('assets/images/orangecat/default.png');
+  orangecat.state = 'idle';
+  orangecat.x = 450;
+  orangecat.y = 430;
 
   chick = new Character('chick', []);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');

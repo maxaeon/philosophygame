@@ -19,6 +19,7 @@ defaultScenes.forEach(scene => {
 
 sceneCharacters.barn.push('donkey');
 sceneCharacters.donkey.push('donkey');
+sceneCharacters.donkey.push('orangecat');
 
 // Dog appears only in the dogHouse, barn, and farmMap scenes
 ['dogHouse', 'barn', 'farmMap'].forEach(scene => {
