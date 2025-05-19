@@ -26,6 +26,8 @@ sceneCharacters.loftEntrance.push('graytortiecat');
   sceneCharacters[scene].push('sheep', 'sheepbaby');
 });
 
+sceneCharacters.radioRoom.push('chick');
+
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
 }
