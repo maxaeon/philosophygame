@@ -17,15 +17,15 @@ let continueBtn;
 function preload() {
   duck = new Character('duck');
   rabbit = new Character('rabbit');
-  // Donkey only has a single placeholder image, so avoid loading default states
+  // Donkey only has a single default image, so avoid loading default states
   donkey = new Character('donkey', []);
-  donkey.images['idle'] = loadImage('assets/images/donkey/placeholder.png');
+  donkey.images['idle'] = loadImage('assets/images/donkey/default.png');
   donkey.state = 'idle';
   donkey.x = 380;
   donkey.y = 420;
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
-  barnIcon = loadImage('assets/images/icons/barnplaceholder.png');
+  barnIcon = loadImage('assets/images/icons/barndefault.png');
 
   preloadScenes();
   preloadLetters();
