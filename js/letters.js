@@ -10,7 +10,7 @@ function preloadLetters() {
     x: 400, y: 300
   });
   letters.push({
-    scene: 'tunnel',
+    scene: 'dogHouse',
     letter: 'B',
     concept: 'Believing',
     description: 'Trusting something is true.',
@@ -18,7 +18,7 @@ function preloadLetters() {
     x: 150, y: 120
   });
   letters.push({
-    scene: 'pond',
+    scene: 'grass',
     letter: 'C',
     concept: 'Change',
     description: 'How things become different.',
@@ -26,11 +26,11 @@ function preloadLetters() {
     x: 450, y: 180
   });
   letters.push({
-    scene: 'cave',
+    scene: 'pond2',
     letter: 'D',
-    concept: 'Doubt',
-    description: 'Not being sure about something.',
-    question: 'When do you feel uncertain?',
+    concept: 'Difference',
+    description: 'When things are not the same, something about them is different.',
+    question: 'What makes a dog different from a cat?',
     x: 350, y: 220
   });
   letters.push({
@@ -42,11 +42,11 @@ function preloadLetters() {
     x: 600, y: 200
   });
   letters.push({
-    scene: 'cave',
+    scene: 'flowers',
     letter: 'F',
-    concept: 'Freedom',
-    description: 'Being able to choose for yourself.',
-    question: 'Why is freedom important?',
+    concept: 'Friend',
+    description: 'Friends are people we love.',
+    question: 'Why makes someone a good friend?',
     x: 200, y: 400
   });
   letters.push({
@@ -66,23 +66,23 @@ function preloadLetters() {
     x: 450, y: 100
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'studio',
     letter: 'I',
-    concept: 'Identity',
-    description: 'Who you are.',
-    question: 'What makes you unique?',
+    concept: 'Imagination',
+    description: 'We can imagine things like unicorns, or what we want to be.',
+    question: 'What do you imagine?',
     x: 300, y: 320
   });
   letters.push({
-    scene: 'cave',
+    scene: 'greenhouse',
     letter: 'J',
-    concept: 'Justice',
-    description: 'Being fair to everyone.',
-    question: 'How do you know something is fair?',
+    concept: 'Judging',
+    description: 'Deciding what is right or what is true.',
+    question: 'Are grownup judgements always right?',
     x: 550, y: 350
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'field',
     letter: 'K',
     concept: 'Knowledge',
     description: 'What you learn and know.',
@@ -90,7 +90,7 @@ function preloadLetters() {
     x: 650, y: 180
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'vegetables2',
     letter: 'L',
     concept: 'Logic',
     description: 'Using reason to solve problems.',
@@ -98,15 +98,15 @@ function preloadLetters() {
     x: 400, y: 240
   });
   letters.push({
-    scene: 'cave',
+    scene: 'tunnel',
     letter: 'M',
-    concept: 'Morality',
-    description: 'Knowing right from wrong.',
-    question: 'Where do your ideas of right and wrong come from?',
+    concept: 'Minds',
+    description: 'Our memories, feelings, thoughts, and experiences are part of our minds... Only you can access yours!',
+    question: 'Do other animals think and feel like we do?',
     x: 250, y: 150
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'pond',
     letter: 'N',
     concept: 'Nature',
     description: 'The world around us.',
@@ -114,7 +114,7 @@ function preloadLetters() {
     x: 500, y: 450
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'radioRoom',
     letter: 'O',
     concept: 'Observation',
     description: 'Watching carefully to learn.',
@@ -122,15 +122,15 @@ function preloadLetters() {
     x: 200, y: 380
   });
   letters.push({
-    scene: 'cave',
+    scene: 'picnic',
     letter: 'P',
-    concept: 'Perspective',
-    description: 'Seeing things in different ways.',
-    question: 'Can you think of another viewpoint?',
+    concept: 'Possibilities',
+    description: 'There are so many ways things could be!',
+    question: 'What are some ways this story could end?',
     x: 480, y: 260
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'bench',
     letter: 'Q',
     concept: 'Questioning',
     description: 'Asking why and how.',
@@ -138,23 +138,23 @@ function preloadLetters() {
     x: 120, y: 300
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'cave',
     letter: 'R',
-    concept: 'Reason',
-    description: 'Thinking clearly about ideas.',
-    question: 'How do you reason about choices?',
+    concept: 'Reality',
+    description: 'What is real, and not just imaginary.',
+    question: 'Do you think the tooth fairy is real?',
     x: 700, y: 300
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'donkey',
     letter: 'S',
-    concept: 'Self',
-    description: 'Understanding who you are.',
-    question: 'What do you like about yourself?',
+    concept: 'Solving',
+    description: 'Finding answers when there are questions, or finding ways to make things work if there is a problem.',
+    question: 'When you get stuck on a problem, how do you figure it out?',
     x: 520, y: 330
   });
   letters.push({
-    scene: 'cave',
+    scene: 'vegetables',
     letter: 'T',
     concept: 'Truth',
     description: 'What is real and honest.',
@@ -162,7 +162,7 @@ function preloadLetters() {
     x: 320, y: 90
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'flowers2',
     letter: 'U',
     concept: 'Understanding',
     description: 'Making sense of something.',
@@ -170,15 +170,15 @@ function preloadLetters() {
     x: 370, y: 370
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'barn',
     letter: 'V',
-    concept: 'Virtue',
-    description: 'Good qualities like courage.',
-    question: 'Which virtues are important to you?',
+    concept: 'Values',
+    description: 'What matters to you, like family or friends, or doing the right thing.',
+    question: 'What do you value?',
     x: 650, y: 420
   });
   letters.push({
-    scene: 'cave',
+    scene: 'loftEntrance',
     letter: 'W',
     concept: 'Wisdom',
     description: 'Using experience to make good choices.',
@@ -186,7 +186,7 @@ function preloadLetters() {
     x: 430, y: 410
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'barnInside',
     letter: 'X',
     concept: 'eXperience',
     description: 'Learning from what happens to you.',
@@ -194,19 +194,19 @@ function preloadLetters() {
     x: 290, y: 220
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'mirror',
     letter: 'Y',
-    concept: 'Yearning',
-    description: 'Wanting to know or do more.',
-    question: 'What do you yearn to learn?',
+    concept: 'You',
+    description: 'You are the wonderful person you are!',
+    question: 'What do you like about yourself, and what could you work on to be better?',
     x: 280, y: 160
   });
   letters.push({
-    scene: 'farmMap',
+    scene: 'loft',
     letter: 'Z',
-    concept: 'Zest',
-    description: 'Excitement and enthusiasm for life.',
-    question: 'When do you feel full of zest?',
+    concept: 'Zen',
+    description: 'Living with nature and in peace.',
+    question: 'How can you calm down when you are upset?',
     x: 560, y: 520
   });
 

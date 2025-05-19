@@ -14,6 +14,7 @@ function preloadScenes() {
   scenes.flowers = loadImage('assets/images/scenes/flowers.png');
   scenes.flowers2 = loadImage('assets/images/scenes/flowers2.png');
   scenes.garden = loadImage('assets/images/scenes/vegetables.png');
+  scenes.vegetables2 = loadImage('assets/images/scenes/vegetables2.png');
   scenes.grass = loadImage('assets/images/scenes/grass.png');
   scenes.greenhouseInside = loadImage('assets/images/scenes/greenhouseInside.png');
   scenes.loft = loadImage('assets/images/scenes/loft.png');
