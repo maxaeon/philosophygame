@@ -13,6 +13,10 @@ defaultScenes.forEach(scene => {
   sceneCharacters[scene] = ['duck', 'rabbit'];
 });
 
+['flowers', 'flowers2', 'loft', 'farmMap'].forEach(scene => {
+  sceneCharacters[scene].push('owl');
+});
+
 sceneCharacters.barn.push('donkey');
 sceneCharacters.donkey.push('donkey');
 
