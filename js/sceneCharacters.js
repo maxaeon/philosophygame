@@ -35,6 +35,10 @@ sceneCharacters.loftEntrance.push('graytortiecat');
 sceneCharacters.radioRoom.push('chick');
 sceneCharacters.barnInside.push('bat');
 
+['farmMap', 'swing', 'swing2'].forEach(scene => {
+  sceneCharacters[scene].push('pig');
+});
+
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
 }

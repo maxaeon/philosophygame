@@ -234,6 +234,12 @@ function handleLetterClicks(mx, my) {
       if (typeof continueBtn !== 'undefined') {
         continueBtn.style.display = 'block';
       }
+      if (l.letter === 'G') {
+        letterGFound = true;
+      }
+      if (l.letter === 'H') {
+        letterHFound = true;
+      }
     }
   });
 }
