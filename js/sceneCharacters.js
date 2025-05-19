@@ -20,6 +20,8 @@ defaultScenes.forEach(scene => {
 sceneCharacters.barn.push('donkey');
 sceneCharacters.donkey.push('donkey');
 
+sceneCharacters.loftEntrance.push('graytortiecat');
+
 ['farmMap', 'field', 'barn'].forEach(scene => {
   sceneCharacters[scene].push('sheep', 'sheepbaby');
 });
