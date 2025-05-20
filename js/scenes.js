@@ -39,11 +39,11 @@ function setupScenes() {
     {name: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
     // Additional areas
     // Approximated coordinates based on map layout
-    {name: 'barn', x: 520, y: 160, w: 150, h: 150},
-    {name: 'bench', x: 180, y: 420, w: 120, h: 80},
-    {name: 'dogHouse', x: 610, y: 360, w: 120, h: 100},
+    {name: 'barn', x: 220, y: 160, w: 150, h: 150},
+    {name: 'bench', x: 180, y: 220, w: 120, h: 80},
+    {name: 'dogHouse', x: 310, y: 360, w: 120, h: 100},
     // New interactive areas
-    {name: 'pond', x: 500, y: 420, w: 140, h: 120},
+    {name: 'pond', x: 300, y: 420, w: 140, h: 120},
     {name: 'pond2', x: 340, y: 240, w: 140, h: 120},
     {name: 'vegetables', x: 280, y: 80, w: 120, h: 80},
     {name: 'picnic', x: 420, y: 260, w: 140, h: 100}
