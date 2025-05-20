@@ -219,6 +219,7 @@ function preloadLetters() {
     }
     l.found = false;
     l.size = 32;
+    l.baseSize = 32;
   });
 }
 
@@ -347,5 +348,16 @@ function allLettersFoundForScene(scene) {
   return letters
     .filter(l => l.scene === scene)
     .every(l => l.found);
+}
+
+function highlightMissingLetters(scene) {
+  letters.forEach(l => {
+    if (l.scene === scene && !l.found) {
+      l.size = l.baseSize * 2;
+      setTimeout(() => {
+        l.size = l.baseSize;
+      }, 1000);
+    }
+  });
 }
 
