@@ -41,7 +41,12 @@ function setupScenes() {
     // Approximated coordinates based on map layout
     {name: 'barn', x: 520, y: 160, w: 150, h: 150},
     {name: 'bench', x: 180, y: 420, w: 120, h: 80},
-    {name: 'dogHouse', x: 610, y: 360, w: 120, h: 100}
+    {name: 'dogHouse', x: 610, y: 360, w: 120, h: 100},
+    // New interactive areas
+    {name: 'pond', x: 500, y: 420, w: 140, h: 120},
+    {name: 'pond2', x: 340, y: 240, w: 140, h: 120},
+    {name: 'vegetables', x: 280, y: 80, w: 120, h: 80},
+    {name: 'picnic', x: 420, y: 260, w: 140, h: 100}
   ];
 }
 
@@ -52,7 +57,11 @@ function drawScene(scene) {
 function handleSceneClicks(mx, my) {
   if (currentScene === 'farmMap') {
     scenes.interactiveAreas.forEach(area => {
-      if (mx > area.x && mx < area.x + area.w && my > area.y && my < area.y + area.h) {
+      const withinArea = mx > area.x && mx < area.x + area.w && my > area.y && my < area.y + area.h;
+      const isIcon = ['pond', 'pond2', 'vegetables', 'picnic'].includes(area.name);
+      const iconSize = 40;
+      const withinIcon = isIcon && mx >= area.x && mx <= area.x + iconSize && my >= area.y && my <= area.y + iconSize;
+      if (withinArea || withinIcon) {
         currentScene = area.name;
       }
     });
