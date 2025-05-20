@@ -6,6 +6,8 @@ var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, 
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
+let picnicReached = false,
+    mapIcon;
 
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
@@ -128,6 +130,7 @@ function preload() {
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');
+  mapIcon = loadImage('assets/images/icons/map.png');
 
   preloadScenes();
   preloadLetters();
@@ -144,6 +147,7 @@ function setup() {
 
 function draw() {
   background(220);
+  picnicReached = picnicReached || currentScene === 'picnic';
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
@@ -157,6 +161,9 @@ function draw() {
   }
   if (currentScene === 'donkey') {
     image(barnIcon, 10, 10, 50, 50);
+  }
+  if (picnicReached && currentScene !== 'farmMap') {
+    image(mapIcon, 10, 10, 50, 50);
   }
   image(duckRabbitIcon, width - 70, 10, 60, 60);
 }
@@ -173,6 +180,12 @@ function mousePressed() {
   if (currentScene === 'donkey') {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
       currentScene = 'barn';
+      return;
+    }
+  }
+  if (picnicReached && currentScene !== 'farmMap') {
+    if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
+      currentScene = 'farmMap';
       return;
     }
   }

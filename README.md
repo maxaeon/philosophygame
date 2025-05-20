@@ -9,6 +9,7 @@ Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game
 * When a letter is clicked, it slides to the bottom of the screen and lines up with the others.
 * Each letter reveals a philosophical concept, a friendly explanation, and engaging questions.
 * Click on the Duck-Rabbit icon anytime for helpful advice or hints. After you find all 26 letters, the icon congratulates you.
+* Once you reach the picnic area, a map icon appears in the top-left corner. Click it to return to the farm map.
 
 ## 🌟 Key Features
 
