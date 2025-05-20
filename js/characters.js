@@ -5,24 +5,27 @@ class Character {
     this.state = 'idle';
     this.x = random(100, 700);
     this.y = random(300, 500);
-    this.states = Array.isArray(states)
-      ? states
-      : ['left', 'right', 'talking', 'thinking'];
+    this.states = Array.isArray(states) && states.length ? states : [];
+    if (!this.states.includes('idle')) {
+      this.states.unshift('idle');
+    }
     this.preloadImages();
   }
 
   preloadImages() {
-    const placeholder = `assets/images/${this.name}/default.png`;
+    const defaultPath = `assets/images/${this.name}/default.png`;
     this.states.forEach(state => {
-      const path = `assets/images/${this.name}/${state}.png`;
+      const path = state === 'idle'
+        ? defaultPath
+        : `assets/images/${this.name}/${state}.png`;
       this.images[state] = loadImage(
         path,
         img => {
           this.images[state] = img;
         },
         () => {
-          console.warn(`Missing ${path}, falling back to placeholder`);
-          this.images[state] = loadImage(placeholder);
+          console.warn(`Missing ${path}, falling back to default`);
+          this.images[state] = loadImage(defaultPath);
         }
       );
     });
