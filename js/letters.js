@@ -211,21 +211,6 @@ function preloadLetters() {
     x: 560, y: 520
   });
 
-  const placeholderScenes = [
-    'barn','barnInside','bench','dogHouse','donkey','field','flowers',
-    'flowers2','garden','grass','greenhouseInside','loft','loftEntrance',
-    'mirror','pond2','radioRoom','studio'
-  ];
-  placeholderScenes.forEach(s => {
-    letters.push({
-      scene: s,
-      letter: '?',
-      concept: 'Coming Soon',
-      description: '',
-      question: '',
-      x: 400, y: 300
-    });
-  });
 
   // preload images for alphabet letters
   letters.forEach(l => {
