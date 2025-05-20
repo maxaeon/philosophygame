@@ -4,7 +4,8 @@
   "description": "Interactive philosophy game for kids",
   "scripts": {
     "start": "http-server",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "check-assets": "node scripts/check-assets.js"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

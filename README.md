@@ -79,6 +79,15 @@ sceneCharacterSettings["barn"] = {
 Any properties you specify will temporarily replace the character's default
 `x`, `y` and `size` values while that scene is drawn.
 
+## ✔️ Checking Assets
+
+Before committing changes, run the asset check to make sure all image paths
+used in the JavaScript files exist:
+
+```bash
+npm run check-assets
+```
+
 ## 🤝 Contribution
 
 Suggestions and contributions are welcome! Feel free to open issues or submit pull requests to help enhance the game.
