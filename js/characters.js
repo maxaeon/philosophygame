@@ -2,16 +2,23 @@ class Character {
   constructor(name, states, size = 100) {
     this.name = name;
     this.images = {};
-    this.state = 'idle';
+    // Default to the neutral mouth-closed pose when the character is created
+    this.state = 'mouth-closed';
     this.x = random(100, 700);
     this.y = random(300, 500);
     this.size = size;
     this.baseX = this.x;
     this.baseY = this.y;
     this.baseSize = size;
-    this.states = Array.isArray(states) && states.length ? states : [];
+    this.states = Array.isArray(states) && states.length ? states.slice() : [];
     if (!this.states.includes('idle')) {
       this.states.unshift('idle');
+    }
+    // Always attempt to preload a mouth-closed image so characters can
+    // revert to it when not speaking. If the image doesn't exist, the
+    // fallback in preloadImages will load the default instead.
+    if (!this.states.includes('mouth-closed')) {
+      this.states.push('mouth-closed');
     }
     this.preloadImages();
   }
