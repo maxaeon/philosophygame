@@ -166,7 +166,13 @@ function playDialogue(scene, callback) {
       box.onclick = null;
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
-      if (continueBtn) continueBtn.style.display = 'block';
+      if (continueBtn) {
+        if (scene === 'barnInside') {
+          continueBtn.style.display = 'none';
+        } else {
+          continueBtn.style.display = 'block';
+        }
+      }
       if (callback) callback();
       return;
     }

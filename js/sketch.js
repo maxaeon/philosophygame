@@ -421,6 +421,10 @@ function advanceScene() {
     continueBtn.style.display = 'none';
     return;
   }
+  if (currentScene === 'barnInside') {
+    continueBtn.style.display = 'none';
+    return;
+  }
   sceneIndex++;
   if (sceneIndex >= orderedScenes.length) {
     continueBtn.style.display = 'none';
