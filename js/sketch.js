@@ -1,5 +1,8 @@
 let currentScene = 'start';
-let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig;
+// Declare character variables with var so they become properties on the global
+// window object. drawSceneCharacters in scenes.js accesses characters via
+// window[name], so using var ensures they are available there.
+var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
