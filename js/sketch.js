@@ -31,6 +31,8 @@ const orderedScenes = [
 ];
 let sceneIndex = 0;
 let continueBtn;
+let backBtn;
+let sceneHistory = [currentScene];
 
 function preload() {
   duck = new Character('duck', [
@@ -275,6 +277,9 @@ function setup() {
   // Start with the continue button hidden; it will be shown
   // at the appropriate time by playDialogue
   continueBtn.style.display = 'none';
+  backBtn = document.getElementById('backBtn');
+  backBtn.addEventListener('click', goBackScene);
+  backBtn.style.display = 'none';
   dialogueBox = document.getElementById('dialogueBox');
 }
 
@@ -305,8 +310,11 @@ function draw() {
       }
     }
   }
+  if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
+    sceneHistory.push(currentScene);
+  }
+  backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';
   drawScene(currentScene); // from scenes.js
-  drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
   if (
     !isDialogueActive() &&
@@ -352,6 +360,7 @@ function draw() {
     image(mapIcon, 10, 10, 50, 50);
   }
   image(duckRabbitIcon, width - 70, 10, 60, 60);
+  drawLetters(currentScene); // draw letters on top
 }
 
 function mousePressed() {
@@ -396,6 +405,7 @@ function showAdvice() {
   } else {
     alert("Duck-Rabbit says: Think about things from a different perspective!");
   }
+  highlightMissingLetters(currentScene);
 }
 
 function advanceScene() {
@@ -420,6 +430,16 @@ function advanceScene() {
   // Hide the button immediately after switching scenes; it will be
   // displayed again when the next dialogue finishes.
   continueBtn.style.display = 'none';
+}
+
+function goBackScene() {
+  if (sceneHistory.length > 1) {
+    sceneHistory.pop();
+    currentScene = sceneHistory[sceneHistory.length - 1];
+    const idx = orderedScenes.indexOf(currentScene);
+    if (idx !== -1) sceneIndex = idx;
+    continueBtn.style.display = 'none';
+  }
 }
 
 function keyPressed() {

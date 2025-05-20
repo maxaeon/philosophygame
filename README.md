@@ -8,8 +8,9 @@ Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game
 * Discover hidden letters scattered throughout the scenes. Each one is a colorful image from the `assets/images/letters` folder.
 * When a letter is clicked, it slides to the bottom of the screen and lines up with the others.
 * Each letter reveals a philosophical concept, a friendly explanation, and engaging questions.
-* Click on the Duck-Rabbit icon anytime for helpful advice or hints. After you find all 26 letters, the icon congratulates you.
+* Click on the Duck-Rabbit icon anytime for helpful advice or hints. After you find all 26 letters, the icon congratulates you and any unfound letters in the current scene briefly grow larger to help you spot them.
 * Once you reach the picnic area, a map icon appears in the top-left corner. Click it to return to the farm map.
+* Use the **Back** button to return to the previous scene whenever you like.
 
 ## 🌟 Key Features
 
