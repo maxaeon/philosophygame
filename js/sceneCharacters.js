@@ -12,6 +12,17 @@ const sceneCharacters = {};
 // sceneCharacterSettings[scene][character] = {x, y, size}
 const sceneCharacterSettings = {};
 
+// Arrange characters on the farm map so they don't overlap
+sceneCharacterSettings['farmMap'] = {
+  duck:      { x: 60,  y: 500, size: 80 },
+  rabbit:    { x: 150, y: 500, size: 80 },
+  owl:       { x: 600, y: 100, size: 80 },
+  dog:       { x: 640, y: 420, size: 100 },
+  sheep:     { x: 420, y: 380, size: 100 },
+  sheepbaby: { x: 500, y: 420, size: 80 },
+  pig:       { x: 260, y: 460, size: 100 }
+};
+
 defaultScenes.forEach(scene => {
   sceneCharacters[scene] = ['duck', 'rabbit'];
 });
