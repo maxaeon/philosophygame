@@ -3,8 +3,8 @@
 const defaultScenes = [
   'farmMap','picnic','tunnel','pond','cave','greenhouse','swing','swing2',
   'barn','barnInside','bench','dogHouse','donkey','field','flowers','flowers2',
-  'garden','vegetables2','grass','greenhouseInside','loft','loftEntrance','mirror','pond2',
-  'radioRoom','studio'
+  'garden','vegetables','vegetables2','grass','greenhouseInside','loft','loftEntrance','mirror','pond2',
+  'radioRoom','studio','start'
 ];
 
 const sceneCharacters = {};

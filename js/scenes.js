@@ -27,6 +27,8 @@ function preloadScenes() {
   scenes.studio = loadImage('assets/images/scenes/studio.png');
   scenes.swing = loadImage('assets/images/scenes/swing.png');
   scenes.swing2 = loadImage('assets/images/scenes/swing2.png');
+  scenes.start = loadImage('assets/images/scenes/start.png');
+  scenes.vegetables = loadImage('assets/images/scenes/vegetables.png');
   scenes.tunnel = loadImage('assets/images/scenes/tunnel.png');
 }
 
