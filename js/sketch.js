@@ -10,6 +10,7 @@ let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
 let trayOnTable = 'trayB';
+let dialogueBox;
 
 // Movement variables for the duck in pond2
 let duckTargetX = null;
@@ -271,6 +272,7 @@ function setup() {
   continueBtn = document.getElementById('continueBtn');
   continueBtn.addEventListener('click', advanceScene);
   continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'block';
+  dialogueBox = document.getElementById('dialogueBox');
 }
 
 function draw() {
@@ -303,6 +305,21 @@ function draw() {
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
+  if (
+    !isDialogueActive() &&
+    currentScene === 'bench' &&
+    !dialoguesPlayed['bench']
+  ) {
+    playDialogue('bench');
+  }
+  if (
+    !isDialogueActive() &&
+    currentScene !== 'bench' &&
+    allLettersFoundForScene(currentScene) &&
+    !dialoguesPlayed[currentScene]
+  ) {
+    playDialogue(currentScene);
+  }
   if (currentScene === 'pond2') {
     checkDuckLetterCollision(duck);
   }
