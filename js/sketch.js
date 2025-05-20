@@ -2,7 +2,7 @@ let currentScene = 'start';
 // Declare character variables with var so they become properties on the global
 // window object. drawSceneCharacters in scenes.js accesses characters via
 // window[name], so using var ensures they are available there.
-var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig, duckRabbitSwing, trayA, trayB;
+var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, birdhouse, pig, duckRabbitSwing, trayA, trayB;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
@@ -116,6 +116,25 @@ function preload() {
   bat.x = 420;
   bat.y = 180;
   bat.initBase();
+
+  birdhouse = new Character('birdhouse', ['start', 'midway', 'done']);
+  birdhouse.state = 'start';
+  birdhouse.x = 380;
+  birdhouse.y = 420;
+  birdhouse.initBase();
+  birdhouse.update = function() {
+    if (currentScene === 'flowers2') {
+      this.setState('done');
+    } else if (currentScene === 'grass') {
+      this.setState('midway');
+    } else {
+      this.setState('start');
+    }
+  };
+  birdhouse.display = function() {
+    this.update();
+    image(this.images[this.state], this.x, this.y, this.size, this.size);
+  };
   // Optional: set x/y coordinates
 
   pig = {
