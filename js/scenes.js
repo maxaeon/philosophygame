@@ -113,6 +113,38 @@ function handleSceneClicks(mx, my) {
       return;
     }
   }
+  if (currentScene === 'greenhouseInside') {
+    const withinTrayA =
+      mx >= trayA.x && mx <= trayA.x + trayA.size &&
+      my >= trayA.y && my <= trayA.y + trayA.size;
+    const withinTrayB =
+      mx >= trayB.x && mx <= trayB.x + trayB.size &&
+      my >= trayB.y && my <= trayB.y + trayB.size;
+    if (withinTrayA && trayOnTable !== 'trayA') {
+      const tX = trayA.baseX;
+      const tY = trayA.baseY;
+      trayA.baseX = trayB.baseX;
+      trayA.baseY = trayB.baseY;
+      trayB.baseX = tX;
+      trayB.baseY = tY;
+      trayOnTable = 'trayA';
+      trayA.reset();
+      trayB.reset();
+      clicked = true;
+    } else if (withinTrayB && trayOnTable !== 'trayB') {
+      const tX = trayA.baseX;
+      const tY = trayA.baseY;
+      trayA.baseX = trayB.baseX;
+      trayA.baseY = trayB.baseY;
+      trayB.baseX = tX;
+      trayB.baseY = tY;
+      trayOnTable = 'trayB';
+      trayA.reset();
+      trayB.reset();
+      clicked = true;
+    }
+    if (clicked) return;
+  }
   if (currentScene === 'barnInside') {
     const areas = [
       {name: 'studio', x: 250, y: 270, w: 100, h: 100},

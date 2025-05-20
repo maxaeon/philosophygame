@@ -2,13 +2,14 @@ let currentScene = 'start';
 // Declare character variables with var so they become properties on the global
 // window object. drawSceneCharacters in scenes.js accesses characters via
 // window[name], so using var ensures they are available there.
-var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig, duckRabbitSwing;
+var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig, duckRabbitSwing, trayA, trayB;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
 let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
+let trayOnTable = 'trayB';
 
 // Movement variables for the duck in pond2
 let duckTargetX = null;
@@ -206,6 +207,54 @@ function preload() {
     }
   };
   duckRabbitSwing.initBase();
+
+  trayA = {
+    images: { default: loadImage('assets/images/trays/trayA.png') },
+    x: 500,
+    y: 420,
+    size: 80,
+    baseX: 500,
+    baseY: 420,
+    baseSize: 80,
+    display() {
+      image(this.images.default, this.x, this.y, this.size, this.size);
+    },
+    reset() {
+      this.x = this.baseX;
+      this.y = this.baseY;
+      this.size = this.baseSize;
+    },
+    initBase() {
+      this.baseX = this.x;
+      this.baseY = this.y;
+      this.baseSize = this.size;
+    }
+  };
+  trayA.initBase();
+
+  trayB = {
+    images: { default: loadImage('assets/images/trays/trayB.png') },
+    x: 360,
+    y: 420,
+    size: 80,
+    baseX: 360,
+    baseY: 420,
+    baseSize: 80,
+    display() {
+      image(this.images.default, this.x, this.y, this.size, this.size);
+    },
+    reset() {
+      this.x = this.baseX;
+      this.y = this.baseY;
+      this.size = this.baseSize;
+    },
+    initBase() {
+      this.baseX = this.x;
+      this.baseY = this.y;
+      this.baseSize = this.size;
+    }
+  };
+  trayB.initBase();
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');
