@@ -35,7 +35,7 @@ function preloadLetters() {
     x: 350, y: 220
   });
   letters.push({
-    scene: 'greenhouse',
+    scene: 'greenhouseInside',
     letter: 'E',
     concept: 'Ethics',
     description: 'Figuring out right and wrong.',
