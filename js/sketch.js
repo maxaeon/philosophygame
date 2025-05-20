@@ -8,6 +8,7 @@ let letterHFound = false;
 let duckRabbitIcon, barnIcon;
 let picnicReached = false,
     mapIcon;
+let mapUnlocked = false;
 
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
@@ -172,6 +173,7 @@ function setup() {
 function draw() {
   background(220);
   picnicReached = picnicReached || currentScene === 'picnic';
+  mapUnlocked = mapUnlocked || currentScene === 'farmMap';
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
@@ -186,7 +188,11 @@ function draw() {
   if (currentScene === 'donkey') {
     image(barnIcon, 10, 10, 50, 50);
   }
-  if (picnicReached && currentScene !== 'farmMap') {
+  if (
+    mapUnlocked &&
+    currentScene !== 'farmMap' &&
+    allLettersFoundForScene(currentScene)
+  ) {
     image(mapIcon, 10, 10, 50, 50);
   }
   image(duckRabbitIcon, width - 70, 10, 60, 60);
@@ -209,7 +215,11 @@ function mousePressed() {
       return;
     }
   }
-  if (picnicReached && currentScene !== 'farmMap') {
+  if (
+    mapUnlocked &&
+    currentScene !== 'farmMap' &&
+    allLettersFoundForScene(currentScene)
+  ) {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
       currentScene = 'farmMap';
       return;

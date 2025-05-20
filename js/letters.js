@@ -291,3 +291,9 @@ function drawLetters(scene) {
   });
 }
 
+function allLettersFoundForScene(scene) {
+  return letters
+    .filter(l => l.scene === scene)
+    .every(l => l.found);
+}
+
