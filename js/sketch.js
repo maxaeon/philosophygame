@@ -1,17 +1,13 @@
-let currentScene = 'farmMap';
+let currentScene = 'start';
 let duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
 
 const orderedScenes = [
-  'farmMap',
-  'picnic', 'tunnel', 'pond', 'cave', 'greenhouse', 'cave',
-  'swing', 'swing2', 'greenhouse', 'cave', 'farmMap',
-  'greenhouse', 'cave', 'farmMap', 'greenhouse',
-  'cave', 'farmMap', 'farmMap', 'greenhouse', 'cave',
-  'farmMap', 'greenhouse', 'cave', 'farmMap',
-  'greenhouse', 'farmMap'
+  'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
+  'greenhouse', 'greenhouseInside', 'vegetables', 'tunnel', 'cave',
+  'vegetables2', 'picnic', 'farmMap'
 ];
 let sceneIndex = 0;
 let continueBtn;
