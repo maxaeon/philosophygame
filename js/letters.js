@@ -324,7 +324,16 @@ function checkDuckLetterCollision(duck) {
 }
 
 function showLetterInfo(letter) {
-  alert(`${letter.letter} for ${letter.concept}\n\n${letter.description}\n\nQuestion: ${letter.question}`);
+  const box = document.getElementById('letterInfoBox');
+  if (!box) return;
+  box.innerHTML =
+    `<strong>${letter.letter} for ${letter.concept}</strong><br><br>${letter.description}<br><br><em>${letter.question}</em>`;
+  box.style.display = 'block';
+  if (typeof box.focus === 'function') box.focus();
+  box.onclick = () => {
+    box.style.display = 'none';
+    box.onclick = null;
+  };
 }
 
 // Draw letter indicators for the current scene
