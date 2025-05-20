@@ -1,4 +1,5 @@
 let letters = [];
+let lettersFoundCount = 0;
 
 function preloadLetters() {
   letters.push({
@@ -225,12 +226,44 @@ function preloadLetters() {
       x: 400, y: 300
     });
   });
+
+  // preload images for alphabet letters
+  letters.forEach(l => {
+    if (l.letter !== '?') {
+      l.img = loadImage(`assets/images/letters/${l.letter.toLowerCase()}.png`);
+    }
+    l.found = false;
+    l.size = 32;
+  });
+}
+
+function initLetterBottomPositions() {
+  letters.forEach(l => {
+    const idx = l.letter.charCodeAt(0) - 65;
+    if (idx >= 0 && idx < 26) {
+      const spacing = width / 26;
+      l.bottomX = spacing * (idx + 0.5);
+      l.bottomY = height - l.size / 2 - 10;
+    }
+  });
 }
 
 function handleLetterClicks(mx, my) {
   letters.forEach(l => {
-    if (l.scene === currentScene && dist(mx, my, l.x, l.y) < 20) {
+    const half = l.size / 2;
+    const within =
+      l.scene === currentScene &&
+      !l.found &&
+      mx >= l.x - half && mx <= l.x + half &&
+      my >= l.y - half && my <= l.y + half;
+    if (within) {
       showLetterInfo(l);
+      if (!l.found) {
+        l.found = true;
+        l.x = l.bottomX;
+        l.y = l.bottomY;
+        lettersFoundCount++;
+      }
       if (typeof continueBtn !== 'undefined') {
         continueBtn.style.display = 'block';
       }
@@ -251,11 +284,24 @@ function showLetterInfo(letter) {
 // Draw letter indicators for the current scene
 function drawLetters(scene) {
   letters.forEach(l => {
-    if (l.scene === scene) {
-      ellipse(l.x, l.y, 30, 30);
-      textAlign(CENTER, CENTER);
-      fill(0);
-      text(l.letter, l.x, l.y);
+    if (l.found) {
+      if (l.img) {
+        image(l.img, l.bottomX - l.size / 2, l.bottomY - l.size / 2, l.size, l.size);
+      } else {
+        ellipse(l.bottomX, l.bottomY, l.size, l.size);
+        textAlign(CENTER, CENTER);
+        fill(0);
+        text(l.letter, l.bottomX, l.bottomY);
+      }
+    } else if (l.scene === scene) {
+      if (l.img) {
+        image(l.img, l.x - l.size / 2, l.y - l.size / 2, l.size, l.size);
+      } else {
+        ellipse(l.x, l.y, l.size, l.size);
+        textAlign(CENTER, CENTER);
+        fill(0);
+        text(l.letter, l.x, l.y);
+      }
     }
   });
 }

@@ -108,6 +108,7 @@ function preload() {
 
 function setup() {
   createCanvas(800, 600);
+  initLetterBottomPositions();
   setupScenes();
   continueBtn = document.getElementById('continueBtn');
   continueBtn.addEventListener('click', advanceScene);
@@ -154,7 +155,11 @@ function mousePressed() {
 }
 
 function showAdvice() {
-  alert("Duck-Rabbit says: Think about things from a different perspective!");
+  if (lettersFoundCount >= 26) {
+    alert("Duck-Rabbit says: Great job finding all the letters!");
+  } else {
+    alert("Duck-Rabbit says: Think about things from a different perspective!");
+  }
 }
 
 function advanceScene() {
