@@ -76,6 +76,17 @@ function drawSceneCharacters(scene) {
   chars.forEach(name => {
     const charObj = window[name];
     if (charObj && typeof charObj.display === 'function') {
+      if (typeof charObj.reset === 'function') {
+        charObj.reset();
+      }
+      const overrides =
+        sceneCharacterSettings[scene] &&
+        sceneCharacterSettings[scene][name];
+      if (overrides) {
+        if (overrides.x !== undefined) charObj.x = overrides.x;
+        if (overrides.y !== undefined) charObj.y = overrides.y;
+        if (overrides.size !== undefined) charObj.size = overrides.size;
+      }
       charObj.display();
     }
   });
