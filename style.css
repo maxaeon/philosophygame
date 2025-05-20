@@ -28,10 +28,21 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 12px 24px;
+  font-size: 20px;
+  background: linear-gradient(45deg, #f15a29, #ffcc00, #00b2ff, #a200ff);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
   display: none;
   z-index: 10;
+  transition: box-shadow 0.2s;
+}
+
+#continueBtn:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 #dialogueBox {
@@ -39,11 +50,13 @@ canvas {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 10px 15px;
-  border: 2px solid #333;
-  border-radius: 8px;
-  font-size: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 20px;
+  border: 4px solid #ffcc00;
+  border-radius: 12px;
+  font-size: 20px;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 70%;
   display: none;
   z-index: 9;
