@@ -2,7 +2,7 @@ let currentScene = 'start';
 // Declare character variables with var so they become properties on the global
 // window object. drawSceneCharacters in scenes.js accesses characters via
 // window[name], so using var ensures they are available there.
-var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig;
+var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, pig, duckRabbitSwing;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
@@ -107,7 +107,9 @@ function preload() {
       swing1: loadImage('assets/images/pig/swing1.png'),
       swing2: loadImage('assets/images/pig/swing2.png'),
       neutral: loadImage('assets/images/pig/swing-neutral.png'),
-      up: loadImage('assets/images/pig/swing-up.png')
+      up: loadImage('assets/images/pig/swing-up.png'),
+      default: loadImage('assets/images/pig/default.png'),
+      chattering: loadImage('assets/images/pig/chattering.png')
     },
     current: 'swing1',
     lastSwitch: 0,
@@ -140,18 +142,61 @@ function preload() {
           this.current = this.current === 'swing1' ? 'swing2' : 'swing1';
           this.lastSwitch = frameCount;
         }
-      } else if (currentScene === 'swing2' && !letterHFound) {
-        if (this.current !== 'neutral' && this.current !== 'up') {
-          this.current = 'neutral';
+      } else if (currentScene === 'swing2') {
+        if (this.current !== 'default' && this.current !== 'chattering') {
+          this.current = 'default';
         }
-        if (frameCount - this.lastSwitch > 60) {
-          this.current = this.current === 'neutral' ? 'up' : 'neutral';
+        const interval = 90; // ~1.5 seconds
+        if (frameCount - this.lastSwitch > interval) {
+          this.current = this.current === 'default' ? 'chattering' : 'default';
           this.lastSwitch = frameCount;
         }
+      } else {
+        this.current = 'default';
       }
     }
   };
   pig.initBase();
+
+  duckRabbitSwing = {
+    images: {
+      neutral: loadImage('assets/images/swing/swing-neutral.png'),
+      up: loadImage('assets/images/swing/swing-up.png')
+    },
+    current: 'neutral',
+    lastSwitch: 0,
+    x: 360,
+    y: 420,
+    size: 100,
+    baseX: 360,
+    baseY: 420,
+    baseSize: 100,
+    display() {
+      this.update();
+      image(this.images[this.current], this.x, this.y, this.size, this.size);
+    },
+    reset() {
+      this.x = this.baseX;
+      this.y = this.baseY;
+      this.size = this.baseSize;
+    },
+    initBase() {
+      this.baseX = this.x;
+      this.baseY = this.y;
+      this.baseSize = this.size;
+    },
+    update() {
+      if (currentScene === 'swing2') {
+        if (frameCount - this.lastSwitch > 60) {
+          this.current = this.current === 'neutral' ? 'up' : 'neutral';
+          this.lastSwitch = frameCount;
+        }
+      } else {
+        this.current = 'neutral';
+      }
+    }
+  };
+  duckRabbitSwing.initBase();
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');

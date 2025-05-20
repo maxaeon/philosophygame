@@ -53,6 +53,10 @@ sceneCharacters.barnInside.push('bat');
   sceneCharacters[scene].push('pig');
 });
 
+// Use combined duck/rabbit swing animation in swing2
+sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' && c !== 'rabbit');
+sceneCharacters['swing2'].push('duckRabbitSwing');
+
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
   window.sceneCharacterSettings = sceneCharacterSettings;
