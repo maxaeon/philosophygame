@@ -119,6 +119,14 @@ function draw() {
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
+  if (currentScene === 'farmMap') {
+    const iconSize = 40;
+    scenes.interactiveAreas.forEach(area => {
+      if (['pond', 'pond2', 'vegetables', 'picnic'].includes(area.name)) {
+        image(scenes[area.name], area.x, area.y, iconSize, iconSize);
+      }
+    });
+  }
   if (currentScene === 'donkey') {
     image(barnIcon, 10, 10, 50, 50);
   }
