@@ -275,7 +275,9 @@ function setup() {
   setupScenes();
   continueBtn = document.getElementById('continueBtn');
   continueBtn.addEventListener('click', advanceScene);
-  continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'block';
+  // Start with the continue button hidden; it will be shown
+  // at the appropriate time by playDialogue
+  continueBtn.style.display = 'none';
   dialogueBox = document.getElementById('dialogueBox');
 }
 
@@ -411,7 +413,9 @@ function advanceScene() {
     return;
   }
   currentScene = orderedScenes[sceneIndex];
-  continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'none';
+  // Hide the button immediately after switching scenes; it will be
+  // displayed again when the next dialogue finishes.
+  continueBtn.style.display = 'none';
 }
 
 function keyPressed() {
