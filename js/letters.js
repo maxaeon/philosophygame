@@ -250,14 +250,19 @@ function handleLetterClicks(mx, my) {
           l.y = l.bottomY;
           lettersFoundCount++;
         }
-        if (typeof continueBtn !== 'undefined') {
-          continueBtn.style.display = 'block';
-        }
         if (l.letter === 'G') {
           letterGFound = true;
         }
         if (l.letter === 'H') {
           letterHFound = true;
+        }
+        if (
+          currentScene !== 'bench' &&
+          typeof playDialogue === 'function' &&
+          allLettersFoundForScene(currentScene) &&
+          !dialoguesPlayed[currentScene]
+        ) {
+          playDialogue(currentScene);
         }
       };
 
@@ -291,14 +296,19 @@ function checkDuckLetterCollision(duck) {
         l.y = l.bottomY;
         lettersFoundCount++;
       }
-      if (typeof continueBtn !== 'undefined') {
-        continueBtn.style.display = 'block';
-      }
       if (l.letter === 'G') {
         letterGFound = true;
       }
       if (l.letter === 'H') {
         letterHFound = true;
+      }
+      if (
+        currentScene !== 'bench' &&
+        typeof playDialogue === 'function' &&
+        allLettersFoundForScene(currentScene) &&
+        !dialoguesPlayed[currentScene]
+      ) {
+        playDialogue(currentScene);
       }
     }
   });
