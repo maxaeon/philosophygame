@@ -12,7 +12,10 @@ let picnicReached = false,
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
   'greenhouse', 'greenhouseInside', 'vegetables', 'tunnel', 'cave',
-  'vegetables2', 'picnic', 'farmMap'
+  'vegetables2', 'picnic', 'farmMap',
+  // post map flow
+  'swing', 'swing2', 'dogHouse', 'field', 'barn',
+  'barnInside', 'loftEntrance', 'loft', 'barnInside'
 ];
 let sceneIndex = 0;
 let continueBtn;
@@ -195,12 +198,14 @@ function mousePressed() {
   if (currentScene === 'barn') {
     if (mouseX > donkey.x && mouseX < donkey.x + 100 && mouseY > donkey.y && mouseY < donkey.y + 100) {
       currentScene = 'donkey';
+      sceneIndex = orderedScenes.indexOf('barn');
       return;
     }
   }
   if (currentScene === 'donkey') {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
       currentScene = 'barn';
+      sceneIndex = orderedScenes.indexOf('barn');
       return;
     }
   }
@@ -224,15 +229,23 @@ function showAdvice() {
 }
 
 function advanceScene() {
+  if (currentScene === 'donkey') {
+    currentScene = 'barn';
+    sceneIndex = orderedScenes.indexOf('barn');
+    continueBtn.style.display = 'none';
+    return;
+  }
+  if (['studio','mirror','radioRoom'].includes(currentScene)) {
+    currentScene = 'barnInside';
+    sceneIndex = orderedScenes.indexOf('barnInside');
+    continueBtn.style.display = 'none';
+    return;
+  }
   sceneIndex++;
   if (sceneIndex >= orderedScenes.length) {
     continueBtn.style.display = 'none';
     return;
   }
   currentScene = orderedScenes[sceneIndex];
-  if (currentScene === 'farmMap') {
-    continueBtn.style.display = 'none';
-  } else {
-    continueBtn.style.display = 'none';
-  }
+  continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'none';
 }

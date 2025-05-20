@@ -55,8 +55,8 @@ function drawScene(scene) {
 }
 
 function handleSceneClicks(mx, my) {
+  let clicked = false;
   if (currentScene === 'farmMap') {
-    let clicked = false;
     scenes.interactiveAreas.forEach(area => {
       const withinArea =
         mx > area.x &&
@@ -73,6 +73,10 @@ function handleSceneClicks(mx, my) {
         my <= area.y + iconSize;
       if (withinArea || withinIcon) {
         currentScene = area.name;
+        if (typeof orderedScenes !== 'undefined') {
+          const idx = orderedScenes.indexOf(area.name);
+          if (idx !== -1) sceneIndex = idx;
+        }
         clicked = true;
       }
     });
@@ -84,6 +88,9 @@ function handleSceneClicks(mx, my) {
 
     if (typeof dog !== 'undefined' && withinChar(dog)) {
       currentScene = 'dogHouse';
+      if (typeof orderedScenes !== 'undefined') {
+        sceneIndex = orderedScenes.indexOf('dogHouse');
+      }
       return;
     }
 
@@ -92,13 +99,42 @@ function handleSceneClicks(mx, my) {
       typeof sheepbaby !== 'undefined' && withinChar(sheepbaby)
     ) {
       currentScene = 'field';
+      if (typeof orderedScenes !== 'undefined') {
+        sceneIndex = orderedScenes.indexOf('field');
+      }
       return;
     }
 
     if (typeof pig !== 'undefined' && withinChar(pig)) {
       currentScene = 'swing';
+      if (typeof orderedScenes !== 'undefined') {
+        sceneIndex = orderedScenes.indexOf('swing');
+      }
       return;
     }
+  }
+  if (currentScene === 'barnInside') {
+    const areas = [
+      {name: 'studio', x: 250, y: 270, w: 100, h: 100},
+      {name: 'mirror', x: 230, y: 110, w: 100, h: 100},
+      {name: 'radioRoom', x: 150, y: 330, w: 100, h: 100},
+      {name: 'loftEntrance', x: 380, y: 360, w: 100, h: 100}
+    ];
+    areas.forEach(area => {
+      const within =
+        mx >= area.x && mx <= area.x + area.w &&
+        my >= area.y && my <= area.y + area.h;
+      if (within) {
+        currentScene = area.name;
+        if (area.name === 'loftEntrance') {
+          sceneIndex = orderedScenes.indexOf('loftEntrance');
+        } else {
+          sceneIndex = orderedScenes.indexOf('barnInside');
+        }
+        clicked = true;
+      }
+    });
+    if (clicked) return;
   }
 }
 
