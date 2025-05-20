@@ -254,6 +254,9 @@ function draw() {
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
+  if (currentScene === 'pond2') {
+    checkDuckLetterCollision(duck);
+  }
   if (currentScene === 'farmMap') {
     const iconSize = 40;
     scenes.interactiveAreas.forEach(area => {

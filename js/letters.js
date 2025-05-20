@@ -262,6 +262,38 @@ function handleLetterClicks(mx, my) {
   });
 }
 
+// Check if the duck has collided with any letters in the current scene
+function checkDuckLetterCollision(duck) {
+  letters.forEach(l => {
+    if (l.scene !== currentScene || l.found) {
+      return;
+    }
+    const within =
+      l.x >= duck.baseX &&
+      l.x <= duck.baseX + duck.size &&
+      l.y >= duck.baseY &&
+      l.y <= duck.baseY + duck.size;
+    if (within) {
+      showLetterInfo(l);
+      if (!l.found) {
+        l.found = true;
+        l.x = l.bottomX;
+        l.y = l.bottomY;
+        lettersFoundCount++;
+      }
+      if (typeof continueBtn !== 'undefined') {
+        continueBtn.style.display = 'block';
+      }
+      if (l.letter === 'G') {
+        letterGFound = true;
+      }
+      if (l.letter === 'H') {
+        letterHFound = true;
+      }
+    }
+  });
+}
+
 function showLetterInfo(letter) {
   alert(`${letter.letter} for ${letter.concept}\n\n${letter.description}\n\nQuestion: ${letter.question}`);
 }
