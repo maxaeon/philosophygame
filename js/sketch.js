@@ -10,6 +10,15 @@ let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
 
+// Movement variables for the duck in pond2
+let duckTargetX = null;
+let duckTargetY = null;
+const duckMoveSpeed = 2;
+let moveLeft = false,
+    moveRight = false,
+    moveUp = false,
+    moveDown = false;
+
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
   'greenhouse', 'greenhouseInside', 'vegetables', 'tunnel', 'cave',
@@ -219,6 +228,29 @@ function draw() {
   background(220);
   picnicReached = picnicReached || currentScene === 'picnic';
   mapUnlocked = mapUnlocked || currentScene === 'farmMap';
+  if (currentScene === 'pond2') {
+    if (moveLeft || moveRight || moveUp || moveDown) {
+      duckTargetX = null;
+      duckTargetY = null;
+      if (moveLeft)  duck.baseX -= duckMoveSpeed;
+      if (moveRight) duck.baseX += duckMoveSpeed;
+      if (moveUp)    duck.baseY -= duckMoveSpeed;
+      if (moveDown)  duck.baseY += duckMoveSpeed;
+    } else if (duckTargetX !== null && duckTargetY !== null) {
+      const dx = duckTargetX - duck.baseX;
+      const dy = duckTargetY - duck.baseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > duckMoveSpeed) {
+        duck.baseX += duckMoveSpeed * dx / dist;
+        duck.baseY += duckMoveSpeed * dy / dist;
+      } else {
+        duck.baseX = duckTargetX;
+        duck.baseY = duckTargetY;
+        duckTargetX = null;
+        duckTargetY = null;
+      }
+    }
+  }
   drawScene(currentScene); // from scenes.js
   drawLetters(currentScene); // from letters.js
   drawSceneCharacters(currentScene); // from scenes.js
@@ -246,6 +278,10 @@ function draw() {
 function mousePressed() {
   handleSceneClicks(mouseX, mouseY);
   handleLetterClicks(mouseX, mouseY);
+  if (currentScene === 'pond2') {
+    duckTargetX = mouseX;
+    duckTargetY = mouseY;
+  }
   if (currentScene === 'barn') {
     if (mouseX > donkey.x && mouseX < donkey.x + 100 && mouseY > donkey.y && mouseY < donkey.y + 100) {
       currentScene = 'donkey';
@@ -303,4 +339,18 @@ function advanceScene() {
   }
   currentScene = orderedScenes[sceneIndex];
   continueBtn.style.display = currentScene === 'farmMap' ? 'none' : 'none';
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) moveLeft = true;
+  if (keyCode === RIGHT_ARROW) moveRight = true;
+  if (keyCode === UP_ARROW) moveUp = true;
+  if (keyCode === DOWN_ARROW) moveDown = true;
+}
+
+function keyReleased() {
+  if (keyCode === LEFT_ARROW) moveLeft = false;
+  if (keyCode === RIGHT_ARROW) moveRight = false;
+  if (keyCode === UP_ARROW) moveUp = false;
+  if (keyCode === DOWN_ARROW) moveDown = false;
 }
