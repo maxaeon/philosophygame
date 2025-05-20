@@ -64,6 +64,21 @@ philosophygame/
 └── style.css         # Styling
 ```
 
+### Scene-specific character settings
+
+The file `js/sceneCharacters.js` exports an optional `sceneCharacterSettings`
+object. Use it to override where a character appears and how large it is in a
+given scene:
+
+```javascript
+sceneCharacterSettings["barn"] = {
+  donkey: { x: 340, y: 400, size: 140 }
+};
+```
+
+Any properties you specify will temporarily replace the character's default
+`x`, `y` and `size` values while that scene is drawn.
+
 ## 🤝 Contribution
 
 Suggestions and contributions are welcome! Feel free to open issues or submit pull requests to help enhance the game.

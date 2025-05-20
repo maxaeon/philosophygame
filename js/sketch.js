@@ -31,12 +31,14 @@ function preload() {
   donkey.state = 'idle';
   donkey.x = 380;
   donkey.y = 420;
+  donkey.initBase();
 
   dog = new Character('dog', ['happy', 'sad']);
   dog.images['idle'] = loadImage('assets/images/dog/default.png');
   dog.state = 'idle';
   dog.x = 620;
   dog.y = 440;
+  dog.initBase();
 
   sheep = new Character('sheep', [
     'forward-talking',
@@ -49,12 +51,14 @@ function preload() {
   sheep.state = 'idle';
   sheep.x = 460;
   sheep.y = 420;
+  sheep.initBase();
 
   sheepbaby = new Character('sheepbaby', ['slight-right']);
   sheepbaby.images['idle'] = loadImage('assets/images/sheepbaby/default.png');
   sheepbaby.state = 'idle';
   sheepbaby.x = 520;
   sheepbaby.y = 440;
+  sheepbaby.initBase();
 
   owl = new Character('owl', [
     'eyes-closed-mouth-open',
@@ -79,6 +83,7 @@ function preload() {
   orangecat.state = 'idle';
   orangecat.x = 450;
   orangecat.y = 430;
+  orangecat.initBase();
 
   chick = new Character('chick', ['eggcited', 'in-egg-closed', 'in-egg-open']);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
@@ -90,6 +95,7 @@ function preload() {
   bat.state = 'idle';
   bat.x = 420;
   bat.y = 180;
+  bat.initBase();
   // Optional: set x/y coordinates
 
   pig = {
@@ -103,9 +109,23 @@ function preload() {
     lastSwitch: 0,
     x: 360,
     y: 420,
+    size: 100,
+    baseX: 360,
+    baseY: 420,
+    baseSize: 100,
     display() {
       this.update();
-      image(this.images[this.current], this.x, this.y, 100, 100);
+      image(this.images[this.current], this.x, this.y, this.size, this.size);
+    },
+    reset() {
+      this.x = this.baseX;
+      this.y = this.baseY;
+      this.size = this.baseSize;
+    },
+    initBase() {
+      this.baseX = this.x;
+      this.baseY = this.y;
+      this.baseSize = this.size;
     },
     update() {
       if ((currentScene === 'farmMap' || currentScene === 'swing') && !letterGFound) {
@@ -127,6 +147,7 @@ function preload() {
       }
     }
   };
+  pig.initBase();
 
   duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
   barnIcon = loadImage('assets/images/icons/barndefault.png');

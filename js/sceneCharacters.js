@@ -8,6 +8,9 @@ const defaultScenes = [
 ];
 
 const sceneCharacters = {};
+// Optional position/size overrides per scene
+// sceneCharacterSettings[scene][character] = {x, y, size}
+const sceneCharacterSettings = {};
 
 defaultScenes.forEach(scene => {
   sceneCharacters[scene] = ['duck', 'rabbit'];
@@ -41,4 +44,5 @@ sceneCharacters.barnInside.push('bat');
 
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;
+  window.sceneCharacterSettings = sceneCharacterSettings;
 }
