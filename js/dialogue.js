@@ -1,5 +1,13 @@
 const dialogues = {
-  bench: [
+  start: [
+    { speaker: 'duck', text: 'Welcome to the Duck-Rabbit Farm!' },
+    { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' }
+  ],
+  benchIntro: [
+    { speaker: 'duck', text: 'See those letters around the farm? Try clicking on them!' },
+    { speaker: 'rabbit', text: 'Each one will tell us something new.' }
+  ],
+  benchRest: [
     { speaker: 'duck', text: 'Take a seat, Rabbit. Let\'s rest for a bit.' },
     { speaker: 'rabbit', text: 'Good idea! We still have many letters to find.' }
   ]

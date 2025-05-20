@@ -310,10 +310,17 @@ function draw() {
   drawSceneCharacters(currentScene); // from scenes.js
   if (
     !isDialogueActive() &&
-    currentScene === 'bench' &&
-    !dialoguesPlayed['bench']
+    currentScene === 'start' &&
+    !dialoguesPlayed['start']
   ) {
-    playDialogue('bench');
+    playDialogue('start');
+  }
+  if (!isDialogueActive() && currentScene === 'bench') {
+    if (!dialoguesPlayed['benchIntro']) {
+      playDialogue('benchIntro');
+    } else if (mapUnlocked && !dialoguesPlayed['benchRest']) {
+      playDialogue('benchRest');
+    }
   }
   if (
     !isDialogueActive() &&
