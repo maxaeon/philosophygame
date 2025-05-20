@@ -250,6 +250,10 @@ function handleLetterClicks(mx, my) {
           l.x = l.bottomX;
           l.y = l.bottomY;
           lettersFoundCount++;
+          if (l.letter === 'D' && l.scene === 'pond2') {
+            const btn = document.getElementById('continueBtn');
+            if (btn) btn.style.display = 'block';
+          }
         }
         if (l.letter === 'G') {
           letterGFound = true;
@@ -296,6 +300,10 @@ function checkDuckLetterCollision(duck) {
         l.x = l.bottomX;
         l.y = l.bottomY;
         lettersFoundCount++;
+        if (l.letter === 'D' && l.scene === 'pond2') {
+          const btn = document.getElementById('continueBtn');
+          if (btn) btn.style.display = 'block';
+        }
       }
       if (l.letter === 'G') {
         letterGFound = true;
@@ -322,6 +330,9 @@ function showLetterInfo(letter) {
 // Draw letter indicators for the current scene
 function drawLetters(scene) {
   letters.forEach(l => {
+    if (l.letter === 'D' && l.scene === 'pond2' && !dialoguesPlayed['pond2']) {
+      return;
+    }
     if (l.found) {
       if (l.img) {
         image(l.img, l.bottomX - l.size / 2, l.bottomY - l.size / 2, l.size, l.size);

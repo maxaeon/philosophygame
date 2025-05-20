@@ -167,7 +167,7 @@ function playDialogue(scene, callback) {
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
       if (continueBtn) {
-        if (scene === 'barnInside') {
+        if (scene === 'barnInside' || scene === 'pond2') {
           continueBtn.style.display = 'none';
         } else {
           continueBtn.style.display = 'block';
