@@ -166,7 +166,10 @@ function playDialogue(scene, callback) {
       box.onclick = null;
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
-      if (continueBtn) continueBtn.style.display = 'block';
+      if (continueBtn) {
+        // Do not immediately show the Continue button after pond2 dialogue
+        continueBtn.style.display = scene === 'pond2' ? 'none' : 'block';
+      }
       if (callback) callback();
       return;
     }

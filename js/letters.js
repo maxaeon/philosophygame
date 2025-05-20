@@ -257,6 +257,11 @@ function handleLetterClicks(mx, my) {
         if (l.letter === 'H') {
           letterHFound = true;
         }
+        // After finding the letter D in pond2, show the Continue button
+        if (l.letter === 'D' && l.scene === 'pond2') {
+          const btn = document.getElementById('continueBtn');
+          if (btn) btn.style.display = 'block';
+        }
         if (
           currentScene !== 'bench' &&
           typeof playDialogue === 'function' &&
@@ -303,6 +308,11 @@ function checkDuckLetterCollision(duck) {
       if (l.letter === 'H') {
         letterHFound = true;
       }
+      // After the duck collides with D in pond2, show the Continue button
+      if (l.letter === 'D' && l.scene === 'pond2') {
+        const btn = document.getElementById('continueBtn');
+        if (btn) btn.style.display = 'block';
+      }
       if (
         currentScene !== 'bench' &&
         typeof playDialogue === 'function' &&
@@ -322,6 +332,10 @@ function showLetterInfo(letter) {
 // Draw letter indicators for the current scene
 function drawLetters(scene) {
   letters.forEach(l => {
+    // Only draw the letter D after the pond2 dialogue has finished
+    if (l.letter === 'D' && l.scene === 'pond2' && !dialoguesPlayed['pond2']) {
+      return;
+    }
     if (l.found) {
       if (l.img) {
         image(l.img, l.bottomX - l.size / 2, l.bottomY - l.size / 2, l.size, l.size);
