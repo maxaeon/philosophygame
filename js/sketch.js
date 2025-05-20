@@ -307,25 +307,34 @@ function draw() {
   picnicReached = picnicReached || currentScene === 'picnic';
   mapUnlocked = mapUnlocked || currentScene === 'farmMap';
   if (currentScene === 'pond2') {
-    if (moveLeft || moveRight || moveUp || moveDown) {
+    if (!dialoguesPlayed['pond2']) {
+      if (!isDialogueActive()) {
+        playDialogue('pond2');
+      }
+      moveLeft = moveRight = moveUp = moveDown = false;
       duckTargetX = null;
       duckTargetY = null;
-      if (moveLeft)  duck.baseX -= duckMoveSpeed;
-      if (moveRight) duck.baseX += duckMoveSpeed;
-      if (moveUp)    duck.baseY -= duckMoveSpeed;
-      if (moveDown)  duck.baseY += duckMoveSpeed;
-    } else if (duckTargetX !== null && duckTargetY !== null) {
-      const dx = duckTargetX - duck.baseX;
-      const dy = duckTargetY - duck.baseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist > duckMoveSpeed) {
-        duck.baseX += duckMoveSpeed * dx / dist;
-        duck.baseY += duckMoveSpeed * dy / dist;
-      } else {
-        duck.baseX = duckTargetX;
-        duck.baseY = duckTargetY;
+    } else {
+      if (moveLeft || moveRight || moveUp || moveDown) {
         duckTargetX = null;
         duckTargetY = null;
+        if (moveLeft)  duck.baseX -= duckMoveSpeed;
+        if (moveRight) duck.baseX += duckMoveSpeed;
+        if (moveUp)    duck.baseY -= duckMoveSpeed;
+        if (moveDown)  duck.baseY += duckMoveSpeed;
+      } else if (duckTargetX !== null && duckTargetY !== null) {
+        const dx = duckTargetX - duck.baseX;
+        const dy = duckTargetY - duck.baseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > duckMoveSpeed) {
+          duck.baseX += duckMoveSpeed * dx / dist;
+          duck.baseY += duckMoveSpeed * dy / dist;
+        } else {
+          duck.baseX = duckTargetX;
+          duck.baseY = duckTargetY;
+          duckTargetX = null;
+          duckTargetY = null;
+        }
       }
     }
   }
@@ -357,7 +366,7 @@ function draw() {
   ) {
     playDialogue(currentScene);
   }
-  if (currentScene === 'pond2') {
+  if (currentScene === 'pond2' && dialoguesPlayed['pond2']) {
     checkDuckLetterCollision(duck);
   }
   if (currentScene === 'farmMap') {
@@ -385,7 +394,7 @@ function draw() {
 function mousePressed() {
   handleSceneClicks(mouseX, mouseY);
   handleLetterClicks(mouseX, mouseY);
-  if (currentScene === 'pond2') {
+  if (currentScene === 'pond2' && dialoguesPlayed['pond2']) {
     duckTargetX = mouseX;
     duckTargetY = mouseY;
   }
@@ -466,6 +475,7 @@ function goBackScene() {
 }
 
 function keyPressed() {
+  if (currentScene === 'pond2' && !dialoguesPlayed['pond2']) return;
   if (keyCode === LEFT_ARROW) moveLeft = true;
   if (keyCode === RIGHT_ARROW) moveRight = true;
   if (keyCode === UP_ARROW) moveUp = true;
@@ -473,6 +483,7 @@ function keyPressed() {
 }
 
 function keyReleased() {
+  if (currentScene === 'pond2' && !dialoguesPlayed['pond2']) return;
   if (keyCode === LEFT_ARROW) moveLeft = false;
   if (keyCode === RIGHT_ARROW) moveRight = false;
   if (keyCode === UP_ARROW) moveUp = false;
