@@ -31,6 +31,10 @@ defaultScenes.forEach(scene => {
   sceneCharacters[scene].push('owl');
 });
 
+['flowers', 'grass', 'flowers2'].forEach(scene => {
+  sceneCharacters[scene].push('birdhouse');
+});
+
 sceneCharacters.barn.push('donkey');
 sceneCharacters.donkey.push('donkey');
 sceneCharacters.donkey.push('orangecat');
