@@ -242,21 +242,31 @@ function handleLetterClicks(mx, my) {
       mx >= l.x - half && mx <= l.x + half &&
       my >= l.y - half && my <= l.y + half;
     if (within) {
-      showLetterInfo(l);
-      if (!l.found) {
-        l.found = true;
-        l.x = l.bottomX;
-        l.y = l.bottomY;
-        lettersFoundCount++;
-      }
-      if (typeof continueBtn !== 'undefined') {
-        continueBtn.style.display = 'block';
-      }
-      if (l.letter === 'G') {
-        letterGFound = true;
-      }
-      if (l.letter === 'H') {
-        letterHFound = true;
+      const handleFound = () => {
+        showLetterInfo(l);
+        if (!l.found) {
+          l.found = true;
+          l.x = l.bottomX;
+          l.y = l.bottomY;
+          lettersFoundCount++;
+        }
+        if (typeof continueBtn !== 'undefined') {
+          continueBtn.style.display = 'block';
+        }
+        if (l.letter === 'G') {
+          letterGFound = true;
+        }
+        if (l.letter === 'H') {
+          letterHFound = true;
+        }
+      };
+
+      if (currentScene === 'pond2' && typeof duck !== 'undefined') {
+        duck.baseX = l.x - duck.size / 2;
+        duck.baseY = l.y - duck.size / 2;
+        setTimeout(handleFound, 75);
+      } else {
+        handleFound();
       }
     }
   });
