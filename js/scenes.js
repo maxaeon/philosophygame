@@ -56,15 +56,49 @@ function drawScene(scene) {
 
 function handleSceneClicks(mx, my) {
   if (currentScene === 'farmMap') {
+    let clicked = false;
     scenes.interactiveAreas.forEach(area => {
-      const withinArea = mx > area.x && mx < area.x + area.w && my > area.y && my < area.y + area.h;
+      const withinArea =
+        mx > area.x &&
+        mx < area.x + area.w &&
+        my > area.y &&
+        my < area.y + area.h;
       const isIcon = ['pond', 'pond2', 'vegetables', 'picnic'].includes(area.name);
       const iconSize = 40;
-      const withinIcon = isIcon && mx >= area.x && mx <= area.x + iconSize && my >= area.y && my <= area.y + iconSize;
+      const withinIcon =
+        isIcon &&
+        mx >= area.x &&
+        mx <= area.x + iconSize &&
+        my >= area.y &&
+        my <= area.y + iconSize;
       if (withinArea || withinIcon) {
         currentScene = area.name;
+        clicked = true;
       }
     });
+    if (clicked) return;
+
+    const withinChar = char =>
+      mx >= char.x && mx <= char.x + char.size &&
+      my >= char.y && my <= char.y + char.size;
+
+    if (typeof dog !== 'undefined' && withinChar(dog)) {
+      currentScene = 'dogHouse';
+      return;
+    }
+
+    if (
+      typeof sheep !== 'undefined' && withinChar(sheep) ||
+      typeof sheepbaby !== 'undefined' && withinChar(sheepbaby)
+    ) {
+      currentScene = 'field';
+      return;
+    }
+
+    if (typeof pig !== 'undefined' && withinChar(pig)) {
+      currentScene = 'swing';
+      return;
+    }
   }
 }
 
