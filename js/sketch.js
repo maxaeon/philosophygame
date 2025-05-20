@@ -471,6 +471,19 @@ function goBackScene() {
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;
     continueBtn.style.display = 'none';
+    if (currentScene === 'bench') {
+      const dlg = mapUnlocked ? 'benchRest' : 'benchIntro';
+      playDialogue(dlg);
+    } else if (currentScene === 'pond2') {
+      const letterD = letters.find(l => l.scene === 'pond2' && l.letter === 'D');
+      playDialogue('pond2', () => {
+        if (letterD && letterD.found) {
+          continueBtn.style.display = 'block';
+        }
+      });
+    } else if (sceneHasLetters(currentScene) && allLettersFoundForScene(currentScene)) {
+      playDialogue(currentScene);
+    }
   }
 }
 

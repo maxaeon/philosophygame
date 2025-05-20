@@ -330,7 +330,20 @@ function showLetterInfo(letter) {
 // Draw letter indicators for the current scene
 function drawLetters(scene) {
   letters.forEach(l => {
-    if (l.letter === 'D' && l.scene === 'pond2' && !dialoguesPlayed['pond2']) {
+    if (
+      l.scene === 'pond2' &&
+      l.letter === 'D' &&
+      currentScene === 'pond2' &&
+      isDialogueActive()
+    ) {
+      return;
+    }
+    if (
+      l.scene === 'bench' &&
+      !l.found &&
+      currentScene === 'bench' &&
+      isDialogueActive()
+    ) {
       return;
     }
     if (l.found) {
@@ -359,6 +372,10 @@ function allLettersFoundForScene(scene) {
   return letters
     .filter(l => l.scene === scene)
     .every(l => l.found);
+}
+
+function sceneHasLetters(scene) {
+  return letters.some(l => l.scene === scene);
 }
 
 function highlightMissingLetters(scene) {
