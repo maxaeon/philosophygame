@@ -11,15 +11,22 @@ class Character {
     this.baseY = this.y;
     this.baseSize = size;
     this.states = Array.isArray(states) && states.length ? states.slice() : [];
+
+    // Ensure base states are always available
     if (!this.states.includes('idle')) {
       this.states.unshift('idle');
     }
+    if (!this.states.includes('default')) {
+      this.states.unshift('default');
+    }
+
     // Always attempt to preload a mouth-closed image so characters can
     // revert to it when not speaking. If the image doesn't exist, the
     // fallback in preloadImages will load the default instead.
     if (!this.states.includes('mouth-closed')) {
       this.states.push('mouth-closed');
     }
+
     this.preloadImages();
   }
 
@@ -56,6 +63,15 @@ class Character {
     this.baseX = this.x;
     this.baseY = this.y;
     this.baseSize = this.size;
+  }
+
+  // Allows new poses to be added on the fly so scenes can introduce
+  // additional movements or expressions later.
+  addState(name, path) {
+    if (this.states.includes(name)) return;
+    this.states.push(name);
+    const imgPath = path || `assets/images/${this.name}/${name}.png`;
+    this.images[name] = loadImage(imgPath);
   }
 
   setState(newState) {

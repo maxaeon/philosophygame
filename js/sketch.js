@@ -108,9 +108,8 @@ function preload() {
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
   chick.state = 'mouth-closed';
 
-  bat = new Character('bat', ['wings-flap', 'mouth-closed']);
+  bat = new Character('bat', ['mouth-closed']);
   bat.images['idle'] = loadImage('assets/images/bat/default.png');
-  bat.images['flap'] = loadImage('assets/images/bat/wings-flap.png');
   bat.state = 'mouth-closed';
   bat.x = 420;
   bat.y = 180;
