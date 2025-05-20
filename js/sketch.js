@@ -13,49 +13,73 @@ let sceneIndex = 0;
 let continueBtn;
 
 function preload() {
-  duck = new Character('duck');
-  rabbit = new Character('rabbit');
-  // Donkey only has a single default image, so avoid loading default states
-  donkey = new Character('donkey', []);
+  duck = new Character('duck', [
+    'left',
+    'right',
+    'left-eyes-closed',
+    'slight-left'
+  ]);
+  rabbit = new Character('rabbit', ['right-talking']);
+  // Donkey has a default image plus open and closed mouth states
+  donkey = new Character('donkey', ['open', 'closed']);
   donkey.images['idle'] = loadImage('assets/images/donkey/default.png');
   donkey.state = 'idle';
   donkey.x = 380;
   donkey.y = 420;
 
-  dog = new Character('dog', []);
+  dog = new Character('dog', ['happy', 'sad']);
   dog.images['idle'] = loadImage('assets/images/dog/default.png');
   dog.state = 'idle';
   dog.x = 620;
   dog.y = 440;
 
-  sheep = new Character('sheep');
+  sheep = new Character('sheep', [
+    'forward-talking',
+    'grinning',
+    'left-forward-talking',
+    'left-talking',
+    'right',
+    'walking'
+  ]);
   sheep.state = 'idle';
   sheep.x = 460;
   sheep.y = 420;
 
-  sheepbaby = new Character('sheepbaby', []);
+  sheepbaby = new Character('sheepbaby', ['slight-right']);
   sheepbaby.images['idle'] = loadImage('assets/images/sheepbaby/default.png');
   sheepbaby.state = 'idle';
   sheepbaby.x = 520;
   sheepbaby.y = 440;
 
-  owl = new Character('owl');
+  owl = new Character('owl', [
+    'eyes-closed-mouth-open',
+    'eyes-closed',
+    'mouth-open'
+  ]);
 
-  graytortiecat = new Character('graytortiecat', []);
+  graytortiecat = new Character('graytortiecat', ['fluffy', 'hairless']);
   graytortiecat.images['idle'] = loadImage('assets/images/graytortiecat/default.png');
   graytortiecat.state = 'idle';
 
-  orangecat = new Character('orangecat', []);
+  orangecat = new Character('orangecat', [
+    'forward',
+    'right-pose',
+    'shifted-right',
+    'talking-cat',
+    'walk1',
+    'walk2',
+    'walk3'
+  ]);
   orangecat.images['idle'] = loadImage('assets/images/orangecat/default.png');
   orangecat.state = 'idle';
   orangecat.x = 450;
   orangecat.y = 430;
 
-  chick = new Character('chick', []);
+  chick = new Character('chick', ['eggcited', 'in-egg-closed', 'in-egg-open']);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
   chick.state = 'idle';
 
-  bat = new Character('bat', []);
+  bat = new Character('bat', ['wings-flap']);
   bat.images['idle'] = loadImage('assets/images/bat/default.png');
   bat.images['flap'] = loadImage('assets/images/bat/wings-flap.png');
   bat.state = 'idle';

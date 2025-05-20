@@ -1,7 +1,7 @@
 let scenes = {};
 
 function preloadScenes() {
-  scenes.farmMap = loadImage('assets/images/scenes/map.png');
+  scenes.farmMap = loadImage('assets/images/scenes/farmMap.png');
   scenes.cave = loadImage('assets/images/scenes/cave.png');
   scenes.greenhouse = loadImage('assets/images/scenes/greenhouse.png');
 
