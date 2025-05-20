@@ -10,6 +10,115 @@ const dialogues = {
   benchRest: [
     { speaker: 'duck', text: 'Take a seat, Rabbit. Let\'s rest for a bit.' },
     { speaker: 'rabbit', text: 'Good idea! We still have many letters to find.' }
+  ],
+  pond: [
+    { speaker: 'duck', text: 'Nature sure is beautiful.' },
+    { speaker: 'rabbit', text: "Yes, there's so much to discover. Let's keep exploring!" }
+  ],
+  pond2: [
+    { speaker: 'rabbit', text: "Duck, you're lucky you can swim!" },
+    { speaker: 'duck', text: "It's great we're different—each with our own skills!" },
+    { speaker: 'duck', text: 'Try guiding me around! Can you find the hidden letter?' }
+  ],
+  flowers: [
+    { speaker: 'owl', text: "Duck, Rabbit, can you help me? The robin family's birdhouse needs repairs before the eggs hatch!" },
+    { speaker: 'duck', text: "Of course! Let's get started." },
+    { speaker: 'rabbit', text: "Of course! Let's get started." }
+  ],
+  grass: [
+    { speaker: 'duck', text: 'As we replace these boards, is it still the same birdhouse?' },
+    { speaker: 'rabbit', text: 'Or is it becoming a totally new one?' },
+    { speaker: 'duck', text: 'Hmm, a bit like the Ship of Theseus!' }
+  ],
+  flowers2: [
+    { speaker: 'owl', text: "Thank you so much! I've left some seedlings for you both in the greenhouse." },
+    { speaker: 'duck', text: "Let's go see!" },
+    { speaker: 'rabbit', text: "I'm excited to plant something new!" }
+  ],
+  greenhouse: [
+    { speaker: 'duck', text: "Here's the greenhouse! Let's check out our seedlings." }
+  ],
+  greenhouseInside: [
+    { speaker: 'rabbit', text: 'Oh no, we must move the watering line! Should we save the tray with 2 plants, or the one with 10?' },
+    { speaker: 'duck', text: 'Interesting choice! Every decision counts.' }
+  ],
+  vegetables: [
+    { speaker: 'duck', text: "I'm getting hungry." },
+    { speaker: 'rabbit', text: 'Let\'s grab some food from my tunnels under the garden.' }
+  ],
+  tunnel: [
+    { speaker: 'rabbit', text: 'I think those vegetables are around here somewhere...' }
+  ],
+  cave: [
+    { speaker: 'duck', text: 'Found them!' },
+    { speaker: 'rabbit', text: "Silly Duck, you've mistaken shadows for reality!" },
+    { speaker: 'duck', text: 'Oh, reality is so much brighter and better!' }
+  ],
+  vegetables2: [
+    { speaker: 'duck', text: "Let's find a good picnic spot by the swing!" },
+    { speaker: 'rabbit', text: 'Sounds perfect.' }
+  ],
+  picnic: [
+    { speaker: 'duck', text: 'We have a heap of vegetables!' },
+    { speaker: 'rabbit', text: "I wonder how much we have to eat before it's no longer a heap?" }
+  ],
+  farmMap: [
+    { speaker: 'duck', text: "There's still so much to see." },
+    { speaker: 'rabbit', text: 'Click around the map to revisit or explore new areas!' }
+  ],
+  swing: [
+    { speaker: 'duck', text: 'Hey Pig, mind if we share the swing?' },
+    { speaker: 'pig', text: 'Sure! There\'s room for everyone.' }
+  ],
+  swing2: [
+    { speaker: 'duck', text: 'Thanks for sharing, Pig!' },
+    { speaker: 'rabbit', text: 'Thanks for sharing, Pig!' }
+  ],
+  dogHouse: [
+    { speaker: 'dog', text: "I'm sad; people fear me just because of how I look." },
+    { speaker: 'duck', text: 'We understand, we judged shadows as reality before knowing the truth.' },
+    { speaker: 'rabbit', text: "We'd love to be your friends!" },
+    { speaker: 'dog', text: 'Really? Thank you!' }
+  ],
+  field: [
+    { speaker: 'rabbit', text: 'Are these real sheep?' },
+    { speaker: 'sheep', text: "I don't think we are robots!" },
+    { speaker: 'duck', text: 'Good point!' }
+  ],
+  barn: [
+    { speaker: 'duck', text: 'Should we talk to Donkey, explore the barn, or look at the map?' },
+    { speaker: 'rabbit', text: 'You decide!' }
+  ],
+  donkey: [
+    { speaker: 'rabbit', text: 'Donkey, can we share your strawberries?' },
+    { speaker: 'orangecat', text: 'Those hurt my belly! Maybe we can share something else?' },
+    { speaker: 'duck', text: 'How about some milk instead? That seems fair!' }
+  ],
+  barnInside: [
+    { speaker: 'duck', text: "We've always wondered what it's like to be a bat!" },
+    { speaker: 'bat', text: 'I fly and see with my ears!' },
+    { speaker: 'rabbit', text: 'Impossible!' },
+    { speaker: 'bat', text: "Possible for bats! It's wonderful to appreciate each other's differences." }
+  ],
+  studio: [
+    { speaker: 'duck', text: 'Paint and canvas! What makes this art?' },
+    { speaker: 'rabbit', text: 'Maybe the intention behind it?' }
+  ],
+  mirror: [
+    { speaker: 'duck', text: "Look, it's you! You're special!" },
+    { speaker: 'rabbit', text: 'Yes, uniquely wonderful!' }
+  ],
+  radioRoom: [
+    { speaker: 'chick', text: 'Colors and light—I know all about them!' },
+    { speaker: 'duck', text: "But do you know what it's like to actually see colors?" },
+    { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.' }
+  ],
+  loftEntrance: [
+    { speaker: 'graytortiecat', text: 'If I changed completely, would I still be me?' },
+    { speaker: 'rabbit', text: 'Interesting question! What makes us who we are?' }
+  ],
+  loft: [
+    { speaker: 'owl', text: "Let's meditate together. Close your eyes. Focus your thoughts and relax." }
   ]
 };
 
