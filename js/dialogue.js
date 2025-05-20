@@ -12,8 +12,10 @@ function setCharacterState(name, speaking, pose) {
   const ch = window[name];
   if (!ch || typeof ch.setState !== 'function') return;
   if (speaking) {
+    // Use the default talking image unless a specific pose is provided
     ch.setState(pose || 'default');
   } else {
+    // When done speaking, return to the neutral mouth-closed pose
     if (ch.states.includes('mouth-closed')) {
       ch.setState('mouth-closed');
     } else if (ch.states.includes('closed')) {
