@@ -546,6 +546,9 @@ function draw() {
       playDialogue('dogHouseReturn');
     }
   }
+  if (!isDialogueActive() && currentScene === 'swing') {
+    playDialogue('swing');
+  }
   if (
     !isDialogueActive() &&
     currentScene !== 'bench' &&
@@ -680,6 +683,7 @@ function mousePressed() {
           playSound('click');
           playSound('donkey');
         }
+        if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = 'donkey';
         sceneIndex = orderedScenes.indexOf('barn');
         return;
@@ -694,6 +698,7 @@ function mousePressed() {
           playSound('click');
           playSound('bat');
         }
+        if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = 'barnInside';
         sceneIndex = orderedScenes.indexOf('barnInside');
         return;
@@ -703,6 +708,7 @@ function mousePressed() {
   if (currentScene === 'donkey') {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
       if (typeof playSound === 'function') playSound('click');
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'barn';
       sceneIndex = orderedScenes.indexOf('barn');
       return;
@@ -715,6 +721,7 @@ function mousePressed() {
   ) {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
       if (typeof playSound === 'function') playSound('click');
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'farmMap';
       return;
     }
@@ -809,6 +816,7 @@ function advanceScene() {
   if (typeof playSound === 'function') playSound('continue');
   if (currentScene === 'donkey') {
     if (typeof playSound === 'function') playSound('transition');
+    if (typeof stopDialogue === 'function') stopDialogue();
     currentScene = 'barn';
     sceneIndex = orderedScenes.indexOf('barn');
     continueBtn.style.display = 'none';
@@ -816,6 +824,7 @@ function advanceScene() {
   }
   if (['studio','mirror','radioRoom'].includes(currentScene)) {
     if (typeof playSound === 'function') playSound('transition');
+    if (typeof stopDialogue === 'function') stopDialogue();
     currentScene = 'barnInside';
     sceneIndex = orderedScenes.indexOf('barnInside');
     continueBtn.style.display = 'none';
@@ -831,6 +840,7 @@ function advanceScene() {
     return;
   }
   if (typeof playSound === 'function') playSound('transition');
+  if (typeof stopDialogue === 'function') stopDialogue();
   currentScene = orderedScenes[sceneIndex];
   // Hide the button immediately after switching scenes; it will be
   // displayed again when the next dialogue finishes.
@@ -841,6 +851,7 @@ function goBackScene() {
   if (sceneHistory.length > 1) {
     sceneHistory.pop();
     if (typeof playSound === 'function') playSound('back');
+    if (typeof stopDialogue === 'function') stopDialogue();
     currentScene = sceneHistory[sceneHistory.length - 1];
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;

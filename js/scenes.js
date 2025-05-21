@@ -88,6 +88,7 @@ function handleSceneClicks(mx, my) {
       if (withinArea) {
         if (typeof playSound === 'function') playSound('click');
         const dest = area.name === 'pond' ? 'pond2' : area.name;
+        if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = dest;
         if (typeof orderedScenes !== 'undefined') {
           const idx = orderedScenes.indexOf(dest);
@@ -107,6 +108,7 @@ function handleSceneClicks(mx, my) {
         playSound('click');
         playSound('dog');
       }
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'dogHouse';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('dogHouse');
@@ -122,6 +124,7 @@ function handleSceneClicks(mx, my) {
         playSound('click');
         playSound('sheep');
       }
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'field';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('field');
@@ -134,6 +137,7 @@ function handleSceneClicks(mx, my) {
         playSound('click');
         playSound('pig');
       }
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'swing';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('swing');
@@ -146,6 +150,7 @@ function handleSceneClicks(mx, my) {
         playSound('click');
         playSound('owl');
       }
+      if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'flowers';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('flowers');
@@ -214,6 +219,7 @@ function handleSceneClicks(mx, my) {
         my >= area.y && my <= area.y + area.h;
       if (within) {
         if (typeof playSound === 'function') playSound('click');
+        if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = area.name;
         if (area.name === 'loftEntrance') {
           sceneIndex = orderedScenes.indexOf('loftEntrance');
