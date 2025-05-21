@@ -122,7 +122,7 @@ function preloadLetters() {
     concept: 'Observation',
     description: 'Watching carefully to learn.',
     question: 'What have you discovered by observing?',
-    x: 550, y: 380
+    x: 560, y: 395
   });
   letters.push({
     scene: 'farmMap',
@@ -230,7 +230,7 @@ function initLetterBottomPositions() {
   letters.forEach(l => {
     const idx = l.letter.charCodeAt(0) - 65;
     if (idx >= 0 && idx < 26) {
-      const spacing = width / 26;
+      const spacing = (width - 60) / 26;
       l.bottomX = spacing * (idx + 0.5);
       l.bottomY = height - l.size / 2 - 10;
     }

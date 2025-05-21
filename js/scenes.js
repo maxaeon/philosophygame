@@ -36,7 +36,7 @@ function setupScenes() {
   scenes.interactiveAreas = [
     {name: 'barn', label: 'barn', x: 220, y: 10,  w: 200, h: 200},
     {name: 'swing', label: 'swing', x: 460, y: 0,   w: 50,  h: 50},
-    {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 65},
+    {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 75},
     {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
     {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
     {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50},
@@ -48,8 +48,8 @@ function setupScenes() {
   scenes.barnInsideAreas = [
     {name: 'mirror', label: 'mirror', x: 120,  y: 350, w: 100, h: 100},
     {name: 'radioRoom', label: 'radio room', x: 30,  y: 450, w: 100, h: 100},
-    {name: 'loftEntrance', label: 'loft entrance', x: 640, y: 350, w: 100, h: 100},
-    {name: 'studio', label: 'studio', x: 690, y: 450, w: 100, h: 100}
+    {name: 'loftEntrance', label: 'loft entrance', x: 640, y: 350, w: 100, h: 100, labelX: 680},
+    {name: 'studio', label: 'studio', x: 690, y: 450, w: 100, h: 100, labelX: 745}
   ];
 }
 
@@ -68,9 +68,10 @@ function handleSceneClicks(mx, my) {
         my < area.y + area.h;
       if (withinArea) {
         if (typeof playSound === 'function') playSound('click');
-        currentScene = area.name;
+        const dest = area.name === 'pond' ? 'pond2' : area.name;
+        currentScene = dest;
         if (typeof orderedScenes !== 'undefined') {
-          const idx = orderedScenes.indexOf(area.name);
+          const idx = orderedScenes.indexOf(dest);
           if (idx !== -1) sceneIndex = idx;
         }
         clicked = true;

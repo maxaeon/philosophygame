@@ -104,10 +104,10 @@ function updateCursor() {
   if (
     !usePointer &&
     lettersFoundCount > 0 &&
-    mouseX >= width - 130 &&
-    mouseX <= width - 80 &&
-    mouseY >= 10 &&
-    mouseY <= 60
+    mouseX >= width - 60 &&
+    mouseX <= width - 10 &&
+    mouseY >= height - 60 &&
+    mouseY <= height - 10
   ) {
     usePointer = true;
   }
@@ -608,8 +608,8 @@ function draw() {
   }
   if (lettersFoundCount > 0) {
     let aSize = 50;
-    let ax = width - 130;
-    let ay = 10;
+    let ax = width - 60;
+    let ay = height - 60;
     let adSize = aSize;
     let adx = ax;
     let ady = ay;
@@ -721,8 +721,8 @@ function mousePressed() {
   }
   if (lettersFoundCount > 0) {
     const aSize = 50;
-    const ax = width - 130;
-    const ay = 10;
+    const ax = width - 60;
+    const ay = height - 60;
     if (
       mouseX >= ax &&
       mouseX <= ax + aSize &&
