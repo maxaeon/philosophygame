@@ -333,6 +333,7 @@ function draw() {
       moveLeft = moveRight = moveUp = moveDown = false;
       duckTargetX = null;
       duckTargetY = null;
+      duck.setState('swim-down');
     } else {
       if (moveLeft || moveRight || moveUp || moveDown) {
         duckTargetX = null;
@@ -350,17 +351,23 @@ function draw() {
         const dy = duckTargetY - duck.baseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist > duckMoveSpeed) {
-          duck.baseX += duckMoveSpeed * dx / dist;
-          duck.baseY += duckMoveSpeed * dy / dist;
+          duck.baseX += (duckMoveSpeed * dx) / dist;
+          duck.baseY += (duckMoveSpeed * dy) / dist;
         } else {
           duck.baseX = duckTargetX;
           duck.baseY = duckTargetY;
           duckTargetX = null;
           duckTargetY = null;
         }
-        duck.setState('mouth-closed');
+        const adx = Math.abs(dx);
+        const ady = Math.abs(dy);
+        if (adx > ady) {
+          duck.setState(dx > 0 ? 'swim-right' : 'swim-left');
+        } else {
+          duck.setState(dy > 0 ? 'swim-down' : 'swim-up');
+        }
       } else {
-        duck.setState('mouth-closed');
+        duck.setState('swim-down');
       }
     }
   }
