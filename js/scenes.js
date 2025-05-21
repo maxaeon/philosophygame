@@ -99,6 +99,14 @@ function handleSceneClicks(mx, my) {
       }
       return;
     }
+
+    if (typeof owl !== 'undefined' && withinChar(owl)) {
+      currentScene = 'flowers';
+      if (typeof orderedScenes !== 'undefined') {
+        sceneIndex = orderedScenes.indexOf('flowers');
+      }
+      return;
+    }
   }
   if (currentScene === 'greenhouseInside') {
     const letterEFound =

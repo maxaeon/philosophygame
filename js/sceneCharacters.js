@@ -83,17 +83,16 @@ addChar('greenhouseInside', 'trayB');
 
 // Use combined duck/rabbit swing animation in swing2
 sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' && c !== 'rabbit');
-sceneCharacters['swing2'].push('duckRabbitSwing');
 
 // Scene-specific position overrides
 sceneCharacterSettings['farmMap'] = {
   duck:      { x: 60,  y: 500, size: 80 },
   rabbit:    { x: 150, y: 500, size: 80 },
-  owl:       { x: 600, y: 100, size: 80 },
-  dog:       { x: 640, y: 420, size: 100 },
+  owl:       { x: 80,  y: 250, size: 80 },
+  dog:       { x: 380, y: 40,  size: 50 },
   sheep:     { x: 420, y: 380, size: 100 },
   sheepbaby: { x: 500, y: 420, size: 80 },
-  pig:       { x: 260, y: 460, size: 100 }
+  pig:       { x: 460, y: 40,  size: 100 }
 };
 
 // Position adjustments for specific scenes
@@ -137,6 +136,10 @@ sceneCharacterSettings['dogHouse'] = {
   dog: { state: 'sad' }
 };
 
+sceneCharacterSettings['field'] = {
+  sheep: { y: 210 }
+};
+
 sceneCharacterSettings['barn'] = {
   donkey: { size: 300 },
   bat: { x: 420, y: 180 },
@@ -158,8 +161,20 @@ sceneCharacterSettings['tunnel'] = {
   rabbit: { x: 470, y: 420, size: 130 }
 };
 
-sceneCharacterSettings['swing'] = { pig: { size: 300 } };
+sceneCharacterSettings['swing'] = {
+  pig: { size: 300 },
+  duck: { x: 60,  y: 500, size: 100 },
+  rabbit: { x: 150, y: 500, size: 100 }
+};
 sceneCharacterSettings['swing2'] = { pig: { size: 300 } };
+
+sceneCharacterSettings['loftEntrance'].graytortiecat = {
+  x: 200
+};
+
+sceneCharacterSettings['loft'].owl = {
+  x: 200
+};
 
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;

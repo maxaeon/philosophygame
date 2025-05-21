@@ -144,6 +144,8 @@ function preload() {
     images: {
       swing1: loadImage('assets/images/pig/swing1.png'),
       swing2: loadImage('assets/images/pig/swing2.png'),
+      'swing-neutral': loadImage('assets/images/pig/swing-neutral.png'),
+      'swing-up': loadImage('assets/images/pig/swing-up.png'),
       default: loadImage('assets/images/pig/default.png'),
       'mouth-closed': loadImage('assets/images/pig/mouth-closed.png')
     },
@@ -170,7 +172,7 @@ function preload() {
       this.baseSize = this.size;
     },
     update() {
-      if ((currentScene === 'farmMap' || currentScene === 'swing') && !letterGFound) {
+      if (currentScene === 'farmMap' || currentScene === 'swing') {
         if (this.current !== 'swing1' && this.current !== 'swing2') {
           this.current = 'swing1';
         }
@@ -179,12 +181,12 @@ function preload() {
           this.lastSwitch = frameCount;
         }
       } else if (currentScene === 'swing2') {
-        if (this.current !== 'default' && this.current !== 'mouth-closed') {
-          this.current = 'default';
+        if (this.current !== 'swing-neutral' && this.current !== 'swing-up') {
+          this.current = 'swing-neutral';
         }
-        const interval = 90; // ~1.5 seconds
-        if (frameCount - this.lastSwitch > interval) {
-          this.current = this.current === 'default' ? 'mouth-closed' : 'default';
+        if (frameCount - this.lastSwitch > 60) {
+          this.current =
+            this.current === 'swing-neutral' ? 'swing-up' : 'swing-neutral';
           this.lastSwitch = frameCount;
         }
       } else {
