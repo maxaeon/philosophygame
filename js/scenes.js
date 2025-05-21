@@ -226,7 +226,7 @@ function drawSceneCharacters(scene) {
           typeof letters !== 'undefined'
             ? letters.find(l => l.scene === 'barn' && l.letter === 'V')
             : null;
-        if (letterV && letterV.found && dialoguesPlayed?.barn) {
+        if (letterV && letterV.found && dialoguesPlayed && dialoguesPlayed.barn) {
           charObj.interactive = true;
         }
       }

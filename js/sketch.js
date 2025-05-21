@@ -36,7 +36,7 @@ function clampDuckPond2() {
 function updateCursor() {
   let usePointer = false;
 
-  const chars = sceneCharacters?.[currentScene];
+  const chars = sceneCharacters && sceneCharacters[currentScene];
   if (Array.isArray(chars)) {
     for (const name of chars) {
       const charObj = window[name];
@@ -507,12 +507,12 @@ function draw() {
   if (!isDialogueActive() && currentScene === 'dogHouse') {
     if (!dialoguesPlayed['dogHouse']) {
       playDialogue('dogHouse', () => {
-        if (sceneCharacterSettings['dogHouse']?.dog) {
+        if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
           sceneCharacterSettings['dogHouse'].dog.state = 'happy';
         }
       });
     } else if (dogHouseVisits > 1 && !dialoguesPlayed['dogHouseReturn']) {
-      if (sceneCharacterSettings['dogHouse']?.dog) {
+      if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
         sceneCharacterSettings['dogHouse'].dog.state = 'happy';
       }
       playDialogue('dogHouseReturn');
@@ -649,7 +649,7 @@ function updateBenchRestDialogue() {
   if (!Array.isArray(dialogues.benchRest) || dialogues.benchRest.length < 2) {
     return;
   }
-  const lettersLeft = (letters?.length || 26) - lettersFoundCount;
+  const lettersLeft = ((letters && letters.length) || 26) - lettersFoundCount;
   if (lettersLeft <= 0) {
     dialogues.benchRest[1].text =
       'We worked hard finding all of the letters and learning about philosophy.';
