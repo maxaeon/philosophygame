@@ -1,7 +1,6 @@
 const dialogues = {
   start: [
-    { speaker: 'duck', text: 'Welcome to the Philosophy Farm!' },
-    { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' },
+    { speaker: 'rabbit', text: 'Welcome to the Philosophy Farm!' },
     { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
     { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
     { speaker: 'duck', text: "Right—maybe sometimes the answer isn't just yes or no!" }
@@ -32,7 +31,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Interesting question! And if we put all the old parts together again, which birdhouse is the same one as before?' }
   ],
   flowers2: [
-    { speaker: 'owl', text: "Thank you both! As a token of my gratitude, I left seedlings in the greenhouse for you." },
+    { speaker: 'owl', text: "Thank you both! As a token of my gratitude, the Robins and I left seedlings in the greenhouse for you." },
     { speaker: 'duck', text: "Thank you, Owl! Let's go see!" }
   ],
   greenhouse: [
@@ -67,8 +66,8 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Sounds perfect.' }
   ],
   picnic: [
-    { speaker: 'duck', text: 'We have a heap of vegetables!' },
-    { speaker: 'rabbit', text: "I wonder how much we have to eat before it's no longer a heap?" }
+    { speaker: 'duck', text: 'We have a heap of vegetables! Would you like to eat a healthy snack with us?' },
+    { speaker: 'rabbit', text: "I wonder how much we have to eat before it's no longer a heap!" }
   ],
   farmMap: [
     { speaker: 'duck', text: "There's still so much to see." },
