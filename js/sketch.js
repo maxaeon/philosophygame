@@ -608,7 +608,7 @@ function advanceScene() {
 function goBackScene() {
   if (sceneHistory.length > 1) {
     sceneHistory.pop();
-    if (typeof playSound === 'function') playSound('transition');
+    if (typeof playSound === 'function') playSound('back');
     currentScene = sceneHistory[sceneHistory.length - 1];
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;
