@@ -82,7 +82,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Thanks for sharing, Pig!' }
   ],
   dogHouse: [
-    { speaker: 'dog', text: "I'm sad; people fear me just because of how I look." },
+    { speaker: 'dog', text: "I'm sad; people fear me just because of how I look.", pose: 'sad' },
     { speaker: 'duck', text: 'We understand, we judged shadows as reality before knowing the truth.' },
     { speaker: 'rabbit', text: "We'd love to be your friends!" },
     { speaker: 'dog', text: 'Really? Thank you!' }
