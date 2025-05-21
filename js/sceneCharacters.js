@@ -87,17 +87,17 @@ sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' &
 // Scene-specific position overrides
 sceneCharacterSettings['farmMap'] = {
   // Duck and Rabbit sit where the greenhouse link used to be
-  duck:      { x: 300, y: 200, size: 80 },
-  rabbit:    { x: 360, y: 200, size: 80 },
+  duck:      { x: 300, y: 100, size: 40 },
+  rabbit:    { x: 360, y: 100, size: 40 },
   // Owl stays in roughly the same position
   owl:       { x: 80,  y: 250, size: 80 },
   // Dog now lives where the bench link started
-  dog:       { x: 20,  y: 20,  size: 50 },
+  dog:       { x: 30,  y: 30,  size: 50 },
   // Sheep family appears above the owl and slightly left
-  sheep:     { x: 40,  y: 170, size: 100 },
-  sheepbaby: { x: 100, y: 200, size: 80 },
+  sheep:     { x: 15,  y: 150, size: 50 },
+  sheepbaby: { x: 75,  y: 180, size: 40 },
   // Pig touches the top edge of the map
-  pig:       { x: 460, y: 0,  size: 100 }
+  pig:       { x: 465, y: -5, size: 80 }
 };
 
 // Position adjustments for specific scenes
