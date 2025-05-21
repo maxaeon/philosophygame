@@ -606,7 +606,22 @@ function draw() {
     dx -= (dSize - drSize) / 2;
     dy -= (dSize - drSize) / 2;
   }
-  image(duckRabbitIcons[duckRabbitIconIndex], dx, dy, dSize, dSize);
+  const drIcon = duckRabbitIcons[duckRabbitIconIndex];
+  if (drIcon.width && drIcon.height) {
+    const aspect = drIcon.width / drIcon.height;
+    let drawW = dSize;
+    let drawH = dSize;
+    if (aspect > 1) {
+      drawH = dSize / aspect;
+    } else if (aspect < 1) {
+      drawW = dSize * aspect;
+    }
+    const offsetX = (dSize - drawW) / 2;
+    const offsetY = (dSize - drawH) / 2;
+    image(drIcon, dx + offsetX, dy + offsetY, drawW, drawH);
+  } else {
+    image(drIcon, dx, dy, dSize, dSize);
+  }
   drawLetters(currentScene); // draw letters on top
 }
 
