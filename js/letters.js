@@ -256,6 +256,10 @@ function handleLetterClicks(mx, my) {
             const btn = document.getElementById('continueBtn');
             if (btn) btn.style.display = 'block';
           }
+          if (l.letter === 'Q' && l.scene === 'bench') {
+            const btn = document.getElementById('continueBtn');
+            if (btn) btn.style.display = 'block';
+          }
         }
         if (l.letter === 'G') {
           letterGFound = true;
@@ -303,6 +307,10 @@ function checkDuckLetterCollision(duck) {
         l.y = l.bottomY;
         lettersFoundCount++;
         if (l.letter === 'D' && l.scene === 'pond2') {
+          const btn = document.getElementById('continueBtn');
+          if (btn) btn.style.display = 'block';
+        }
+        if (l.letter === 'Q' && l.scene === 'bench') {
           const btn = document.getElementById('continueBtn');
           if (btn) btn.style.display = 'block';
         }
