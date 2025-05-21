@@ -439,25 +439,28 @@ function mousePressed() {
     duckTargetY = mouseY;
   }
   if (currentScene === 'barn') {
-    if (
-      mouseX > donkey.x &&
-      mouseX < donkey.x + donkey.size &&
-      mouseY > donkey.y &&
-      mouseY < donkey.y + donkey.size
-    ) {
-      currentScene = 'donkey';
-      sceneIndex = orderedScenes.indexOf('barn');
-      return;
-    }
-    if (
-      mouseX > bat.x &&
-      mouseX < bat.x + bat.size &&
-      mouseY > bat.y &&
-      mouseY < bat.y + bat.size
-    ) {
-      currentScene = 'barnInside';
-      sceneIndex = orderedScenes.indexOf('barnInside');
-      return;
+    const letterV = letters.find(l => l.scene === 'barn' && l.letter === 'V');
+    if (letterV && letterV.found && dialoguesPlayed['barn']) {
+      if (
+        mouseX > donkey.x &&
+        mouseX < donkey.x + donkey.size &&
+        mouseY > donkey.y &&
+        mouseY < donkey.y + donkey.size
+      ) {
+        currentScene = 'donkey';
+        sceneIndex = orderedScenes.indexOf('barn');
+        return;
+      }
+      if (
+        mouseX > bat.x &&
+        mouseX < bat.x + bat.size &&
+        mouseY > bat.y &&
+        mouseY < bat.y + bat.size
+      ) {
+        currentScene = 'barnInside';
+        sceneIndex = orderedScenes.indexOf('barnInside');
+        return;
+      }
     }
   }
   if (currentScene === 'donkey') {
