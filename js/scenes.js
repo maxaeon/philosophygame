@@ -34,14 +34,33 @@ function preloadScenes() {
 function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
-    {name: 'barn', label: 'barn', x: 220, y: 10,  w: 200, h: 200},
-    {name: 'swing', label: 'swing', x: 460, y: 0,   w: 50,  h: 50},
+    {
+      name: 'barn',
+      label: 'barn',
+      x: 220,
+      y: 10,
+      w: 200,
+      h: 200,
+      labelX: 325,
+      labelY: 115
+    },
+    {
+      name: 'swing',
+      label: 'swing',
+      x: 460,
+      y: 0,
+      w: 50,
+      h: 50,
+      labelX: 490,
+      labelY: 30
+    },
     {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 75},
     {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
     {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
-    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50},
+    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50, labelY: 185},
     {name: 'picnic', label: 'picnic', x: 700, y: 140, w: 50,  h: 50},
-    {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50}
+    {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50},
+    {name: 'flowers', label: 'birdhouse', x: 40, y: 250, w: 80, h: 80}
   ];
 
   // Interactive areas inside the barn
