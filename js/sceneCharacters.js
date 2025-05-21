@@ -119,7 +119,7 @@ sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };
 sceneCharacterSettings['grass'].rabbit = { x: 480, y: 380, size: 300 };
-sceneCharacterSettings['grass'].birdhouse = { x: 290, y: 380, size: 100 };
+sceneCharacterSettings['grass'].birdhouse = { x: 290, y: 120, size: 500 };
 
 sceneCharacterSettings['flowers2'].owl = { x: 200, y: 260, size: 100 };
 sceneCharacterSettings['flowers2'].birdhouse = { x: 380, y: 480, size: 100 };
