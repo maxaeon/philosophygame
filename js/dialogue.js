@@ -130,9 +130,9 @@ const dialogues = {
   ],
   radioRoom: [
     { speaker: 'radio', text: '...and that concludes our podcast on The Complete Physical Account of Color Vision.'},
-    { speaker: 'chick', text: 'Colors and light—I know all about them!' },
+    { speaker: 'chick', text: 'Colors and light—I know all about them!', pose: 'default' },
     { speaker: 'duck', text: "But do you know what it's like to actually see colors?" },
-    {speaker: 'chick', text: 'Not yet, but let me finish hatching and I will!'},
+    { speaker: 'chick', text: 'Not yet, but let me finish hatching and I will!', pose: 'default' },
     { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.' }
   ],
   loftEntrance: [
@@ -167,7 +167,7 @@ function setCharacterState(name, speaking, pose) {
   }
   if (name === 'chick') {
     if (speaking) {
-      ch.setState('in-egg-open');
+      ch.setState(pose || 'in-egg-open');
     } else {
       ch.setState('default');
     }

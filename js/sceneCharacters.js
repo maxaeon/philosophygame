@@ -145,27 +145,32 @@ sceneCharacterSettings['cave'] = {
 };
 
 sceneCharacterSettings['dogHouse'] = {
-  dog: { state: 'sad' }
+  dog: { x: 60, y: 420, size: 300, state: 'sad' },
+  duck: { x: 560, y: 500 },
+  rabbit: { x: 620, y: 500 }
 };
 
 sceneCharacterSettings['field'] = {
-  sheep: { y: 210 }
+  sheep: { y: 320 },
+  sheepbaby: { x: 520, y: 340 },
+  duck: { x: 360, y: 500 }
 };
 
 sceneCharacterSettings['barn'] = {
-  donkey: { size: 300 },
+  donkey: { x: 500, size: 300 },
   bat: { x: 420, y: 180 },
-  dog: { x: 50, y: 50, size: 35 },
-  sheep: { x: 120, y: 50, size: 35 },
+  dog: { x: 50, y: 200, size: 35 },
+  sheep: { x: 120, y: 200, size: 35 },
+  sheepbaby: { x: 180, y: 200, size: 35 },
   duck: { x: 360, y: 500, size: 100 },
   rabbit: { x: 420, y: 500, size: 100 }
 };
 
 sceneCharacterSettings['donkey'] = {
-  donkey: { x: 50, y: 200, size: 400 },
-  duck: { x: 340, y: 500, size: 100 },
-  rabbit: { x: 400, y: 500, size: 100 },
-  orangecat: { x: 650, y: 500, size: 100 }
+  donkey: { x: 300, y: 200, size: 440 },
+  duck: { x: 150, y: 500, size: 100 },
+  rabbit: { x: 210, y: 500, size: 100 },
+  orangecat: { x: 20, y: 400, size: 100 }
 };
 
 sceneCharacterSettings['tunnel'] = {
@@ -174,11 +179,15 @@ sceneCharacterSettings['tunnel'] = {
 };
 
 sceneCharacterSettings['swing'] = {
-  pig: { size: 300 },
+  pig: { x: 235, y: 220, size: 330 },
   duck: { x: 60,  y: 500, size: 100 },
   rabbit: { x: 150, y: 500, size: 100 }
 };
-sceneCharacterSettings['swing2'] = { pig: { size: 300 } };
+sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
+
+sceneCharacterSettings['radioRoom'] = {
+  chick: { y: 320 }
+};
 
 sceneCharacterSettings['loftEntrance'].graytortiecat = {
   x: 200
