@@ -627,11 +627,21 @@ function mousePressed() {
 }
 
 function showAdvice() {
+  const box = document.getElementById('adviceBox');
+  if (!box) return;
+  let msg;
   if (lettersFoundCount >= 26) {
-    alert("Duck-Rabbit says: Great job finding all the letters!");
+    msg = 'Duck-Rabbit says: Great job finding all the letters!';
   } else {
-    alert("Duck-Rabbit says: Think about things from a different perspective!");
+    msg = 'Duck-Rabbit says: Think about things from a different perspective!';
   }
+  box.textContent = msg;
+  box.style.display = 'block';
+  if (typeof box.focus === 'function') box.focus();
+  box.onclick = () => {
+    box.style.display = 'none';
+    box.onclick = null;
+  };
   highlightMissingLetters(currentScene);
 }
 
