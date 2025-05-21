@@ -139,7 +139,12 @@ let duckFacingBackwards = false;
 function setCharacterState(name, speaking, pose) {
   const ch = window[name];
   if (!ch || typeof ch.setState !== 'function') return;
-  if (name === 'duck' && typeof currentScene !== 'undefined' && currentScene === 'pond2') {
+  if (
+    name === 'duck' &&
+    typeof currentScene !== 'undefined' &&
+    currentScene === 'pond2' &&
+    dialogueActive
+  ) {
     ch.setState('swim-down');
     return;
   }
