@@ -96,9 +96,29 @@ sceneCharacterSettings['farmMap'] = {
   pig:       { x: 260, y: 460, size: 100 }
 };
 
+// Position adjustments for specific scenes
+// Duck and Rabbit start near the bottom of the screen on the start page
+sceneCharacterSettings['start'].duck   = { x: 360, y: 520, size: 100 };
+sceneCharacterSettings['start'].rabbit = { x: 420, y: 520, size: 100 };
+
+// Both characters sit at the bottom of the bench scene
+sceneCharacterSettings['bench'].duck   = { x: 360, y: 520, size: 100 };
+sceneCharacterSettings['bench'].rabbit = { x: 420, y: 520, size: 100 };
+
+// In the pond they appear roughly in the middle of the screen
+sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
+sceneCharacterSettings['pond'].rabbit = { x: 420, y: 300, size: 100 };
+
+// Move rabbit to the top left corner in pond2
+sceneCharacterSettings['pond2'].rabbit = { x: 20, y: 20, size: 100 };
+
 sceneCharacterSettings['pond2'] = {
   duck: { state: 'swim-down' }
 };
+
+// Adjust positioning in the flowers scene to reduce overlap
+sceneCharacterSettings['flowers'].owl = { x: 300, y: 360, size: 100 };
+sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['cave'] = {
   duck: { state: 'backwards' }
