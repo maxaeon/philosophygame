@@ -115,7 +115,7 @@ function preload() {
   orangecat.state = 'mouth-closed';
   orangecat.initBase();
 
-  chick = new Character('chick', ['eggcited', 'in-egg-closed', 'in-egg-open', 'mouth-closed'], 100, 380, 420);
+  chick = new Character('chick', ['eggcited', 'in-egg-open', 'mouth-closed'], 100, 380, 420);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
   chick.state = 'mouth-closed';
 
