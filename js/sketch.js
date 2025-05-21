@@ -485,6 +485,10 @@ function draw() {
         trayA.baseY = 420;
         trayB.baseX = 360;
         trayB.baseY = 420;
+        sceneCharacterSettings['greenhouseInside'].trayA.x = trayA.baseX;
+        sceneCharacterSettings['greenhouseInside'].trayA.y = trayA.baseY;
+        sceneCharacterSettings['greenhouseInside'].trayB.x = trayB.baseX;
+        sceneCharacterSettings['greenhouseInside'].trayB.y = trayB.baseY;
         trayA.reset();
         trayB.reset();
       }
