@@ -281,6 +281,7 @@ function handleLetterClicks(mx, my) {
       if (currentScene === 'pond2' && typeof duck !== 'undefined') {
         duck.baseX = l.x - duck.size / 2;
         duck.baseY = l.y - duck.size / 2;
+        if (typeof clampDuckPond2 === 'function') clampDuckPond2();
         setTimeout(handleFound, 75);
       } else {
         handleFound();
