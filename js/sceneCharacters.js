@@ -23,6 +23,14 @@ sceneCharacterSettings['farmMap'] = {
   pig:       { x: 260, y: 460, size: 100 }
 };
 
+sceneCharacterSettings['barn'] = {
+  donkey: { size: 300 },
+  bat: { x: 420, y: 180 }
+};
+
+sceneCharacterSettings['swing'] = { pig: { size: 300 } };
+sceneCharacterSettings['swing2'] = { pig: { size: 300 } };
+
 defaultScenes.forEach(scene => {
   sceneCharacters[scene] = ['duck', 'rabbit'];
 });
@@ -36,6 +44,7 @@ defaultScenes.forEach(scene => {
 });
 
 sceneCharacters.barn.push('donkey');
+sceneCharacters.barn.push('bat');
 sceneCharacters.donkey.push('donkey');
 sceneCharacters.donkey.push('orangecat');
 

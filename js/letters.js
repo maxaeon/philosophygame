@@ -356,19 +356,45 @@ function drawLetters(scene) {
       return;
     }
     if (l.found) {
+      let dSize = l.size;
+      let dx = l.bottomX - l.size / 2;
+      let dy = l.bottomY - l.size / 2;
+      if (
+        mouseX >= l.bottomX - l.size / 2 &&
+        mouseX <= l.bottomX + l.size / 2 &&
+        mouseY >= l.bottomY - l.size / 2 &&
+        mouseY <= l.bottomY + l.size / 2
+      ) {
+        dSize *= 1.05;
+        dx = l.bottomX - dSize / 2;
+        dy = l.bottomY - dSize / 2;
+      }
       if (l.img) {
-        image(l.img, l.bottomX - l.size / 2, l.bottomY - l.size / 2, l.size, l.size);
+        image(l.img, dx, dy, dSize, dSize);
       } else {
-        ellipse(l.bottomX, l.bottomY, l.size, l.size);
+        ellipse(l.bottomX, l.bottomY, dSize, dSize);
         textAlign(CENTER, CENTER);
         fill(0);
         text(l.letter, l.bottomX, l.bottomY);
       }
     } else if (l.scene === scene) {
+      let dSize = l.size;
+      let dx = l.x - l.size / 2;
+      let dy = l.y - l.size / 2;
+      if (
+        mouseX >= l.x - l.size / 2 &&
+        mouseX <= l.x + l.size / 2 &&
+        mouseY >= l.y - l.size / 2 &&
+        mouseY <= l.y + l.size / 2
+      ) {
+        dSize *= 1.05;
+        dx = l.x - dSize / 2;
+        dy = l.y - dSize / 2;
+      }
       if (l.img) {
-        image(l.img, l.x - l.size / 2, l.y - l.size / 2, l.size, l.size);
+        image(l.img, dx, dy, dSize, dSize);
       } else {
-        ellipse(l.x, l.y, l.size, l.size);
+        ellipse(l.x, l.y, dSize, dSize);
         textAlign(CENTER, CENTER);
         fill(0);
         text(l.letter, l.x, l.y);
