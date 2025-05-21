@@ -35,18 +35,14 @@ function preloadScenes() {
 function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
-    {name: 'cave', x: 100, y: 200, w: 150, h: 150},
-    {name: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
-    // Additional areas
-    // Approximated coordinates based on map layout
-    {name: 'barn', x: 220, y: 160, w: 150, h: 150},
-    {name: 'bench', x: 180, y: 220, w: 120, h: 80},
-    {name: 'dogHouse', x: 310, y: 360, w: 120, h: 100},
-    // New interactive areas
-    {name: 'pond', x: 300, y: 420, w: 140, h: 120},
-    {name: 'pond2', x: 340, y: 240, w: 140, h: 120},
-    {name: 'vegetables', x: 280, y: 80, w: 120, h: 80},
-    {name: 'picnic', x: 420, y: 260, w: 140, h: 100}
+    {name: 'barn', label: 'barn', x: 220, y: 160, w: 150, h: 150},
+    {name: 'swing', label: 'swing', x: 360, y: 420, w: 140, h: 120},
+    {name: 'dogHouse', label: 'doghouse', x: 310, y: 360, w: 120, h: 100},
+    {name: 'bench', label: 'bench', x: 180, y: 220, w: 120, h: 80},
+    {name: 'pond', label: 'pond', x: 300, y: 420, w: 140, h: 120},
+    {name: 'greenhouse', label: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
+    {name: 'picnic', label: 'picnic', x: 420, y: 260, w: 140, h: 100},
+    {name: 'vegetables', label: 'vegetables', x: 280, y: 80, w: 120, h: 80}
   ];
 }
 
@@ -63,15 +59,7 @@ function handleSceneClicks(mx, my) {
         mx < area.x + area.w &&
         my > area.y &&
         my < area.y + area.h;
-      const isIcon = ['pond', 'pond2', 'vegetables', 'picnic'].includes(area.name);
-      const iconSize = 40;
-      const withinIcon =
-        isIcon &&
-        mx >= area.x &&
-        mx <= area.x + iconSize &&
-        my >= area.y &&
-        my <= area.y + iconSize;
-      if (withinArea || withinIcon) {
+      if (withinArea) {
         currentScene = area.name;
         if (typeof orderedScenes !== 'undefined') {
           const idx = orderedScenes.indexOf(area.name);
@@ -130,6 +118,9 @@ function handleSceneClicks(mx, my) {
       trayOnTable = 'trayA';
       trayA.reset();
       trayB.reset();
+      if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayA']) {
+        playDialogue('greenhouseInside_trayA');
+      }
       clicked = true;
     } else if (withinTrayB && trayOnTable !== 'trayB') {
       const tX = trayA.baseX;
@@ -141,6 +132,9 @@ function handleSceneClicks(mx, my) {
       trayOnTable = 'trayB';
       trayA.reset();
       trayB.reset();
+      if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayB']) {
+        playDialogue('greenhouseInside_trayB');
+      }
       clicked = true;
     }
     if (clicked) return;
