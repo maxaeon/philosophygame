@@ -36,12 +36,12 @@ function setupScenes() {
   scenes.interactiveAreas = [
     {name: 'barn', label: 'barn', x: 220, y: 10,  w: 200, h: 200},
     {name: 'swing', label: 'swing', x: 460, y: 0,   w: 50,  h: 50},
-    {name: 'dogHouse', label: 'doghouse', x: 20,  y: 20,  w: 50,  h: 50},
-    {name: 'bench', label: 'bench', x: 20,  y: 520, w: 70,  h: 70},
-    {name: 'pond', label: 'pond', x: 550, y: 380, w: 100, h: 100},
-    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 200, w: 50,  h: 50},
-    {name: 'picnic', label: 'picnic', x: 400, y: 440, w: 50,  h: 50},
-    {name: 'vegetables', label: 'vegetables', x: 700, y: 300, w: 50, h: 50}
+    {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50},
+    {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
+    {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
+    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50},
+    {name: 'picnic', label: 'picnic', x: 700, y: 440, w: 50,  h: 50},
+    {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50}
   ];
 }
 
