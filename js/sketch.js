@@ -182,6 +182,9 @@ function preload() {
         if (frameCount - this.lastSwitch > 60) {
           this.current = this.current === 'swing1' ? 'swing2' : 'swing1';
           this.lastSwitch = frameCount;
+          if (typeof playSound === 'function') {
+            playSound(this.current === 'swing1' ? 'pig1' : 'pig2');
+          }
         }
       } else if (currentScene === 'swing2') {
         if (this.current !== 'swing-neutral' && this.current !== 'swing-up') {
@@ -191,6 +194,9 @@ function preload() {
           this.current =
             this.current === 'swing-neutral' ? 'swing-up' : 'swing-neutral';
           this.lastSwitch = frameCount;
+          if (typeof playSound === 'function') {
+            playSound(this.current === 'swing-neutral' ? 'pig1' : 'pig2');
+          }
         }
       } else {
         this.current = 'default';
@@ -608,7 +614,7 @@ function advanceScene() {
 function goBackScene() {
   if (sceneHistory.length > 1) {
     sceneHistory.pop();
-    if (typeof playSound === 'function') playSound('transition');
+    if (typeof playSound === 'function') playSound('back');
     currentScene = sceneHistory[sceneHistory.length - 1];
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;
