@@ -40,7 +40,7 @@ function setupScenes() {
     {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
     {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
     {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50},
-    {name: 'picnic', label: 'picnic', x: 700, y: 440, w: 50,  h: 50},
+    {name: 'picnic', label: 'picnic', x: 700, y: 140, w: 50,  h: 50},
     {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50}
   ];
 
@@ -135,13 +135,16 @@ function handleSceneClicks(mx, my) {
       const withinTrayB =
         mx >= trayB.x && mx <= trayB.x + trayB.size &&
         my >= trayB.y && my <= trayB.y + trayB.size;
-      if (withinTrayA && trayOnTable !== 'trayA') {
+      const swapTrays = () => {
         const tX = trayA.baseX;
         const tY = trayA.baseY;
         trayA.baseX = trayB.baseX;
         trayA.baseY = trayB.baseY;
         trayB.baseX = tX;
         trayB.baseY = tY;
+      };
+      if (withinTrayA) {
+        if (trayOnTable !== 'trayA') swapTrays();
         trayOnTable = 'trayA';
         trayA.reset();
         trayB.reset();
@@ -150,13 +153,8 @@ function handleSceneClicks(mx, my) {
         }
         trayChoiceMade = true;
         clicked = true;
-      } else if (withinTrayB && trayOnTable !== 'trayB') {
-        const tX = trayA.baseX;
-        const tY = trayA.baseY;
-        trayA.baseX = trayB.baseX;
-        trayA.baseY = trayB.baseY;
-        trayB.baseX = tX;
-        trayB.baseY = tY;
+      } else if (withinTrayB) {
+        if (trayOnTable !== 'trayB') swapTrays();
         trayOnTable = 'trayB';
         trayA.reset();
         trayB.reset();

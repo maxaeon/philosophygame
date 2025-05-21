@@ -98,7 +98,7 @@ function preloadLetters() {
     concept: 'Logic',
     description: 'Using reason to solve problems.',
     question: 'When do you use logic?',
-    x: 400, y: 240
+    x: 400, y: 90
   });
   letters.push({
     scene: 'tunnel',
