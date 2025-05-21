@@ -1,5 +1,7 @@
 let letters = [];
 let lettersFoundCount = 0;
+let pendingDialogueScene = null;
+let letterContinueHandler = null;
 
 function preloadLetters() {
   letters.push({
@@ -267,7 +269,7 @@ function handleLetterClicks(mx, my) {
           allLettersFoundForScene(currentScene) &&
           !dialoguesPlayed[currentScene]
         ) {
-          playDialogue(currentScene);
+          showContinueForDialogue(currentScene);
         }
       };
 
@@ -317,7 +319,7 @@ function checkDuckLetterCollision(duck) {
         allLettersFoundForScene(currentScene) &&
         !dialoguesPlayed[currentScene]
       ) {
-        playDialogue(currentScene);
+        showContinueForDialogue(currentScene);
       }
     }
   });
@@ -422,5 +424,27 @@ function highlightMissingLetters(scene) {
       }, 1000);
     }
   });
+}
+
+function showContinueForDialogue(scene) {
+  const btn = document.getElementById('continueBtn');
+  if (!btn) return;
+  pendingDialogueScene = scene;
+  btn.style.display = 'block';
+  btn.removeEventListener('click', advanceScene);
+  if (letterContinueHandler) {
+    btn.removeEventListener('click', letterContinueHandler);
+  }
+  letterContinueHandler = () => {
+    btn.style.display = 'none';
+    btn.removeEventListener('click', letterContinueHandler);
+    letterContinueHandler = null;
+    btn.addEventListener('click', advanceScene);
+    if (pendingDialogueScene) {
+      playDialogue(pendingDialogueScene);
+      pendingDialogueScene = null;
+    }
+  };
+  btn.addEventListener('click', letterContinueHandler);
 }
 
