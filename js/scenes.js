@@ -101,6 +101,12 @@ function handleSceneClicks(mx, my) {
     }
   }
   if (currentScene === 'greenhouseInside') {
+    const letterEFound =
+      typeof isLetterFound === 'function' &&
+      isLetterFound('E', 'greenhouseInside');
+    if (!letterEFound) {
+      return;
+    }
     if (!trayChoiceMade) {
       const withinTrayA =
         mx >= trayA.x && mx <= trayA.x + trayA.size &&
@@ -206,7 +212,12 @@ function drawSceneCharacters(scene) {
         }
       }
       if (scene === 'greenhouseInside' && (name === 'trayA' || name === 'trayB')) {
-        charObj.interactive = true;
+        const letterEFound =
+          typeof isLetterFound === 'function' &&
+          isLetterFound('E', 'greenhouseInside');
+        if (letterEFound) {
+          charObj.interactive = true;
+        }
       }
       charObj.display();
     }

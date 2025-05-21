@@ -425,6 +425,13 @@ function sceneHasLetters(scene) {
   return letters.some(l => l.scene === scene);
 }
 
+function isLetterFound(letter, scene) {
+  const l = letters.find(
+    lt => lt.letter === letter && (scene ? lt.scene === scene : true)
+  );
+  return !!(l && l.found);
+}
+
 function highlightMissingLetters(scene) {
   letters.forEach(l => {
     if (l.scene === scene && !l.found) {
