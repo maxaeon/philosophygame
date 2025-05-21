@@ -2,9 +2,11 @@ class Character {
   constructor(name, states, size = 100, x = 0, y = 0) {
     this.name = name;
     this.images = {};
-    // Default to the neutral mouth-closed pose when the character is created
-    this.state = 'mouth-closed';
-    this.baseState = 'mouth-closed';
+    // Start with a neutral pose. If a specific mouth-closed image exists
+    // include it, otherwise fall back to the default image.
+    const hasMouthClosed = Array.isArray(states) && states.includes('mouth-closed');
+    this.state = hasMouthClosed ? 'mouth-closed' : 'default';
+    this.baseState = this.state;
     this.lastScene = null;
     this.x = x;
     this.y = y;
@@ -21,13 +23,6 @@ class Character {
     }
     if (!this.states.includes('default')) {
       this.states.unshift('default');
-    }
-
-    // Always attempt to preload a mouth-closed image so characters can
-    // revert to it when not speaking. If the image doesn't exist, the
-    // fallback in preloadImages will load the default instead.
-    if (!this.states.includes('mouth-closed')) {
-      this.states.push('mouth-closed');
     }
 
     this.preloadImages();
