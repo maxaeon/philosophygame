@@ -74,6 +74,7 @@ function handleSceneClicks(mx, my) {
       my >= char.y && my <= char.y + char.size;
 
     if (typeof dog !== 'undefined' && withinChar(dog)) {
+      if (typeof playSound === 'function') playSound('dog');
       currentScene = 'dogHouse';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('dogHouse');
@@ -85,6 +86,7 @@ function handleSceneClicks(mx, my) {
       typeof sheep !== 'undefined' && withinChar(sheep) ||
       typeof sheepbaby !== 'undefined' && withinChar(sheepbaby)
     ) {
+      if (typeof playSound === 'function') playSound('sheep');
       currentScene = 'field';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('field');
@@ -93,6 +95,7 @@ function handleSceneClicks(mx, my) {
     }
 
     if (typeof pig !== 'undefined' && withinChar(pig)) {
+      if (typeof playSound === 'function') playSound('pig');
       currentScene = 'swing';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('swing');
@@ -101,6 +104,7 @@ function handleSceneClicks(mx, my) {
     }
 
     if (typeof owl !== 'undefined' && withinChar(owl)) {
+      if (typeof playSound === 'function') playSound('owl');
       currentScene = 'flowers';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('flowers');

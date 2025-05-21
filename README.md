@@ -17,6 +17,7 @@ Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game
 * **Interactive exploration**: Navigate through various engaging scenes like Sheep in the Field, What is it Like to Be a Bat, and Shadows in the Cave.
 * **Educational dialogues**: Duck and Rabbit guide thoughtful discussions on philosophical questions tailored for kids.
 * **Engaging visuals**: Cartoon farmyard characters and colorful backgrounds create an inviting environment for learning.
+* **Sound effects**: Scene changes and animal clicks play short audio clips from `assets/audio`.
 
 ## 🛠️ Technology Used
 
@@ -54,7 +55,7 @@ npm start
 philosophygame/
 ├── assets/
 │   ├── images/       # Game visuals
-│   └── audio/        # Sound effects (optional)
+│   └── audio/        # Sound effects
 ├── js/
 │   ├── characters.js
 │   ├── sceneCharacters.js  # Characters by scene
