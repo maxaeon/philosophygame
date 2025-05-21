@@ -48,8 +48,8 @@ function setupScenes() {
   scenes.barnInsideAreas = [
     {name: 'mirror', label: 'mirror', x: 120,  y: 350, w: 100, h: 100},
     {name: 'radioRoom', label: 'radio room', x: 30,  y: 450, w: 100, h: 100},
-    {name: 'loftEntrance', label: 'loft entrance', x: 650, y: 350, w: 100, h: 100},
-    {name: 'studio', label: 'studio', x: 680, y: 450, w: 100, h: 100}
+    {name: 'loftEntrance', label: 'loft entrance', x: 640, y: 350, w: 100, h: 100},
+    {name: 'studio', label: 'studio', x: 690, y: 450, w: 100, h: 100}
   ];
 }
 
