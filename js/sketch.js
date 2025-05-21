@@ -10,6 +10,7 @@ let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
 let trayOnTable = 'trayB';
+let trayChoiceMade = false;
 let dialogueBox;
 
 // Movement variables for the duck in pond2
@@ -371,6 +372,9 @@ function draw() {
   }
   if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
     sceneHistory.push(currentScene);
+    if (currentScene === 'greenhouseInside') {
+      trayChoiceMade = false;
+    }
   }
   backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';
   drawScene(currentScene); // from scenes.js
