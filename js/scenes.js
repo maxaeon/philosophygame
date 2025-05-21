@@ -194,8 +194,14 @@ function drawSceneCharacters(scene) {
       }
       if (charObj.lastScene !== scene) {
         const state = overrides && overrides.state !== undefined ? overrides.state : charObj.baseState;
-        if (state && typeof charObj.setState === 'function') {
-          charObj.setState(state);
+        const activeDialogue = typeof isDialogueActive === 'function' && isDialogueActive();
+        if (!activeDialogue) {
+          if (state && typeof charObj.setState === 'function') {
+            charObj.setState(state);
+            charObj.baseState = state;
+          }
+        } else if (state) {
+          // Preserve the speaking pose but update the base state for later
           charObj.baseState = state;
         }
         charObj.lastScene = scene;
