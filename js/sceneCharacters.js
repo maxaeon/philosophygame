@@ -90,7 +90,7 @@ sceneCharacterSettings['farmMap'] = {
   duck:      { x: 300, y: 150, size: 40 },
   rabbit:    { x: 360, y: 150, size: 40 },
   // Owl stays in roughly the same position
-  owl:       { x: 80,  y: 250, size: 80 },
+  owl:       { x: 40,  y: 250, size: 80 },
   // Dog now lives where the bench link started
   dog:       { x: 30,  y: 40,  size: 50 },
   // Sheep family appears above the owl and slightly left
@@ -190,7 +190,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { x: 350, y: 320, state: 'default' },
+  chick: { x: 325, y: 320, state: 'default' },
   duck: { y: 500 }
 };
 
