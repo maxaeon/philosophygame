@@ -96,7 +96,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'You decide!' }
   ],
   donkey: [
-    {  speaker: 'donkey', text: 'Hi Duck and Rabbit! I brought a load of sweet strawberries to share with everyone.},
+    {  speaker: 'donkey', text: 'Hi Duck and Rabbit! I brought a load of sweet strawberries to share with everyone.'},
     {speaker: 'rabbit', text: 'I think it would be most fair to share them evenly with everyone!' },
     { speaker: 'orangecat', text: 'Those hurt my belly! Maybe we can share something else?' },
      {  speaker: 'rabbit', text: 'Oh, no! I didn/t think about how different animals have different needs!' },
@@ -113,7 +113,7 @@ const dialogues = {
      { speaker: 'duck', text: 'I/ll fly when I/m older!'},
       {speaker: 'bat', text: 'Not quite like me- I /see/ with my ears!' },
     { speaker: 'rabbit', text: 'Impossible!' },
-    { speaker: 'bat', text: "Possible for bats!'},
+    { speaker: 'bat', text: "Maybe for some animals, but every bat I know does it!"},
       { speaker: 'rabbit', text: 'I can/t imagine that... I guess we will never know what it/s like to be a bat!'},
       { speaker: 'bat', text: "It's true we cannot know what it's like to be each other-- but we can appreciate our differences!" }
   ],
