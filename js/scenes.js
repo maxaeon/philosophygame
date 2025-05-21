@@ -116,7 +116,8 @@ function handleSceneClicks(mx, my) {
     const letterEFound =
       typeof isLetterFound === 'function' &&
       isLetterFound('E', 'greenhouseInside');
-    if (!letterEFound) {
+    const promptShown = dialoguesPlayed['greenhouseInside'];
+    if (!letterEFound || !promptShown) {
       return;
     }
     if (!trayChoiceMade) {
