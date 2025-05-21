@@ -39,8 +39,15 @@ const dialogues = {
     { speaker: 'duck', text: "Here's the greenhouse! Let's check out our seedlings." }
   ],
   greenhouseInside: [
-    { speaker: 'rabbit', text: 'Oh no, we must move the watering line! Should we save the tray with 2 plants, or the one with 10?' },
-    { speaker: 'duck', text: 'Interesting choice! Every decision counts.' }
+    { speaker: 'rabbit', text: 'Oh no, we must move the watering line! Should we save the tray with 2 plants, or the one with 10?' }
+  ],
+  greenhouseInside_trayA: [
+    { speaker: 'rabbit', text: 'Great choice! Now even more plants will get water.' },
+    { speaker: 'duck', text: 'Thanks for helping so many seedlings!' }
+  ],
+  greenhouseInside_trayB: [
+    { speaker: 'rabbit', text: 'Okay! We\'ll hand water the other tray tomorrow.' },
+    { speaker: 'duck', text: 'Every plant will get its turn to grow.' }
   ],
   vegetables: [
     { speaker: 'duck', text: "I'm getting hungry." },
@@ -167,7 +174,7 @@ function playDialogue(scene, callback) {
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
       if (continueBtn) {
-        if (scene === 'barnInside' || scene === 'pond2') {
+        if (scene === 'barnInside' || scene === 'pond2' || scene === 'farmMap' || scene === 'greenhouseInside') {
           continueBtn.style.display = 'none';
         } else {
           continueBtn.style.display = 'block';

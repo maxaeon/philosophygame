@@ -370,11 +370,14 @@ function draw() {
     checkDuckLetterCollision(duck);
   }
   if (currentScene === 'farmMap') {
-    const iconSize = 40;
+    textAlign(CENTER, CENTER);
+    fill(0);
+    textSize(16);
     scenes.interactiveAreas.forEach(area => {
-      if (['pond', 'pond2', 'vegetables', 'picnic'].includes(area.name)) {
-        image(scenes[area.name], area.x, area.y, iconSize, iconSize);
-      }
+      const lx = area.labelX !== undefined ? area.labelX : area.x + area.w / 2;
+      const ly = area.labelY !== undefined ? area.labelY : area.y + area.h / 2;
+      const label = area.label || area.name;
+      text(label, lx, ly);
     });
   }
   if (currentScene === 'donkey') {
