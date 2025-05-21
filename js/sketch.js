@@ -85,9 +85,9 @@ function preload() {
   sheep.state = 'mouth-closed';
   sheep.initBase();
 
-  sheepbaby = new Character('sheepbaby', ['slight-right', 'mouth-closed'], 80, 520, 440);
+  sheepbaby = new Character('sheepbaby', ['slight-right'], 80, 520, 440);
   sheepbaby.images['idle'] = loadImage('assets/images/sheepbaby/default.png');
-  sheepbaby.state = 'mouth-closed';
+  sheepbaby.state = 'slight-right';
   sheepbaby.initBase();
 
   owl = new Character('owl', [
