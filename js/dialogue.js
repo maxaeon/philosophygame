@@ -1,6 +1,6 @@
 const dialogues = {
   start: [
-    { speaker: 'duck', text: 'Welcome to the Duck-Rabbit Farm!' },
+    { speaker: 'duck', text: 'Welcome to the Philosophy Farm!' },
     { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' },
     { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
     { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
