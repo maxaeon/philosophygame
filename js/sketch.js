@@ -338,9 +338,11 @@ function setup() {
   // Start with the continue button hidden; it will be shown
   // at the appropriate time by playDialogue
   continueBtn.style.display = 'none';
+  // Temporarily disable the back button due to navigation issues.  We
+  // still grab the element so the code can easily be re-enabled later.
   backBtn = document.getElementById('backBtn');
-  backBtn.addEventListener('click', goBackScene);
-  backBtn.style.display = 'none';
+  // backBtn.addEventListener('click', goBackScene);
+  // backBtn.style.display = 'none';
   dialogueBox = document.getElementById('dialogueBox');
 }
 
@@ -412,7 +414,7 @@ function draw() {
       }
     }
   }
-  backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';
+  // backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';
   drawScene(currentScene); // from scenes.js
   drawSceneCharacters(currentScene); // from scenes.js
   if (
