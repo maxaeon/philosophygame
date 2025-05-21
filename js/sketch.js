@@ -22,6 +22,17 @@ let moveLeft = false,
     moveUp = false,
     moveDown = false;
 
+function clampDuckPond2() {
+  if (currentScene !== 'pond2' || typeof duck === 'undefined') return;
+  const maxX = width - duck.size;
+  const maxY = height - duck.size;
+  const minY = height * 0.35;
+  if (duck.baseX < 0) duck.baseX = 0;
+  if (duck.baseX > maxX) duck.baseX = maxX;
+  if (duck.baseY < minY) duck.baseY = minY;
+  if (duck.baseY > maxY) duck.baseY = maxY;
+}
+
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
   'greenhouse', 'greenhouseInside', 'vegetables', 'tunnel', 'cave',
@@ -343,6 +354,7 @@ function draw() {
         if (moveRight) duck.baseX += duckMoveSpeed;
         if (moveUp)    duck.baseY -= duckMoveSpeed;
         if (moveDown)  duck.baseY += duckMoveSpeed;
+        clampDuckPond2();
         if (moveLeft)      duck.setState('swim-left');
         else if (moveRight) duck.setState('swim-right');
         else if (moveUp)    duck.setState('swim-up');
@@ -360,6 +372,7 @@ function draw() {
           duckTargetX = null;
           duckTargetY = null;
         }
+        clampDuckPond2();
         duck.setState('swim-down');
       } else {
         duck.setState('swim-down');
