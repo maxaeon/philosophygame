@@ -174,7 +174,7 @@ function playDialogue(scene, callback) {
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
       if (continueBtn) {
-        if (scene === 'barnInside' || scene === 'pond2' || scene === 'farmMap' || scene === 'greenhouseInside' || scene === 'barn') {
+        if (scene === 'barnInside' || scene === 'pond2' || scene === 'farmMap' || scene === 'greenhouseInside' || scene === 'barn' || scene === 'bench') {
           continueBtn.style.display = 'none';
         } else {
           continueBtn.style.display = 'block';
