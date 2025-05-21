@@ -4,7 +4,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' }
   ],
   benchIntro: [
-    { speaker: 'duck', text: 'See those letters around the farm? Try clicking on them!' },
+    { speaker: 'duck', text: 'When you see letters around the farm, try clicking on them!' },
     { speaker: 'rabbit', text: 'Each one will tell us something new.' }
   ],
   benchRest: [
