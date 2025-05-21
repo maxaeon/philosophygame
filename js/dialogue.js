@@ -154,6 +154,7 @@ const dialogues = {
 
 let dialogueActive = false;
 const dialoguesPlayed = {};
+let currentSpeaker = null;
 let duckFacingBackwards = false;
 
 function setCharacterState(name, speaking, pose) {
@@ -218,6 +219,7 @@ function playDialogue(scene, callback) {
   box.style.display = 'block';
   let index = 0;
   let prevSpeaker = null;
+  currentSpeaker = null;
   function next() {
     if (scene === 'cave' && index === 2) {
       duckFacingBackwards = false;
@@ -249,6 +251,7 @@ function playDialogue(scene, callback) {
     }
     const line = lines[index++];
     prevSpeaker = line.speaker;
+    currentSpeaker = line.speaker;
     box.textContent = line.text;
     setCharacterState(line.speaker, true, line.pose);
   }
@@ -256,9 +259,24 @@ function playDialogue(scene, callback) {
   next();
 }
 
+function stopDialogue() {
+  const box = document.getElementById('dialogueBox');
+  if (box) {
+    box.style.display = 'none';
+    box.onclick = null;
+  }
+  if (currentSpeaker) {
+    setCharacterState(currentSpeaker, false);
+    currentSpeaker = null;
+  }
+  duckFacingBackwards = false;
+  dialogueActive = false;
+}
+
 if (typeof window !== 'undefined') {
   window.playDialogue = playDialogue;
   window.dialoguesPlayed = dialoguesPlayed;
   window.isDialogueActive = () => dialogueActive;
   window.duckFacingBackwards = () => duckFacingBackwards;
+  window.stopDialogue = stopDialogue;
 }
