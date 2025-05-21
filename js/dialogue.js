@@ -147,9 +147,11 @@ function setCharacterState(name, speaking, pose) {
     // Use the default talking image unless a specific pose is provided
     ch.setState(pose || 'default');
   } else {
-    // When done speaking, return to the neutral mouth-closed pose
+    // When done speaking, return to the character's base pose
     if (name === 'duck' && duckFacingBackwards) {
       ch.setState('backwards');
+    } else if (ch.baseState) {
+      ch.setState(ch.baseState);
     } else if (ch.states.includes('mouth-closed')) {
       ch.setState('mouth-closed');
     } else if (ch.states.includes('closed')) {

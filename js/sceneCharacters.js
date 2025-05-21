@@ -8,18 +8,18 @@ const defaultScenes = [
 ];
 
 const basePositions = {
-  duck:            { x: 360, y: 420, size: 100 },
-  rabbit:          { x: 420, y: 420, size: 100 },
-  donkey:          { x: 380, y: 420, size: 100 },
-  dog:             { x: 620, y: 440, size: 100 },
-  sheep:           { x: 460, y: 420, size: 100 },
-  sheepbaby:       { x: 520, y: 440, size: 80 },
-  owl:             { x: 380, y: 420, size: 100 },
-  graytortiecat:   { x: 380, y: 420, size: 100 },
-  orangecat:       { x: 450, y: 430, size: 100 },
-  chick:           { x: 380, y: 420, size: 100 },
-  bat:             { x: 420, y: 180, size: 100 },
-  birdhouse:       { x: 380, y: 420, size: 100 },
+  duck:            { x: 360, y: 420, size: 100, state: 'mouth-closed' },
+  rabbit:          { x: 420, y: 420, size: 100, state: 'mouth-closed' },
+  donkey:          { x: 380, y: 420, size: 100, state: 'mouth-closed' },
+  dog:             { x: 620, y: 440, size: 100, state: 'mouth-closed' },
+  sheep:           { x: 460, y: 420, size: 100, state: 'mouth-closed' },
+  sheepbaby:       { x: 520, y: 440, size: 80, state: 'mouth-closed' },
+  owl:             { x: 380, y: 420, size: 100, state: 'mouth-closed' },
+  graytortiecat:   { x: 380, y: 420, size: 100, state: 'mouth-closed' },
+  orangecat:       { x: 450, y: 430, size: 100, state: 'mouth-closed' },
+  chick:           { x: 380, y: 420, size: 100, state: 'mouth-closed' },
+  bat:             { x: 420, y: 180, size: 100, state: 'mouth-closed' },
+  birdhouse:       { x: 380, y: 420, size: 100, state: 'start' },
   pig:             { x: 360, y: 420, size: 100 },
   duckRabbitSwing: { x: 360, y: 420, size: 100 },
   trayA:           { x: 500, y: 420, size: 80 },
@@ -27,8 +27,8 @@ const basePositions = {
 };
 
 const sceneCharacters = {};
-// Optional position/size overrides per scene
-// sceneCharacterSettings[scene][character] = {x, y, size}
+// Optional position/size/pose overrides per scene
+// sceneCharacterSettings[scene][character] = {x, y, size, state}
 const sceneCharacterSettings = {};
 
 function addChar(scene, name) {
@@ -94,6 +94,18 @@ sceneCharacterSettings['farmMap'] = {
   sheep:     { x: 420, y: 380, size: 100 },
   sheepbaby: { x: 500, y: 420, size: 80 },
   pig:       { x: 260, y: 460, size: 100 }
+};
+
+sceneCharacterSettings['pond2'] = {
+  duck: { state: 'swim-down' }
+};
+
+sceneCharacterSettings['cave'] = {
+  duck: { state: 'backwards' }
+};
+
+sceneCharacterSettings['dogHouse'] = {
+  dog: { state: 'sad' }
 };
 
 sceneCharacterSettings['barn'] = {
