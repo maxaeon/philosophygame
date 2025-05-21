@@ -57,7 +57,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'I think those vegetables are around here somewhere...' }
   ],
   cave: [
-    { speaker: 'duck', text: 'Found them!' },
+    { speaker: 'duck', text: 'Found them!', pose: 'backwards' },
     { speaker: 'rabbit', text: "Silly Duck, you've mistaken shadows for reality!" },
     { speaker: 'duck', text: 'Oh, reality is so much brighter and better!' }
   ],
@@ -131,6 +131,7 @@ const dialogues = {
 
 let dialogueActive = false;
 const dialoguesPlayed = {};
+let duckFacingBackwards = false;
 
 function setCharacterState(name, speaking, pose) {
   const ch = window[name];
@@ -140,7 +141,9 @@ function setCharacterState(name, speaking, pose) {
     ch.setState(pose || 'default');
   } else {
     // When done speaking, return to the neutral mouth-closed pose
-    if (ch.states.includes('mouth-closed')) {
+    if (name === 'duck' && duckFacingBackwards) {
+      ch.setState('backwards');
+    } else if (ch.states.includes('mouth-closed')) {
       ch.setState('mouth-closed');
     } else if (ch.states.includes('closed')) {
       ch.setState('closed');
@@ -162,11 +165,21 @@ function playDialogue(scene, callback) {
   const box = document.getElementById('dialogueBox');
   const continueBtn = document.getElementById('continueBtn');
   if (continueBtn) continueBtn.style.display = 'none';
+  if (scene === 'cave') {
+    duckFacingBackwards = true;
+    const d = window.duck;
+    if (d && typeof d.setState === 'function') {
+      d.setState('backwards');
+    }
+  }
   dialogueActive = true;
   box.style.display = 'block';
   let index = 0;
   let prevSpeaker = null;
   function next() {
+    if (scene === 'cave' && index === 2) {
+      duckFacingBackwards = false;
+    }
     if (prevSpeaker) setCharacterState(prevSpeaker, false);
     if (index >= lines.length) {
       box.style.display = 'none';
@@ -196,4 +209,5 @@ if (typeof window !== 'undefined') {
   window.playDialogue = playDialogue;
   window.dialoguesPlayed = dialoguesPlayed;
   window.isDialogueActive = () => dialogueActive;
+  window.duckFacingBackwards = () => duckFacingBackwards;
 }

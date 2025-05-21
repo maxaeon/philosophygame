@@ -40,7 +40,12 @@ function preload() {
     'right',
     'left-eyes-closed',
     'slight-left',
-    'mouth-closed'
+    'mouth-closed',
+    'backwards',
+    'swim-up',
+    'swim-down',
+    'swim-right',
+    'swim-left'
   ]);
   rabbit = new Character('rabbit', ['right-talking', 'mouth-closed']);
   // Donkey has a default image plus open and closed mouth states
@@ -350,6 +355,10 @@ function draw() {
         if (moveRight) duck.baseX += duckMoveSpeed;
         if (moveUp)    duck.baseY -= duckMoveSpeed;
         if (moveDown)  duck.baseY += duckMoveSpeed;
+        if (moveLeft)      duck.setState('swim-left');
+        else if (moveRight) duck.setState('swim-right');
+        else if (moveUp)    duck.setState('swim-up');
+        else if (moveDown)  duck.setState('swim-down');
       } else if (duckTargetX !== null && duckTargetY !== null) {
         const dx = duckTargetX - duck.baseX;
         const dy = duckTargetY - duck.baseY;
@@ -363,8 +372,15 @@ function draw() {
           duckTargetX = null;
           duckTargetY = null;
         }
+        duck.setState('mouth-closed');
+      } else {
+        duck.setState('mouth-closed');
       }
     }
+  }
+  if (currentScene !== 'pond2' &&
+      ['swim-left','swim-right','swim-up','swim-down'].includes(duck.state)) {
+    duck.setState('mouth-closed');
   }
   if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
     sceneHistory.push(currentScene);
