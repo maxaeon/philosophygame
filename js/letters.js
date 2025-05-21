@@ -1,7 +1,6 @@
 let letters = [];
 let lettersFoundCount = 0;
 let pendingDialogueScene = null;
-let letterContinueHandler = null;
 
 function preloadLetters() {
   letters.push({
@@ -257,14 +256,6 @@ function handleLetterClicks(mx, my) {
           if (lettersFoundCount === 26 && typeof playSound === 'function') {
             playSound('win');
           }
-          if (l.letter === 'D' && l.scene === 'pond2') {
-            const btn = document.getElementById('continueBtn');
-            if (btn) btn.style.display = 'block';
-          }
-          if (l.letter === 'Q' && l.scene === 'bench') {
-            const btn = document.getElementById('continueBtn');
-            if (btn) btn.style.display = 'block';
-          }
         }
         if (l.letter === 'G') {
           letterGFound = true;
@@ -317,14 +308,6 @@ function checkDuckLetterCollision(duck) {
         if (lettersFoundCount === 26 && typeof playSound === 'function') {
           playSound('win');
         }
-        if (l.letter === 'D' && l.scene === 'pond2') {
-          const btn = document.getElementById('continueBtn');
-          if (btn) btn.style.display = 'block';
-        }
-        if (l.letter === 'Q' && l.scene === 'bench') {
-          const btn = document.getElementById('continueBtn');
-          if (btn) btn.style.display = 'block';
-        }
       }
       if (l.letter === 'G') {
         letterGFound = true;
@@ -360,13 +343,24 @@ function showLetterInfo(letter) {
   if (saveBtn) {
     saveBtn.onclick = () => {
       letter.answer = input.value.slice(0, 50);
-      box.style.display = 'none';
+      closeLetterInfo();
     };
   }
   if (closeBtn) {
     closeBtn.onclick = () => {
-      box.style.display = 'none';
+      closeLetterInfo();
     };
+  }
+}
+
+function closeLetterInfo() {
+  const box = document.getElementById('letterInfoBox');
+  if (box) {
+    box.style.display = 'none';
+  }
+  if (pendingDialogueScene) {
+    playDialogue(pendingDialogueScene);
+    pendingDialogueScene = null;
   }
 }
 
@@ -467,23 +461,7 @@ function highlightMissingLetters(scene) {
 
 function showContinueForDialogue(scene) {
   const btn = document.getElementById('continueBtn');
-  if (!btn) return;
+  if (btn) btn.style.display = 'none';
   pendingDialogueScene = scene;
-  btn.style.display = 'block';
-  btn.removeEventListener('click', advanceScene);
-  if (letterContinueHandler) {
-    btn.removeEventListener('click', letterContinueHandler);
-  }
-  letterContinueHandler = () => {
-    btn.style.display = 'none';
-    btn.removeEventListener('click', letterContinueHandler);
-    letterContinueHandler = null;
-    btn.addEventListener('click', advanceScene);
-    if (pendingDialogueScene) {
-      playDialogue(pendingDialogueScene);
-      pendingDialogueScene = null;
-    }
-  };
-  btn.addEventListener('click', letterContinueHandler);
 }
 
