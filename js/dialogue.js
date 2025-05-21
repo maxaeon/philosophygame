@@ -82,7 +82,8 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Yes, this is so fun!' }
   ],
   dogHouse: [
-    { speaker: 'dog', text: "I'm sad; people ask me if I am a pitbull, or dalmation, or herding dog, and assume I'm dangerous because of how I look.", pose: 'sad' },
+    { speaker: 'rabbit', text: "Oh no, Dog, are you okay?" },
+    { speaker: 'dog', text: "I'm sad; people say I look like a pitbull, or dalmation, or herding dog, and assume I'm dangerous because of it.", pose: 'sad' },
     { speaker: 'duck', text: "That's just like when I thought shadows were reality. I judged too quickly by appearances, but that's wrong to do." },
     { speaker: 'rabbit', text: "We won't judge you too quickly- we'd love to be your friends!" },
     { speaker: 'dog', text: 'Really? Thank you!' }
