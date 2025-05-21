@@ -67,6 +67,7 @@ function handleSceneClicks(mx, my) {
         my > area.y &&
         my < area.y + area.h;
       if (withinArea) {
+        if (typeof playSound === 'function') playSound('click');
         currentScene = area.name;
         if (typeof orderedScenes !== 'undefined') {
           const idx = orderedScenes.indexOf(area.name);
@@ -82,7 +83,10 @@ function handleSceneClicks(mx, my) {
       my >= char.y && my <= char.y + char.size;
 
     if (typeof dog !== 'undefined' && withinChar(dog)) {
-      if (typeof playSound === 'function') playSound('dog');
+      if (typeof playSound === 'function') {
+        playSound('click');
+        playSound('dog');
+      }
       currentScene = 'dogHouse';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('dogHouse');
@@ -94,7 +98,10 @@ function handleSceneClicks(mx, my) {
       typeof sheep !== 'undefined' && withinChar(sheep) ||
       typeof sheepbaby !== 'undefined' && withinChar(sheepbaby)
     ) {
-      if (typeof playSound === 'function') playSound('sheep');
+      if (typeof playSound === 'function') {
+        playSound('click');
+        playSound('sheep');
+      }
       currentScene = 'field';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('field');
@@ -103,7 +110,10 @@ function handleSceneClicks(mx, my) {
     }
 
     if (typeof pig !== 'undefined' && withinChar(pig)) {
-      if (typeof playSound === 'function') playSound('pig');
+      if (typeof playSound === 'function') {
+        playSound('click');
+        playSound('pig');
+      }
       currentScene = 'swing';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('swing');
@@ -112,7 +122,10 @@ function handleSceneClicks(mx, my) {
     }
 
     if (typeof owl !== 'undefined' && withinChar(owl)) {
-      if (typeof playSound === 'function') playSound('owl');
+      if (typeof playSound === 'function') {
+        playSound('click');
+        playSound('owl');
+      }
       currentScene = 'flowers';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('flowers');
@@ -144,6 +157,7 @@ function handleSceneClicks(mx, my) {
         trayB.baseY = tY;
       };
       if (withinTrayA) {
+        if (typeof playSound === 'function') playSound('click');
         if (trayOnTable !== 'trayA') swapTrays();
         trayOnTable = 'trayA';
         trayA.reset();
@@ -154,6 +168,7 @@ function handleSceneClicks(mx, my) {
         trayChoiceMade = true;
         clicked = true;
       } else if (withinTrayB) {
+        if (typeof playSound === 'function') playSound('click');
         if (trayOnTable !== 'trayB') swapTrays();
         trayOnTable = 'trayB';
         trayA.reset();
@@ -173,6 +188,7 @@ function handleSceneClicks(mx, my) {
         mx >= area.x && mx <= area.x + area.w &&
         my >= area.y && my <= area.y + area.h;
       if (within) {
+        if (typeof playSound === 'function') playSound('click');
         currentScene = area.name;
         if (area.name === 'loftEntrance') {
           sceneIndex = orderedScenes.indexOf('loftEntrance');
