@@ -1,7 +1,10 @@
 const dialogues = {
   start: [
     { speaker: 'duck', text: 'Welcome to the Duck-Rabbit Farm!' },
-    { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' }
+    { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' },
+    { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
+    { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
+    { speaker: 'duck', text: 'Right—sometimes it can be both at once.' }
   ],
   benchIntro: [
     { speaker: 'duck', text: 'When you see letters around the farm, try clicking on them!' },
