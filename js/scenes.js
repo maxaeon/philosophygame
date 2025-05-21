@@ -188,6 +188,7 @@ function handleSceneClicks(mx, my) {
     if (clicked) return;
   }
   if (currentScene === 'barnInside') {
+    if (typeof isDialogueActive === 'function' && isDialogueActive()) return;
     scenes.barnInsideAreas.forEach(area => {
       const within =
         mx >= area.x && mx <= area.x + area.w &&
