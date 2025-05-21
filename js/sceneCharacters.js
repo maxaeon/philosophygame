@@ -7,12 +7,85 @@ const defaultScenes = [
   'radioRoom','studio','start'
 ];
 
+const basePositions = {
+  duck:            { x: 360, y: 420, size: 100 },
+  rabbit:          { x: 420, y: 420, size: 100 },
+  donkey:          { x: 380, y: 420, size: 100 },
+  dog:             { x: 620, y: 440, size: 100 },
+  sheep:           { x: 460, y: 420, size: 100 },
+  sheepbaby:       { x: 520, y: 440, size: 80 },
+  owl:             { x: 380, y: 420, size: 100 },
+  graytortiecat:   { x: 380, y: 420, size: 100 },
+  orangecat:       { x: 450, y: 430, size: 100 },
+  chick:           { x: 380, y: 420, size: 100 },
+  bat:             { x: 420, y: 180, size: 100 },
+  birdhouse:       { x: 380, y: 420, size: 100 },
+  pig:             { x: 360, y: 420, size: 100 },
+  duckRabbitSwing: { x: 360, y: 420, size: 100 },
+  trayA:           { x: 500, y: 420, size: 80 },
+  trayB:           { x: 360, y: 420, size: 80 }
+};
+
 const sceneCharacters = {};
 // Optional position/size overrides per scene
 // sceneCharacterSettings[scene][character] = {x, y, size}
 const sceneCharacterSettings = {};
 
-// Arrange characters on the farm map so they don't overlap
+function addChar(scene, name) {
+  sceneCharacters[scene].push(name);
+  if (!sceneCharacterSettings[scene]) sceneCharacterSettings[scene] = {};
+  const base = basePositions[name];
+  if (base) {
+    sceneCharacterSettings[scene][name] = { ...base };
+  }
+}
+
+defaultScenes.forEach(scene => {
+  sceneCharacters[scene] = [];
+  addChar(scene, 'duck');
+  addChar(scene, 'rabbit');
+});
+
+['flowers', 'flowers2', 'loft', 'farmMap'].forEach(scene => {
+  addChar(scene, 'owl');
+});
+
+['flowers', 'grass', 'flowers2'].forEach(scene => {
+  addChar(scene, 'birdhouse');
+});
+
+addChar('barn', 'donkey');
+addChar('barn', 'bat');
+addChar('donkey', 'donkey');
+addChar('donkey', 'orangecat');
+
+// Dog appears only in the dogHouse, barn, and farmMap scenes
+['dogHouse', 'barn', 'farmMap'].forEach(scene => {
+  addChar(scene, 'dog');
+});
+
+addChar('loftEntrance', 'graytortiecat');
+
+['farmMap', 'field', 'barn'].forEach(scene => {
+  addChar(scene, 'sheep');
+  addChar(scene, 'sheepbaby');
+});
+
+addChar('radioRoom', 'chick');
+addChar('barnInside', 'bat');
+
+['farmMap', 'swing', 'swing2'].forEach(scene => {
+  addChar(scene, 'pig');
+});
+
+addChar('greenhouseInside', 'trayA');
+addChar('greenhouseInside', 'trayB');
+
+// Use combined duck/rabbit swing animation in swing2
+sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' && c !== 'rabbit');
+sceneCharacters['swing2'].push('duckRabbitSwing');
+
+// Scene-specific position overrides
 sceneCharacterSettings['farmMap'] = {
   duck:      { x: 60,  y: 500, size: 80 },
   rabbit:    { x: 150, y: 500, size: 80 },
@@ -30,48 +103,6 @@ sceneCharacterSettings['barn'] = {
 
 sceneCharacterSettings['swing'] = { pig: { size: 300 } };
 sceneCharacterSettings['swing2'] = { pig: { size: 300 } };
-
-defaultScenes.forEach(scene => {
-  sceneCharacters[scene] = ['duck', 'rabbit'];
-});
-
-['flowers', 'flowers2', 'loft', 'farmMap'].forEach(scene => {
-  sceneCharacters[scene].push('owl');
-});
-
-['flowers', 'grass', 'flowers2'].forEach(scene => {
-  sceneCharacters[scene].push('birdhouse');
-});
-
-sceneCharacters.barn.push('donkey');
-sceneCharacters.barn.push('bat');
-sceneCharacters.donkey.push('donkey');
-sceneCharacters.donkey.push('orangecat');
-
-// Dog appears only in the dogHouse, barn, and farmMap scenes
-['dogHouse', 'barn', 'farmMap'].forEach(scene => {
-  sceneCharacters[scene].push('dog');
-});
-
-sceneCharacters.loftEntrance.push('graytortiecat');
-
-['farmMap', 'field', 'barn'].forEach(scene => {
-  sceneCharacters[scene].push('sheep', 'sheepbaby');
-});
-
-sceneCharacters.radioRoom.push('chick');
-sceneCharacters.barnInside.push('bat');
-
-['farmMap', 'swing', 'swing2'].forEach(scene => {
-  sceneCharacters[scene].push('pig');
-});
-
-sceneCharacters.greenhouseInside.push('trayA');
-sceneCharacters.greenhouseInside.push('trayB');
-
-// Use combined duck/rabbit swing animation in swing2
-sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' && c !== 'rabbit');
-sceneCharacters['swing2'].push('duckRabbitSwing');
 
 if (typeof window !== 'undefined') {
   window.sceneCharacters = sceneCharacters;

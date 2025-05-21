@@ -46,21 +46,17 @@ function preload() {
     'swim-down',
     'swim-right',
     'swim-left'
-  ]);
-  rabbit = new Character('rabbit', ['right-talking', 'mouth-closed']);
+  ], 100, 360, 420);
+  rabbit = new Character('rabbit', ['right-talking', 'mouth-closed'], 100, 420, 420);
   // Donkey has a default image plus open and closed mouth states
-  donkey = new Character('donkey', ['open', 'closed', 'mouth-closed']);
+  donkey = new Character('donkey', ['open', 'closed', 'mouth-closed'], 100, 380, 420);
   donkey.images['idle'] = loadImage('assets/images/donkey/default.png');
   donkey.state = 'mouth-closed';
-  donkey.x = 380;
-  donkey.y = 420;
   donkey.initBase();
 
-  dog = new Character('dog', ['happy', 'sad', 'mouth-closed']);
+  dog = new Character('dog', ['happy', 'sad', 'mouth-closed'], 100, 620, 440);
   dog.images['idle'] = loadImage('assets/images/dog/default.png');
   dog.state = 'mouth-closed';
-  dog.x = 620;
-  dog.y = 440;
   dog.initBase();
 
   sheep = new Character('sheep', [
@@ -71,17 +67,13 @@ function preload() {
     'right',
     'walking',
     'mouth-closed'
-  ]);
+  ], 100, 460, 420);
   sheep.state = 'mouth-closed';
-  sheep.x = 460;
-  sheep.y = 420;
   sheep.initBase();
 
-  sheepbaby = new Character('sheepbaby', ['slight-right', 'mouth-closed']);
+  sheepbaby = new Character('sheepbaby', ['slight-right', 'mouth-closed'], 80, 520, 440);
   sheepbaby.images['idle'] = loadImage('assets/images/sheepbaby/default.png');
   sheepbaby.state = 'mouth-closed';
-  sheepbaby.x = 520;
-  sheepbaby.y = 440;
   sheepbaby.initBase();
 
   owl = new Character('owl', [
@@ -89,9 +81,9 @@ function preload() {
     'eyes-closed',
     'mouth-open',
     'mouth-closed'
-  ]);
+  ], 100, 380, 420);
 
-  graytortiecat = new Character('graytortiecat', ['fluffy', 'hairless', 'mouth-closed']);
+  graytortiecat = new Character('graytortiecat', ['fluffy', 'hairless', 'mouth-closed'], 100, 380, 420);
   graytortiecat.images['idle'] = loadImage('assets/images/graytortiecat/default.png');
   graytortiecat.state = 'mouth-closed';
 
@@ -104,28 +96,22 @@ function preload() {
     'walk2',
     'walk3',
     'mouth-closed'
-  ]);
+  ], 100, 450, 430);
   orangecat.images['idle'] = loadImage('assets/images/orangecat/default.png');
   orangecat.state = 'mouth-closed';
-  orangecat.x = 450;
-  orangecat.y = 430;
   orangecat.initBase();
 
-  chick = new Character('chick', ['eggcited', 'in-egg-closed', 'in-egg-open', 'mouth-closed']);
+  chick = new Character('chick', ['eggcited', 'in-egg-closed', 'in-egg-open', 'mouth-closed'], 100, 380, 420);
   chick.images['idle'] = loadImage('assets/images/chick/default.png');
   chick.state = 'mouth-closed';
 
-  bat = new Character('bat', ['mouth-closed']);
+  bat = new Character('bat', ['mouth-closed'], 100, 420, 180);
   bat.images['idle'] = loadImage('assets/images/bat/default.png');
   bat.state = 'mouth-closed';
-  bat.x = 420;
-  bat.y = 180;
   bat.initBase();
 
-  birdhouse = new Character('birdhouse', ['start', 'midway', 'done']);
+  birdhouse = new Character('birdhouse', ['start', 'midway', 'done'], 100, 380, 420);
   birdhouse.state = 'start';
-  birdhouse.x = 380;
-  birdhouse.y = 420;
   birdhouse.initBase();
   birdhouse.update = function() {
     if (currentScene === 'flowers2') {
