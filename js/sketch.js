@@ -333,6 +333,7 @@ function draw() {
       moveLeft = moveRight = moveUp = moveDown = false;
       duckTargetX = null;
       duckTargetY = null;
+      duck.setState('swim-down');
     } else {
       if (moveLeft || moveRight || moveUp || moveDown) {
         duckTargetX = null;
@@ -358,9 +359,13 @@ function draw() {
           duckTargetX = null;
           duckTargetY = null;
         }
-        duck.setState('mouth-closed');
+        if (Math.abs(dx) > Math.abs(dy)) {
+          duck.setState(dx > 0 ? 'swim-right' : 'swim-left');
+        } else {
+          duck.setState(dy > 0 ? 'swim-down' : 'swim-up');
+        }
       } else {
-        duck.setState('mouth-closed');
+        duck.setState('swim-down');
       }
     }
   }

@@ -136,6 +136,15 @@ let duckFacingBackwards = false;
 function setCharacterState(name, speaking, pose) {
   const ch = window[name];
   if (!ch || typeof ch.setState !== 'function') return;
+  if (name === 'duck' && typeof currentScene !== 'undefined' && currentScene === 'pond2') {
+    if (speaking) {
+      ch.setState(pose || 'default');
+    } else {
+      const swims = ['swim-left', 'swim-right', 'swim-up', 'swim-down'];
+      if (!swims.includes(ch.state)) ch.setState('swim-down');
+    }
+    return;
+  }
   if (speaking) {
     // Use the default talking image unless a specific pose is provided
     ch.setState(pose || 'default');
