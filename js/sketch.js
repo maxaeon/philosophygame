@@ -5,7 +5,7 @@ let currentScene = 'start';
 var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, birdhouse, pig, duckRabbitSwing, trayA, trayB;
 let letterGFound = false;
 let letterHFound = false;
-let duckRabbitIcons = [], duckRabbitIconIndex = 0, barnIcon;
+let duckRabbitIcons = [], duckRabbitIconIndex = 0, barnIcon, answersIcon;
 let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
@@ -99,6 +99,17 @@ function updateCursor() {
         }
       }
     }
+  }
+
+  if (
+    !usePointer &&
+    lettersFoundCount > 0 &&
+    mouseX >= width - 130 &&
+    mouseX <= width - 80 &&
+    mouseY >= 10 &&
+    mouseY <= 60
+  ) {
+    usePointer = true;
   }
 
   cursor(usePointer ? 'pointer' : 'default');
@@ -399,6 +410,7 @@ function preload() {
   ];
   barnIcon = loadImage('assets/images/icons/barndefault.png');
   mapIcon = loadImage('assets/images/icons/map.png');
+  answersIcon = loadImage('assets/images/icons/rabbit.png');
 
   preloadScenes();
   preloadLetters();
@@ -594,6 +606,25 @@ function draw() {
     }
     image(mapIcon, dx, dy, dSize, dSize);
   }
+  if (lettersFoundCount > 0) {
+    let aSize = 50;
+    let ax = width - 130;
+    let ay = 10;
+    let adSize = aSize;
+    let adx = ax;
+    let ady = ay;
+    if (
+      mouseX >= ax &&
+      mouseX <= ax + aSize &&
+      mouseY >= ay &&
+      mouseY <= ay + aSize
+    ) {
+      adSize *= 1.05;
+      adx -= (adSize - aSize) / 2;
+      ady -= (adSize - aSize) / 2;
+    }
+    image(answersIcon, adx, ady, adSize, adSize);
+  }
   let drSize = currentScene === 'start' ? 200 : 60;
   let drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
   let drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
@@ -688,6 +719,21 @@ function mousePressed() {
       return;
     }
   }
+  if (lettersFoundCount > 0) {
+    const aSize = 50;
+    const ax = width - 130;
+    const ay = 10;
+    if (
+      mouseX >= ax &&
+      mouseX <= ax + aSize &&
+      mouseY >= ay &&
+      mouseY <= ay + aSize
+    ) {
+      if (typeof playSound === 'function') playSound('click');
+      showAnswers();
+      return;
+    }
+  }
   const drSize = currentScene === 'start' ? 200 : 60;
   const drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
   const drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
@@ -720,6 +766,28 @@ function showAdvice() {
     box.onclick = null;
   };
   highlightMissingLetters(currentScene);
+}
+
+function showAnswers() {
+  const box = document.getElementById('answersBox');
+  const content = document.getElementById('answersContent');
+  if (!box || !content) return;
+  let html = '';
+  letters.forEach(l => {
+    html += `<div class="answer-row"><strong>${l.letter} for ${l.concept}</strong><br><em>${l.question}</em><br><input type="text" maxlength="50" value="${l.answer || ''}" data-letter="${l.letter}"></div>`;
+  });
+  content.innerHTML = html;
+  box.style.display = 'block';
+  const closeBtn = document.getElementById('closeAnswersBtn');
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      content.querySelectorAll('input[data-letter]').forEach(inp => {
+        const lt = letters.find(x => x.letter === inp.dataset.letter);
+        if (lt) lt.answer = inp.value.slice(0, 50);
+      });
+      box.style.display = 'none';
+    };
+  }
 }
 
 function updateBenchRestDialogue() {
