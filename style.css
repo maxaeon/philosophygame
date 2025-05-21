@@ -117,3 +117,12 @@ canvas {
   z-index: 11;
   text-align: center;
 }
+
+#footer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: #333;
+}
