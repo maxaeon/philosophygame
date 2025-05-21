@@ -165,6 +165,14 @@ function setCharacterState(name, speaking, pose) {
     ch.setState('swim-down');
     return;
   }
+  if (name === 'chick') {
+    if (speaking) {
+      ch.setState('in-egg-open');
+    } else {
+      ch.setState('default');
+    }
+    return;
+  }
   if (speaking) {
     // Use the default talking image unless a specific pose is provided
     ch.setState(pose || 'default');
