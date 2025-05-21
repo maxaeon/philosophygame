@@ -390,6 +390,7 @@ function draw() {
   if (
     !isDialogueActive() &&
     currentScene !== 'bench' &&
+    !pendingDialogueScene &&
     allLettersFoundForScene(currentScene) &&
     !dialoguesPlayed[currentScene]
   ) {
@@ -546,9 +547,13 @@ function goBackScene() {
           continueBtn.style.display = 'block';
         }
       });
-    } else if (sceneHasLetters(currentScene) && allLettersFoundForScene(currentScene)) {
-      playDialogue(currentScene);
-    }
+  } else if (
+    sceneHasLetters(currentScene) &&
+    allLettersFoundForScene(currentScene) &&
+    !pendingDialogueScene
+  ) {
+    playDialogue(currentScene);
+  }
   }
 }
 
