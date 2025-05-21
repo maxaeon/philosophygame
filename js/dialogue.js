@@ -4,39 +4,35 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Click Continue and look for letters to learn more.' },
     { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
     { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
-    { speaker: 'duck', text: 'Right—sometimes it can be both at once.' }
+    { speaker: 'duck', text: 'Right—maybe sometimes the answer isn/t just yes or no!' }
   ],
   benchIntro: [
     { speaker: 'duck', text: 'When you see letters around the farm, try clicking on them!' },
-    { speaker: 'rabbit', text: 'Each one will tell us something new.' }
+    { speaker: 'rabbit', text: 'Each one will tell us something fascinating.' }
   ],
   benchRest: [
     { speaker: 'duck', text: 'Take a seat, Rabbit. Let\'s rest for a bit.' },
-    { speaker: 'rabbit', text: 'Good idea! We still have many letters to find.' }
+    { speaker: 'rabbit', text: 'Good idea! We still have a lot to explore.' }
   ],
   pond: [
-    { speaker: 'duck', text: 'Nature sure is beautiful.' },
-    { speaker: 'rabbit', text: "Yes, there's so much to discover. Let's keep exploring!" }
+    { speaker: 'duck', text: 'Nature sure is incredible- there is always something new to notice.' },
+    { speaker: 'rabbit', text: "Yes, and every discovery changes how we see the world!!" }
   ],
   pond2: [
     { speaker: 'rabbit', text: "Duck, you're lucky you can swim!" },
-    { speaker: 'duck', text: "It's great we're different—each with our own skills!" },
-    { speaker: 'duck', text: 'Try guiding me around! Can you find the hidden letter?' }
+    { speaker: 'duck', text: "Thanks! Our differences make us special. Help me find the letter hidden here."}
   ],
   flowers: [
-    { speaker: 'owl', text: "Duck, Rabbit, can you help me? The robin family's birdhouse needs repairs before the eggs hatch!" },
-    { speaker: 'duck', text: "Of course! Let's get started." },
+    { speaker: 'owl', text: "Duck, Rabbit, can you help me? The Robin family's birdhouse needs repairs before the eggs hatch!" },
     { speaker: 'rabbit', text: "Of course! Let's get started." }
   ],
   grass: [
-    { speaker: 'duck', text: 'As we replace these boards, is it still the same birdhouse?' },
-    { speaker: 'rabbit', text: 'Or is it becoming a totally new one?' },
-    { speaker: 'duck', text: 'Hmm, a bit like the Ship of Theseus!' }
+    { speaker: 'duck', text: 'We’ve changed so many parts—is it still the same birdhouse?' },
+    { speaker: 'rabbit', text: 'Interesting question! If we replace every piece, does it stay the same, or become something new?' }
   ],
   flowers2: [
-    { speaker: 'owl', text: "Thank you so much! I've left some seedlings for you both in the greenhouse." },
-    { speaker: 'duck', text: "Let's go see!" },
-    { speaker: 'rabbit', text: "I'm excited to plant something new!" }
+    { speaker: 'owl', text: "Thank you both! As a token of my gratitude, I left seedlings in the greenhouse for you." },
+    { speaker: 'duck', text: "Thank you, Owl! Let's go see!" }
   ],
   greenhouse: [
     { speaker: 'duck', text: "Here's the greenhouse! Let's check out our seedlings." }
@@ -54,7 +50,7 @@ const dialogues = {
   ],
   vegetables: [
     { speaker: 'duck', text: "I'm getting hungry." },
-    { speaker: 'rabbit', text: 'Let\'s grab some food from my tunnels under the garden.' }
+    { speaker: 'rabbit', text: 'Let\'s grab a tasty treat from my tunnels beneath the garden.' }
   ],
   tunnel: [
     { speaker: 'rabbit', text: 'I think those vegetables are around here somewhere...' }
@@ -78,57 +74,75 @@ const dialogues = {
   ],
   swing: [
     { speaker: 'duck', text: 'Hey Pig, mind if we share the swing?' },
-    { speaker: 'pig', text: 'Sure! There\'s room for everyone.' }
+    { speaker: 'pig', text: 'Sure! That/s only fair.' }
   ],
   swing2: [
     { speaker: 'duck', text: 'Thanks for sharing, Pig!' },
-    { speaker: 'rabbit', text: 'Thanks for sharing, Pig!' }
+    { speaker: 'rabbit', text: 'Yes, this is so fun!' }
   ],
   dogHouse: [
-    { speaker: 'dog', text: "I'm sad; people fear me just because of how I look.", pose: 'sad' },
-    { speaker: 'duck', text: 'We understand, we judged shadows as reality before knowing the truth.' },
-    { speaker: 'rabbit', text: "We'd love to be your friends!" },
+    { speaker: 'dog', text: "I'm sad; people ask me if I am a pitbull, or dalmation, or herding dog, and assume I'm dangerous because of how I look.", pose: 'sad' },
+    { speaker: 'duck', text: 'That/s just like when I thought shadows were reality. I judged too quickly by appearances, but that/s wrong to do.' },
+    { speaker: 'rabbit', text: "We won't judge you too quickly- we'd love to be your friends!" },
     { speaker: 'dog', text: 'Really? Thank you!' }
   ],
   field: [
     { speaker: 'rabbit', text: 'Are these real sheep?' },
     { speaker: 'sheep', text: "I don't think we are robots!" },
-    { speaker: 'duck', text: 'Good point!' }
+    { speaker: 'duck', text: 'Hmm, you kind of look like fake sheep to me...' }
   ],
   barn: [
     { speaker: 'duck', text: 'Should we talk to Donkey, explore the barn, or look at the map?' },
     { speaker: 'rabbit', text: 'You decide!' }
   ],
   donkey: [
-    { speaker: 'rabbit', text: 'Donkey, can we share your strawberries?' },
+    {  speaker: 'donkey', text: 'Hi Duck and Rabbit! I brought a load of sweet strawberries to share with everyone.},
+    {speaker: 'rabbit', text: 'I think it would be most fair to share them evenly with everyone!' },
     { speaker: 'orangecat', text: 'Those hurt my belly! Maybe we can share something else?' },
-    { speaker: 'duck', text: 'How about some milk instead? That seems fair!' }
+     {  speaker: 'rabbit', text: 'Oh, no! I didn/t think about how different animals have different needs!' },
+    { speaker: 'donkey', text: 'How about some milk instead for those who don/t like strawberries? I have some in my cart!'},
+    {speaker: 'duck', text: 'That seems fair!' },
+    {speaker: 'cat', text: 'I/d love that! But what about animals who need more to feel full?'},
+    {speaker: 'rabbit', text: 'I think it would be most fair to give every animal a belly full of a treat they like!'}
   ],
   barnInside: [
-    { speaker: 'duck', text: "We've always wondered what it's like to be a bat!" },
-    { speaker: 'bat', text: 'I fly and see with my ears!' },
+    { speaker: 'rabbit', text: "We've always wondered, what is it like to be a bat?" },
+    { speaker: 'bat', text: 'I enjoy sleeping in the dark barn during the day.'},
+     { speaker: 'duck', text: 'But what about swimming in bright ponds?'},
+        { speaker: 'bat', text: 'Swimming and bright ponds aren/t fun for me. I fly around at night...'},
+     { speaker: 'duck', text: 'I/ll fly when I/m older!'},
+      {speaker: 'bat', text: 'Not quite like me- I /see/ with my ears!' },
     { speaker: 'rabbit', text: 'Impossible!' },
-    { speaker: 'bat', text: "Possible for bats! It's wonderful to appreciate each other's differences." }
+    { speaker: 'bat', text: "Possible for bats!'},
+      { speaker: 'rabbit', text: 'I can/t imagine that... I guess we will never know what it/s like to be a bat!'},
+      { speaker: 'bat', text: "It's true we cannot know what it's like to be each other-- but we can appreciate our differences!" }
   ],
   studio: [
-    { speaker: 'duck', text: 'Paint and canvas! What makes this art?' },
-    { speaker: 'rabbit', text: 'Maybe the intention behind it?' }
+    { speaker: 'duck', text: 'Paint and canvas! How fun!' },
+    { speaker: 'rabbit', text: 'What kind of art do you like to make?' }
   ],
   mirror: [
     { speaker: 'duck', text: "Look, it's you! You're special!" },
     { speaker: 'rabbit', text: 'Yes, uniquely wonderful!' }
   ],
   radioRoom: [
+    { speaker: 'radio', text: '...and that concludes our podcast on The Complete Physical Account of Color Vision.'},
     { speaker: 'chick', text: 'Colors and light—I know all about them!' },
     { speaker: 'duck', text: "But do you know what it's like to actually see colors?" },
+    {speaker: 'chick', text: 'Not yet, but let me finish hatching and I will!'},
     { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.' }
   ],
   loftEntrance: [
-    { speaker: 'graytortiecat', text: 'If I changed completely, would I still be me?' },
-    { speaker: 'rabbit', text: 'Interesting question! What makes us who we are?' }
+    { speaker: 'graytortiecat', text: 'Duck and Rabbit, can you help me? I was wondering, how different could I be and still be a cat?' },
+    { speaker: 'rabbit', text: 'Interesting question! What makes us who or what we are?' },
+    { speaker: 'graytortiecat', text: 'What if I was hairless, or had extra long fur? Or wagged my tail and barked?'},
+    { speaker: 'duck', text: 'If you barked, I think you would be a dog!'},
+    { speaker: 'rabbit', text: 'That is not true- some rodents bark! That doesn/t make them dogs.'},
+      {speaker: 'graytortiecat', text: 'Hmm, I don/t know if there/s an easy answer to this, but keep thinking about it and let me know if you have any ideas!'}
   ],
   loft: [
-    { speaker: 'owl', text: "Let's meditate together. Close your eyes. Focus your thoughts and relax." }
+    { speaker: 'owl', text: "Let's meditate together."},
+    { speaker: 'owl', text: "Close your eyes. Breathe deeply, calm your mind, and relax." }
   ]
 };
 
