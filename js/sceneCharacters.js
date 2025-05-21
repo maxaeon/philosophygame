@@ -59,8 +59,8 @@ addChar('barn', 'bat');
 addChar('donkey', 'donkey');
 addChar('donkey', 'orangecat');
 
-// Dog appears only in the dogHouse, barn, and farmMap scenes
-['dogHouse', 'barn', 'farmMap'].forEach(scene => {
+// Dog appears only in the dogHouse and farmMap scenes
+['dogHouse', 'farmMap'].forEach(scene => {
   addChar(scene, 'dog');
 });
 
@@ -159,9 +159,8 @@ sceneCharacterSettings['field'] = {
 sceneCharacterSettings['barn'] = {
   donkey: { x: 500, size: 300 },
   bat: { x: 420, y: 180 },
-  dog: { x: 50, y: 200, size: 35 },
-  sheep: { x: 120, y: 200, size: 35 },
-  sheepbaby: { x: 180, y: 200, size: 35 },
+  sheep: { x: 120, y: 300, size: 35 },
+  sheepbaby: { x: 180, y: 300, size: 35 },
   duck: { x: 360, y: 500, size: 100 },
   rabbit: { x: 420, y: 500, size: 100 }
 };
