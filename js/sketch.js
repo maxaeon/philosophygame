@@ -33,6 +33,77 @@ function clampDuckPond2() {
   if (duck.baseY > maxY) duck.baseY = maxY;
 }
 
+function updateCursor() {
+  let usePointer = false;
+
+  const chars = sceneCharacters?.[currentScene];
+  if (Array.isArray(chars)) {
+    for (const name of chars) {
+      const charObj = window[name];
+      if (
+        charObj &&
+        charObj.interactive &&
+        typeof charObj.isHovered === 'function' &&
+        charObj.isHovered()
+      ) {
+        usePointer = true;
+        break;
+      }
+    }
+  }
+
+  if (!usePointer) {
+    if (currentScene === 'farmMap' && Array.isArray(scenes.interactiveAreas)) {
+      for (const area of scenes.interactiveAreas) {
+        const within =
+          mouseX > area.x &&
+          mouseX < area.x + area.w &&
+          mouseY > area.y &&
+          mouseY < area.y + area.h;
+        if (within) {
+          usePointer = true;
+          break;
+        }
+      }
+    } else {
+      const key = currentScene + 'Areas';
+      const areas = scenes[key];
+      if (Array.isArray(areas)) {
+        for (const area of areas) {
+          const within =
+            mouseX >= area.x &&
+            mouseX <= area.x + area.w &&
+            mouseY >= area.y &&
+            mouseY <= area.y + area.h;
+          if (within) {
+            usePointer = true;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  if (!usePointer && Array.isArray(letters)) {
+    for (const l of letters) {
+      if (l.scene === currentScene && !l.found) {
+        const half = l.size / 2;
+        const within =
+          mouseX >= l.x - half &&
+          mouseX <= l.x + half &&
+          mouseY >= l.y - half &&
+          mouseY <= l.y + half;
+        if (within) {
+          usePointer = true;
+          break;
+        }
+      }
+    }
+  }
+
+  cursor(usePointer ? 'pointer' : 'default');
+}
+
 const orderedScenes = [
   'start', 'bench', 'pond', 'pond2', 'flowers', 'grass', 'flowers2',
   'greenhouse', 'greenhouseInside', 'vegetables', 'tunnel', 'cave',
@@ -348,6 +419,7 @@ function setup() {
 
 function draw() {
   background(220);
+  updateCursor();
   picnicReached = picnicReached || currentScene === 'picnic';
   mapUnlocked = mapUnlocked || currentScene === 'farmMap';
   if (currentScene === 'pond2') {
