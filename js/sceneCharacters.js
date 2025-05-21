@@ -121,6 +121,9 @@ sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 sceneCharacterSettings['flowers2'].owl = { x: 200, y: 260, size: 100 };
 sceneCharacterSettings['flowers2'].birdhouse = { x: 380, y: 480, size: 100 };
 
+sceneCharacterSettings['greenhouseInside'].duck = { x: 300, y: 360, size: 100 };
+sceneCharacterSettings['greenhouseInside'].rabbit = { x: 380, y: 380, size: 100 };
+
 sceneCharacterSettings['cave'] = {
   duck: { state: 'backwards' }
 };
