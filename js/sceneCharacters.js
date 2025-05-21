@@ -13,7 +13,7 @@ const basePositions = {
   donkey:          { x: 380, y: 420, size: 100, state: 'mouth-closed' },
   dog:             { x: 620, y: 440, size: 100, state: 'mouth-closed' },
   sheep:           { x: 460, y: 420, size: 100, state: 'mouth-closed' },
-  sheepbaby:       { x: 520, y: 440, size: 80, state: 'mouth-closed' },
+  sheepbaby:       { x: 520, y: 440, size: 80, state: 'slight-right' },
   owl:             { x: 380, y: 420, size: 100, state: 'mouth-closed' },
   graytortiecat:   { x: 380, y: 420, size: 100, state: 'mouth-closed' },
   orangecat:       { x: 450, y: 430, size: 100, state: 'mouth-closed' },
