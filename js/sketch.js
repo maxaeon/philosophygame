@@ -93,7 +93,6 @@ function preload() {
   owl = new Character('owl', [
     'eyes-closed-mouth-open',
     'eyes-closed',
-    'mouth-open',
     'mouth-closed'
   ], 100, 380, 420);
 
