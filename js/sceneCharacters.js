@@ -109,12 +109,10 @@ sceneCharacterSettings['bench'].rabbit = { x: 420, y: 500, size: 100 };
 sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
 sceneCharacterSettings['pond'].rabbit = { x: 420, y: 300, size: 100 };
 
-// Move rabbit to the top left corner in pond2
+// Adjust positions in pond2: Rabbit sits in the top left and
+// Duck uses the swimming pose while remaining in its base position.
+sceneCharacterSettings['pond2'].duck = { state: 'swim-down' };
 sceneCharacterSettings['pond2'].rabbit = { x: 20, y: 20, size: 100 };
-
-sceneCharacterSettings['pond2'] = {
-  duck: { state: 'swim-down' }
-};
 
 // Adjust positioning in the flowers scene to reduce overlap
 sceneCharacterSettings['flowers'].owl = { x: 300, y: 360, size: 100 };
