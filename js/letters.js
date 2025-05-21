@@ -125,12 +125,12 @@ function preloadLetters() {
     x: 200, y: 380
   });
   letters.push({
-    scene: 'picnic',
+    scene: 'farmMap',
     letter: 'P',
     concept: 'Possibilities',
     description: 'There are so many ways things could be!',
     question: 'What are some ways this story could end?',
-    x: 480, y: 260
+    x: 470, y: 140
   });
   letters.push({
     scene: 'bench',
