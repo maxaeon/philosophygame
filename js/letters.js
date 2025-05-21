@@ -66,7 +66,7 @@ function preloadLetters() {
     concept: 'Happiness',
     description: 'Feeling joy inside.',
     question: 'What makes you happy?',
-    x: 450, y: 100
+    x: 650, y: 500
   });
   letters.push({
     scene: 'studio',
@@ -106,7 +106,7 @@ function preloadLetters() {
     concept: 'Minds',
     description: 'Our memories, feelings, thoughts, and experiences are part of our minds... Only you can access yours!',
     question: 'Do other animals think and feel like we do?',
-    x: 250, y: 150
+    x: 350, y: 150
   });
   letters.push({
     scene: 'pond',
@@ -146,7 +146,7 @@ function preloadLetters() {
     concept: 'Reality',
     description: 'What is real, and not just imaginary.',
     question: 'Do you think the tooth fairy is real?',
-    x: 700, y: 300
+    x: 150, y: 100
   });
   letters.push({
     scene: 'donkey',
