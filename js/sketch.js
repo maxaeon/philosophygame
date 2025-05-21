@@ -383,6 +383,7 @@ function draw() {
     if (!dialoguesPlayed['benchIntro']) {
       playDialogue('benchIntro');
     } else if (mapUnlocked && !dialoguesPlayed['benchRest']) {
+      updateBenchRestDialogue();
       playDialogue('benchRest');
     }
   }
@@ -482,6 +483,21 @@ function showAdvice() {
   highlightMissingLetters(currentScene);
 }
 
+function updateBenchRestDialogue() {
+  if (!Array.isArray(dialogues.benchRest) || dialogues.benchRest.length < 2) {
+    return;
+  }
+  const lettersLeft = (letters?.length || 26) - lettersFoundCount;
+  if (lettersLeft <= 0) {
+    dialogues.benchRest[1].text =
+      'We worked hard finding all of the letters and learning about philosophy.';
+  } else {
+    const plural = lettersLeft === 1 ? 'letter' : 'letters';
+    dialogues.benchRest[1].text =
+      `Good idea! We have ${lettersLeft} ${plural} left to find.`;
+  }
+}
+
 function advanceScene() {
   if (currentScene === 'donkey') {
     currentScene = 'barn';
@@ -519,6 +535,9 @@ function goBackScene() {
     continueBtn.style.display = 'none';
     if (currentScene === 'bench') {
       const dlg = mapUnlocked ? 'benchRest' : 'benchIntro';
+      if (dlg === 'benchRest') {
+        updateBenchRestDialogue();
+      }
       playDialogue(dlg);
     } else if (currentScene === 'pond2') {
       const letterD = letters.find(l => l.scene === 'pond2' && l.letter === 'D');
