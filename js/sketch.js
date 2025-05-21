@@ -387,6 +387,15 @@ function draw() {
     sceneHistory.push(currentScene);
     if (currentScene === 'greenhouseInside') {
       trayChoiceMade = false;
+      trayOnTable = 'trayB';
+      if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
+        trayA.baseX = 500;
+        trayA.baseY = 420;
+        trayB.baseX = 360;
+        trayB.baseY = 420;
+        trayA.reset();
+        trayB.reset();
+      }
     }
   }
   backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';

@@ -129,8 +129,9 @@ sceneCharacterSettings['greenhouseInside'].duck = { x: 300, y: 360, size: 100 };
 sceneCharacterSettings['greenhouseInside'].rabbit = { x: 380, y: 380, size: 100 };
 
 sceneCharacterSettings['cave'] = {
-  duck: { state: 'backwards' }};
-sceneCharacterSettings['cave'].duck = { x: 300, y: 380, size: 100 };
+  duck: { x: 360, y: 420, size: 100 },
+  rabbit: { x: 420, y: 420, size: 100 }
+};
 
 sceneCharacterSettings['dogHouse'] = {
   dog: { state: 'sad' }
@@ -138,7 +139,23 @@ sceneCharacterSettings['dogHouse'] = {
 
 sceneCharacterSettings['barn'] = {
   donkey: { size: 300 },
-  bat: { x: 420, y: 180 }
+  bat: { x: 420, y: 180 },
+  dog: { x: 50, y: 50, size: 35 },
+  sheep: { x: 120, y: 50, size: 35 },
+  duck: { x: 360, y: 500, size: 100 },
+  rabbit: { x: 420, y: 500, size: 100 }
+};
+
+sceneCharacterSettings['donkey'] = {
+  donkey: { x: 50, y: 200, size: 400 },
+  duck: { x: 340, y: 500, size: 100 },
+  rabbit: { x: 400, y: 500, size: 100 },
+  orangecat: { x: 650, y: 500, size: 100 }
+};
+
+sceneCharacterSettings['tunnel'] = {
+  duck: { x: 250, y: 420, size: 130 },
+  rabbit: { x: 470, y: 420, size: 130 }
 };
 
 sceneCharacterSettings['swing'] = { pig: { size: 300 } };
