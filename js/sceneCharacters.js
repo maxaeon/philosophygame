@@ -86,13 +86,18 @@ sceneCharacters['swing2'] = sceneCharacters['swing2'].filter(c => c !== 'duck' &
 
 // Scene-specific position overrides
 sceneCharacterSettings['farmMap'] = {
-  duck:      { x: 60,  y: 500, size: 80 },
-  rabbit:    { x: 150, y: 500, size: 80 },
+  // Duck and Rabbit sit where the greenhouse link used to be
+  duck:      { x: 300, y: 200, size: 80 },
+  rabbit:    { x: 360, y: 200, size: 80 },
+  // Owl stays in roughly the same position
   owl:       { x: 80,  y: 250, size: 80 },
-  dog:       { x: 380, y: 40,  size: 50 },
-  sheep:     { x: 420, y: 380, size: 100 },
-  sheepbaby: { x: 500, y: 420, size: 80 },
-  pig:       { x: 460, y: 40,  size: 100 }
+  // Dog now lives where the bench link started
+  dog:       { x: 20,  y: 20,  size: 50 },
+  // Sheep family appears above the owl and slightly left
+  sheep:     { x: 40,  y: 170, size: 100 },
+  sheepbaby: { x: 100, y: 200, size: 80 },
+  // Pig touches the top edge of the map
+  pig:       { x: 460, y: 0,  size: 100 }
 };
 
 // Position adjustments for specific scenes
@@ -103,6 +108,12 @@ sceneCharacterSettings['start'].rabbit = { x: 420, y: 500, size: 100 };
 // Both characters sit at the bottom of the bench scene
 sceneCharacterSettings['bench'].duck   = { x: 360, y: 500, size: 100 };
 sceneCharacterSettings['bench'].rabbit = { x: 420, y: 500, size: 100 };
+
+// In the picnic scene the duo is larger and spaced apart
+sceneCharacterSettings['picnic'] = {
+  duck: { x: 250, y: 420, size: 150 },
+  rabbit: { x: 500, y: 420, size: 150 }
+};
 
 // In the pond they appear roughly in the middle of the screen
 sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
@@ -121,7 +132,8 @@ sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };
 sceneCharacterSettings['grass'].rabbit = { x: 480, y: 380, size: 300 };
 sceneCharacterSettings['grass'].birdhouse = { x: 190, y: 20, size: 400 };
 
-sceneCharacterSettings['flowers2'].owl = { x: 200, y: 260, size: 100 };
+// Owl is a bit lower in the second flowers scene
+sceneCharacterSettings['flowers2'].owl = { x: 200, y: 320, size: 100 };
 sceneCharacterSettings['flowers2'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['greenhouseInside'].duck = { x: 300, y: 260, size: 100 };
