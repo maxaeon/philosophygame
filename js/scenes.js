@@ -34,14 +34,14 @@ function preloadScenes() {
 function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
-    {name: 'barn', label: 'barn', x: 220, y: 160, w: 150, h: 150},
-    {name: 'swing', label: 'swing', x: 360, y: 420, w: 140, h: 120},
-    {name: 'dogHouse', label: 'doghouse', x: 310, y: 360, w: 120, h: 100},
-    {name: 'bench', label: 'bench', x: 180, y: 220, w: 120, h: 80},
-    {name: 'pond', label: 'pond', x: 300, y: 420, w: 140, h: 120},
-    {name: 'greenhouse', label: 'greenhouse', x: 300, y: 200, w: 150, h: 150},
-    {name: 'picnic', label: 'picnic', x: 420, y: 260, w: 140, h: 100},
-    {name: 'vegetables', label: 'vegetables', x: 280, y: 80, w: 120, h: 80}
+    {name: 'barn', label: 'barn', x: 220, y: 260, w: 200, h: 200},
+    {name: 'swing', label: 'swing', x: 360, y: 420, w: 50, h: 50},
+    {name: 'dogHouse', label: 'doghouse', x: 20, y: 360, w: 50, h: 50},
+    {name: 'bench', label: 'bench', x: 20, y: 20, w: 70, h: 70},
+    {name: 'pond', label: 'pond', x: 200, y: 50, w: 100, h: 100},
+    {name: 'greenhouse', label: 'greenhouse', x: 300, y: 200, w: 50, h: 50},
+    {name: 'picnic', label: 'picnic', x: 400, y: 440, w: 50, h: 50},
+    {name: 'vegetables', label: 'vegetables', x: 380, y: 80, w: 50, h: 50}
   ];
 }
 
@@ -144,10 +144,10 @@ function handleSceneClicks(mx, my) {
   }
   if (currentScene === 'barnInside') {
     const areas = [
-      {name: 'studio', x: 250, y: 270, w: 100, h: 100},
-      {name: 'mirror', x: 230, y: 110, w: 100, h: 100},
-      {name: 'radioRoom', x: 150, y: 330, w: 100, h: 100},
-      {name: 'loftEntrance', x: 380, y: 360, w: 100, h: 100}
+      {name: 'studio', x: 380, y: 300, w: 100, h: 100},
+      {name: 'mirror', x: 30, y: 100, w: 100, h: 100},
+      {name: 'radioRoom', x: 30, y: 300, w: 100, h: 100},
+      {name: 'loftEntrance', x: 380, y: 100, w: 100, h: 100}
     ];
     areas.forEach(area => {
       const within =
