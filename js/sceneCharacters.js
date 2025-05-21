@@ -129,8 +129,8 @@ sceneCharacterSettings['greenhouseInside'].duck = { x: 300, y: 360, size: 100 };
 sceneCharacterSettings['greenhouseInside'].rabbit = { x: 380, y: 380, size: 100 };
 
 sceneCharacterSettings['cave'] = {
-  duck: { state: 'backwards' }
-};
+  duck: { state: 'backwards' }};
+sceneCharacterSettings['cave'].duck = { x: 300, y: 380, size: 100 };
 
 sceneCharacterSettings['dogHouse'] = {
   dog: { state: 'sad' }
