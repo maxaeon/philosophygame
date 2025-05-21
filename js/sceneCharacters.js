@@ -114,7 +114,7 @@ sceneCharacterSettings['pond2'].duck = { state: 'swim-down' };
 sceneCharacterSettings['pond2'].rabbit = { x: 20, y: 20, size: 100 };
 
 // Adjust positioning in the flowers scene to reduce overlap
-sceneCharacterSettings['flowers'].owl = { x: 200, y: 260, size: 100 };
+sceneCharacterSettings['flowers'].owl = { x: 200, y: 400, size: 100 };
 sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };

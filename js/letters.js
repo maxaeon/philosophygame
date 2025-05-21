@@ -50,7 +50,7 @@ function preloadLetters() {
     concept: 'Friend',
     description: 'Friends are people we love.',
     question: 'What makes someone a good friend?',
-    x: 200, y: 400
+    x: 200, y: 260
   });
   letters.push({
     scene: 'swing',

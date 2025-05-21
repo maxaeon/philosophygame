@@ -45,6 +45,7 @@ let sceneIndex = 0;
 let continueBtn;
 let backBtn;
 let sceneHistory = [currentScene];
+let dogHouseVisits = 0;
 
 function preload() {
   duck = new Character('duck', [
@@ -387,6 +388,9 @@ function draw() {
   }
   if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
     sceneHistory.push(currentScene);
+    if (currentScene === 'dogHouse') {
+      dogHouseVisits++;
+    }
     if (currentScene === 'greenhouseInside') {
       trayChoiceMade = false;
       trayOnTable = 'trayB';
@@ -416,6 +420,20 @@ function draw() {
     } else if (mapUnlocked && !dialoguesPlayed['benchRest']) {
       updateBenchRestDialogue();
       playDialogue('benchRest');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'dogHouse') {
+    if (!dialoguesPlayed['dogHouse']) {
+      playDialogue('dogHouse', () => {
+        if (sceneCharacterSettings['dogHouse']?.dog) {
+          sceneCharacterSettings['dogHouse'].dog.state = 'happy';
+        }
+      });
+    } else if (dogHouseVisits > 1 && !dialoguesPlayed['dogHouseReturn']) {
+      if (sceneCharacterSettings['dogHouse']?.dog) {
+        sceneCharacterSettings['dogHouse'].dog.state = 'happy';
+      }
+      playDialogue('dogHouseReturn');
     }
   }
   if (
@@ -451,7 +469,11 @@ function draw() {
   ) {
     image(mapIcon, 10, 10, 50, 50);
   }
-  image(duckRabbitIcon, width - 70, 10, 60, 60);
+  if (currentScene === 'start') {
+    image(duckRabbitIcon, width / 2 - 100, height / 2 - 100, 200, 200);
+  } else {
+    image(duckRabbitIcon, width - 70, 10, 60, 60);
+  }
   drawLetters(currentScene); // draw letters on top
 }
 
