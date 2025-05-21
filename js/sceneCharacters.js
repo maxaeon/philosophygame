@@ -115,6 +115,11 @@ sceneCharacterSettings['picnic'] = {
   rabbit: { x: 500, y: 420, size: 150 }
 };
 
+// Adjust positions for the greenhouse scene
+if (!sceneCharacterSettings['greenhouse']) sceneCharacterSettings['greenhouse'] = {};
+sceneCharacterSettings['greenhouse'].duck = { x: 340 };
+sceneCharacterSettings['greenhouse'].rabbit = { x: 400 };
+
 // In the pond they appear roughly in the middle of the screen
 sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
 sceneCharacterSettings['pond'].rabbit = { x: 420, y: 300, size: 100 };
