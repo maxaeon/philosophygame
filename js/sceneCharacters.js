@@ -116,8 +116,8 @@ sceneCharacterSettings['picnic'] = {
 };
 
 // In the pond they appear roughly in the middle of the screen
-sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
-sceneCharacterSettings['pond'].rabbit = { x: 420, y: 300, size: 100 };
+sceneCharacterSettings['pond'].duck   = { x: 360, y: 280, size: 100 };
+sceneCharacterSettings['pond'].rabbit = { x: 420, y: 280, size: 100 };
 
 // Adjust positions in pond2: Rabbit sits in the top left and
 // Duck uses the swimming pose while remaining in its base position.
