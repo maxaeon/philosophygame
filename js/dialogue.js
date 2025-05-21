@@ -8,7 +8,7 @@ const dialogues = {
   ],
   benchIntro: [
     { speaker: 'duck', text: 'When you see letters around the farm, try clicking on them!' },
-    { speaker: 'rabbit', text: 'Each one will tell us something fascinating.' }
+    { speaker: 'rabbit', text: 'Each one will make us think about something fascinating.' }
   ],
   benchRest: [
     { speaker: 'duck', text: 'Take a seat, Rabbit. Let\'s rest for a bit.' },
