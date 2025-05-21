@@ -189,7 +189,13 @@ function drawSceneCharacters(scene) {
       // Mark interactive characters for hover effects
       charObj.interactive = false;
       if (scene === 'barn' && (name === 'donkey' || name === 'bat')) {
-        charObj.interactive = true;
+        const letterV =
+          typeof letters !== 'undefined'
+            ? letters.find(l => l.scene === 'barn' && l.letter === 'V')
+            : null;
+        if (letterV && letterV.found && dialoguesPlayed?.barn) {
+          charObj.interactive = true;
+        }
       }
       if (scene === 'greenhouseInside' && (name === 'trayA' || name === 'trayB')) {
         charObj.interactive = true;
