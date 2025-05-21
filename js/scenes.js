@@ -101,40 +101,44 @@ function handleSceneClicks(mx, my) {
     }
   }
   if (currentScene === 'greenhouseInside') {
-    const withinTrayA =
-      mx >= trayA.x && mx <= trayA.x + trayA.size &&
-      my >= trayA.y && my <= trayA.y + trayA.size;
-    const withinTrayB =
-      mx >= trayB.x && mx <= trayB.x + trayB.size &&
-      my >= trayB.y && my <= trayB.y + trayB.size;
-    if (withinTrayA && trayOnTable !== 'trayA') {
-      const tX = trayA.baseX;
-      const tY = trayA.baseY;
-      trayA.baseX = trayB.baseX;
-      trayA.baseY = trayB.baseY;
-      trayB.baseX = tX;
-      trayB.baseY = tY;
-      trayOnTable = 'trayA';
-      trayA.reset();
-      trayB.reset();
-      if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayA']) {
-        playDialogue('greenhouseInside_trayA');
+    if (!trayChoiceMade) {
+      const withinTrayA =
+        mx >= trayA.x && mx <= trayA.x + trayA.size &&
+        my >= trayA.y && my <= trayA.y + trayA.size;
+      const withinTrayB =
+        mx >= trayB.x && mx <= trayB.x + trayB.size &&
+        my >= trayB.y && my <= trayB.y + trayB.size;
+      if (withinTrayA && trayOnTable !== 'trayA') {
+        const tX = trayA.baseX;
+        const tY = trayA.baseY;
+        trayA.baseX = trayB.baseX;
+        trayA.baseY = trayB.baseY;
+        trayB.baseX = tX;
+        trayB.baseY = tY;
+        trayOnTable = 'trayA';
+        trayA.reset();
+        trayB.reset();
+        if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayA']) {
+          playDialogue('greenhouseInside_trayA');
+        }
+        trayChoiceMade = true;
+        clicked = true;
+      } else if (withinTrayB && trayOnTable !== 'trayB') {
+        const tX = trayA.baseX;
+        const tY = trayA.baseY;
+        trayA.baseX = trayB.baseX;
+        trayA.baseY = trayB.baseY;
+        trayB.baseX = tX;
+        trayB.baseY = tY;
+        trayOnTable = 'trayB';
+        trayA.reset();
+        trayB.reset();
+        if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayB']) {
+          playDialogue('greenhouseInside_trayB');
+        }
+        trayChoiceMade = true;
+        clicked = true;
       }
-      clicked = true;
-    } else if (withinTrayB && trayOnTable !== 'trayB') {
-      const tX = trayA.baseX;
-      const tY = trayA.baseY;
-      trayA.baseX = trayB.baseX;
-      trayA.baseY = trayB.baseY;
-      trayB.baseX = tX;
-      trayB.baseY = tY;
-      trayOnTable = 'trayB';
-      trayA.reset();
-      trayB.reset();
-      if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayB']) {
-        playDialogue('greenhouseInside_trayB');
-      }
-      clicked = true;
     }
     if (clicked) return;
   }
