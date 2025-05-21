@@ -43,6 +43,14 @@ function setupScenes() {
     {name: 'picnic', label: 'picnic', x: 700, y: 440, w: 50,  h: 50},
     {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50}
   ];
+
+  // Interactive areas inside the barn
+  scenes.barnInsideAreas = [
+    {name: 'mirror', label: 'mirror', x: 60,  y: 350, w: 100, h: 100},
+    {name: 'radioRoom', label: 'radio room', x: 30,  y: 450, w: 100, h: 100},
+    {name: 'loftEntrance', label: 'loft entrance', x: 350, y: 350, w: 100, h: 100},
+    {name: 'studio', label: 'studio', x: 380, y: 450, w: 100, h: 100}
+  ];
 }
 
 function drawScene(scene) {
@@ -162,13 +170,7 @@ function handleSceneClicks(mx, my) {
     if (clicked) return;
   }
   if (currentScene === 'barnInside') {
-    const areas = [
-      {name: 'studio', x: 380, y: 300, w: 100, h: 100},
-      {name: 'mirror', x: 30, y: 100, w: 100, h: 100},
-      {name: 'radioRoom', x: 30, y: 300, w: 100, h: 100},
-      {name: 'loftEntrance', x: 380, y: 100, w: 100, h: 100}
-    ];
-    areas.forEach(area => {
+    scenes.barnInsideAreas.forEach(area => {
       const within =
         mx >= area.x && mx <= area.x + area.w &&
         my >= area.y && my <= area.y + area.h;

@@ -541,6 +541,17 @@ function draw() {
       text(label, lx, ly);
     });
   }
+  if (currentScene === 'barnInside') {
+    textAlign(CENTER, CENTER);
+    fill(0);
+    textSize(16);
+    scenes.barnInsideAreas.forEach(area => {
+      const lx = area.labelX !== undefined ? area.labelX : area.x + area.w / 2;
+      const ly = area.labelY !== undefined ? area.labelY : area.y + area.h / 2;
+      const label = area.label || area.name;
+      text(label, lx, ly);
+    });
+  }
   if (currentScene === 'donkey') {
     image(barnIcon, 10, 10, 50, 50);
   }
