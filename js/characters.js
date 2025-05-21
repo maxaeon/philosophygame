@@ -4,6 +4,8 @@ class Character {
     this.images = {};
     // Default to the neutral mouth-closed pose when the character is created
     this.state = 'mouth-closed';
+    this.baseState = 'mouth-closed';
+    this.lastScene = null;
     this.x = x;
     this.y = y;
     this.size = size;
@@ -81,6 +83,7 @@ class Character {
     this.baseX = this.x;
     this.baseY = this.y;
     this.baseSize = this.size;
+    this.baseState = this.state;
   }
 
   // Allows new poses to be added on the fly so scenes can introduce

@@ -186,6 +186,14 @@ function drawSceneCharacters(scene) {
         if (overrides.y !== undefined) charObj.y = overrides.y;
         if (overrides.size !== undefined) charObj.size = overrides.size;
       }
+      if (charObj.lastScene !== scene) {
+        const state = overrides && overrides.state !== undefined ? overrides.state : charObj.baseState;
+        if (state && typeof charObj.setState === 'function') {
+          charObj.setState(state);
+          charObj.baseState = state;
+        }
+        charObj.lastScene = scene;
+      }
       // Mark interactive characters for hover effects
       charObj.interactive = false;
       if (scene === 'barn' && (name === 'donkey' || name === 'bat')) {
