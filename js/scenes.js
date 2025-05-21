@@ -155,6 +155,10 @@ function handleSceneClicks(mx, my) {
         trayA.baseY = trayB.baseY;
         trayB.baseX = tX;
         trayB.baseY = tY;
+        sceneCharacterSettings['greenhouseInside'].trayA.x = trayA.baseX;
+        sceneCharacterSettings['greenhouseInside'].trayA.y = trayA.baseY;
+        sceneCharacterSettings['greenhouseInside'].trayB.x = trayB.baseX;
+        sceneCharacterSettings['greenhouseInside'].trayB.y = trayB.baseY;
       };
       if (withinTrayA) {
         if (typeof playSound === 'function') playSound('click');
