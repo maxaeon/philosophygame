@@ -117,7 +117,7 @@ sceneCharacterSettings['picnic'] = {
 
 // Adjust positions for the greenhouse scene
 if (!sceneCharacterSettings['greenhouse']) sceneCharacterSettings['greenhouse'] = {};
-sceneCharacterSettings['greenhouse'].duck = { x: 340 };
+sceneCharacterSettings['greenhouse'].duck = { x: 340, y: 420 };
 sceneCharacterSettings['greenhouse'].rabbit = { x: 400 };
 
 // In the pond they appear roughly in the middle of the screen
