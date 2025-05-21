@@ -98,6 +98,11 @@ Suggestions and contributions are welcome! Feel free to open issues or submit pu
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+The Duck-Rabbit Philosophy Farm game and its characters are
+**© 2025 maxaeon**. You may play the game for free and reuse the code in
+this repository to create your own games, but please credit this project
+and do not claim the original characters as your own.
+
 ---
 
 Enjoy exploring philosophy with Duck and Rabbit! 🎉
