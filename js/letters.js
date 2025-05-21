@@ -222,6 +222,7 @@ function preloadLetters() {
     l.found = false;
     l.size = 32;
     l.baseSize = 32;
+    l.answer = '';
   });
 }
 
@@ -348,13 +349,25 @@ function showLetterInfo(letter) {
   const box = document.getElementById('letterInfoBox');
   if (!box) return;
   box.innerHTML =
-    `<strong>${letter.letter} for ${letter.concept}</strong><br><br>${letter.description}<br><br><em>${letter.question}</em>`;
+    `<strong>${letter.letter} for ${letter.concept}</strong><br><br>${letter.description}<br><br><em>${letter.question}</em><br>` +
+    `<input id="letterAnswerInput" type="text" maxlength="50" value="${letter.answer || ''}" placeholder="Your answer" style="width:90%;font-size:16px;margin-top:6px;"/><br>` +
+    `<button id="letterSaveBtn">Save</button> <button id="letterCloseBtn">Close</button>`;
   box.style.display = 'block';
   if (typeof box.focus === 'function') box.focus();
-  box.onclick = () => {
-    box.style.display = 'none';
-    box.onclick = null;
-  };
+  const input = document.getElementById('letterAnswerInput');
+  const saveBtn = document.getElementById('letterSaveBtn');
+  const closeBtn = document.getElementById('letterCloseBtn');
+  if (saveBtn) {
+    saveBtn.onclick = () => {
+      letter.answer = input.value.slice(0, 50);
+      box.style.display = 'none';
+    };
+  }
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      box.style.display = 'none';
+    };
+  }
 }
 
 // Draw letter indicators for the current scene
