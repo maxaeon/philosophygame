@@ -451,7 +451,12 @@ function draw() {
   ) {
     image(mapIcon, 10, 10, 50, 50);
   }
-  image(duckRabbitIcon, width - 70, 10, 60, 60);
+  if (currentScene === 'start') {
+    const large = 350;
+    image(duckRabbitIcon, width / 2 - large / 2, height / 2 - large / 2, large, large);
+  } else {
+    image(duckRabbitIcon, width - 70, 10, 60, 60);
+  }
   drawLetters(currentScene); // draw letters on top
 }
 
