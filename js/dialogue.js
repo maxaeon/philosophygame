@@ -20,15 +20,16 @@ const dialogues = {
   ],
   pond2: [
     { speaker: 'rabbit', text: "Duck, you're lucky you can swim!" },
-    { speaker: 'duck', text: "Thanks! Our differences make us special. Help me find the letter hidden here."}
+    { speaker: 'duck', text: "Thanks! Our differences make us special."},
+    { speaker: 'duck', text: "Can you help me find the letter hidden here?"}
   ],
   flowers: [
     { speaker: 'owl', text: "Duck, Rabbit, can you help me? The Robin family's birdhouse needs repairs before the eggs hatch!" },
     { speaker: 'rabbit', text: "Of course! Let's get started." }
   ],
   grass: [
-    { speaker: 'duck', text: 'We’ve changed so many parts—is it still the same birdhouse?' },
-    { speaker: 'rabbit', text: 'Interesting question! If we replace every piece, does it stay the same, or become something new?' }
+    { speaker: 'duck', text: 'We’ve changed so many boards! If we replace all of the parts, is it still the same birdhouse?' },
+    { speaker: 'rabbit', text: 'Interesting question! And if we put all the old parts together again, which birdhouse is the same one as before?' }
   ],
   flowers2: [
     { speaker: 'owl', text: "Thank you both! As a token of my gratitude, I left seedlings in the greenhouse for you." },
