@@ -102,6 +102,7 @@ The Duck-Rabbit Philosophy Farm game and its characters are
 **© 2025 maxaeon**. You may play the game for free and reuse the code in
 this repository to create your own games, but please credit this project
 and do not claim the original characters as your own.
+Codex was used as an aid in translating this game from codeblocks.
 
 ---
 
