@@ -1,11 +1,11 @@
 class Character {
-  constructor(name, states, size = 100) {
+  constructor(name, states, size = 100, x = 0, y = 0) {
     this.name = name;
     this.images = {};
     // Default to the neutral mouth-closed pose when the character is created
     this.state = 'mouth-closed';
-    this.x = random(100, 700);
-    this.y = random(300, 500);
+    this.x = x;
+    this.y = y;
     this.size = size;
     this.baseX = this.x;
     this.baseY = this.y;
