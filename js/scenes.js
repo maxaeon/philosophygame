@@ -183,6 +183,14 @@ function drawSceneCharacters(scene) {
         if (overrides.y !== undefined) charObj.y = overrides.y;
         if (overrides.size !== undefined) charObj.size = overrides.size;
       }
+      // Mark interactive characters for hover effects
+      charObj.interactive = false;
+      if (scene === 'barn' && (name === 'donkey' || name === 'bat')) {
+        charObj.interactive = true;
+      }
+      if (scene === 'greenhouseInside' && (name === 'trayA' || name === 'trayB')) {
+        charObj.interactive = true;
+      }
       charObj.display();
     }
   });

@@ -240,7 +240,21 @@ function preload() {
     baseY: 420,
     baseSize: 80,
     display() {
-      image(this.images.default, this.x, this.y, this.size, this.size);
+      let dSize = this.size;
+      let dx = this.x;
+      let dy = this.y;
+      if (
+        currentScene === 'greenhouseInside' &&
+        mouseX >= this.x &&
+        mouseX <= this.x + this.size &&
+        mouseY >= this.y &&
+        mouseY <= this.y + this.size
+      ) {
+        dSize *= 1.05;
+        dx -= (dSize - this.size) / 2;
+        dy -= (dSize - this.size) / 2;
+      }
+      image(this.images.default, dx, dy, dSize, dSize);
     },
     reset() {
       this.x = this.baseX;
@@ -264,7 +278,21 @@ function preload() {
     baseY: 420,
     baseSize: 80,
     display() {
-      image(this.images.default, this.x, this.y, this.size, this.size);
+      let dSize = this.size;
+      let dx = this.x;
+      let dy = this.y;
+      if (
+        currentScene === 'greenhouseInside' &&
+        mouseX >= this.x &&
+        mouseX <= this.x + this.size &&
+        mouseY >= this.y &&
+        mouseY <= this.y + this.size
+      ) {
+        dSize *= 1.05;
+        dx -= (dSize - this.size) / 2;
+        dy -= (dSize - this.size) / 2;
+      }
+      image(this.images.default, dx, dy, dSize, dSize);
     },
     reset() {
       this.x = this.baseX;
@@ -402,9 +430,24 @@ function mousePressed() {
     duckTargetY = mouseY;
   }
   if (currentScene === 'barn') {
-    if (mouseX > donkey.x && mouseX < donkey.x + 100 && mouseY > donkey.y && mouseY < donkey.y + 100) {
+    if (
+      mouseX > donkey.x &&
+      mouseX < donkey.x + donkey.size &&
+      mouseY > donkey.y &&
+      mouseY < donkey.y + donkey.size
+    ) {
       currentScene = 'donkey';
       sceneIndex = orderedScenes.indexOf('barn');
+      return;
+    }
+    if (
+      mouseX > bat.x &&
+      mouseX < bat.x + bat.size &&
+      mouseY > bat.y &&
+      mouseY < bat.y + bat.size
+    ) {
+      currentScene = 'barnInside';
+      sceneIndex = orderedScenes.indexOf('barnInside');
       return;
     }
   }

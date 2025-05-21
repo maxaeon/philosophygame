@@ -11,6 +11,7 @@ class Character {
     this.baseY = this.y;
     this.baseSize = size;
     this.states = Array.isArray(states) && states.length ? states.slice() : [];
+    this.interactive = false;
 
     // Ensure base states are always available
     if (!this.states.includes('idle')) {
@@ -49,8 +50,25 @@ class Character {
     });
   }
 
+  isHovered() {
+    return (
+      mouseX >= this.x &&
+      mouseX <= this.x + this.size &&
+      mouseY >= this.y &&
+      mouseY <= this.y + this.size
+    );
+  }
+
   display() {
-    image(this.images[this.state], this.x, this.y, this.size, this.size);
+    let dSize = this.size;
+    let dx = this.x;
+    let dy = this.y;
+    if (this.interactive && this.isHovered()) {
+      dSize *= 1.05;
+      dx -= (dSize - this.size) / 2;
+      dy -= (dSize - this.size) / 2;
+    }
+    image(this.images[this.state], dx, dy, dSize, dSize);
   }
 
   reset() {
