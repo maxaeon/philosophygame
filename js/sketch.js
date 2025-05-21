@@ -127,6 +127,8 @@ function preload() {
   birdhouse = new Character('birdhouse', ['start', 'midway', 'done'], 100, 380, 420);
   birdhouse.state = 'start';
   birdhouse.initBase();
+  birdhouse.states = ['start', 'midway', 'done'];
+  birdhouse.baseState = 'start';
   birdhouse.update = function() {
     if (currentScene === 'flowers2') {
       this.setState('done');
