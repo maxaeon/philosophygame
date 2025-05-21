@@ -39,7 +39,8 @@ const dialogues = {
     { speaker: 'duck', text: "Here's the greenhouse! Let's check out our seedlings." }
   ],
   greenhouseInside: [
-    { speaker: 'rabbit', text: 'Oh no, we must move the watering line! Should we save the tray with 2 plants, or the one with 10?' }
+    { speaker: 'rabbit', text: 'Oh no, we only hae enough waterline to automatically water one tray! },
+      {speaker: 'duck', text: 'Should we keep the tray with 2 plants here, or move the one with 10?' }
   ],
   greenhouseInside_trayA: [
     { speaker: 'rabbit', text: 'Great choice! Now even more plants will get water.' },
