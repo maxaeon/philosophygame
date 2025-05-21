@@ -61,7 +61,7 @@ function preload() {
     'swim-right',
     'swim-left'
   ], 100, 360, 420);
-  rabbit = new Character('rabbit', ['right-talking', 'mouth-closed'], 100, 420, 420);
+  rabbit = new Character('rabbit', ['mouth-closed'], 100, 420, 420);
   // Donkey has a default image plus open and closed mouth states
   donkey = new Character('donkey', ['open', 'closed', 'mouth-closed'], 100, 380, 420);
   donkey.images['idle'] = loadImage('assets/images/donkey/default.png');
