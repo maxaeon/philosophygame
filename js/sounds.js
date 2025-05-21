@@ -12,6 +12,9 @@ function preloadSounds() {
   sounds.graytortiecat = loadSound('assets/audio/cat1.wav');
   sounds.orangecat = loadSound('assets/audio/cat2.wav');
   sounds.back = loadSound('assets/audio/back.wav');
+  sounds.achieve = loadSound('assets/audio/achieve.wav');
+  sounds.win = loadSound('assets/audio/win.wav');
+  sounds.click = loadSound('assets/audio/click.wav');
 }
 function playSound(name) {
   let s;

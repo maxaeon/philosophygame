@@ -5,7 +5,7 @@ let currentScene = 'start';
 var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, birdhouse, pig, duckRabbitSwing, trayA, trayB;
 let letterGFound = false;
 let letterHFound = false;
-let duckRabbitIcon, barnIcon;
+let duckRabbitIcons = [], duckRabbitIconIndex = 0, barnIcon;
 let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
@@ -392,7 +392,11 @@ function preload() {
   };
   trayB.initBase();
 
-  duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
+  duckRabbitIcons = [
+    loadImage('assets/images/icons/duck-rabbit1.png'),
+    loadImage('assets/images/icons/duck-rabbit.png'),
+    loadImage('assets/images/icons/duck-rabbit2.png')
+  ];
   barnIcon = loadImage('assets/images/icons/barndefault.png');
   mapIcon = loadImage('assets/images/icons/map.png');
 
@@ -568,13 +572,41 @@ function draw() {
     currentScene !== 'farmMap' &&
     allLettersFoundForScene(currentScene)
   ) {
-    image(mapIcon, 10, 10, 50, 50);
+    let mSize = 50;
+    let mxPos = 10;
+    let myPos = 10;
+    let dSize = mSize;
+    let dx = mxPos;
+    let dy = myPos;
+    if (
+      mouseX >= mxPos &&
+      mouseX <= mxPos + mSize &&
+      mouseY >= myPos &&
+      mouseY <= myPos + mSize
+    ) {
+      dSize *= 1.05;
+      dx -= (dSize - mSize) / 2;
+      dy -= (dSize - mSize) / 2;
+    }
+    image(mapIcon, dx, dy, dSize, dSize);
   }
-  if (currentScene === 'start') {
-    image(duckRabbitIcon, width / 2 - 100, height / 2 - 100, 200, 200);
-  } else {
-    image(duckRabbitIcon, width - 70, 10, 60, 60);
+  let drSize = currentScene === 'start' ? 200 : 60;
+  let drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
+  let drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
+  let dSize = drSize;
+  let dx = drX;
+  let dy = drY;
+  if (
+    mouseX >= drX &&
+    mouseX <= drX + drSize &&
+    mouseY >= drY &&
+    mouseY <= drY + drSize
+  ) {
+    dSize *= 1.05;
+    dx -= (dSize - drSize) / 2;
+    dy -= (dSize - drSize) / 2;
   }
+  image(duckRabbitIcons[duckRabbitIconIndex], dx, dy, dSize, dSize);
   drawLetters(currentScene); // draw letters on top
 }
 
@@ -594,7 +626,10 @@ function mousePressed() {
         mouseY > donkey.y &&
         mouseY < donkey.y + donkey.size
       ) {
-        if (typeof playSound === 'function') playSound('donkey');
+        if (typeof playSound === 'function') {
+          playSound('click');
+          playSound('donkey');
+        }
         currentScene = 'donkey';
         sceneIndex = orderedScenes.indexOf('barn');
         return;
@@ -605,7 +640,10 @@ function mousePressed() {
         mouseY > bat.y &&
         mouseY < bat.y + bat.size
       ) {
-        if (typeof playSound === 'function') playSound('bat');
+        if (typeof playSound === 'function') {
+          playSound('click');
+          playSound('bat');
+        }
         currentScene = 'barnInside';
         sceneIndex = orderedScenes.indexOf('barnInside');
         return;
@@ -614,6 +652,7 @@ function mousePressed() {
   }
   if (currentScene === 'donkey') {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
+      if (typeof playSound === 'function') playSound('click');
       currentScene = 'barn';
       sceneIndex = orderedScenes.indexOf('barn');
       return;
@@ -625,11 +664,22 @@ function mousePressed() {
     allLettersFoundForScene(currentScene)
   ) {
     if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
+      if (typeof playSound === 'function') playSound('click');
       currentScene = 'farmMap';
       return;
     }
   }
-  if (mouseX > width - 70 && mouseY < 70) {
+  const drSize = currentScene === 'start' ? 200 : 60;
+  const drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
+  const drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
+  if (
+    mouseX >= drX &&
+    mouseX <= drX + drSize &&
+    mouseY >= drY &&
+    mouseY <= drY + drSize
+  ) {
+    if (typeof playSound === 'function') playSound('click');
+    duckRabbitIconIndex = (duckRabbitIconIndex + 1) % duckRabbitIcons.length;
     showAdvice();
   }
 }

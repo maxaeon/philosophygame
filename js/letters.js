@@ -252,6 +252,10 @@ function handleLetterClicks(mx, my) {
           l.x = l.bottomX;
           l.y = l.bottomY;
           lettersFoundCount++;
+          if (typeof playSound === 'function') playSound('achieve');
+          if (lettersFoundCount === 26 && typeof playSound === 'function') {
+            playSound('win');
+          }
           if (l.letter === 'D' && l.scene === 'pond2') {
             const btn = document.getElementById('continueBtn');
             if (btn) btn.style.display = 'block';
@@ -308,6 +312,10 @@ function checkDuckLetterCollision(duck) {
         l.x = l.bottomX;
         l.y = l.bottomY;
         lettersFoundCount++;
+        if (typeof playSound === 'function') playSound('achieve');
+        if (lettersFoundCount === 26 && typeof playSound === 'function') {
+          playSound('win');
+        }
         if (l.letter === 'D' && l.scene === 'pond2') {
           const btn = document.getElementById('continueBtn');
           if (btn) btn.style.display = 'block';
