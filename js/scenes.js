@@ -34,14 +34,14 @@ function preloadScenes() {
 function setupScenes() {
   // Define interactive areas on the farm map
   scenes.interactiveAreas = [
-    {name: 'barn', label: 'barn', x: 220, y: 260, w: 200, h: 200},
-    {name: 'swing', label: 'swing', x: 360, y: 420, w: 50, h: 50},
-    {name: 'dogHouse', label: 'doghouse', x: 20, y: 360, w: 50, h: 50},
-    {name: 'bench', label: 'bench', x: 20, y: 20, w: 70, h: 70},
-    {name: 'pond', label: 'pond', x: 200, y: 50, w: 100, h: 100},
-    {name: 'greenhouse', label: 'greenhouse', x: 300, y: 200, w: 50, h: 50},
-    {name: 'picnic', label: 'picnic', x: 400, y: 440, w: 50, h: 50},
-    {name: 'vegetables', label: 'vegetables', x: 380, y: 80, w: 50, h: 50}
+    {name: 'barn', label: 'barn', x: 220, y: 10,  w: 200, h: 200},
+    {name: 'swing', label: 'swing', x: 460, y: 0,   w: 50,  h: 50},
+    {name: 'dogHouse', label: 'doghouse', x: 20,  y: 20,  w: 50,  h: 50},
+    {name: 'bench', label: 'bench', x: 20,  y: 520, w: 70,  h: 70},
+    {name: 'pond', label: 'pond', x: 550, y: 380, w: 100, h: 100},
+    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 200, w: 50,  h: 50},
+    {name: 'picnic', label: 'picnic', x: 400, y: 440, w: 50,  h: 50},
+    {name: 'vegetables', label: 'vegetables', x: 700, y: 300, w: 50, h: 50}
   ];
 }
 
