@@ -98,12 +98,12 @@ sceneCharacterSettings['farmMap'] = {
 
 // Position adjustments for specific scenes
 // Duck and Rabbit start near the bottom of the screen on the start page
-sceneCharacterSettings['start'].duck   = { x: 360, y: 520, size: 100 };
-sceneCharacterSettings['start'].rabbit = { x: 420, y: 520, size: 100 };
+sceneCharacterSettings['start'].duck   = { x: 360, y: 500, size: 100 };
+sceneCharacterSettings['start'].rabbit = { x: 420, y: 500, size: 100 };
 
 // Both characters sit at the bottom of the bench scene
-sceneCharacterSettings['bench'].duck   = { x: 360, y: 520, size: 100 };
-sceneCharacterSettings['bench'].rabbit = { x: 420, y: 520, size: 100 };
+sceneCharacterSettings['bench'].duck   = { x: 360, y: 500, size: 100 };
+sceneCharacterSettings['bench'].rabbit = { x: 420, y: 500, size: 100 };
 
 // In the pond they appear roughly in the middle of the screen
 sceneCharacterSettings['pond'].duck   = { x: 360, y: 300, size: 100 };
