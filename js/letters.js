@@ -202,7 +202,7 @@ function preloadLetters() {
     concept: 'You',
     description: 'You are the wonderful person you are!',
     question: 'What do you like about yourself, and what could you work on to be better?',
-    x: 280, y: 160
+    x: 400, y: 300
   });
   letters.push({
     scene: 'loft',
