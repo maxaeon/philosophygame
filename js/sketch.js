@@ -48,6 +48,7 @@ let sceneHistory = [currentScene];
 let dogHouseVisits = 0;
 
 function preload() {
+  if (typeof preloadSounds === 'function') preloadSounds();
   duck = new Character('duck', [
     'left',
     'right',
@@ -507,6 +508,7 @@ function mousePressed() {
         mouseY > donkey.y &&
         mouseY < donkey.y + donkey.size
       ) {
+        if (typeof playSound === 'function') playSound('donkey');
         currentScene = 'donkey';
         sceneIndex = orderedScenes.indexOf('barn');
         return;
@@ -517,6 +519,7 @@ function mousePressed() {
         mouseY > bat.y &&
         mouseY < bat.y + bat.size
       ) {
+        if (typeof playSound === 'function') playSound('bat');
         currentScene = 'barnInside';
         sceneIndex = orderedScenes.indexOf('barnInside');
         return;
@@ -570,13 +573,16 @@ function updateBenchRestDialogue() {
 }
 
 function advanceScene() {
+  if (typeof playSound === 'function') playSound('continue');
   if (currentScene === 'donkey') {
+    if (typeof playSound === 'function') playSound('transition');
     currentScene = 'barn';
     sceneIndex = orderedScenes.indexOf('barn');
     continueBtn.style.display = 'none';
     return;
   }
   if (['studio','mirror','radioRoom'].includes(currentScene)) {
+    if (typeof playSound === 'function') playSound('transition');
     currentScene = 'barnInside';
     sceneIndex = orderedScenes.indexOf('barnInside');
     continueBtn.style.display = 'none';
@@ -591,6 +597,7 @@ function advanceScene() {
     continueBtn.style.display = 'none';
     return;
   }
+  if (typeof playSound === 'function') playSound('transition');
   currentScene = orderedScenes[sceneIndex];
   // Hide the button immediately after switching scenes; it will be
   // displayed again when the next dialogue finishes.
@@ -600,6 +607,7 @@ function advanceScene() {
 function goBackScene() {
   if (sceneHistory.length > 1) {
     sceneHistory.pop();
+    if (typeof playSound === 'function') playSound('transition');
     currentScene = sceneHistory[sceneHistory.length - 1];
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;
