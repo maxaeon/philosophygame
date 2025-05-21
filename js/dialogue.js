@@ -141,7 +141,7 @@ const dialogues = {
   loftEntrance: [
     { speaker: 'graytortiecat', text: 'Duck and Rabbit, can you help me? I was wondering, how different could I be and still be a cat?' },
     { speaker: 'rabbit', text: 'Interesting question! What makes us who or what we are?' },
-    { speaker: 'graytortiecat', text: 'What if I was hairless, or had extra long fur? Or wagged my tail and barked?'},
+    { speaker: 'graytortiecat', text: 'What if I was hairless, or had extra long fur? Or wagged my tail and barked?', pose: 'hairless'},
     { speaker: 'duck', text: 'If you barked, I think you would be a dog!'},
     { speaker: 'rabbit', text: "That is not true- some rodents bark! That doesn't make them dogs."},
       {speaker: 'graytortiecat', text: "Hmm, I don't know if there's an easy answer to this, but keep thinking about it and let me know if you have any ideas!"}

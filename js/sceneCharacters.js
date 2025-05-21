@@ -92,9 +92,9 @@ sceneCharacterSettings['farmMap'] = {
   // Owl stays in roughly the same position
   owl:       { x: 80,  y: 250, size: 80 },
   // Dog now lives where the bench link started
-  dog:       { x: 30,  y: 30,  size: 50 },
+  dog:       { x: 30,  y: 40,  size: 50 },
   // Sheep family appears above the owl and slightly left
-  sheep:     { x: 15,  y: 150, size: 50 },
+  sheep:     { x: 15,  y: 160, size: 50 },
   sheepbaby: { x: 75,  y: 180, size: 40 },
   // Pig touches the top edge of the map
   pig:       { x: 465, y: -5, size: 80 }
@@ -151,8 +151,8 @@ sceneCharacterSettings['dogHouse'] = {
 };
 
 sceneCharacterSettings['field'] = {
-  sheep: { y: 320 },
-  sheepbaby: { x: 520, y: 340 },
+  sheep: { y: 70 },
+  sheepbaby: { x: 520, y: 90 },
   duck: { x: 360, y: 500 }
 };
 
@@ -185,7 +185,8 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { y: 320 }
+  chick: { y: 320, state: 'default' },
+  duck: { y: 500 }
 };
 
 sceneCharacterSettings['loftEntrance'].graytortiecat = {
