@@ -21,7 +21,7 @@ const dialogues = {
   pond2: [
     { speaker: 'rabbit', text: "Duck, you're lucky you can swim!" },
     { speaker: 'duck', text: "Thanks! Our differences make us special."},
-    { speaker: 'duck', text: "Can you help me find the letter hidden here?"}
+    { speaker: 'duck', text: "Can you help Duck find the letter hidden here? Use the arrows to make Duck swim."}
   ],
   flowers: [
     { speaker: 'owl', text: "Duck, Rabbit, can you help me? The Robin family's birdhouse needs repairs before the eggs hatch!" },
