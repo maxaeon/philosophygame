@@ -768,10 +768,12 @@ function showAdvice() {
   box.textContent = msg;
   box.style.display = 'block';
   if (typeof box.focus === 'function') box.focus();
-  box.onclick = () => {
+  const hide = () => {
     box.style.display = 'none';
     box.onclick = null;
   };
+  box.onclick = hide;
+  setTimeout(hide, 6000);
   highlightMissingLetters(currentScene);
 }
 
