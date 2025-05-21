@@ -6,6 +6,8 @@ var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, 
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcon, barnIcon;
+let duckRabbitIcons = [];
+let duckRabbitIconIndex = 0;
 let picnicReached = false,
     mapIcon;
 let mapUnlocked = false;
@@ -392,7 +394,13 @@ function preload() {
   };
   trayB.initBase();
 
-  duckRabbitIcon = loadImage('assets/images/icons/duck-rabbit.png');
+  duckRabbitIcons = [
+    loadImage('assets/images/icons/duck-rabbit.png'),
+    loadImage('assets/images/icons/duck-rabbit1.png'),
+    loadImage('assets/images/icons/duck-rabbit2.png')
+  ];
+  duckRabbitIconIndex = 0;
+  duckRabbitIcon = duckRabbitIcons[duckRabbitIconIndex];
   barnIcon = loadImage('assets/images/icons/barndefault.png');
   mapIcon = loadImage('assets/images/icons/map.png');
 
@@ -627,12 +635,20 @@ function mousePressed() {
 }
 
 function showAdvice() {
+  if (typeof playSound === 'function') playSound('continue');
+  toggleDuckRabbitIcon();
   if (lettersFoundCount >= 26) {
     alert("Duck-Rabbit says: Great job finding all the letters!");
   } else {
     alert("Duck-Rabbit says: Think about things from a different perspective!");
   }
   highlightMissingLetters(currentScene);
+}
+
+function toggleDuckRabbitIcon() {
+  if (!Array.isArray(duckRabbitIcons) || duckRabbitIcons.length === 0) return;
+  duckRabbitIconIndex = (duckRabbitIconIndex + 1) % duckRabbitIcons.length;
+  duckRabbitIcon = duckRabbitIcons[duckRabbitIconIndex];
 }
 
 function updateBenchRestDialogue() {
