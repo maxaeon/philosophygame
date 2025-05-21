@@ -122,7 +122,7 @@ function preloadLetters() {
     concept: 'Observation',
     description: 'Watching carefully to learn.',
     question: 'What have you discovered by observing?',
-    x: 200, y: 380
+    x: 550, y: 380
   });
   letters.push({
     scene: 'farmMap',

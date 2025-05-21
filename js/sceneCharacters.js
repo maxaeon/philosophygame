@@ -151,8 +151,8 @@ sceneCharacterSettings['dogHouse'] = {
 };
 
 sceneCharacterSettings['field'] = {
-  sheep: { y: 70 },
-  sheepbaby: { x: 520, y: 90 },
+  sheep: { x: 450, y: 80 },
+  sheepbaby: { x: 510, y: 100 },
   duck: { x: 360, y: 500 }
 };
 
@@ -185,7 +185,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { y: 320, state: 'default' },
+  chick: { x: 350, y: 320, state: 'default' },
   duck: { y: 500 }
 };
 
