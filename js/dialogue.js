@@ -86,6 +86,9 @@ const dialogues = {
     { speaker: 'rabbit', text: "We won't judge you too quickly- we'd love to be your friends!" },
     { speaker: 'dog', text: 'Really? Thank you!' }
   ],
+  dogHouseReturn: [
+    { speaker: 'dog', text: 'Hi Duck and Rabbit! Thank you for being my friends!', pose: 'happy' }
+  ],
   field: [
     { speaker: 'rabbit', text: 'Are these real sheep?' },
     { speaker: 'sheep', text: "I don't think we are robots!" },

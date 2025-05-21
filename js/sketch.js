@@ -420,6 +420,20 @@ function draw() {
   }
   if (
     !isDialogueActive() &&
+    currentScene === 'dogHouse' &&
+    dialoguesPlayed.dogHouse &&
+    !dialoguesPlayed.dogHouseReturn
+  ) {
+    if (
+      sceneCharacterSettings['dogHouse'] &&
+      sceneCharacterSettings['dogHouse'].dog
+    ) {
+      sceneCharacterSettings['dogHouse'].dog.state = 'happy';
+    }
+    playDialogue('dogHouseReturn');
+  }
+  if (
+    !isDialogueActive() &&
     currentScene !== 'bench' &&
     !pendingDialogueScene &&
     allLettersFoundForScene(currentScene) &&
