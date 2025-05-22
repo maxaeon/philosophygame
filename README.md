@@ -1,6 +1,6 @@
 # Duck-Rabbit Philosophy Farm 🦆🐰
 
-Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game designed to introduce children to philosophical concepts through playful exploration. Join Duck and Rabbit as they guide young philosophers around a whimsical farm, exploring ideas from autonomy and belief to ethical dilemmas like the trolley problem!
+Welcome to the **Duck-Rabbit Philosophy Farm**, an interactive, educational game designed to introduce children to philosophical concepts through playful exploration. Join Duck and Rabbit as they guide young philosophers around a whimsical farm, exploring ideas from autonomy and belief to ethical dilemmas like a child-friendly version of the trolley problem!
 
 ## 🎮 How to Play
 
