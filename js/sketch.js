@@ -888,8 +888,9 @@ function draw() {
 }
 
 function mousePressed() {
+  // When dialogue is active, let the dialogue box handle clicks to
+  // advance the conversation instead of closing it immediately.
   if (isDialogueActive()) {
-    if (typeof stopDialogue === 'function') stopDialogue();
     return;
   }
   const infoBox = document.getElementById('letterInfoBox');
