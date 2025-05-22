@@ -255,35 +255,37 @@ function drawSceneCharacters(scene) {
   chars.forEach(name => {
     const charObj = window[name];
     if (charObj && typeof charObj.display === 'function') {
-      if (typeof charObj.reset === 'function') {
-        charObj.reset();
-      }
       const overrides =
         sceneCharacterSettings[scene] &&
         sceneCharacterSettings[scene][name];
+
+      if (charObj.lastScene !== scene) {
+        const base = basePositions[name] || {
+          x: charObj.baseX,
+          y: charObj.baseY,
+          size: charObj.baseSize,
+          state: charObj.baseState
+        };
+        charObj.baseX = overrides && overrides.x !== undefined ? overrides.x : base.x;
+        charObj.baseY = overrides && overrides.y !== undefined ? overrides.y : base.y;
+        charObj.baseSize = overrides && overrides.size !== undefined ? overrides.size : base.size;
+        const state = overrides && overrides.state !== undefined ? overrides.state : base.state;
+        const activeDialogue = typeof isDialogueActive === 'function' && isDialogueActive();
+        if (!activeDialogue && state && typeof charObj.setState === 'function') {
+          charObj.setState(state);
+        }
+        charObj.baseState = state;
+        charObj.lastScene = scene;
+      }
+
+      if (typeof charObj.reset === 'function') {
+        charObj.reset();
+      }
+
       if (overrides) {
         if (overrides.x !== undefined) charObj.x = overrides.x;
         if (overrides.y !== undefined) charObj.y = overrides.y;
         if (overrides.size !== undefined) charObj.size = overrides.size;
-      }
-      if (charObj.lastScene !== scene) {
-        if (overrides) {
-          if (overrides.x !== undefined) charObj.baseX = overrides.x;
-          if (overrides.y !== undefined) charObj.baseY = overrides.y;
-          if (overrides.size !== undefined) charObj.baseSize = overrides.size;
-        }
-        const state = overrides && overrides.state !== undefined ? overrides.state : charObj.baseState;
-        const activeDialogue = typeof isDialogueActive === 'function' && isDialogueActive();
-        if (!activeDialogue) {
-          if (state && typeof charObj.setState === 'function') {
-            charObj.setState(state);
-            charObj.baseState = state;
-          }
-        } else if (state) {
-          // Preserve the speaking pose but update the base state for later
-          charObj.baseState = state;
-        }
-        charObj.lastScene = scene;
       }
       // Mark interactive characters for hover effects
       charObj.interactive = false;
