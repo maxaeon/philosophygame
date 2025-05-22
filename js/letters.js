@@ -153,7 +153,7 @@ function preloadLetters() {
     concept: 'Solving',
     description: 'Finding answers when there are questions, or finding ways to make things work if there is a problem.',
     question: 'When you get stuck on a problem, how do you figure it out?',
-    x: 520, y: 330
+    x: 220, y: 30
   });
   letters.push({
     scene: 'vegetables',
