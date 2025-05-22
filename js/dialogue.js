@@ -65,6 +65,9 @@ const dialogues = {
     { speaker: 'duck', text: "I'm getting hungry." },
     { speaker: 'rabbit', text: 'Let\'s grab a tasty treat from my tunnels beneath the garden.' }
   ],
+  vegetablesReturn: [
+    { speaker: 'rabbit', text: "Do you want to go back to the map and figure out where to go from here?" }
+  ],
   tunnel: [
     { speaker: 'rabbit', text: 'I think those vegetables are around here somewhere...' }
   ],
