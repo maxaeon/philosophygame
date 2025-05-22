@@ -580,8 +580,8 @@ function draw() {
           sceneCharacterSettings['flowers'].rabbit = { x: 620, y: 500, size: 100 };
         } else {
           sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'mouth-closed' };
-          delete sceneCharacterSettings['flowers'].duck;
-          delete sceneCharacterSettings['flowers'].rabbit;
+          sceneCharacterSettings['flowers'].duck = { x: 360, y: 420, size: 100 };
+          sceneCharacterSettings['flowers'].rabbit = { x: 420, y: 420, size: 100 };
         }
       }
     }
