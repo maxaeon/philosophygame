@@ -145,7 +145,7 @@ function preloadLetters() {
     concept: 'Reality',
     description: 'What is real, and not just imaginary.',
     question: 'Do you think the tooth fairy is real?',
-    x: 150, y: 100
+    x: 140, y: 100
   });
   letters.push({
     scene: 'donkey',
@@ -153,7 +153,7 @@ function preloadLetters() {
     concept: 'Solving',
     description: 'Finding answers when there are questions, or finding ways to make things work if there is a problem.',
     question: 'When you get stuck on a problem, how do you figure it out?',
-    x: 520, y: 330
+    x: 220, y: 30
   });
   letters.push({
     scene: 'vegetables',

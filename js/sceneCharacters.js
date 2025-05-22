@@ -172,9 +172,9 @@ sceneCharacterSettings['barn'] = {
 
 sceneCharacterSettings['donkey'] = {
   donkey: { x: 300, y: 200, size: 440 },
-  duck: { x: 150, y: 500, size: 100 },
-  rabbit: { x: 210, y: 500, size: 100 },
-  orangecat: { x: 20, y: 400, size: 100 }
+  duck: { x: 130, y: 350, size: 100 },
+  rabbit: { x: 190, y: 350, size: 100 },
+  orangecat: { x: 0, y: 250, size: 100 }
 };
 
 sceneCharacterSettings['tunnel'] = {
@@ -190,7 +190,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { x: 295, y: 320, state: 'default' },
+  chick: { x: 285, y: 310, state: 'default' },
   duck: { y: 500 }
 };
 
