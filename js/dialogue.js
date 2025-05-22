@@ -1,6 +1,6 @@
 const dialogues = {
   start: [
-    { speaker: 'rabbit', text: 'Welcome to the Philosophy Farm!' },
+    { speaker: 'rabbit', text: 'Welcome to Philosophy Farm! You can click on the icon above for guidance throughout the game.' },
     { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
     { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
     { speaker: 'duck', text: "Right—maybe sometimes the answer isn't just yes or no!" }
