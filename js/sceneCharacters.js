@@ -22,8 +22,8 @@ const basePositions = {
   birdhouse:       { x: 380, y: 420, size: 100, state: 'start' },
   pig:             { x: 360, y: 420, size: 100 },
   duckRabbitSwing: { x: 360, y: 420, size: 100 },
-  trayA:           { x: 500, y: 420, size: 80 },
-  trayB:           { x: 360, y: 420, size: 80 }
+  trayA:           { x: 470, y: 420, size: 80 },
+  trayB:           { x: 345, y: 420, size: 80 }
 };
 
 const sceneCharacters = {};
@@ -92,7 +92,7 @@ sceneCharacterSettings['farmMap'] = {
   // Owl stays in roughly the same position
   owl:       { x: 40,  y: 250, size: 80 },
   // Dog now lives where the bench link started
-  dog:       { x: 30,  y: 40,  size: 50 },
+  dog:       { x: 30,  y: 60,  size: 50 },
   // Sheep family appears above the owl and slightly left
   sheep:     { x: 15,  y: 160, size: 50 },
   sheepbaby: { x: 75,  y: 180, size: 40 },

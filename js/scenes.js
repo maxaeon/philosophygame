@@ -54,7 +54,7 @@ function setupScenes() {
       labelX: 490,
       labelY: 30
     },
-    {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 75},
+    {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 95},
     {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
     {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
     {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50, labelY: 185},
