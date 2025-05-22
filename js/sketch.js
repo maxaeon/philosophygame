@@ -135,6 +135,8 @@ function preload() {
     'left',
     'right',
     'left-eyes-closed',
+    'eyes-closed',
+    'meditating',
     'slight-left',
     'mouth-closed',
     'backwards',
@@ -143,7 +145,11 @@ function preload() {
     'swim-right',
     'swim-left'
   ], 100, 360, 420);
-  rabbit = new Character('rabbit', ['mouth-closed'], 100, 420, 420);
+  rabbit = new Character('rabbit', [
+    'mouth-closed',
+    'eyes-closed',
+    'meditating'
+  ], 100, 420, 420);
   // Donkey has a default image plus open and closed mouth states
   donkey = new Character('donkey', ['open', 'closed', 'mouth-closed'], 100, 380, 420);
   donkey.images['idle'] = loadImage('assets/images/donkey/default.png');
@@ -175,7 +181,9 @@ function preload() {
   owl = new Character('owl', [
     'eyes-closed-mouth-open',
     'eyes-closed',
-    'mouth-closed'
+    'mouth-closed',
+    'meditating',
+    'meditating-mouth-open'
   ], 100, 380, 420);
 
   graytortiecat = new Character('graytortiecat', ['fluffy', 'hairless', 'mouth-closed'], 100, 380, 420);
@@ -489,6 +497,9 @@ function draw() {
     if (currentScene === 'dogHouse') {
       dogHouseVisits++;
     }
+    if (currentScene === 'loft') {
+      dialoguesPlayed['loft'] = false;
+    }
     if (currentScene === 'greenhouseInside') {
       trayChoiceMade = false;
       trayOnTable = 'trayB';
@@ -545,6 +556,9 @@ function draw() {
       }
       playDialogue('dogHouseReturn');
     }
+  }
+  if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
+    playDialogue('loft');
   }
   if (!isDialogueActive() && currentScene === 'swing') {
     playDialogue('swing');

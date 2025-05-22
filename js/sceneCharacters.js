@@ -199,7 +199,8 @@ sceneCharacterSettings['loftEntrance'].graytortiecat = {
 };
 
 sceneCharacterSettings['loft'].owl = {
-  x: 200
+  x: 200,
+  state: 'meditating'
 };
 
 if (typeof window !== 'undefined') {
