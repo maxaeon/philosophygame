@@ -510,18 +510,22 @@ function draw() {
     sceneHistory.push(currentScene);
     if (currentScene === 'dogHouse') {
       dogHouseVisits++;
+      dialoguesPlayed['dogHouseReturn'] = false;
     }
     if (currentScene === 'pond2') {
       pond2Visits++;
     }
     if (currentScene === 'radioRoom') {
       radioRoomVisits++;
+      dialoguesPlayed['radioRoomReturn'] = false;
     }
     if (currentScene === 'loftEntrance') {
       loftEntranceVisits++;
+      dialoguesPlayed['loftEntranceReturn'] = false;
     }
     if (currentScene === 'studio') {
       studioVisits++;
+      dialoguesPlayed['studioReturn'] = false;
     }
     if (currentScene === 'donkey') {
       donkeyVisits++;
