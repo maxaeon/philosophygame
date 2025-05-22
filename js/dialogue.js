@@ -146,8 +146,18 @@ const dialogues = {
       {speaker: 'graytortiecat', text: "Hmm, I don't know if there's an easy answer to this, but keep thinking about it and let me know if you have any ideas!"}
   ],
   loft: [
-    { speaker: 'owl', text: "Let's meditate together. Close your eyes."},
-    { speaker: 'owl', text: "Sit on the floor. Breathe deeply, calm your mind, and relax." }
+    {
+      speaker: 'owl',
+      text: "Let's meditate together. Close your eyes.",
+      pose: 'meditating-mouth-open',
+      actions: { duck: 'eyes-closed', rabbit: 'eyes-closed' }
+    },
+    {
+      speaker: 'owl',
+      text: "Sit on the floor. Breathe deeply, calm your mind, and relax.",
+      pose: 'meditating-mouth-open',
+      actions: { duck: 'meditating', rabbit: 'meditating' }
+    }
   ]
 };
 
@@ -253,6 +263,14 @@ function playDialogue(scene, callback) {
     currentSpeaker = line.speaker;
     box.textContent = line.text;
     setCharacterState(line.speaker, true, line.pose);
+    if (line.actions) {
+      Object.entries(line.actions).forEach(([name, state]) => {
+        const ch = window[name];
+        if (ch && typeof ch.setState === 'function') {
+          ch.setState(state);
+        }
+      });
+    }
   }
   box.onclick = next;
   next();
