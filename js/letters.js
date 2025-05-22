@@ -361,6 +361,16 @@ function closeLetterInfo() {
   if (pendingDialogueScene) {
     playDialogue(pendingDialogueScene);
     pendingDialogueScene = null;
+  } else {
+    const btn = document.getElementById('continueBtn');
+    if (
+      btn &&
+      currentScene !== 'farmMap' &&
+      dialoguesPlayed[currentScene] &&
+      allLettersFoundForScene(currentScene)
+    ) {
+      btn.style.display = 'block';
+    }
   }
 }
 
