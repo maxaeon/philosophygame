@@ -239,6 +239,9 @@ function playDialogue(scene, callback) {
       box.onclick = null;
       dialogueActive = false;
       dialoguesPlayed[scene] = true;
+      if (scene === 'benchIntro' || scene === 'benchRest') {
+        dialoguesPlayed['bench'] = true;
+      }
       if (continueBtn) {
         if (
           scene === 'barnInside' ||

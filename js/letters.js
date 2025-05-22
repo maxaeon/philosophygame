@@ -363,10 +363,14 @@ function closeLetterInfo() {
     pendingDialogueScene = null;
   } else {
     const btn = document.getElementById('continueBtn');
+    const benchReady =
+      currentScene === 'bench' &&
+      (dialoguesPlayed.benchIntro || dialoguesPlayed.benchRest);
+    const pond2Ready = currentScene === 'pond2' && dialoguesPlayed.pond2;
     if (
       btn &&
       currentScene !== 'farmMap' &&
-      dialoguesPlayed[currentScene] &&
+      (dialoguesPlayed[currentScene] || benchReady || pond2Ready) &&
       allLettersFoundForScene(currentScene)
     ) {
       btn.style.display = 'block';
