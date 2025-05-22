@@ -378,6 +378,14 @@ function closeLetterInfo() {
   }
 }
 
+function hideLetterInfo() {
+  const box = document.getElementById('letterInfoBox');
+  if (box) {
+    box.style.display = 'none';
+  }
+  pendingDialogueScene = null;
+}
+
 // Draw letter indicators for the current scene
 function drawLetters(scene) {
   letters.forEach(l => {
@@ -477,5 +485,9 @@ function showContinueForDialogue(scene) {
   const btn = document.getElementById('continueBtn');
   if (btn) btn.style.display = 'none';
   pendingDialogueScene = scene;
+}
+
+if (typeof window !== 'undefined') {
+  window.hideLetterInfo = hideLetterInfo;
 }
 

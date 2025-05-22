@@ -89,6 +89,7 @@ function handleSceneClicks(mx, my) {
         if (typeof playSound === 'function') playSound('click');
         const dest = area.name === 'pond' ? 'pond2' : area.name;
         if (typeof stopDialogue === 'function') stopDialogue();
+        if (typeof hideLetterInfo === 'function') hideLetterInfo();
         currentScene = dest;
         if (typeof orderedScenes !== 'undefined') {
           const idx = orderedScenes.indexOf(dest);
@@ -109,6 +110,7 @@ function handleSceneClicks(mx, my) {
         playSound('dog');
       }
       if (typeof stopDialogue === 'function') stopDialogue();
+      if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'dogHouse';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('dogHouse');
@@ -125,6 +127,7 @@ function handleSceneClicks(mx, my) {
         playSound('sheep');
       }
       if (typeof stopDialogue === 'function') stopDialogue();
+      if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'field';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('field');
@@ -138,6 +141,7 @@ function handleSceneClicks(mx, my) {
         playSound('pig');
       }
       if (typeof stopDialogue === 'function') stopDialogue();
+      if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'swing';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('swing');
@@ -151,6 +155,7 @@ function handleSceneClicks(mx, my) {
         playSound('owl');
       }
       if (typeof stopDialogue === 'function') stopDialogue();
+      if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'flowers';
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('flowers');
@@ -220,6 +225,7 @@ function handleSceneClicks(mx, my) {
       if (within) {
         if (typeof playSound === 'function') playSound('click');
         if (typeof stopDialogue === 'function') stopDialogue();
+        if (typeof hideLetterInfo === 'function') hideLetterInfo();
         currentScene = area.name;
         if (area.name === 'loftEntrance') {
           sceneIndex = orderedScenes.indexOf('loftEntrance');
