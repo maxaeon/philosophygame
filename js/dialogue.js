@@ -290,7 +290,8 @@ function playDialogue(scene, callback) {
           scene === 'barn' ||
           scene === 'bench' ||
           scene === 'benchIntro' ||
-          scene === 'benchRest'
+          scene === 'benchRest' ||
+          scene === 'vegetables'
         ) {
           continueBtn.style.display = 'none';
         } else {
