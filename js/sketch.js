@@ -576,10 +576,12 @@ function draw() {
       if (sceneCharacterSettings['flowers']) {
         if (flowersVisits > 1) {
           sceneCharacterSettings['flowers'].owl.size = 0;
+          sceneCharacterSettings['flowers'].birdhouse.size = 0;
           sceneCharacterSettings['flowers'].duck = { x: 560, y: 500, size: 100 };
           sceneCharacterSettings['flowers'].rabbit = { x: 620, y: 500, size: 100 };
         } else {
           sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'mouth-closed' };
+          sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
           sceneCharacterSettings['flowers'].duck = { x: 360, y: 420, size: 100 };
           sceneCharacterSettings['flowers'].rabbit = { x: 420, y: 420, size: 100 };
         }
@@ -886,7 +888,10 @@ function draw() {
 }
 
 function mousePressed() {
-  if (isDialogueActive()) return;
+  if (isDialogueActive()) {
+    if (typeof stopDialogue === 'function') stopDialogue();
+    return;
+  }
   const infoBox = document.getElementById('letterInfoBox');
   if (infoBox && infoBox.style.display === 'block') return;
   handleSceneClicks(mouseX, mouseY);
