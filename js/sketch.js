@@ -569,9 +569,6 @@ function draw() {
       playDialogue('dogHouseReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
-    playDialogue('loft');
-  }
   if (!isDialogueActive() && currentScene === 'swing') {
     playDialogue('swing');
   }
