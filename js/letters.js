@@ -265,6 +265,7 @@ function handleLetterClicks(mx, my) {
         }
         if (
           currentScene !== 'bench' &&
+          currentScene !== 'pond2' &&
           currentScene !== 'farmMap' &&
           typeof playDialogue === 'function' &&
           allLettersFoundForScene(currentScene) &&
@@ -317,6 +318,7 @@ function checkDuckLetterCollision(duck) {
       }
       if (
         currentScene !== 'bench' &&
+        currentScene !== 'pond2' &&
         currentScene !== 'farmMap' &&
         typeof playDialogue === 'function' &&
         allLettersFoundForScene(currentScene) &&

@@ -73,7 +73,7 @@ const dialogues = {
   ],
   cave: [
     { speaker: 'duck', text: 'Found them!', pose: 'backwards' },
-    { speaker: 'rabbit', text: "Silly Duck, you've mistaken shadows for reality!" },
+    { speaker: 'rabbit', text: "Silly Duck, you've mistaken shadows for reality!", pose: 'backwards' },
     { speaker: 'duck', text: 'Oh, reality is so much brighter and better!' }
   ],
   vegetables2: [
