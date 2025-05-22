@@ -52,6 +52,15 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Okay! We\'ll hand water the other tray tomorrow.' },
     { speaker: 'duck', text: 'Every plant will get its turn to grow.' }
   ],
+  greenhouseInsideReturn: [
+    { speaker: 'rabbit', text: 'Those 10 plants have had water for a while now. Should we leave them there, or switch them back?' }
+  ],
+  greenhouseInsideReturn_trayA: [
+    { speaker: 'duck', text: 'We will make sure all of the plants get the T.L.C. they need, one way or another!' }
+  ],
+  greenhouseInsideReturn_trayB: [
+    { speaker: 'duck', text: 'We will make sure all of the plants get the T.L.C. they need, one way or another!' }
+  ],
   vegetables: [
     { speaker: 'duck', text: "I'm getting hungry." },
     { speaker: 'rabbit', text: 'Let\'s grab a tasty treat from my tunnels beneath the garden.' }

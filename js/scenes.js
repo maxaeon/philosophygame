@@ -57,7 +57,7 @@ function setupScenes() {
     {name: 'dogHouse', label: 'doghouse', x: 30,  y: 30,  w: 50,  h: 50, labelY: 95},
     {name: 'bench', label: 'bench', x: 20,  y: 370, w: 70,  h: 70},
     {name: 'pond', label: 'pond', x: 450, y: 380, w: 100, h: 100},
-    {name: 'greenhouse', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50, labelY: 185},
+    {name: 'greenhouseInside', label: 'greenhouse', x: 500, y: 175, w: 50,  h: 50, labelY: 185},
     {name: 'picnic', label: 'picnic', x: 700, y: 140, w: 50,  h: 50},
     {name: 'vegetables', label: 'vegetables', x: 715, y: 300, w: 50, h: 50},
     {name: 'flowers', label: 'birdhouse', x: 40, y: 250, w: 80, h: 80}
@@ -167,7 +167,7 @@ function handleSceneClicks(mx, my) {
     const letterEFound =
       typeof isLetterFound === 'function' &&
       isLetterFound('E', 'greenhouseInside');
-    const promptShown = dialoguesPlayed['greenhouseInside'];
+    const promptShown = dialoguesPlayed['greenhouseInside'] || dialoguesPlayed['greenhouseInsideReturn'];
     if (!letterEFound || !promptShown) {
       return;
     }
@@ -196,8 +196,12 @@ function handleSceneClicks(mx, my) {
         trayOnTable = 'trayA';
         trayA.reset();
         trayB.reset();
-        if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayA']) {
-          playDialogue('greenhouseInside_trayA');
+        if (typeof playDialogue === 'function') {
+          if (dialoguesPlayed['greenhouseInsideReturn']) {
+            playDialogue('greenhouseInsideReturn_trayA');
+          } else {
+            playDialogue('greenhouseInside_trayA');
+          }
         }
         trayChoiceMade = true;
         clicked = true;
@@ -207,8 +211,12 @@ function handleSceneClicks(mx, my) {
         trayOnTable = 'trayB';
         trayA.reset();
         trayB.reset();
-        if (typeof playDialogue === 'function' && !dialoguesPlayed['greenhouseInside_trayB']) {
-          playDialogue('greenhouseInside_trayB');
+        if (typeof playDialogue === 'function') {
+          if (dialoguesPlayed['greenhouseInsideReturn']) {
+            playDialogue('greenhouseInsideReturn_trayB');
+          } else {
+            playDialogue('greenhouseInside_trayB');
+          }
         }
         trayChoiceMade = true;
         clicked = true;
