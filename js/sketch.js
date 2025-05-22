@@ -128,6 +128,7 @@ let continueBtn;
 let backBtn;
 let sceneHistory = [currentScene];
 let dogHouseVisits = 0;
+let pond2Visits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -337,10 +338,10 @@ function preload() {
 
   trayA = {
     images: { default: loadImage('assets/images/trays/trayA.png') },
-    x: 500,
+    x: 470,
     y: 420,
     size: 80,
-    baseX: 500,
+    baseX: 470,
     baseY: 420,
     baseSize: 80,
     display() {
@@ -375,10 +376,10 @@ function preload() {
 
   trayB = {
     images: { default: loadImage('assets/images/trays/trayB.png') },
-    x: 360,
+    x: 345,
     y: 420,
     size: 80,
-    baseX: 360,
+    baseX: 345,
     baseY: 420,
     baseSize: 80,
     display() {
@@ -455,6 +456,14 @@ function draw() {
       duckTargetX = null;
       duckTargetY = null;
       duck.setState('swim-down');
+    } else if (pond2Visits > 1 && !dialoguesPlayed['pond2Return']) {
+      if (!isDialogueActive()) {
+        playDialogue('pond2Return');
+      }
+      moveLeft = moveRight = moveUp = moveDown = false;
+      duckTargetX = null;
+      duckTargetY = null;
+      duck.setState('swim-down');
     } else {
       if (moveLeft || moveRight || moveUp || moveDown) {
         duckTargetX = null;
@@ -497,6 +506,9 @@ function draw() {
     if (currentScene === 'dogHouse') {
       dogHouseVisits++;
     }
+    if (currentScene === 'pond2') {
+      pond2Visits++;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -504,9 +516,9 @@ function draw() {
       trayChoiceMade = false;
       trayOnTable = 'trayB';
       if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
-        trayA.baseX = 500;
+        trayA.baseX = 470;
         trayA.baseY = 420;
-        trayB.baseX = 360;
+        trayB.baseX = 345;
         trayB.baseY = 420;
         sceneCharacterSettings['greenhouseInside'].trayA.x = trayA.baseX;
         sceneCharacterSettings['greenhouseInside'].trayA.y = trayA.baseY;
@@ -678,6 +690,9 @@ function draw() {
 }
 
 function mousePressed() {
+  if (isDialogueActive()) return;
+  const infoBox = document.getElementById('letterInfoBox');
+  if (infoBox && infoBox.style.display === 'block') return;
   handleSceneClicks(mouseX, mouseY);
   handleLetterClicks(mouseX, mouseY);
   if (currentScene === 'pond2' && dialoguesPlayed['pond2']) {
@@ -896,7 +911,7 @@ function goBackScene() {
 }
 
 function keyPressed() {
-  if (currentScene === 'pond2' && !dialoguesPlayed['pond2']) return;
+  if (currentScene === 'pond2' && isDialogueActive()) return;
   if (keyCode === LEFT_ARROW) moveLeft = true;
   if (keyCode === RIGHT_ARROW) moveRight = true;
   if (keyCode === UP_ARROW) moveUp = true;
@@ -904,7 +919,7 @@ function keyPressed() {
 }
 
 function keyReleased() {
-  if (currentScene === 'pond2' && !dialoguesPlayed['pond2']) return;
+  if (currentScene === 'pond2' && isDialogueActive()) return;
   if (keyCode === LEFT_ARROW) moveLeft = false;
   if (keyCode === RIGHT_ARROW) moveRight = false;
   if (keyCode === UP_ARROW) moveUp = false;

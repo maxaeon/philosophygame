@@ -22,6 +22,9 @@ const dialogues = {
     { speaker: 'duck', text: "Thanks! Our differences make us special."},
     { speaker: 'duck', text: "Can you help Duck find the letter hidden here? Use the arrows to make Duck swim."}
   ],
+  pond2Return: [
+    { speaker: 'duck', text: 'Use the arrow keys to move me around!', pose: null }
+  ],
   flowers: [
     { speaker: 'owl', text: "Duck, Rabbit, can you help me? The Robin family's birdhouse needs repairs before the eggs hatch!" },
     { speaker: 'rabbit', text: "Of course! Let's get started." }
@@ -188,7 +191,11 @@ function setCharacterState(name, speaking, pose) {
   }
   if (speaking) {
     // Use the default talking image unless a specific pose is provided
-    ch.setState(pose || 'default');
+    if (pose === null) {
+      // keep current state
+    } else {
+      ch.setState(pose || 'default');
+    }
   } else {
     // When done speaking, return to the character's base pose
     if (name === 'duck' && duckFacingBackwards) {

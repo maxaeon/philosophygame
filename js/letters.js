@@ -25,7 +25,7 @@ function preloadLetters() {
     concept: 'Change',
     description: 'How things become different.',
     question: 'How have you changed this year?',
-    x: 450, y: 180
+    x: 100, y: 330
   });
   letters.push({
     scene: 'pond2',
@@ -105,7 +105,7 @@ function preloadLetters() {
     concept: 'Minds',
     description: 'Our memories, feelings, thoughts, and experiences are part of our minds... Only you can access yours!',
     question: 'Do other animals think and feel like we do?',
-    x: 350, y: 150
+    x: 430, y: 165
   });
   letters.push({
     scene: 'pond',
