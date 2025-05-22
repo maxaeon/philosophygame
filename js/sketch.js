@@ -573,6 +573,11 @@ function draw() {
     if (currentScene === 'flowers') {
       flowersVisits++;
       dialoguesPlayed['flowersReturn'] = false;
+
+      if (flowersVisits > 1 && mapUnlocked && Array.isArray(sceneCharacters['flowers'])) {
+        sceneCharacters['flowers'] = sceneCharacters['flowers'].filter(c => c !== 'owl' && c !== 'birdhouse');
+      }
+
       if (sceneCharacterSettings['flowers']) {
         if (flowersVisits > 1) {
           sceneCharacterSettings['flowers'].owl.size = 0;
