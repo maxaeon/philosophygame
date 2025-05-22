@@ -104,7 +104,7 @@ const dialogues = {
     { speaker: 'dog', text: "I'm sad; people say I look like a pitbull, or dalmation, or herding dog, and assume I'm dangerous because of it.", pose: 'sad-talking' },
     { speaker: 'duck', text: "That's just like when I thought shadows were reality. I judged too quickly by appearances, but that's wrong to do." },
     { speaker: 'rabbit', text: "We won't judge you too quickly- we'd love to be your friends!", actions: { dog: 'default' } },
-    { speaker: 'dog', text: 'Really? Thank you!', pose: 'default' }
+    { speaker: 'dog', text: 'Really? Thank you!', pose: 'happy' }
   ],
   dogHouseReturn: [
     { speaker: 'dog', text: 'Hi Duck and Rabbit! Thank you for being my friends!', pose: 'happy' }
@@ -168,10 +168,10 @@ const dialogues = {
     { speaker: 'chick', text: 'Colors and light—I know all about them!', pose: 'default' },
     { speaker: 'duck', text: "But do you know what it's like to actually see colors?" },
     { speaker: 'chick', text: 'Not yet, but let me finish hatching and I will!', pose: 'default' },
-    { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.' }
+    { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.', pose: 'in-egg-open' }
   ],
   radioRoomReturn: [
-    { speaker: 'chick', text: "All of the physical facts didn't prepare me for what it is like to see color!" }
+    { speaker: 'chick', text: "All of the physical facts didn't prepare me for what it is like to see color!", pose: 'in-egg-open' }
   ],
   loftEntrance: [
     { speaker: 'graytortiecat', text: 'Duck and Rabbit, can you help me? I was wondering, how different could I be and still be a cat?' },
