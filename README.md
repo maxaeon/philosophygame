@@ -96,10 +96,10 @@ Suggestions and contributions are welcome! Feel free to open issues or submit pu
 
 ## 📜 License
 
-Distributed under the Creative Commons Attribution-NonCommercial 4.0 International License. See `LICENSE` for more information.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0). See `LICENSE` for more information.
 
 The Duck-Rabbit Philosophy Farm game and its characters are
-**© 2025 maxaeon**. You may play the game for free and reuse the code in
+**© 2025 maxaeon**. The game remains free here on GitHub, though it may be sold for a small fee on Steam. You may reuse the code in
 this repository to create your own games, but please credit this project
 and do not claim the original characters as your own.
 Codex was used as in translating this game from codeblocks.
