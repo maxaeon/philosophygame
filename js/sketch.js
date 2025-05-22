@@ -132,6 +132,8 @@ let pond2Visits = 0;
 let radioRoomVisits = 0;
 let loftEntranceVisits = 0;
 let studioVisits = 0;
+let donkeyVisits = 0;
+let greenhouseInsideVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -521,6 +523,9 @@ function draw() {
     if (currentScene === 'studio') {
       studioVisits++;
     }
+    if (currentScene === 'donkey') {
+      donkeyVisits++;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -528,6 +533,7 @@ function draw() {
       dialoguesPlayed['swing'] = false;
     }
     if (currentScene === 'greenhouseInside') {
+      greenhouseInsideVisits++;
       trayChoiceMade = false;
       trayOnTable = 'trayB';
       if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
@@ -562,7 +568,11 @@ function draw() {
       playDialogue('benchRest');
     }
   }
-  if (!isDialogueActive() && currentScene === 'dogHouse') {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'dogHouse' &&
+    isLetterFound('B', 'dogHouse')
+  ) {
     if (!dialoguesPlayed['dogHouse']) {
       playDialogue('dogHouse', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
@@ -584,7 +594,11 @@ function draw() {
       playDialogue('dogHouseReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'radioRoom') {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'radioRoom' &&
+    isLetterFound('O', 'radioRoom')
+  ) {
     if (!dialoguesPlayed['radioRoom']) {
       playDialogue('radioRoom', () => {
         if (sceneCharacterSettings['radioRoom'] && sceneCharacterSettings['radioRoom'].chick) {
@@ -599,24 +613,65 @@ function draw() {
       playDialogue('radioRoomReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'loftEntrance') {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'loftEntrance' &&
+    isLetterFound('W', 'loftEntrance')
+  ) {
     if (!dialoguesPlayed['loftEntrance']) {
       playDialogue('loftEntrance');
     } else if (loftEntranceVisits > 1 && !dialoguesPlayed['loftEntranceReturn']) {
       playDialogue('loftEntranceReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'studio') {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'studio' &&
+    isLetterFound('I', 'studio')
+  ) {
     if (!dialoguesPlayed['studio']) {
       playDialogue('studio');
     } else if (studioVisits > 1 && !dialoguesPlayed['studioReturn']) {
       playDialogue('studioReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'donkey' &&
+    isLetterFound('S', 'donkey')
+  ) {
+    if (!dialoguesPlayed['donkey']) {
+      playDialogue('donkey');
+    } else if (donkeyVisits > 1 && !dialoguesPlayed['donkeyReturn']) {
+      playDialogue('donkeyReturn');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'greenhouseInside') {
+    if (
+      greenhouseInsideVisits > 1 &&
+      trayOnTable === 'trayA' &&
+      !dialoguesPlayed['greenhouseInsideReturn']
+    ) {
+      dialoguesPlayed['greenhouseInside'] = true;
+      playDialogue('greenhouseInsideReturn');
+    } else if (!dialoguesPlayed['greenhouseInside']) {
+      playDialogue('greenhouseInside');
+    }
+  }
+  if (
+    !isDialogueActive() &&
+    currentScene === 'loft' &&
+    isLetterFound('Z', 'loft') &&
+    !dialoguesPlayed['loft']
+  ) {
     playDialogue('loft');
   }
-  if (!isDialogueActive() && currentScene === 'swing' && !dialoguesPlayed['swing']) {
+  if (
+    !isDialogueActive() &&
+    currentScene === 'swing' &&
+    isLetterFound('G', 'swing') &&
+    !dialoguesPlayed['swing']
+  ) {
     playDialogue('swing');
   }
   if (
@@ -654,7 +709,7 @@ function draw() {
     });
   }
   if (currentScene === 'donkey') {
-    image(barnIcon, 10, 10, 50, 50);
+    image(barnIcon, 10, 300, 50, 50);
   }
   if (
     mapUnlocked &&

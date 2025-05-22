@@ -52,6 +52,9 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Okay! We\'ll hand water the other tray tomorrow.' },
     { speaker: 'duck', text: 'Every plant will get its turn to grow.' }
   ],
+  greenhouseInsideReturn: [
+    { speaker: 'rabbit', text: 'Thanks for coming back to water the seedlings again!' }
+  ],
   vegetables: [
     { speaker: 'duck', text: "I'm getting hungry." },
     { speaker: 'rabbit', text: 'Let\'s grab a tasty treat from my tunnels beneath the garden.' }
@@ -112,6 +115,9 @@ const dialogues = {
     {speaker: 'duck', text: 'That seems fair!' },
     {speaker: 'cat', text: "I'd love that! But what about animals who need more to feel full?"},
     {speaker: 'rabbit', text: 'I think it would be most fair to give every animal a belly full of a treat they like!'}
+  ],
+  donkeyReturn: [
+    { speaker: 'donkey', text: 'thank you for helping me share these tasty treats with everyone!' }
   ],
   barnInside: [
     { speaker: 'rabbit', text: "We've always wondered, what is it like to be a bat?" },
