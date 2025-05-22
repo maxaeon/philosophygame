@@ -267,6 +267,11 @@ function drawSceneCharacters(scene) {
         if (overrides.size !== undefined) charObj.size = overrides.size;
       }
       if (charObj.lastScene !== scene) {
+        if (overrides) {
+          if (overrides.x !== undefined) charObj.baseX = overrides.x;
+          if (overrides.y !== undefined) charObj.baseY = overrides.y;
+          if (overrides.size !== undefined) charObj.baseSize = overrides.size;
+        }
         const state = overrides && overrides.state !== undefined ? overrides.state : charObj.baseState;
         const activeDialogue = typeof isDialogueActive === 'function' && isDialogueActive();
         if (!activeDialogue) {
