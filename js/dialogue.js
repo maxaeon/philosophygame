@@ -37,6 +37,9 @@ const dialogues = {
     { speaker: 'owl', text: "Thank you both! As a token of our gratitude, the Robins and I left seedlings in the greenhouse for you." },
     { speaker: 'duck', text: "Thank you, Owl! Let's go see!" }
   ],
+  flowersReturn: [
+    { speaker: 'robinFamily', text: 'Thank you Duck and Rabbit for fixing our home!' }
+  ],
   greenhouse: [
     { speaker: 'duck', text: "Here's the greenhouse! Let's check out our seedlings." }
   ],
