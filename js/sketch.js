@@ -136,6 +136,8 @@ let greenhouseInsideVisits = 0;
 let donkeyVisits = 0;
 let picnicVisits = 0;
 let vegetablesVisits = 0;
+let fieldVisits = 0;
+let mirrorVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -542,6 +544,14 @@ function draw() {
       vegetablesVisits++;
       dialoguesPlayed['vegetablesReturn'] = false;
     }
+    if (currentScene === 'field') {
+      fieldVisits++;
+      dialoguesPlayed['fieldReturn'] = false;
+    }
+    if (currentScene === 'mirror') {
+      mirrorVisits++;
+      dialoguesPlayed['mirrorReturn'] = false;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -627,6 +637,13 @@ function draw() {
       playDialogue('donkeyReturn');
     }
   }
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('K') && currentScene === 'field') {
+    if (!dialoguesPlayed['field']) {
+      playDialogue('field');
+    } else if (fieldVisits > 1 && !dialoguesPlayed['fieldReturn']) {
+      playDialogue('fieldReturn');
+    }
+  }
   if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('O') && currentScene === 'radioRoom') {
     if (!dialoguesPlayed['radioRoom']) {
       playDialogue('radioRoom', () => {
@@ -662,6 +679,13 @@ function draw() {
       playDialogue('studio');
     } else if (studioVisits > 1 && !dialoguesPlayed['studioReturn']) {
       playDialogue('studioReturn');
+    }
+  }
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('Y') && currentScene === 'mirror') {
+    if (!dialoguesPlayed['mirror']) {
+      playDialogue('mirror');
+    } else if (mirrorVisits > 1 && !dialoguesPlayed['mirrorReturn']) {
+      playDialogue('mirrorReturn');
     }
   }
   if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('E', 'greenhouseInside') && currentScene === 'greenhouseInside') {

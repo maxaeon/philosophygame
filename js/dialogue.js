@@ -114,6 +114,10 @@ const dialogues = {
     { speaker: 'sheep', text: "I don't think we are robots!" },
     { speaker: 'duck', text: 'Hmm, you kind of look like fake sheep to me...' }
   ],
+  fieldReturn: [
+    { speaker: 'sheep', text: 'Baa! Nice to see you again in the field!' },
+    { speaker: 'rabbit', text: 'These sheep remember us!' }
+  ],
   barn: [
     { speaker: 'duck', text: 'Should we talk to Donkey, explore the barn, or look at the map?' },
     { speaker: 'rabbit', text: 'You decide!' }
@@ -154,6 +158,10 @@ const dialogues = {
   mirror: [
     { speaker: 'duck', text: "Look, it's you! You're special!" },
     { speaker: 'rabbit', text: 'Yes, uniquely wonderful!' }
+  ],
+  mirrorReturn: [
+    { speaker: 'duck', text: 'Still you in the mirror!' },
+    { speaker: 'rabbit', text: 'Always unique!' }
   ],
   radioRoom: [
     { speaker: 'radio', text: '...and that concludes our podcast on The Complete Physical Account of Color Vision.'},
