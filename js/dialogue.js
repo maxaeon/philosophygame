@@ -140,6 +140,9 @@ const dialogues = {
     { speaker: 'chick', text: 'Not yet, but let me finish hatching and I will!', pose: 'default' },
     { speaker: 'chick', text: 'Wow, seeing color is so beautiful! I never truly understood.' }
   ],
+  radioRoomReturn: [
+    { speaker: 'chick', text: "All of the physical facts didn't prepare me for what it is like to see color!" }
+  ],
   loftEntrance: [
     { speaker: 'graytortiecat', text: 'Duck and Rabbit, can you help me? I was wondering, how different could I be and still be a cat?' },
     { speaker: 'rabbit', text: 'Interesting question! What makes us who or what we are?' },
@@ -185,7 +188,11 @@ function setCharacterState(name, speaking, pose) {
     if (speaking) {
       ch.setState(pose || 'in-egg-open');
     } else {
-      ch.setState('default');
+      if (dialoguesPlayed['radioRoom']) {
+        ch.setState('in-egg-open');
+      } else {
+        ch.setState('default');
+      }
     }
     return;
   }

@@ -129,6 +129,7 @@ let backBtn;
 let sceneHistory = [currentScene];
 let dogHouseVisits = 0;
 let pond2Visits = 0;
+let radioRoomVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -509,6 +510,9 @@ function draw() {
     if (currentScene === 'pond2') {
       pond2Visits++;
     }
+    if (currentScene === 'radioRoom') {
+      radioRoomVisits++;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -567,6 +571,21 @@ function draw() {
         dog.setState('default');
       }
       playDialogue('dogHouseReturn');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'radioRoom') {
+    if (!dialoguesPlayed['radioRoom']) {
+      playDialogue('radioRoom', () => {
+        if (sceneCharacterSettings['radioRoom'] && sceneCharacterSettings['radioRoom'].chick) {
+          sceneCharacterSettings['radioRoom'].chick.state = 'in-egg-open';
+        }
+        if (typeof chick !== 'undefined') {
+          chick.baseState = 'in-egg-open';
+          chick.setState('in-egg-open');
+        }
+      });
+    } else if (radioRoomVisits > 1 && !dialoguesPlayed['radioRoomReturn']) {
+      playDialogue('radioRoomReturn');
     }
   }
   if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
