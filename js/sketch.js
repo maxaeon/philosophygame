@@ -156,7 +156,8 @@ function preload() {
   rabbit = new Character('rabbit', [
     'mouth-closed',
     'eyes-closed',
-    'meditating'
+    'meditating',
+    'backwards'
   ], 100, 420, 420);
   // Donkey has a default image plus open and closed mouth states
   donkey = new Character('donkey', ['open', 'closed', 'mouth-closed'], 100, 380, 420);
@@ -588,7 +589,7 @@ function draw() {
       playDialogue('benchRest');
     }
   }
-  if (!isDialogueActive() && isLetterFound('B') && currentScene === 'dogHouse') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('B') && currentScene === 'dogHouse') {
     if (!dialoguesPlayed['dogHouse']) {
       playDialogue('dogHouse', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
@@ -610,14 +611,14 @@ function draw() {
       playDialogue('dogHouseReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('S', 'donkey') && currentScene === 'donkey') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('S', 'donkey') && currentScene === 'donkey') {
     if (!dialoguesPlayed['donkey']) {
       playDialogue('donkey');
     } else if (donkeyVisits > 1 && !dialoguesPlayed['donkeyReturn']) {
       playDialogue('donkeyReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('O') && currentScene === 'radioRoom') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('O') && currentScene === 'radioRoom') {
     if (!dialoguesPlayed['radioRoom']) {
       playDialogue('radioRoom', () => {
         if (sceneCharacterSettings['radioRoom'] && sceneCharacterSettings['radioRoom'].chick) {
@@ -632,21 +633,21 @@ function draw() {
       playDialogue('radioRoomReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('W') && currentScene === 'loftEntrance') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('W') && currentScene === 'loftEntrance') {
     if (!dialoguesPlayed['loftEntrance']) {
       playDialogue('loftEntrance');
     } else if (loftEntranceVisits > 1 && !dialoguesPlayed['loftEntranceReturn']) {
       playDialogue('loftEntranceReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('I') && currentScene === 'studio') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('I') && currentScene === 'studio') {
     if (!dialoguesPlayed['studio']) {
       playDialogue('studio');
     } else if (studioVisits > 1 && !dialoguesPlayed['studioReturn']) {
       playDialogue('studioReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('E', 'greenhouseInside') && currentScene === 'greenhouseInside') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('E', 'greenhouseInside') && currentScene === 'greenhouseInside') {
     if (
       greenhouseInsideVisits > 1 &&
       trayOnTable === 'trayA' &&
@@ -658,20 +659,20 @@ function draw() {
       playDialogue('greenhouseInside');
     }
   }
-  if (!isDialogueActive() && isLetterFound('T', 'vegetables') && currentScene === 'vegetables') {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('T', 'vegetables') && currentScene === 'vegetables') {
     if (!dialoguesPlayed['vegetables']) {
       playDialogue('vegetables');
     } else if (vegetablesVisits > 1 && !dialoguesPlayed['vegetablesReturn']) {
       playDialogue('vegetablesReturn');
     }
   }
-  if (!isDialogueActive() && isLetterFound('Z') && currentScene === 'loft' && !dialoguesPlayed['loft']) {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('Z') && currentScene === 'loft' && !dialoguesPlayed['loft']) {
     playDialogue('loft');
   }
-  if (!isDialogueActive() && isLetterFound('G') && currentScene === 'swing' && !dialoguesPlayed['swing']) {
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('G') && currentScene === 'swing' && !dialoguesPlayed['swing']) {
     playDialogue('swing');
   }
-      if (!isDialogueActive() && isLetterFound('A', 'picnic') && currentScene === 'picnic') {
+        if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('A', 'picnic') && currentScene === 'picnic') {
     if (!dialoguesPlayed['picnic']) {
       playDialogue('picnic');
     } else if (picnicVisits > 1 && !dialoguesPlayed['picnicReturn']) {
