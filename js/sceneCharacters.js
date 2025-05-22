@@ -190,7 +190,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { x: 295, y: 320, state: 'default' },
+  chick: { x: 285, y: 310, state: 'default' },
   duck: { y: 500 }
 };
 
