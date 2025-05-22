@@ -134,6 +134,7 @@ let loftEntranceVisits = 0;
 let studioVisits = 0;
 let greenhouseInsideVisits = 0;
 let donkeyVisits = 0;
+let picnicVisits = 0;
 let vegetablesVisits = 0;
 
 function preload() {
@@ -531,6 +532,10 @@ function draw() {
     if (currentScene === 'donkey') {
       donkeyVisits++;
     }
+      if (currentScene === 'picnic') {
+      picnicVisits++;
+      dialoguesPlayed['picnicReturn'] = false;
+    }
     if (currentScene === 'vegetables') {
       vegetablesVisits++;
       dialoguesPlayed['vegetablesReturn'] = false;
@@ -665,6 +670,13 @@ function draw() {
   }
   if (!isDialogueActive() && isLetterFound('G') && currentScene === 'swing' && !dialoguesPlayed['swing']) {
     playDialogue('swing');
+  }
+      if (!isDialogueActive() && currentScene === 'picnic') {
+    if (!dialoguesPlayed['picnic']) {
+      playDialogue('picnic');
+    } else if (picnicVisits > 1 && !dialoguesPlayed['picnicReturn']) {
+      playDialogue('picnicReturn');
+    }
   }
   if (
     !isDialogueActive() &&
