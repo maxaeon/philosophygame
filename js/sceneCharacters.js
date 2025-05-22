@@ -174,7 +174,7 @@ sceneCharacterSettings['donkey'] = {
   donkey: { x: 100, y: 200, size: 440 },
   duck: { x: 560, y: 500, size: 100 },
   rabbit: { x: 620, y: 500, size: 100 },
-  orangecat: { x: 0, y: 300, size: 100 }
+  orangecat: { x: 0, y: 310, size: 100 }
 };
 
 sceneCharacterSettings['tunnel'] = {

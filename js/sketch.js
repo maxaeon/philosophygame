@@ -608,7 +608,15 @@ function draw() {
         dog.baseState = 'default';
         dog.setState('default');
       }
-      playDialogue('dogHouseReturn');
+      playDialogue('dogHouseReturn', () => {
+        if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
+          sceneCharacterSettings['dogHouse'].dog.state = 'default';
+        }
+        if (typeof dog !== 'undefined') {
+          dog.baseState = 'default';
+          dog.setState('default');
+        }
+      });
     }
   }
   if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('S', 'donkey') && currentScene === 'donkey') {
@@ -630,7 +638,15 @@ function draw() {
         }
       });
     } else if (radioRoomVisits > 1 && !dialoguesPlayed['radioRoomReturn']) {
-      playDialogue('radioRoomReturn');
+      playDialogue('radioRoomReturn', () => {
+        if (sceneCharacterSettings['radioRoom'] && sceneCharacterSettings['radioRoom'].chick) {
+          sceneCharacterSettings['radioRoom'].chick.state = 'in-egg-open';
+        }
+        if (typeof chick !== 'undefined') {
+          chick.baseState = 'in-egg-open';
+          chick.setState('in-egg-open');
+        }
+      });
     }
   }
   if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('W') && currentScene === 'loftEntrance') {
@@ -714,7 +730,7 @@ function draw() {
     });
   }
   if (currentScene === 'donkey') {
-    image(barnIcon, 50, 160, 50, 50);
+    image(barnIcon, 50, 180, 50, 50);
   }
   if (
     mapUnlocked &&
