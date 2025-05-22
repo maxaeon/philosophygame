@@ -19,11 +19,11 @@ const dialogues = {
   ],
   pond2: [
     { speaker: 'rabbit', text: "Duck, you're lucky you can swim!" },
-    { speaker: 'duck', text: "Thanks! Our differences make us special."},
-    { speaker: 'duck', text: "Can you help Duck find the letter hidden here? Use the arrows to make Duck swim."}
+    { speaker: 'duck', text: "Our differences make us special."},
+    { speaker: 'duck', text: "Use the arrows or click the mouse to help Duck swim and find the letters in the pond."}
   ],
   pond2Return: [
-    { speaker: 'duck', text: 'Use the arrow keys to move me around!', pose: null }
+    { speaker: 'duck', text: 'Use the arrow keys to move Duck around!', pose: null }
   ],
   flowers: [
     { speaker: 'owl', text: "Duck, Rabbit, can you help me? The Robin family's birdhouse needs repairs before the eggs hatch!" },
@@ -34,7 +34,7 @@ const dialogues = {
     { speaker: 'rabbit', text: 'Interesting question! And if we put all the old parts together again, which birdhouse is the same one as before?' }
   ],
   flowers2: [
-    { speaker: 'owl', text: "Thank you both! As a token of my gratitude, the Robins and I left seedlings in the greenhouse for you." },
+    { speaker: 'owl', text: "Thank you both! As a token of our gratitude, the Robins and I left seedlings in the greenhouse for you." },
     { speaker: 'duck', text: "Thank you, Owl! Let's go see!" }
   ],
   greenhouse: [
