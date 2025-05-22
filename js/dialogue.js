@@ -291,7 +291,7 @@ function playDialogue(scene, callback) {
           scene === 'bench' ||
           scene === 'benchIntro' ||
           scene === 'benchRest' ||
-          scene === 'vegetables'
+          scene === 'vegetablesReturn'
         ) {
           continueBtn.style.display = 'none';
         } else {
