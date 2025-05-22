@@ -171,7 +171,7 @@ function preload() {
   dog.images['idle'] = loadImage('assets/images/dog/default.png');
   dog.state = 'mouth-closed';
   dog.initBase();
-  dog.setStateScale('sad-talking', 1.6);
+  dog.setStateScale('sad-talking', 1);
 
   sheep = new Character('sheep', [
     'forward-talking',
