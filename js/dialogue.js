@@ -314,10 +314,12 @@ function playDialogue(scene, callback) {
 
 function stopDialogue() {
   const box = document.getElementById('dialogueBox');
+  const continueBtn = document.getElementById('continueBtn');
   if (box) {
     box.style.display = 'none';
     box.onclick = null;
   }
+  if (continueBtn) continueBtn.style.display = 'none';
   if (currentSpeaker) {
     setCharacterState(currentSpeaker, false);
     currentSpeaker = null;

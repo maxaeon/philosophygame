@@ -919,6 +919,10 @@ function updateBenchRestDialogue() {
 }
 
 function advanceScene() {
+  if (currentScene === 'farmMap') {
+    if (continueBtn) continueBtn.style.display = 'none';
+    return;
+  }
   if (typeof playSound === 'function') playSound('continue');
   if (currentScene === 'donkey') {
     if (typeof playSound === 'function') playSound('transition');
