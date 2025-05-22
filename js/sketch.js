@@ -162,7 +162,7 @@ function preload() {
   donkey.state = 'mouth-closed';
   donkey.initBase();
 
-  dog = new Character('dog', ['happy', 'sad', 'mouth-closed'], 100, 620, 440);
+  dog = new Character('dog', ['happy', 'sad', 'sad-talking', 'mouth-closed'], 100, 620, 440);
   dog.images['idle'] = loadImage('assets/images/dog/default.png');
   dog.state = 'mouth-closed';
   dog.initBase();
