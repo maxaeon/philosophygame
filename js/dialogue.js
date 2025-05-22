@@ -146,8 +146,8 @@ const dialogues = {
       {speaker: 'graytortiecat', text: "Hmm, I don't know if there's an easy answer to this, but keep thinking about it and let me know if you have any ideas!"}
   ],
   loft: [
-    { speaker: 'owl', text: "Let's meditate together."},
-    { speaker: 'owl', text: "Close your eyes. Breathe deeply, calm your mind, and relax." }
+    { speaker: 'owl', text: "Let's meditate together. Close your eyes."},
+    { speaker: 'owl', text: "Sit on the floor. Breathe deeply, calm your mind, and relax." }
   ]
 };
 
