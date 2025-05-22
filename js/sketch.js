@@ -130,6 +130,8 @@ let sceneHistory = [currentScene];
 let dogHouseVisits = 0;
 let pond2Visits = 0;
 let radioRoomVisits = 0;
+let loftEntranceVisits = 0;
+let studioVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -513,6 +515,12 @@ function draw() {
     if (currentScene === 'radioRoom') {
       radioRoomVisits++;
     }
+    if (currentScene === 'loftEntrance') {
+      loftEntranceVisits++;
+    }
+    if (currentScene === 'studio') {
+      studioVisits++;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -589,6 +597,20 @@ function draw() {
       });
     } else if (radioRoomVisits > 1 && !dialoguesPlayed['radioRoomReturn']) {
       playDialogue('radioRoomReturn');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'loftEntrance') {
+    if (!dialoguesPlayed['loftEntrance']) {
+      playDialogue('loftEntrance');
+    } else if (loftEntranceVisits > 1 && !dialoguesPlayed['loftEntranceReturn']) {
+      playDialogue('loftEntranceReturn');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'studio') {
+    if (!dialoguesPlayed['studio']) {
+      playDialogue('studio');
+    } else if (studioVisits > 1 && !dialoguesPlayed['studioReturn']) {
+      playDialogue('studioReturn');
     }
   }
   if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {

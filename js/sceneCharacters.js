@@ -121,8 +121,8 @@ sceneCharacterSettings['greenhouse'].duck = { x: 340, y: 420 };
 sceneCharacterSettings['greenhouse'].rabbit = { x: 400 };
 
 // In the pond they appear roughly in the middle of the screen
-sceneCharacterSettings['pond'].duck   = { x: 360, y: 280, size: 100 };
-sceneCharacterSettings['pond'].rabbit = { x: 420, y: 280, size: 100 };
+sceneCharacterSettings['pond'].duck   = { x: 360, y: 250, size: 100 };
+sceneCharacterSettings['pond'].rabbit = { x: 420, y: 250, size: 100 };
 
 // Adjust positions in pond2: Rabbit sits in the top left and
 // Duck uses the swimming pose while remaining in its base position.
@@ -190,7 +190,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { x: 325, y: 320, state: 'default' },
+  chick: { x: 295, y: 320, state: 'default' },
   duck: { y: 500 }
 };
 
