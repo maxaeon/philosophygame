@@ -133,6 +133,7 @@ let radioRoomVisits = 0;
 let loftEntranceVisits = 0;
 let studioVisits = 0;
 let greenhouseInsideVisits = 0;
+let donkeyVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -522,6 +523,9 @@ function draw() {
     if (currentScene === 'studio') {
       studioVisits++;
     }
+    if (currentScene === 'donkey') {
+      donkeyVisits++;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -590,6 +594,13 @@ function draw() {
         dog.setState('default');
       }
       playDialogue('dogHouseReturn');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'donkey') {
+    if (!dialoguesPlayed['donkey']) {
+      playDialogue('donkey');
+    } else if (donkeyVisits > 1 && !dialoguesPlayed['donkeyReturn']) {
+      playDialogue('donkeyReturn');
     }
   }
   if (!isDialogueActive() && currentScene === 'radioRoom') {

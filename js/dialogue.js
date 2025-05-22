@@ -122,6 +122,10 @@ const dialogues = {
     {speaker: 'cat', text: "I'd love that! But what about animals who need more to feel full?"},
     {speaker: 'rabbit', text: 'I think it would be most fair to give every animal a belly full of a treat they like!'}
   ],
+  donkeyReturn: [
+    { speaker: 'donkey', text: 'Hello again! Did everyone get something tasty?' },
+    { speaker: 'duck', text: 'Yes! Sharing based on needs works best.' }
+  ],
   barnInside: [
     { speaker: 'rabbit', text: "We've always wondered, what is it like to be a bat?" },
     { speaker: 'bat', text: 'I enjoy sleeping in the dark barn during the day.'},
