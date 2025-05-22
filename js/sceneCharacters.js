@@ -90,7 +90,7 @@ sceneCharacterSettings['farmMap'] = {
   duck:      { x: 300, y: 150, size: 40 },
   rabbit:    { x: 360, y: 150, size: 40 },
   // Owl stays in roughly the same position
-  owl:       { x: 40,  y: 250, size: 80 },
+  owl:       { x: 40,  y: 250, size: 80, state: 'meditating' },
   // Dog now lives where the bench link started
   dog:       { x: 30,  y: 60,  size: 50 },
   // Sheep family appears above the owl and slightly left
@@ -130,7 +130,7 @@ sceneCharacterSettings['pond2'].duck = { state: 'swim-down' };
 sceneCharacterSettings['pond2'].rabbit = { x: 20, y: 20, size: 100 };
 
 // Adjust positioning in the flowers scene to reduce overlap
-sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100 };
+sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'default' };
 sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };
