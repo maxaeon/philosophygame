@@ -125,7 +125,7 @@ const dialogues = {
      {  speaker: 'rabbit', text: "Oh, no! I didn't think about how different animals have different needs!" },
     { speaker: 'donkey', text: "How about some milk instead for those who don't like strawberries? I have some in my cart!"},
     {speaker: 'duck', text: 'That seems fair!' },
-    {speaker: 'cat', text: "I'd love that! But what about animals who need more to feel full?"},
+    {speaker: 'orangecat', text: "I'd love that! But what about animals who need more to feel full?"},
     {speaker: 'rabbit', text: 'I think it would be most fair to give every animal a belly full of a treat they like!'}
   ],
   donkeyReturn: [
