@@ -512,6 +512,9 @@ function draw() {
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
+    if (currentScene === 'swing') {
+      dialoguesPlayed['swing'] = false;
+    }
     if (currentScene === 'greenhouseInside') {
       trayChoiceMade = false;
       trayOnTable = 'trayB';
@@ -572,7 +575,7 @@ function draw() {
   if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
     playDialogue('loft');
   }
-  if (!isDialogueActive() && currentScene === 'swing') {
+  if (!isDialogueActive() && currentScene === 'swing' && !dialoguesPlayed['swing']) {
     playDialogue('swing');
   }
   if (
