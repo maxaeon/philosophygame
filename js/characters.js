@@ -16,6 +16,7 @@ class Character {
     this.baseSize = size;
     this.states = Array.isArray(states) && states.length ? states.slice() : [];
     this.interactive = false;
+    this.stateScales = {};
 
     // Ensure base states are always available
     if (!this.states.includes('idle')) {
@@ -60,10 +61,18 @@ class Character {
     let dSize = this.size;
     let dx = this.x;
     let dy = this.y;
+    const scale = this.stateScales[this.state] || 1;
+    if (scale !== 1) {
+      const newSize = dSize * scale;
+      dx -= (newSize - dSize) / 2;
+      dy -= (newSize - dSize) / 2;
+      dSize = newSize;
+    }
     if (this.interactive && this.isHovered()) {
-      dSize *= 1.05;
-      dx -= (dSize - this.size) / 2;
-      dy -= (dSize - this.size) / 2;
+      const newSize = dSize * 1.05;
+      dx -= (newSize - dSize) / 2;
+      dy -= (newSize - dSize) / 2;
+      dSize = newSize;
     }
     const img = this.images[this.state];
     const ratio = img.height && img.width ? img.height / img.width : 1;
@@ -96,5 +105,9 @@ class Character {
 
   setState(newState) {
     this.state = newState;
+  }
+
+  setStateScale(state, scale) {
+    this.stateScales[state] = scale;
   }
 }
