@@ -84,6 +84,9 @@ const dialogues = {
     { speaker: 'duck', text: 'We have a heap of vegetables! Would you like to eat a healthy snack with us?' },
     { speaker: 'rabbit', text: "I wonder how much we have to eat before it's no longer a heap!" }
   ],
+    picnicReturn: [
+    { speaker: 'rabbit', text: "I'm not hungry anymore, but if you are, you should grab a healthy snack!" }
+  ],
   farmMap: [
     { speaker: 'duck', text: "There's still so much to see." },
     { speaker: 'rabbit', text: 'Click around the map to revisit or explore new areas!' }
