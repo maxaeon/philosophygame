@@ -2,7 +2,7 @@ let currentScene = 'start';
 // Declare character variables with var so they become properties on the global
 // window object. drawSceneCharacters in scenes.js accesses characters via
 // window[name], so using var ensures they are available there.
-var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, birdhouse, pig, duckRabbitSwing, trayA, trayB;
+var duck, rabbit, donkey, dog, sheep, sheepbaby, owl, graytortiecat, orangecat, chick, bat, birdhouse, pig, duckRabbitSwing, trayA, trayB, robinFamily;
 let letterGFound = false;
 let letterHFound = false;
 let duckRabbitIcons = [], duckRabbitIconIndex = 0, barnIcon, answersIcon;
@@ -138,6 +138,7 @@ let picnicVisits = 0;
 let vegetablesVisits = 0;
 let fieldVisits = 0;
 let mirrorVisits = 0;
+let flowersVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -423,6 +424,31 @@ function preload() {
   };
   trayB.initBase();
 
+  robinFamily = {
+    img: loadImage('assets/images/robins/family.png'),
+    x: 300,
+    y: 250,
+    size: 200,
+    baseX: 300,
+    baseY: 250,
+    baseSize: 200,
+    display() {
+      image(this.img, this.x, this.y, this.size, this.size);
+    },
+    reset() {
+      this.x = this.baseX;
+      this.y = this.baseY;
+      this.size = this.baseSize;
+    },
+    initBase() {
+      this.baseX = this.x;
+      this.baseY = this.y;
+      this.baseSize = this.size;
+    },
+    setState() {}
+  };
+  robinFamily.initBase();
+
   duckRabbitIcons = [
     loadImage('assets/images/icons/duck-rabbit1.png'),
     loadImage('assets/images/icons/duck-rabbit.png'),
@@ -544,6 +570,21 @@ function draw() {
       vegetablesVisits++;
       dialoguesPlayed['vegetablesReturn'] = false;
     }
+    if (currentScene === 'flowers') {
+      flowersVisits++;
+      dialoguesPlayed['flowersReturn'] = false;
+      if (sceneCharacterSettings['flowers']) {
+        if (flowersVisits > 1) {
+          sceneCharacterSettings['flowers'].owl.size = 0;
+          sceneCharacterSettings['flowers'].duck = { x: 560, y: 500, size: 100 };
+          sceneCharacterSettings['flowers'].rabbit = { x: 620, y: 500, size: 100 };
+        } else {
+          sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'mouth-closed' };
+          delete sceneCharacterSettings['flowers'].duck;
+          delete sceneCharacterSettings['flowers'].rabbit;
+        }
+      }
+    }
     if (currentScene === 'field') {
       fieldVisits++;
       dialoguesPlayed['fieldReturn'] = false;
@@ -585,6 +626,9 @@ function draw() {
   // backBtn.style.display = sceneHistory.length > 1 ? 'block' : 'none';
   drawScene(currentScene); // from scenes.js
   drawSceneCharacters(currentScene); // from scenes.js
+  if (currentScene === 'flowers' && flowersVisits > 1 && robinFamily) {
+    robinFamily.display();
+  }
   if (
     !isDialogueActive() &&
     currentScene === 'start' &&
@@ -642,6 +686,13 @@ function draw() {
       playDialogue('field');
     } else if (fieldVisits > 1 && !dialoguesPlayed['fieldReturn']) {
       playDialogue('fieldReturn');
+    }
+  }
+  if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('F') && currentScene === 'flowers') {
+    if (!dialoguesPlayed['flowers']) {
+      playDialogue('flowers');
+    } else if (flowersVisits > 1 && !dialoguesPlayed['flowersReturn']) {
+      playDialogue('flowersReturn');
     }
   }
   if (!isDialogueActive() && !pendingDialogueScene && isLetterFound('O') && currentScene === 'radioRoom') {
