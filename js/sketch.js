@@ -685,7 +685,7 @@ function draw() {
     });
   }
   if (currentScene === 'donkey') {
-    image(barnIcon, 10, 10, 50, 50);
+    image(barnIcon, 10, 300, 50, 50);
   }
   if (
     mapUnlocked &&
@@ -810,7 +810,7 @@ function mousePressed() {
     }
   }
   if (currentScene === 'donkey') {
-    if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
+    if (mouseX >= 10 && mouseX <= 60 && mouseY >= 300 && mouseY <= 350) {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'barn';
