@@ -610,7 +610,7 @@ function draw() {
       playDialogue('dogHouseReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'donkey') {
+  if (!isDialogueActive() && isLetterFound('S', 'donkey') && currentScene === 'donkey') {
     if (!dialoguesPlayed['donkey']) {
       playDialogue('donkey');
     } else if (donkeyVisits > 1 && !dialoguesPlayed['donkeyReturn']) {
@@ -646,7 +646,7 @@ function draw() {
       playDialogue('studioReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'greenhouseInside') {
+  if (!isDialogueActive() && isLetterFound('E', 'greenhouseInside') && currentScene === 'greenhouseInside') {
     if (
       greenhouseInsideVisits > 1 &&
       trayOnTable === 'trayA' &&
@@ -658,7 +658,7 @@ function draw() {
       playDialogue('greenhouseInside');
     }
   }
-  if (!isDialogueActive() && currentScene === 'vegetables') {
+  if (!isDialogueActive() && isLetterFound('T', 'vegetables') && currentScene === 'vegetables') {
     if (!dialoguesPlayed['vegetables']) {
       playDialogue('vegetables');
     } else if (vegetablesVisits > 1 && !dialoguesPlayed['vegetablesReturn']) {
@@ -671,7 +671,7 @@ function draw() {
   if (!isDialogueActive() && isLetterFound('G') && currentScene === 'swing' && !dialoguesPlayed['swing']) {
     playDialogue('swing');
   }
-      if (!isDialogueActive() && currentScene === 'picnic') {
+      if (!isDialogueActive() && isLetterFound('A', 'picnic') && currentScene === 'picnic') {
     if (!dialoguesPlayed['picnic']) {
       playDialogue('picnic');
     } else if (picnicVisits > 1 && !dialoguesPlayed['picnicReturn']) {
@@ -713,7 +713,7 @@ function draw() {
     });
   }
   if (currentScene === 'donkey') {
-    image(barnIcon, 10, 300, 50, 50);
+    image(barnIcon, 50, 260, 50, 50);
   }
   if (
     mapUnlocked &&
@@ -838,7 +838,7 @@ function mousePressed() {
     }
   }
   if (currentScene === 'donkey') {
-    if (mouseX >= 10 && mouseX <= 60 && mouseY >= 300 && mouseY <= 350) {
+    if (mouseX >= 50 && mouseX <= 100 && mouseY >= 260 && mouseY <= 310) {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'barn';
