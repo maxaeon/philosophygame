@@ -134,6 +134,7 @@ let loftEntranceVisits = 0;
 let studioVisits = 0;
 let greenhouseInsideVisits = 0;
 let donkeyVisits = 0;
+let vegetablesVisits = 0;
 
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
@@ -530,6 +531,10 @@ function draw() {
     if (currentScene === 'donkey') {
       donkeyVisits++;
     }
+    if (currentScene === 'vegetables') {
+      vegetablesVisits++;
+      dialoguesPlayed['vegetablesReturn'] = false;
+    }
     if (currentScene === 'loft') {
       dialoguesPlayed['loft'] = false;
     }
@@ -646,6 +651,13 @@ function draw() {
       playDialogue('greenhouseInsideReturn');
     } else if (!dialoguesPlayed['greenhouseInside']) {
       playDialogue('greenhouseInside');
+    }
+  }
+  if (!isDialogueActive() && currentScene === 'vegetables') {
+    if (!dialoguesPlayed['vegetables']) {
+      playDialogue('vegetables');
+    } else if (vegetablesVisits > 1 && !dialoguesPlayed['vegetablesReturn']) {
+      playDialogue('vegetablesReturn');
     }
   }
   if (!isDialogueActive() && isLetterFound('Z') && currentScene === 'loft' && !dialoguesPlayed['loft']) {
