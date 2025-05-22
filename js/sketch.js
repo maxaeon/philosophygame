@@ -848,6 +848,7 @@ function advanceScene() {
   if (currentScene === 'donkey') {
     if (typeof playSound === 'function') playSound('transition');
     if (typeof stopDialogue === 'function') stopDialogue();
+    if (typeof hideLetterInfo === 'function') hideLetterInfo();
     currentScene = 'barn';
     sceneIndex = orderedScenes.indexOf('barn');
     continueBtn.style.display = 'none';
@@ -856,6 +857,7 @@ function advanceScene() {
   if (['studio','mirror','radioRoom'].includes(currentScene)) {
     if (typeof playSound === 'function') playSound('transition');
     if (typeof stopDialogue === 'function') stopDialogue();
+    if (typeof hideLetterInfo === 'function') hideLetterInfo();
     currentScene = 'barnInside';
     sceneIndex = orderedScenes.indexOf('barnInside');
     continueBtn.style.display = 'none';
@@ -872,6 +874,7 @@ function advanceScene() {
   }
   if (typeof playSound === 'function') playSound('transition');
   if (typeof stopDialogue === 'function') stopDialogue();
+  if (typeof hideLetterInfo === 'function') hideLetterInfo();
   currentScene = orderedScenes[sceneIndex];
   // Hide the button immediately after switching scenes; it will be
   // displayed again when the next dialogue finishes.
