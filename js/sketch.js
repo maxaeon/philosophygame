@@ -574,7 +574,7 @@ function draw() {
       playDialogue('benchRest');
     }
   }
-  if (!isDialogueActive() && currentScene === 'dogHouse') {
+  if (!isDialogueActive() && isLetterFound('B') && currentScene === 'dogHouse') {
     if (!dialoguesPlayed['dogHouse']) {
       playDialogue('dogHouse', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
@@ -603,7 +603,7 @@ function draw() {
       playDialogue('donkeyReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'radioRoom') {
+  if (!isDialogueActive() && isLetterFound('O') && currentScene === 'radioRoom') {
     if (!dialoguesPlayed['radioRoom']) {
       playDialogue('radioRoom', () => {
         if (sceneCharacterSettings['radioRoom'] && sceneCharacterSettings['radioRoom'].chick) {
@@ -618,14 +618,14 @@ function draw() {
       playDialogue('radioRoomReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'loftEntrance') {
+  if (!isDialogueActive() && isLetterFound('W') && currentScene === 'loftEntrance') {
     if (!dialoguesPlayed['loftEntrance']) {
       playDialogue('loftEntrance');
     } else if (loftEntranceVisits > 1 && !dialoguesPlayed['loftEntranceReturn']) {
       playDialogue('loftEntranceReturn');
     }
   }
-  if (!isDialogueActive() && currentScene === 'studio') {
+  if (!isDialogueActive() && isLetterFound('I') && currentScene === 'studio') {
     if (!dialoguesPlayed['studio']) {
       playDialogue('studio');
     } else if (studioVisits > 1 && !dialoguesPlayed['studioReturn']) {
@@ -644,10 +644,10 @@ function draw() {
       playDialogue('greenhouseInside');
     }
   }
-  if (!isDialogueActive() && currentScene === 'loft' && !dialoguesPlayed['loft']) {
+  if (!isDialogueActive() && isLetterFound('Z') && currentScene === 'loft' && !dialoguesPlayed['loft']) {
     playDialogue('loft');
   }
-  if (!isDialogueActive() && currentScene === 'swing' && !dialoguesPlayed['swing']) {
+  if (!isDialogueActive() && isLetterFound('G') && currentScene === 'swing' && !dialoguesPlayed['swing']) {
     playDialogue('swing');
   }
   if (
