@@ -129,6 +129,9 @@ const dialogues = {
     { speaker: 'duck', text: 'Paint and canvas! How fun!' },
     { speaker: 'rabbit', text: 'What kind of art do you like to make?' }
   ],
+  studioReturn: [
+    { speaker: 'rabbit', text: 'Have you thought about what art you want to make?' }
+  ],
   mirror: [
     { speaker: 'duck', text: "Look, it's you! You're special!" },
     { speaker: 'rabbit', text: 'Yes, uniquely wonderful!' }
@@ -150,6 +153,9 @@ const dialogues = {
     { speaker: 'duck', text: 'If you barked, I think you would be a dog!'},
     { speaker: 'rabbit', text: "That is not true- some rodents bark! That doesn't make them dogs."},
       {speaker: 'graytortiecat', text: "Hmm, I don't know if there's an easy answer to this, but keep thinking about it and let me know if you have any ideas!"}
+  ],
+  loftEntranceReturn: [
+    { speaker: 'graytortiecat', text: "I still don't know exactly what makes me a cat! Maybe it's because my parents were cats, and their parents were cats..." }
   ],
   loft: [
     {
