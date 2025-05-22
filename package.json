@@ -9,5 +9,6 @@
   },
   "devDependencies": {
     "http-server": "^14.1.1"
-  }
+  },
+  "license": "CC-BY-NC-4.0"
 }
