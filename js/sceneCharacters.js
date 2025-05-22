@@ -130,7 +130,7 @@ sceneCharacterSettings['pond2'].duck = { state: 'swim-down' };
 sceneCharacterSettings['pond2'].rabbit = { x: 20, y: 20, size: 100 };
 
 // Adjust positioning in the flowers scene to reduce overlap
-sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'default' };
+sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'mouth-closed' };
 sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };
@@ -138,7 +138,7 @@ sceneCharacterSettings['grass'].rabbit = { x: 480, y: 380, size: 300 };
 sceneCharacterSettings['grass'].birdhouse = { x: 190, y: -10, size: 400 };
 
 // Owl is a bit lower in the second flowers scene
-sceneCharacterSettings['flowers2'].owl = { x: 200, y: 320, size: 100 };
+sceneCharacterSettings['flowers2'].owl = { x: 200, y: 320, size: 100, state: 'mouth-closed' };
 sceneCharacterSettings['flowers2'].birdhouse = { x: 380, y: 480, size: 100 };
 
 sceneCharacterSettings['greenhouseInside'].duck = { x: 300, y: 260, size: 100 };
@@ -174,7 +174,7 @@ sceneCharacterSettings['donkey'] = {
   donkey: { x: 300, y: 200, size: 440 },
   duck: { x: 130, y: 350, size: 100 },
   rabbit: { x: 190, y: 350, size: 100 },
-  orangecat: { x: 0, y: 250, size: 100 }
+  orangecat: { x: 0, y: 300, size: 100 }
 };
 
 sceneCharacterSettings['tunnel'] = {
@@ -190,7 +190,7 @@ sceneCharacterSettings['swing'] = {
 sceneCharacterSettings['swing2'] = { pig: { x: 235, y: 220, size: 330 } };
 
 sceneCharacterSettings['radioRoom'] = {
-  chick: { x: 285, y: 310, state: 'default' },
+  chick: { x: 285, y: 305, state: 'default' },
   duck: { y: 500 }
 };
 

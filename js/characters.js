@@ -65,7 +65,9 @@ class Character {
       dx -= (dSize - this.size) / 2;
       dy -= (dSize - this.size) / 2;
     }
-    image(this.images[this.state], dx, dy, dSize, dSize);
+    const img = this.images[this.state];
+    const ratio = img.height && img.width ? img.height / img.width : 1;
+    image(img, dx, dy, dSize, dSize * ratio);
   }
 
   reset() {
