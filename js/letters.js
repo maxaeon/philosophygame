@@ -105,7 +105,7 @@ function preloadLetters() {
     concept: 'Minds',
     description: 'Our memories, feelings, thoughts, and experiences are part of our minds... Only you can access yours!',
     question: 'Do other animals think and feel like we do?',
-    x: 415, y: 165
+    x: 410, y: 165
   });
   letters.push({
     scene: 'pond',
