@@ -538,6 +538,7 @@ function setup() {
 function draw() {
   background(220);
   updateCursor();
+  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
   picnicReached = picnicReached || currentScene === 'picnic';
   mapUnlocked = mapUnlocked || currentScene === 'farmMap';
   if (currentScene === 'pond2') {
@@ -869,16 +870,19 @@ function draw() {
     });
   }
   if (currentScene === 'donkey') {
-    image(barnIcon, 50, 180, 50, 50);
+    const bSize = 50 * scale;
+    const bx = 50 * scale;
+    const by = 180 * scale;
+    image(barnIcon, bx, by, bSize, bSize);
   }
   if (
     mapUnlocked &&
     currentScene !== 'farmMap' &&
     allLettersFoundForScene(currentScene)
   ) {
-    let mSize = 50;
-    let mxPos = 10;
-    let myPos = 10;
+    let mSize = 50 * scale;
+    let mxPos = 10 * scale;
+    let myPos = 10 * scale;
     let dSize = mSize;
     let dx = mxPos;
     let dy = myPos;
@@ -895,9 +899,9 @@ function draw() {
     image(mapIcon, dx, dy, dSize, dSize);
   }
   if (lettersFoundCount > 0) {
-    let aSize = 50;
-    let ax = width - 60;
-    let ay = height - 60;
+    let aSize = 50 * scale;
+    let ax = width - 60 * scale;
+    let ay = height - 60 * scale;
     let adSize = aSize;
     let adx = ax;
     let ady = ay;
@@ -913,7 +917,6 @@ function draw() {
     }
     image(answersIcon, adx, ady, adSize, adSize);
   }
-  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
   const baseDrSize = currentScene === 'start' ? 200 : 60;
   let drSize = baseDrSize * scale;
   let drX = currentScene === 'start'
@@ -960,6 +963,7 @@ function mousePressed() {
   }
   const infoBox = document.getElementById('letterInfoBox');
   if (infoBox && infoBox.style.display === 'block') return;
+  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
   handleSceneClicks(mouseX, mouseY);
   handleLetterClicks(mouseX, mouseY);
   if (currentScene === 'pond2' && dialoguesPlayed['pond2']) {
@@ -1002,7 +1006,11 @@ function mousePressed() {
     }
   }
   if (currentScene === 'donkey') {
-    if (mouseX >= 50 && mouseX <= 100 && mouseY >= 160 && mouseY <= 210) {
+    const bx1 = 50 * scale;
+    const bx2 = 100 * scale;
+    const by1 = 160 * scale;
+    const by2 = 210 * scale;
+    if (mouseX >= bx1 && mouseX <= bx2 && mouseY >= by1 && mouseY <= by2) {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'barn';
@@ -1015,7 +1023,11 @@ function mousePressed() {
     currentScene !== 'farmMap' &&
     allLettersFoundForScene(currentScene)
   ) {
-    if (mouseX >= 10 && mouseX <= 60 && mouseY >= 10 && mouseY <= 60) {
+    const mx1 = 10 * scale;
+    const mx2 = 60 * scale;
+    const my1 = 10 * scale;
+    const my2 = 60 * scale;
+    if (mouseX >= mx1 && mouseX <= mx2 && mouseY >= my1 && mouseY <= my2) {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'farmMap';
@@ -1023,9 +1035,9 @@ function mousePressed() {
     }
   }
   if (lettersFoundCount > 0) {
-    const aSize = 50;
-    const ax = width - 60;
-    const ay = height - 60;
+    const aSize = 50 * scale;
+    const ax = width - 60 * scale;
+    const ay = height - 60 * scale;
     if (
       mouseX >= ax &&
       mouseX <= ax + aSize &&
@@ -1037,7 +1049,6 @@ function mousePressed() {
       return;
     }
   }
-  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
   const baseDrSize = currentScene === 'start' ? 200 : 60;
   const drSize = baseDrSize * scale;
   const drX = currentScene === 'start'
