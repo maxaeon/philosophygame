@@ -279,21 +279,22 @@ function playDialogue(scene, callback) {
   let index = 0;
   let prevSpeaker = null;
   currentSpeaker = null;
-  function next() {
-    if (scene === 'cave' && index === 2) {
-      duckFacingBackwards = false;
-    }
-    if (prevSpeaker) setCharacterState(prevSpeaker, false);
-    if (index >= lines.length) {
-      box.style.display = 'none';
-      box.onclick = null;
-      dialogueActive = false;
-      dialoguesPlayed[scene] = true;
-      if (scene === 'benchIntro' || scene === 'benchRest') {
-        dialoguesPlayed['bench'] = true;
+    function next() {
+      if (scene === 'cave' && index === 2) {
+        duckFacingBackwards = false;
       }
-      if (continueBtn) {
-        if (
+      if (index >= lines.length) {
+        if (callback) callback();
+        if (prevSpeaker) setCharacterState(prevSpeaker, false);
+        box.style.display = 'none';
+        box.onclick = null;
+        dialogueActive = false;
+        dialoguesPlayed[scene] = true;
+        if (scene === 'benchIntro' || scene === 'benchRest') {
+          dialoguesPlayed['bench'] = true;
+        }
+        if (continueBtn) {
+          if (
           scene === 'barnInside' ||
           scene === 'pond2' ||
           scene === 'farmMap' ||
@@ -305,17 +306,17 @@ function playDialogue(scene, callback) {
           scene === 'vegetablesReturn'
         ) {
           continueBtn.style.display = 'none';
-        } else {
-          continueBtn.style.display = 'block';
+          } else {
+            continueBtn.style.display = 'block';
+          }
         }
+        return;
       }
-      if (callback) callback();
-      return;
-    }
-    const line = lines[index++];
-    prevSpeaker = line.speaker;
-    currentSpeaker = line.speaker;
-    box.textContent = line.text;
+      if (prevSpeaker) setCharacterState(prevSpeaker, false);
+      const line = lines[index++];
+      prevSpeaker = line.speaker;
+      currentSpeaker = line.speaker;
+      box.textContent = line.text;
     setCharacterState(line.speaker, true, line.pose);
     if (line.actions) {
       Object.entries(line.actions).forEach(([name, state]) => {
