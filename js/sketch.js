@@ -678,10 +678,12 @@ function draw() {
         }
       }
       if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
-        sceneCharacterSettings['greenhouseInside'].trayA.x = trayA.baseX;
-        sceneCharacterSettings['greenhouseInside'].trayA.y = trayA.baseY;
-        sceneCharacterSettings['greenhouseInside'].trayB.x = trayB.baseX;
-        sceneCharacterSettings['greenhouseInside'].trayB.y = trayB.baseY;
+        const scale =
+          typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+        sceneCharacterSettings['greenhouseInside'].trayA.x = trayA.baseX / scale;
+        sceneCharacterSettings['greenhouseInside'].trayA.y = trayA.baseY / scale;
+        sceneCharacterSettings['greenhouseInside'].trayB.x = trayB.baseX / scale;
+        sceneCharacterSettings['greenhouseInside'].trayB.y = trayB.baseY / scale;
         trayA.reset();
         trayB.reset();
       }
