@@ -1,3 +1,8 @@
+// Base design resolution.  Character positions are defined relative to these
+// values and scaled in sketch.js at runtime.
+const BASE_W = 800;
+const BASE_H = 600;
+
 // Characters present in each scene
 // Keys are scene names and values are arrays of character variable names
 const defaultScenes = [

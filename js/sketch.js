@@ -473,6 +473,10 @@ function getCanvasSize() {
   return { w, h };
 }
 
+function getCanvasScale() {
+  return width / (typeof BASE_W !== 'undefined' ? BASE_W : width);
+}
+
 function applyCanvasSize() {
   const { w, h } = getCanvasSize();
   resizeCanvas(w, h);
@@ -483,6 +487,14 @@ function applyCanvasSize() {
       l.y = l.bottomY;
     }
   });
+  if (typeof basePositions !== 'undefined') {
+    Object.keys(basePositions).forEach(name => {
+      const obj = window[name];
+      if (obj && obj.lastScene !== undefined) {
+        obj.lastScene = null;
+      }
+    });
+  }
 }
 
 function setup() {
