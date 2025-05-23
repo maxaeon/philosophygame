@@ -674,10 +674,12 @@ function draw() {
       if (greenhouseInsideVisits === 1) {
         trayOnTable = 'trayB';
         if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
-          trayA.baseX = 470;
-          trayA.baseY = 420;
-          trayB.baseX = 345;
-          trayB.baseY = 420;
+          const scale =
+            typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+          trayA.baseX = 470 * scale;
+          trayA.baseY = 420 * scale;
+          trayB.baseX = 345 * scale;
+          trayB.baseY = 420 * scale;
         }
       }
       if (typeof trayA !== 'undefined' && typeof trayB !== 'undefined') {
