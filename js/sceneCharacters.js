@@ -28,7 +28,9 @@ const basePositions = {
   pig:             { x: 360, y: 420, size: 100 },
   duckRabbitSwing: { x: 360, y: 420, size: 100 },
   trayA:           { x: 470, y: 420, size: 80 },
-  trayB:           { x: 345, y: 420, size: 80 }
+  trayB:           { x: 345, y: 420, size: 80 },
+  // Robin family only appears after the birdhouse is repaired
+  robinFamily:    { x: 300, y: 250, size: 200 }
 };
 
 const sceneCharacters = {};
@@ -139,6 +141,8 @@ sceneCharacterSettings['flowers'].owl = { x: 160, y: 320, size: 100, state: 'mou
 sceneCharacterSettings['flowers'].birdhouse = { x: 380, y: 480, size: 100 };
 sceneCharacterSettings['flowers'].duck = { x: 360, y: 420, size: 100 };
 sceneCharacterSettings['flowers'].rabbit = { x: 420, y: 420, size: 100 };
+// Coordinates for the robin family when revisiting the flowers scene
+sceneCharacterSettings['flowers'].robinFamily = { x: 300, y: 250, size: 200 };
 
 sceneCharacterSettings['grass'].duck = { x: 100, y: 360, size: 300 };
 sceneCharacterSettings['grass'].rabbit = { x: 480, y: 380, size: 300 };
