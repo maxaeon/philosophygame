@@ -221,7 +221,17 @@ function preloadLetters() {
     l.found = false;
     l.size = 32;
     l.baseSize = 32;
+    l.baseX = l.x;
+    l.baseY = l.y;
     l.answer = '';
+  });
+}
+
+function scaleLetters(scale) {
+  letters.forEach(l => {
+    l.x = l.baseX * scale;
+    l.y = l.baseY * scale;
+    l.size = l.baseSize * scale;
   });
 }
 
@@ -491,5 +501,6 @@ function showContinueForDialogue(scene) {
 
 if (typeof window !== 'undefined') {
   window.hideLetterInfo = hideLetterInfo;
+  window.scaleLetters = scaleLetters;
 }
 
