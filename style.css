@@ -23,6 +23,8 @@ canvas {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: auto;
+  position: relative;
+  z-index: 1;
 }
 
 #continueBtn {
@@ -163,6 +165,8 @@ canvas {
   transform: translateX(-50%);
   font-size: 14px;
   color: #333;
+  z-index: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
