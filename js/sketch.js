@@ -913,8 +913,12 @@ function draw() {
     }
     image(answersIcon, adx, ady, adSize, adSize);
   }
-  let drSize = currentScene === 'start' ? 200 : 60;
-  let drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
+  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+  const baseDrSize = currentScene === 'start' ? 200 : 60;
+  let drSize = baseDrSize * scale;
+  let drX = currentScene === 'start'
+    ? width / 2 - drSize / 2
+    : width - drSize - 10;
   let drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
   let dSize = drSize;
   let dx = drX;
@@ -1033,8 +1037,12 @@ function mousePressed() {
       return;
     }
   }
-  const drSize = currentScene === 'start' ? 200 : 60;
-  const drX = currentScene === 'start' ? width / 2 - drSize / 2 : width - 70;
+  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+  const baseDrSize = currentScene === 'start' ? 200 : 60;
+  const drSize = baseDrSize * scale;
+  const drX = currentScene === 'start'
+    ? width / 2 - drSize / 2
+    : width - drSize - 10;
   const drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
   if (
     mouseX >= drX &&
