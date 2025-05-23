@@ -1078,6 +1078,15 @@ function advanceScene() {
     continueBtn.style.display = 'none';
     return;
   }
+  if (currentScene === 'flowers' && flowersVisits > 1) {
+    if (typeof playSound === 'function') playSound('transition');
+    if (typeof stopDialogue === 'function') stopDialogue();
+    if (typeof hideLetterInfo === 'function') hideLetterInfo();
+    currentScene = 'farmMap';
+    sceneIndex = orderedScenes.indexOf('farmMap');
+    continueBtn.style.display = 'none';
+    return;
+  }
   sceneIndex++;
   if (sceneIndex >= orderedScenes.length) {
     continueBtn.style.display = 'none';
