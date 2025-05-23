@@ -633,6 +633,9 @@ function draw() {
 
       if (flowersVisits > 1 && mapUnlocked && Array.isArray(sceneCharacters['flowers'])) {
         sceneCharacters['flowers'] = sceneCharacters['flowers'].filter(c => c !== 'owl' && c !== 'birdhouse');
+        if (!sceneCharacters['flowers'].includes('robinFamily')) {
+          sceneCharacters['flowers'].push('robinFamily');
+        }
       }
 
       if (sceneCharacterSettings['flowers']) {
