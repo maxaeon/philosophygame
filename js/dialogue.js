@@ -245,9 +245,9 @@ function setCharacterState(name, speaking, pose) {
       ch.setState('backwards');
     } else if (ch.baseState) {
       ch.setState(ch.baseState);
-    } else if (ch.states.includes('mouth-closed')) {
+    } else if (Array.isArray(ch.states) && ch.states.includes('mouth-closed')) {
       ch.setState('mouth-closed');
-    } else if (ch.states.includes('closed')) {
+    } else if (Array.isArray(ch.states) && ch.states.includes('closed')) {
       ch.setState('closed');
     } else {
       ch.setState('idle');
