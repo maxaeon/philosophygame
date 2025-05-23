@@ -462,8 +462,32 @@ function preload() {
   preloadLetters();
 }
 
+function getCanvasSize() {
+  const aspect = 4 / 3;
+  let w = Math.min(windowWidth, 800);
+  let h = w / aspect;
+  if (h > windowHeight) {
+    h = Math.min(windowHeight, 600);
+    w = h * aspect;
+  }
+  return { w, h };
+}
+
+function applyCanvasSize() {
+  const { w, h } = getCanvasSize();
+  resizeCanvas(w, h);
+  initLetterBottomPositions();
+  letters.forEach(l => {
+    if (l.found) {
+      l.x = l.bottomX;
+      l.y = l.bottomY;
+    }
+  });
+}
+
 function setup() {
-  createCanvas(800, 600);
+  const { w, h } = getCanvasSize();
+  createCanvas(w, h);
   initLetterBottomPositions();
   setupScenes();
   continueBtn = document.getElementById('continueBtn');
@@ -1147,4 +1171,8 @@ function keyReleased() {
   if (keyCode === RIGHT_ARROW) moveRight = false;
   if (keyCode === UP_ARROW) moveUp = false;
   if (keyCode === DOWN_ARROW) moveDown = false;
+}
+
+function windowResized() {
+  applyCanvasSize();
 }
