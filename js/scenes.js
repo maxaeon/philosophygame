@@ -259,6 +259,8 @@ function drawSceneCharacters(scene) {
         sceneCharacterSettings[scene] &&
         sceneCharacterSettings[scene][name];
 
+      const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+
       if (charObj.lastScene !== scene) {
         const base = basePositions[name] || {
           x: charObj.baseX,
@@ -266,9 +268,12 @@ function drawSceneCharacters(scene) {
           size: charObj.baseSize,
           state: charObj.baseState
         };
-        charObj.baseX = overrides && overrides.x !== undefined ? overrides.x : base.x;
-        charObj.baseY = overrides && overrides.y !== undefined ? overrides.y : base.y;
-        charObj.baseSize = overrides && overrides.size !== undefined ? overrides.size : base.size;
+        const baseX = overrides && overrides.x !== undefined ? overrides.x : base.x;
+        const baseY = overrides && overrides.y !== undefined ? overrides.y : base.y;
+        const baseSize = overrides && overrides.size !== undefined ? overrides.size : base.size;
+        charObj.baseX = baseX * scale;
+        charObj.baseY = baseY * scale;
+        charObj.baseSize = baseSize * scale;
         const state = overrides && overrides.state !== undefined ? overrides.state : base.state;
         const activeDialogue = typeof isDialogueActive === 'function' && isDialogueActive();
         if (!activeDialogue && state && typeof charObj.setState === 'function') {
@@ -283,9 +288,9 @@ function drawSceneCharacters(scene) {
       }
 
       if (overrides) {
-        if (overrides.x !== undefined) charObj.x = overrides.x;
-        if (overrides.y !== undefined) charObj.y = overrides.y;
-        if (overrides.size !== undefined) charObj.size = overrides.size;
+        if (overrides.x !== undefined) charObj.x = overrides.x * scale;
+        if (overrides.y !== undefined) charObj.y = overrides.y * scale;
+        if (overrides.size !== undefined) charObj.size = overrides.size * scale;
       }
       // Mark interactive characters for hover effects
       charObj.interactive = false;
