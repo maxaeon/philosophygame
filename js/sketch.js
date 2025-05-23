@@ -480,6 +480,13 @@ function getCanvasScale() {
 function applyCanvasSize() {
   const { w, h } = getCanvasSize();
   resizeCanvas(w, h);
+  const scale = getCanvasScale();
+  if (typeof scaleLetters === 'function') {
+    scaleLetters(scale);
+  }
+  if (typeof scaleInteractiveAreas === 'function') {
+    scaleInteractiveAreas(scale);
+  }
   initLetterBottomPositions();
   letters.forEach(l => {
     if (l.found) {
@@ -500,8 +507,21 @@ function applyCanvasSize() {
 function setup() {
   const { w, h } = getCanvasSize();
   createCanvas(w, h);
-  initLetterBottomPositions();
+  const scale = getCanvasScale();
+  if (typeof scaleLetters === 'function') {
+    scaleLetters(scale);
+  }
   setupScenes();
+  if (typeof scaleInteractiveAreas === 'function') {
+    scaleInteractiveAreas(scale);
+  }
+  initLetterBottomPositions();
+  letters.forEach(l => {
+    if (l.found) {
+      l.x = l.bottomX;
+      l.y = l.bottomY;
+    }
+  });
   continueBtn = document.getElementById('continueBtn');
   continueBtn.addEventListener('click', advanceScene);
   // Start with the continue button hidden; it will be shown

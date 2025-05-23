@@ -63,6 +63,15 @@ function setupScenes() {
     {name: 'flowers', label: 'birdhouse', x: 40, y: 250, w: 80, h: 80}
   ];
 
+  scenes.interactiveAreas.forEach(a => {
+    a.baseX = a.x;
+    a.baseY = a.y;
+    a.baseW = a.w;
+    a.baseH = a.h;
+    if (a.labelX !== undefined) a.baseLabelX = a.labelX;
+    if (a.labelY !== undefined) a.baseLabelY = a.labelY;
+  });
+
   // Interactive areas inside the barn
   scenes.barnInsideAreas = [
     {name: 'mirror', label: 'mirror', x: 120,  y: 350, w: 100, h: 100},
@@ -70,6 +79,38 @@ function setupScenes() {
     {name: 'loftEntrance', label: 'loft entrance', x: 640, y: 350, w: 100, h: 100, labelX: 680},
     {name: 'studio', label: 'studio', x: 690, y: 450, w: 100, h: 100, labelX: 745}
   ];
+
+  scenes.barnInsideAreas.forEach(a => {
+    a.baseX = a.x;
+    a.baseY = a.y;
+    a.baseW = a.w;
+    a.baseH = a.h;
+    if (a.labelX !== undefined) a.baseLabelX = a.labelX;
+    if (a.labelY !== undefined) a.baseLabelY = a.labelY;
+  });
+}
+
+function scaleInteractiveAreas(scale) {
+  if (Array.isArray(scenes.interactiveAreas)) {
+    scenes.interactiveAreas.forEach(a => {
+      a.x = a.baseX * scale;
+      a.y = a.baseY * scale;
+      a.w = a.baseW * scale;
+      a.h = a.baseH * scale;
+      if (a.baseLabelX !== undefined) a.labelX = a.baseLabelX * scale;
+      if (a.baseLabelY !== undefined) a.labelY = a.baseLabelY * scale;
+    });
+  }
+  if (Array.isArray(scenes.barnInsideAreas)) {
+    scenes.barnInsideAreas.forEach(a => {
+      a.x = a.baseX * scale;
+      a.y = a.baseY * scale;
+      a.w = a.baseW * scale;
+      a.h = a.baseH * scale;
+      if (a.baseLabelX !== undefined) a.labelX = a.baseLabelX * scale;
+      if (a.baseLabelY !== undefined) a.labelY = a.baseLabelY * scale;
+    });
+  }
 }
 
 function drawScene(scene) {
@@ -314,4 +355,8 @@ function drawSceneCharacters(scene) {
       charObj.display();
     }
   });
+}
+
+if (typeof window !== 'undefined') {
+  window.scaleInteractiveAreas = scaleInteractiveAreas;
 }
