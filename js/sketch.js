@@ -719,28 +719,28 @@ function draw() {
     if (!dialoguesPlayed['dogHouse']) {
       playDialogue('dogHouse', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
-          sceneCharacterSettings['dogHouse'].dog.state = 'default';
+          sceneCharacterSettings['dogHouse'].dog.state = 'happy';
         }
         if (typeof dog !== 'undefined') {
-          dog.baseState = 'default';
-          dog.setState('default');
+          dog.baseState = 'happy';
+          dog.setState('happy');
         }
       });
     } else if (dogHouseVisits > 1 && !dialoguesPlayed['dogHouseReturn']) {
       if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
-        sceneCharacterSettings['dogHouse'].dog.state = 'default';
+        sceneCharacterSettings['dogHouse'].dog.state = 'happy';
       }
       if (typeof dog !== 'undefined') {
-        dog.baseState = 'default';
-        dog.setState('default');
+        dog.baseState = 'happy';
+        dog.setState('happy');
       }
       playDialogue('dogHouseReturn', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
-          sceneCharacterSettings['dogHouse'].dog.state = 'default';
+          sceneCharacterSettings['dogHouse'].dog.state = 'happy';
         }
         if (typeof dog !== 'undefined') {
-          dog.baseState = 'default';
-          dog.setState('default');
+          dog.baseState = 'happy';
+          dog.setState('happy');
         }
       });
     }
