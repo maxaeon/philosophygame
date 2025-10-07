@@ -132,6 +132,9 @@ function handleSceneClicks(mx, my) {
         if (typeof stopDialogue === 'function') stopDialogue();
         if (typeof hideLetterInfo === 'function') hideLetterInfo();
         currentScene = dest;
+        if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+          window.maybeOpenSceneInquiry(currentScene);
+        }
         if (typeof orderedScenes !== 'undefined') {
           const idx = orderedScenes.indexOf(dest);
           if (idx !== -1) sceneIndex = idx;
@@ -153,6 +156,9 @@ function handleSceneClicks(mx, my) {
       if (typeof stopDialogue === 'function') stopDialogue();
       if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'dogHouse';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('dogHouse');
       }
@@ -170,6 +176,9 @@ function handleSceneClicks(mx, my) {
       if (typeof stopDialogue === 'function') stopDialogue();
       if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'field';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('field');
       }
@@ -184,6 +193,9 @@ function handleSceneClicks(mx, my) {
       if (typeof stopDialogue === 'function') stopDialogue();
       if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'swing';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('swing');
       }
@@ -198,6 +210,9 @@ function handleSceneClicks(mx, my) {
       if (typeof stopDialogue === 'function') stopDialogue();
       if (typeof hideLetterInfo === 'function') hideLetterInfo();
       currentScene = 'flowers';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       if (typeof orderedScenes !== 'undefined') {
         sceneIndex = orderedScenes.indexOf('flowers');
       }
@@ -278,6 +293,9 @@ function handleSceneClicks(mx, my) {
         if (typeof stopDialogue === 'function') stopDialogue();
         if (typeof hideLetterInfo === 'function') hideLetterInfo();
         currentScene = area.name;
+        if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+          window.maybeOpenSceneInquiry(currentScene);
+        }
         if (area.name === 'loftEntrance') {
           sceneIndex = orderedScenes.indexOf('loftEntrance');
         } else {

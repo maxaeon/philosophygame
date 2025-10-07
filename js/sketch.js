@@ -995,6 +995,9 @@ function mousePressed() {
         }
         if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = 'donkey';
+        if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+          window.maybeOpenSceneInquiry(currentScene);
+        }
         sceneIndex = orderedScenes.indexOf('barn');
         return;
       }
@@ -1010,6 +1013,9 @@ function mousePressed() {
         }
         if (typeof stopDialogue === 'function') stopDialogue();
         currentScene = 'barnInside';
+        if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+          window.maybeOpenSceneInquiry(currentScene);
+        }
         sceneIndex = orderedScenes.indexOf('barnInside');
         return;
       }
@@ -1024,6 +1030,9 @@ function mousePressed() {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'barn';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       sceneIndex = orderedScenes.indexOf('barn');
       return;
     }
@@ -1041,6 +1050,9 @@ function mousePressed() {
       if (typeof playSound === 'function') playSound('click');
       if (typeof stopDialogue === 'function') stopDialogue();
       currentScene = 'farmMap';
+      if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+        window.maybeOpenSceneInquiry(currentScene);
+      }
       return;
     }
   }
@@ -1153,6 +1165,9 @@ function advanceScene() {
     if (typeof stopDialogue === 'function') stopDialogue();
     if (typeof hideLetterInfo === 'function') hideLetterInfo();
     currentScene = 'barn';
+    if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+      window.maybeOpenSceneInquiry(currentScene);
+    }
     sceneIndex = orderedScenes.indexOf('barn');
     continueBtn.style.display = 'none';
     return;
@@ -1162,6 +1177,9 @@ function advanceScene() {
     if (typeof stopDialogue === 'function') stopDialogue();
     if (typeof hideLetterInfo === 'function') hideLetterInfo();
     currentScene = 'barnInside';
+    if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+      window.maybeOpenSceneInquiry(currentScene);
+    }
     sceneIndex = orderedScenes.indexOf('barnInside');
     continueBtn.style.display = 'none';
     return;
@@ -1175,6 +1193,9 @@ function advanceScene() {
     if (typeof stopDialogue === 'function') stopDialogue();
     if (typeof hideLetterInfo === 'function') hideLetterInfo();
     currentScene = 'farmMap';
+    if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+      window.maybeOpenSceneInquiry(currentScene);
+    }
     sceneIndex = orderedScenes.indexOf('farmMap');
     continueBtn.style.display = 'none';
     return;
@@ -1188,6 +1209,9 @@ function advanceScene() {
   if (typeof stopDialogue === 'function') stopDialogue();
   if (typeof hideLetterInfo === 'function') hideLetterInfo();
   currentScene = orderedScenes[sceneIndex];
+  if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+    window.maybeOpenSceneInquiry(currentScene);
+  }
   // Hide the button immediately after switching scenes; it will be
   // displayed again when the next dialogue finishes.
   continueBtn.style.display = 'none';
@@ -1199,6 +1223,9 @@ function goBackScene() {
     if (typeof playSound === 'function') playSound('back');
     if (typeof stopDialogue === 'function') stopDialogue();
     currentScene = sceneHistory[sceneHistory.length - 1];
+    if (typeof window !== 'undefined' && typeof window.maybeOpenSceneInquiry === 'function') {
+      window.maybeOpenSceneInquiry(currentScene);
+    }
     const idx = orderedScenes.indexOf(currentScene);
     if (idx !== -1) sceneIndex = idx;
     continueBtn.style.display = 'none';

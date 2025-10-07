@@ -1,18 +1,18 @@
-/* js/sceneInquiry.js — open micro-dialog on first entry to selected scenes */
+/* js/sceneInquiry.js — open a scene's micro-dialogue on first entry (reuses letter UI) */
 (function(){
   var opened = {}; // sceneId -> true
-  var active = null; // { sceneId, stepIndex, spec }
+  var active = null; // { sceneId, spec }
 
-  function letterFromSceneSpec(sceneId, spec, lastAnswer){
+  function letterFromSceneSpec(sceneId, spec){
     return {
-      letter: spec.title || "Scene",
-      concept: spec.concept || sceneId,
+      letter: "Scene",
+      concept: sceneId,
       description: "",
       starter: spec.starter,
-      options: (Array.isArray(spec.options) && spec.options.length ? spec.options : (window.INQUIRY_MOVES||[]).map(function(m){return {move:m.id, text:m.label};})),
-      answer: lastAnswer || "",
-      // flag so letters.js logs ‘scene:<id>’
-      _fromSceneId: sceneId
+      options: (Array.isArray(spec.options) && spec.options.length
+        ? spec.options
+        : (window.INQUIRY_MOVES||[]).map(m=>({move:m.id, text:m.label}))),
+      _fromSceneId: sceneId // used to tag trace as scene context
     };
   }
 
@@ -28,30 +28,21 @@
     var revise = document.getElementById('reviseBtn');
     var cont = document.getElementById('continueBtn2');
     if (revise) revise.onclick = function(){
-      if (!active) {
-        box.style.display = 'none';
-        return;
-      }
-      // reopen the letter-like UI prefilled with last reason if available
       var spec2 = active && active.spec ? active.spec : spec;
-      var ltr = letterFromSceneSpec(active.sceneId, spec2, active && active.lastReason);
+      var ltr = letterFromSceneSpec(active.sceneId, spec2);
       if (window.showLetterInfo) showLetterInfo(ltr);
-      box.style.display = 'none';
     };
-    if (cont) cont.onclick = function(){
-      box.style.display = 'none';
-    };
+    if (cont) cont.onclick = function(){ box.style.display = 'none'; };
   }
 
-  // public
+  // Public entry: call this when a scene is entered
   window.maybeOpenSceneInquiry = function(sceneId){
     if (!window.SCENE_DIALOGS || !SCENE_DIALOGS[sceneId]) return;
     if (opened[sceneId]) return;
     opened[sceneId] = true;
     var spec = SCENE_DIALOGS[sceneId][0];
-    active = { sceneId: sceneId, stepIndex: 0, spec: spec, lastReason: '' };
-    // Use the letter overlay UI for the starter step
-    var ltr = letterFromSceneSpec(sceneId, spec, active.lastReason);
+    active = { sceneId: sceneId, spec: spec };
+    var ltr = letterFromSceneSpec(sceneId, spec);
     if (window.showLetterInfo) showLetterInfo(ltr);
   };
 
@@ -60,7 +51,6 @@
   window.onAfterInquirySave = function(payload){
     try {
       if (active && payload && payload.letter && payload.letter._fromSceneId === active.sceneId) {
-        active.lastReason = payload.letter.answer || '';
         showPressure(active.spec);
       }
     } finally {
@@ -68,7 +58,7 @@
     }
   };
 
-  // Best-effort: if there is a known scene-change function, append our call
+  // Try to auto-wrap common scene change fns; safe no-ops if absent
   function attachAfter(fnName){
     var fn = window[fnName];
     if (typeof fn !== 'function') return false;
@@ -79,8 +69,5 @@
     };
     return true;
   }
-  // Try a few likely names; the first that exists gets patched
-  if (!(attachAfter('goToScene') || attachAfter('changeScene') || attachAfter('setScene'))) {
-    // If none found, nothing breaks; you can manually call maybeOpenSceneInquiry(sceneId) where you set the scene.
-  }
+  attachAfter('goToScene') || attachAfter('changeScene') || attachAfter('setScene');
 })();
