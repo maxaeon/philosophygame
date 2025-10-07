@@ -1,6 +1,31 @@
 let letters = [];
 let lettersFoundCount = 0;
 let pendingDialogueScene = null;
+let _selectedMoveId = 'reason';
+
+function _defaultOptionsForLetter(ltr) {
+  // Creates 5 generic move buttons if letter-specific options are absent
+  return (typeof INQUIRY_MOVES !== 'undefined' ? INQUIRY_MOVES : []).map(function(m){
+    var txt;
+    if (m.id === 'reason')        txt = 'I think… because…';
+    else if (m.id === 'question') txt = 'I need more info…';
+    else if (m.id === 'counterexample') txt = 'What if… (counterexample)';
+    else if (m.id === 'rule_change')    txt = 'Let’s change the rule…';
+    else if (m.id === 'analogy')        txt = 'It’s like… (analogy)';
+    else txt = m.label;
+    return { move: m.id, text: txt };
+  });
+}
+
+function _renderMoveButtons(opts) {
+  var html = '<div class="move-row">';
+  opts.forEach(function(o){
+    var active = (o.move === _selectedMoveId) ? ' active' : '';
+    html += '<button class="move-btn'+active+'" data-move="'+o.move+'">'+o.text+'</button>';
+  });
+  html += '</div>';
+  return html;
+}
 
 function preloadLetters() {
   letters.push({
@@ -341,28 +366,65 @@ function checkDuckLetterCollision(duck) {
 }
 
 function showLetterInfo(letter) {
-  const box = document.getElementById('letterInfoBox');
+  var box = document.getElementById('letterInfoBox');
   if (!box) return;
-  box.innerHTML =
-    `<strong>${letter.letter} for ${letter.concept}</strong><br><br>${letter.description}<br><br><em>${letter.question}</em><br>` +
-    `<input id="letterAnswerInput" type="text" maxlength="50" value="${letter.answer || ''}" placeholder="Your answer" style="width:90%;font-size:16px;margin-top:6px;"/><br>` +
-    `<button id="letterSaveBtn">Save</button> <button id="letterCloseBtn">Close</button>`;
+  var starter = letter.starter || letter.question || 'What do you think?';
+  var opts = Array.isArray(letter.options) && letter.options.length ? letter.options : _defaultOptionsForLetter(letter);
+  if (opts && opts.length) {
+    _selectedMoveId = opts[0].move || 'reason';
+  } else {
+    _selectedMoveId = 'reason';
+  }
+  // Build UI
+  var html = '';
+  html += '<strong>'+letter.letter+' for '+letter.concept+'</strong><br>';
+  html += (letter.description||'') + '<br><br>';
+  html += '<em>'+starter+'</em>';
+  html += _renderMoveButtons(opts);
+  html += '<input id="letterReasonInput" class="reason-input" type="text" maxlength="120" value="'+(letter.answer||'')+'" placeholder="Write your reason in one sentence…"/>';
+  html += '<div class="confidence">';
+  html += '<span>Confidence: </span>';
+  html += '<label><input type="radio" name="conf" value="low"> Not sure</label>';
+  html += '<label><input type="radio" name="conf" value="mid" checked> Kind of sure</label>';
+  html += '<label><input type="radio" name="conf" value="high"> Super sure</label>';
+  html += '</div>';
+  html += '<div style="margin-top:8px;">';
+  html += '<button id="letterSaveBtn">Save</button> <button id="letterCloseBtn">Close</button>';
+  html += '</div>';
+  box.innerHTML = html;
   box.style.display = 'block';
   if (typeof box.focus === 'function') box.focus();
-  const input = document.getElementById('letterAnswerInput');
-  const saveBtn = document.getElementById('letterSaveBtn');
-  const closeBtn = document.getElementById('letterCloseBtn');
+  // Handlers
+  // Move selection
+  Array.prototype.forEach.call(box.querySelectorAll('.move-btn'), function(btn){
+    btn.onclick = function(){
+      _selectedMoveId = this.getAttribute('data-move') || 'reason';
+      Array.prototype.forEach.call(box.querySelectorAll('.move-btn'), function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+    };
+  });
+  var input = document.getElementById('letterReasonInput');
+  var saveBtn = document.getElementById('letterSaveBtn');
+  var closeBtn = document.getElementById('letterCloseBtn');
+  function _getConfidence(){
+    var el = box.querySelector('input[name="conf"]:checked');
+    return el ? el.value : 'mid';
+  }
   if (saveBtn) {
-    saveBtn.onclick = () => {
-      letter.answer = input.value.slice(0, 50);
+    saveBtn.onclick = function(){
+      var reason = (input && input.value ? input.value : '').slice(0,120);
+      letter.answer = reason; // keeps compatibility with Answers view
+      try {
+        if (typeof logReason === 'function') {
+          logReason({ sceneOrLetter: letter.letter, move: _selectedMoveId, reasonText: reason, confidence: _getConfidence() });
+        }
+        if (typeof scoreMove === 'function') { scoreMove(_selectedMoveId); }
+        if (typeof renderBadges === 'function') { renderBadges(); }
+      } catch(e){}
       closeLetterInfo();
     };
   }
-  if (closeBtn) {
-    closeBtn.onclick = () => {
-      closeLetterInfo();
-    };
-  }
+  if (closeBtn) { closeBtn.onclick = closeLetterInfo; }
 }
 
 function closeLetterInfo() {

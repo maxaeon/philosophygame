@@ -1105,6 +1105,13 @@ function showAnswers() {
   });
   content.innerHTML = html;
   box.style.display = 'block';
+  // Add export button inside modal
+  var expDivider = document.createElement('hr');
+  var exp = document.createElement('button');
+  exp.textContent = 'Export reasoning JSON';
+  exp.onclick = function(){ if (typeof exportReasonTrace === 'function') exportReasonTrace(); };
+  content.appendChild(expDivider);
+  content.appendChild(exp);
   const closeBtn = document.getElementById('closeAnswersBtn');
   if (closeBtn) {
     closeBtn.onclick = () => {
@@ -1234,3 +1241,21 @@ function keyReleased() {
 function windowResized() {
   applyCanvasSize();
 }
+
+(function setupInquiryUI(){
+  var exportBtn = document.getElementById('exportBtn');
+  if (exportBtn && typeof exportReasonTrace === 'function') {
+    exportBtn.onclick = exportReasonTrace;
+  }
+  var badgesEl = document.getElementById('badges');
+  if (badgesEl) {
+    window.renderBadges = function(){
+      if (typeof virtueBadges === 'undefined') return;
+      var labels = { curiosity:"Curiosity", charity:"Charity", consistency:"Consistency", courage:"Courage", patience:"Patience" };
+      var html = '';
+      for (var k in labels) { html += '<span class="badge">'+labels[k]+': '+(virtueBadges[k]||0)+'</span>'; }
+      badgesEl.innerHTML = html;
+    };
+    renderBadges();
+  }
+})();
