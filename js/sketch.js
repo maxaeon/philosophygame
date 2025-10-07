@@ -597,6 +597,9 @@ function draw() {
   }
   if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
     sceneHistory.push(currentScene);
+    if (typeof window.maybeOpenSceneInquiry === 'function') {
+      window.maybeOpenSceneInquiry(currentScene);
+    }
     if (currentScene === 'dogHouse') {
       dogHouseVisits++;
       dialoguesPlayed['dogHouseReturn'] = false;

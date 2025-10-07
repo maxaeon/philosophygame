@@ -381,7 +381,7 @@ function showLetterInfo(letter) {
   html += (letter.description||'') + '<br><br>';
   html += '<em>'+starter+'</em>';
   html += _renderMoveButtons(opts);
-  html += '<input id="letterReasonInput" class="reason-input" type="text" maxlength="120" value="'+(letter.answer||'')+'" placeholder="Write your reason in one sentence…"/>';
+  html += '<input id="letterReasonInput" class="reason-input" type="text" aria-label="Your reason" maxlength="120" value="'+(letter.answer||'')+'" placeholder="Write your reason in one sentence…"/>';
   html += '<div class="confidence">';
   html += '<span>Confidence: </span>';
   html += '<label><input type="radio" name="conf" value="low"> Not sure</label>';
@@ -416,13 +416,30 @@ function showLetterInfo(letter) {
       letter.answer = reason; // keeps compatibility with Answers view
       try {
         if (typeof logReason === 'function') {
-          logReason({ sceneOrLetter: letter.letter, move: _selectedMoveId, reasonText: reason, confidence: _getConfidence() });
+          logReason({
+            sceneOrLetter: letter.letter,
+            concept: letter.concept || letter.title || '',
+            move: _selectedMoveId,
+            reasonText: reason,
+            confidence: _getConfidence(),
+            context: (letter._fromSceneId ? ('scene:'+letter._fromSceneId) : 'letter')
+          });
         }
         if (typeof scoreMove === 'function') { scoreMove(_selectedMoveId); }
         if (typeof renderBadges === 'function') { renderBadges(); }
+        // Optional callback so scenes can chain a pressure/revise step
+        if (typeof window.onAfterInquirySave === 'function') {
+          window.onAfterInquirySave({ letter, move: _selectedMoveId });
+        }
       } catch(e){}
       closeLetterInfo();
     };
+  }
+  // Keyboard: submit on Enter
+  if (input && saveBtn) {
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') saveBtn.click();
+    });
   }
   if (closeBtn) { closeBtn.onclick = closeLetterInfo; }
 }
