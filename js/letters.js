@@ -368,6 +368,9 @@ function checkDuckLetterCollision(duck) {
 function showLetterInfo(letter) {
   var box = document.getElementById('letterInfoBox');
   if (!box) return;
+  if (window.LETTER_OVERRIDES && LETTER_OVERRIDES[letter.letter]) {
+    Object.assign(letter, LETTER_OVERRIDES[letter.letter]);
+  }
   var starter = letter.starter || letter.question || 'What do you think?';
   var opts = Array.isArray(letter.options) && letter.options.length ? letter.options : _defaultOptionsForLetter(letter);
   if (opts && opts.length) {
@@ -414,8 +417,8 @@ function showLetterInfo(letter) {
     saveBtn.onclick = function(){
       var reason = (input && input.value ? input.value : '').slice(0,120);
       letter.answer = reason; // keeps compatibility with Answers view
-      try {
-        if (typeof logReason === 'function') {
+      if (typeof logReason === 'function') {
+        try {
           logReason({
             sceneOrLetter: letter.letter,
             concept: letter.concept || letter.title || '',
@@ -424,14 +427,16 @@ function showLetterInfo(letter) {
             confidence: _getConfidence(),
             context: (letter._fromSceneId ? ('scene:'+letter._fromSceneId) : 'letter')
           });
-        }
-        if (typeof scoreMove === 'function') { scoreMove(_selectedMoveId); }
-        if (typeof renderBadges === 'function') { renderBadges(); }
-        // Optional callback so scenes can chain a pressure/revise step
-        if (typeof window.onAfterInquirySave === 'function') {
-          window.onAfterInquirySave({ letter, move: _selectedMoveId });
-        }
-      } catch(e){}
+        } catch(e){}
+      }
+      if (typeof scoreMove === 'function') { scoreMove(_selectedMoveId); }
+      if (typeof renderBadges === 'function') { renderBadges(); }
+      // Optional callback so scenes can chain a pressure/revise step
+      if (typeof window.onAfterInquirySave === 'function') {
+        try {
+          window.onAfterInquirySave({ letter: letter, move: _selectedMoveId });
+        } catch(e){}
+      }
       closeLetterInfo();
     };
   }
