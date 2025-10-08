@@ -138,8 +138,15 @@ canvas {
 }
 
 #answersBox input {
-  width: 95%;
   font-size: 16px;
+}
+#answersBox .answer-fill {
+  display: inline-block;
+  margin-top: 6px;
+}
+#answersBox .answer-fill input {
+  width: 75%;
+  margin-left: 6px;
 }
 
 #closeAnswersBtn {
@@ -189,10 +196,17 @@ canvas {
 }
 
 /* === Inquiry UI additions === */
-#letterInfoBox .move-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-#letterInfoBox .move-btn { padding:6px 10px; border-radius:10px; border:2px solid #333; background:#fff; cursor:pointer; }
-#letterInfoBox .move-btn.active { outline:3px solid #00b2ff; }
-#letterInfoBox .reason-input { width:95%; font-size:16px; margin-top:6px; }
+#letterInfoBox .fill-prompt {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+#letterInfoBox .reason-input {
+  width: 45%;
+  max-width: 260px;
+  font-size: 16px;
+  margin: 6px 6px 0 6px;
+}
 #letterInfoBox .confidence { margin-top:10px; }
 #letterInfoBox .confidence label { margin-right:10px; }
 

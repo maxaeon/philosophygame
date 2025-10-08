@@ -1132,7 +1132,11 @@ function showAnswers() {
   if (!box || !content) return;
   let html = '';
   letters.forEach(l => {
-    html += `<div class="answer-row"><strong>${l.letter} for ${l.concept}</strong><br><em>${l.question}</em><br><input type="text" maxlength="50" value="${l.answer || ''}" data-letter="${l.letter}"></div>`;
+    const thinkVal = (l.thinkAnswer || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    const becauseVal = (l.becauseAnswer || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    html += `<div class="answer-row"><strong>${l.letter} for ${l.concept}</strong><br><em>${l.question}</em><br>` +
+      `<label class="answer-fill">I think <input type="text" maxlength="120" value="${thinkVal}" data-letter="${l.letter}" data-part="think"></label><br>` +
+      `<label class="answer-fill">because <input type="text" maxlength="160" value="${becauseVal}" data-letter="${l.letter}" data-part="because"></label></div>`;
   });
   content.innerHTML = html;
   box.style.display = 'block';
@@ -1148,7 +1152,21 @@ function showAnswers() {
     closeBtn.onclick = () => {
       content.querySelectorAll('input[data-letter]').forEach(inp => {
         const lt = letters.find(x => x.letter === inp.dataset.letter);
-        if (lt) lt.answer = inp.value.slice(0, 50);
+        if (!lt) return;
+        if (inp.dataset.part === 'think') {
+          lt.thinkAnswer = inp.value.slice(0, 120);
+        } else if (inp.dataset.part === 'because') {
+          lt.becauseAnswer = inp.value.slice(0, 160);
+        }
+      });
+      letters.forEach(lt => {
+        const think = (lt.thinkAnswer || '').trim();
+        const because = (lt.becauseAnswer || '').trim();
+        let combined = '';
+        if (think && because) combined = `I think ${think} because ${because}`;
+        else if (think) combined = `I think ${think}`;
+        else if (because) combined = `Because ${because}`;
+        lt.answer = combined;
       });
       box.style.display = 'none';
     };
