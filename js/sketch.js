@@ -12,6 +12,7 @@ let mapUnlocked = false;
 let trayOnTable = 'trayB';
 let trayChoiceMade = false;
 let dialogueBox;
+let startNotificationShown = false;
 
 // Movement variables for the duck in pond2
 let duckTargetX = null;
@@ -533,6 +534,7 @@ function setup() {
   // backBtn.addEventListener('click', goBackScene);
   // backBtn.style.display = 'none';
   dialogueBox = document.getElementById('dialogueBox');
+  showStartNotification();
 }
 
 function draw() {
@@ -1108,6 +1110,20 @@ function showAdvice() {
   box.onclick = hide;
   setTimeout(hide, 6000);
   highlightMissingLetters(currentScene);
+}
+
+function showStartNotification() {
+  const box = document.getElementById('notificationBox');
+  if (!box || startNotificationShown) return;
+  startNotificationShown = true;
+  box.innerHTML = '<strong>Welcome!</strong><br>Click the dialogue box to keep the adventure going!';
+  box.style.display = 'block';
+  const hide = () => {
+    box.style.display = 'none';
+    box.removeEventListener('click', hide);
+  };
+  box.addEventListener('click', hide);
+  setTimeout(hide, 8000);
 }
 
 function showAnswers() {
