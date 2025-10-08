@@ -1,31 +1,6 @@
 let letters = [];
 let lettersFoundCount = 0;
 let pendingDialogueScene = null;
-let _selectedMoveId = 'reason';
-
-function _defaultOptionsForLetter(ltr) {
-  // Creates 5 generic move buttons if letter-specific options are absent
-  return (typeof INQUIRY_MOVES !== 'undefined' ? INQUIRY_MOVES : []).map(function(m){
-    var txt;
-    if (m.id === 'reason')        txt = 'I think… because…';
-    else if (m.id === 'question') txt = 'I need more info…';
-    else if (m.id === 'counterexample') txt = 'What if… (counterexample)';
-    else if (m.id === 'rule_change')    txt = 'Let’s change the rule…';
-    else if (m.id === 'analogy')        txt = 'It’s like… (analogy)';
-    else txt = m.label;
-    return { move: m.id, text: txt };
-  });
-}
-
-function _renderMoveButtons(opts) {
-  var html = '<div class="move-row">';
-  opts.forEach(function(o){
-    var active = (o.move === _selectedMoveId) ? ' active' : '';
-    html += '<button class="move-btn'+active+'" data-move="'+o.move+'">'+o.text+'</button>';
-  });
-  html += '</div>';
-  return html;
-}
 
 function preloadLetters() {
   letters.push({
@@ -249,6 +224,8 @@ function preloadLetters() {
     l.baseX = l.x;
     l.baseY = l.y;
     l.answer = '';
+    l.thinkAnswer = '';
+    l.becauseAnswer = '';
   });
 }
 
@@ -372,19 +349,28 @@ function showLetterInfo(letter) {
     Object.assign(letter, LETTER_OVERRIDES[letter.letter]);
   }
   var starter = letter.starter || letter.question || 'What do you think?';
-  var opts = Array.isArray(letter.options) && letter.options.length ? letter.options : _defaultOptionsForLetter(letter);
-  if (opts && opts.length) {
-    _selectedMoveId = opts[0].move || 'reason';
-  } else {
-    _selectedMoveId = 'reason';
+  var moveId = 'reason';
+  var thinkVal = letter.thinkAnswer || '';
+  var becauseVal = letter.becauseAnswer || '';
+  if (!thinkVal && !becauseVal && typeof letter.answer === 'string' && letter.answer.length) {
+    var match = letter.answer.match(/^I think (.*?)(?: because (.*))?$/i);
+    if (match) {
+      thinkVal = match[1] || '';
+      becauseVal = match[2] || '';
+    }
   }
+  var escapeVal = function(value) {
+    return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+  };
   // Build UI
   var html = '';
   html += '<strong>'+letter.letter+' for '+letter.concept+'</strong><br>';
   html += (letter.description||'') + '<br><br>';
   html += '<em>'+starter+'</em>';
-  html += _renderMoveButtons(opts);
-  html += '<input id="letterReasonInput" class="reason-input" type="text" aria-label="Your reason" maxlength="120" value="'+(letter.answer||'')+'" placeholder="Write your reason in one sentence…"/>';
+  html += '<div class="fill-prompt">';
+  html += 'I think <input id="letterThinkInput" class="reason-input" type="text" aria-label="I think" maxlength="120" value="'+escapeVal(thinkVal)+'" placeholder="write what you think"/> ';
+  html += 'because <input id="letterBecauseInput" class="reason-input" type="text" aria-label="Because" maxlength="160" value="'+escapeVal(becauseVal)+'" placeholder="why do you think that?"/>.';
+  html += '</div>';
   html += '<div class="confidence">';
   html += '<span>Confidence: </span>';
   html += '<label><input type="radio" name="conf" value="low"> Not sure</label>';
@@ -398,15 +384,8 @@ function showLetterInfo(letter) {
   box.style.display = 'block';
   if (typeof box.focus === 'function') box.focus();
   // Handlers
-  // Move selection
-  Array.prototype.forEach.call(box.querySelectorAll('.move-btn'), function(btn){
-    btn.onclick = function(){
-      _selectedMoveId = this.getAttribute('data-move') || 'reason';
-      Array.prototype.forEach.call(box.querySelectorAll('.move-btn'), function(b){ b.classList.remove('active'); });
-      this.classList.add('active');
-    };
-  });
-  var input = document.getElementById('letterReasonInput');
+  var thinkInput = document.getElementById('letterThinkInput');
+  var becauseInput = document.getElementById('letterBecauseInput');
   var saveBtn = document.getElementById('letterSaveBtn');
   var closeBtn = document.getElementById('letterCloseBtn');
   function _getConfidence(){
@@ -415,36 +394,54 @@ function showLetterInfo(letter) {
   }
   if (saveBtn) {
     saveBtn.onclick = function(){
-      var reason = (input && input.value ? input.value : '').slice(0,120);
+      var think = thinkInput && thinkInput.value ? thinkInput.value.trim().slice(0,120) : '';
+      var because = becauseInput && becauseInput.value ? becauseInput.value.trim().slice(0,160) : '';
+      letter.thinkAnswer = think;
+      letter.becauseAnswer = because;
+      var reason = '';
+      if (think && because) {
+        reason = 'I think '+think+' because '+because;
+      } else if (think) {
+        reason = 'I think '+think;
+      } else if (because) {
+        reason = 'Because '+because;
+      }
       letter.answer = reason; // keeps compatibility with Answers view
       if (typeof logReason === 'function') {
         try {
           logReason({
             sceneOrLetter: letter.letter,
             concept: letter.concept || letter.title || '',
-            move: _selectedMoveId,
+            move: moveId,
             reasonText: reason,
             confidence: _getConfidence(),
             context: (letter._fromSceneId ? ('scene:'+letter._fromSceneId) : 'letter')
           });
         } catch(e){}
       }
-      if (typeof scoreMove === 'function') { scoreMove(_selectedMoveId); }
+      if (typeof scoreMove === 'function') { scoreMove(moveId); }
       if (typeof renderBadges === 'function') { renderBadges(); }
       // Optional callback so scenes can chain a pressure/revise step
       if (typeof window.onAfterInquirySave === 'function') {
         try {
-          window.onAfterInquirySave({ letter: letter, move: _selectedMoveId });
+          window.onAfterInquirySave({ letter: letter, move: moveId });
         } catch(e){}
       }
       closeLetterInfo();
     };
   }
   // Keyboard: submit on Enter
-  if (input && saveBtn) {
-    input.addEventListener('keydown', function(e){
-      if (e.key === 'Enter') saveBtn.click();
-    });
+  function handleEnterSubmit(evt) {
+    if (evt.key === 'Enter' && saveBtn) {
+      evt.preventDefault();
+      saveBtn.click();
+    }
+  }
+  if (thinkInput) {
+    thinkInput.addEventListener('keydown', handleEnterSubmit);
+  }
+  if (becauseInput) {
+    becauseInput.addEventListener('keydown', handleEnterSubmit);
   }
   if (closeBtn) { closeBtn.onclick = closeLetterInfo; }
 }

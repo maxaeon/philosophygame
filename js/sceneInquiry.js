@@ -3,6 +3,11 @@
   var opened = {}; // sceneId -> true
   var active = null; // { sceneId, spec }
 
+  function sceneHasLetter(sceneId){
+    if (!Array.isArray(window.letters)) return false;
+    return window.letters.some(function(l){ return l.scene === sceneId; });
+  }
+
   function letterFromSceneSpec(sceneId, spec){
     return {
       letter: "Scene",
@@ -39,6 +44,11 @@
   window.maybeOpenSceneInquiry = function(sceneId){
     if (!window.SCENE_DIALOGS || !SCENE_DIALOGS[sceneId]) return;
     if (opened[sceneId]) return;
+    if (sceneHasLetter(sceneId)) {
+      opened[sceneId] = true;
+      active = null;
+      return;
+    }
     opened[sceneId] = true;
     var spec = SCENE_DIALOGS[sceneId][0];
     active = { sceneId: sceneId, spec: spec };
