@@ -343,7 +343,10 @@ function checkDuckLetterCollision(duck) {
 }
 
 function showLetterInfo(letter) {
-  var box = document.getElementById('letterInfoBox');
+  const useOverlay = typeof Overlay !== 'undefined' && typeof Overlay.show === 'function';
+  var box = useOverlay
+    ? Overlay.show('letterInfoBox')
+    : document.getElementById('letterInfoBox');
   if (!box) return;
   if (window.LETTER_OVERRIDES && LETTER_OVERRIDES[letter.letter]) {
     Object.assign(letter, LETTER_OVERRIDES[letter.letter]);
@@ -381,7 +384,9 @@ function showLetterInfo(letter) {
   html += '<button id="letterSaveBtn">Save</button> <button id="letterCloseBtn">Close</button>';
   html += '</div>';
   box.innerHTML = html;
-  box.style.display = 'block';
+  if (!useOverlay) {
+    box.style.display = 'block';
+  }
   if (typeof box.focus === 'function') box.focus();
   // Handlers
   var thinkInput = document.getElementById('letterThinkInput');
@@ -448,7 +453,9 @@ function showLetterInfo(letter) {
 
 function closeLetterInfo() {
   const box = document.getElementById('letterInfoBox');
-  if (box) {
+  if (typeof Overlay !== 'undefined' && typeof Overlay.hide === 'function') {
+    Overlay.hide('letterInfoBox');
+  } else if (box) {
     box.style.display = 'none';
   }
   if (pendingDialogueScene) {
@@ -473,7 +480,9 @@ function closeLetterInfo() {
 
 function hideLetterInfo() {
   const box = document.getElementById('letterInfoBox');
-  if (box) {
+  if (typeof Overlay !== 'undefined' && typeof Overlay.hide === 'function') {
+    Overlay.hide('letterInfoBox');
+  } else if (box) {
     box.style.display = 'none';
   }
   pendingDialogueScene = null;
