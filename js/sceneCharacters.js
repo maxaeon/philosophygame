@@ -161,7 +161,7 @@ sceneCharacterSettings['cave'] = {
 };
 
 sceneCharacterSettings['dogHouse'] = {
-  dog: { x: 60, y: 420, size: 300, state: 'sad' },
+  dog: { x: 60, y: 420, size: 300},
   duck: { x: 560, y: 500 },
   rabbit: { x: 620, y: 500 }
 };
