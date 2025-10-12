@@ -998,18 +998,39 @@ function draw() {
   drawLetters(currentScene); // draw letters on top
 }
 
+function handleDuckRabbitIconClick(mx, my, scale) {
+  const baseDrSize = currentScene === 'start' ? 200 : 60;
+  const drSize = baseDrSize * scale;
+  const drX = currentScene === 'start'
+    ? width / 2 - drSize / 2
+    : width - drSize - 10;
+  const drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
+  if (
+    mx >= drX &&
+    mx <= drX + drSize &&
+    my >= drY &&
+    my <= drY + drSize
+  ) {
+    if (typeof playSound === 'function') playSound('click');
+    duckRabbitIconIndex = (duckRabbitIconIndex + 1) % duckRabbitIcons.length;
+    showAdvice();
+    return true;
+  }
+  return false;
+}
+
 function mousePressed() {
   if (isUiLocked()) {
     return;
   }
-  // When dialogue is active, let the dialogue box handle clicks to
-  // advance the conversation instead of closing it immediately.
+  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
+  // Allow the duck-rabbit icon to be toggled even while dialogue is active.
   if (isDialogueActive()) {
+    handleDuckRabbitIconClick(mouseX, mouseY, scale);
     return;
   }
   const infoBox = document.getElementById('letterInfoBox');
   if (infoBox && infoBox.style.display === 'block') return;
-  const scale = typeof getCanvasScale === 'function' ? getCanvasScale() : 1;
   handleSceneClicks(mouseX, mouseY);
   handleLetterClicks(mouseX, mouseY);
   if (currentScene === 'pond2' && dialoguesPlayed['pond2']) {
@@ -1107,22 +1128,7 @@ function mousePressed() {
       return;
     }
   }
-  const baseDrSize = currentScene === 'start' ? 200 : 60;
-  const drSize = baseDrSize * scale;
-  const drX = currentScene === 'start'
-    ? width / 2 - drSize / 2
-    : width - drSize - 10;
-  const drY = currentScene === 'start' ? height / 2 - drSize / 2 : 10;
-  if (
-    mouseX >= drX &&
-    mouseX <= drX + drSize &&
-    mouseY >= drY &&
-    mouseY <= drY + drSize
-  ) {
-    if (typeof playSound === 'function') playSound('click');
-    duckRabbitIconIndex = (duckRabbitIconIndex + 1) % duckRabbitIcons.length;
-    showAdvice();
-  }
+  handleDuckRabbitIconClick(mouseX, mouseY, scale);
 }
 
 function showAdvice() {
