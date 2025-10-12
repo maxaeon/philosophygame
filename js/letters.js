@@ -8,7 +8,7 @@ function preloadLetters() {
     letter: 'A',
     concept: 'Autonomy',
     description: 'Making your own decisions.',
-    question: 'What choices do you make on your own?',
+    question: 'What choices should you make on your own?',
     x: 400, y: 300
   });
   letters.push({
@@ -32,7 +32,7 @@ function preloadLetters() {
     letter: 'D',
     concept: 'Difference',
     description: 'When things are not the same, something about them is different.',
-    question: 'What makes a dog different from a cat?',
+    question: 'What is something about your grownups that makes them different from other people that you like?',
     x: 350, y: 220
   });
   letters.push({
@@ -40,7 +40,7 @@ function preloadLetters() {
     letter: 'E',
     concept: 'Ethics',
     description: 'Figuring out right and wrong.',
-    question: 'What do you think is the right thing to do?',
+    question: 'How do you know the right thing to do?',
     x: 600, y: 200
   });
   letters.push({
@@ -72,7 +72,7 @@ function preloadLetters() {
     letter: 'I',
     concept: 'Imagination',
     description: 'We can imagine things like unicorns, or what we want to be.',
-    question: 'What do you imagine?',
+    question: 'What do you imagine? Can you express it with words, music, a drawing, or some other way?',
     x: 300, y: 320
   });
   letters.push({
@@ -80,7 +80,7 @@ function preloadLetters() {
     letter: 'J',
     concept: 'Judging',
     description: 'Deciding what is right or what is true.',
-    question: 'Are grownup judgements always right?',
+    question: 'Whose judgment is right-- who determines what is right and true?',
     x: 550, y: 350
   });
   letters.push({
@@ -88,7 +88,7 @@ function preloadLetters() {
     letter: 'K',
     concept: 'Knowledge',
     description: 'What you learn and know.',
-    question: 'How do you gain knowledge?',
+    question: 'How do you learn and gain knowledge?',
     x: 650, y: 180
   });
   letters.push({
@@ -120,7 +120,7 @@ function preloadLetters() {
     letter: 'O',
     concept: 'Observation',
     description: 'Watching carefully to learn.',
-    question: 'What have you discovered by observing?',
+    question: 'What do you observe around you?',
     x: 570, y: 405
   });
   letters.push({
@@ -168,7 +168,7 @@ function preloadLetters() {
     letter: 'U',
     concept: 'Understanding',
     description: 'Making sense of something.',
-    question: 'How do you show understanding?',
+    question: 'How do you know someone understands you?',
     x: 370, y: 370
   });
   letters.push({
