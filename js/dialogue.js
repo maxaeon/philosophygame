@@ -1,9 +1,9 @@
 const dialogues = {
   start: [
-    { speaker: 'rabbit', text: 'Welcome to Philosophy Farm! You can click on the icon above for guidance throughout the game.' },
+    { speaker: 'rabbit', text: 'Welcome to Philosophy Farm!' },
     { speaker: 'duck', text: 'Is our duck-rabbit icon a duck or a rabbit?' },
     { speaker: 'rabbit', text: 'Maybe it depends on how you look at it!' },
-    { speaker: 'duck', text: "Right—maybe sometimes the answer isn't just yes or no!" }
+    { speaker: 'duck', text: "Right—maybe sometimes the answer isn't just yes or no! Let's learn how to think about things from different perspectives." }
   ],
   benchIntro: [
     { speaker: 'duck', text: 'When you see letters around the farm, try clicking on them!' },
