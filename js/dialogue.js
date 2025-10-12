@@ -207,6 +207,17 @@ let dialogueActive = false;
 const dialoguesPlayed = {};
 let currentSpeaker = null;
 let duckFacingBackwards = false;
+let dialogueUiRelease = null;
+
+function releaseDialogueLock() {
+  if (typeof dialogueUiRelease === 'function') {
+    try {
+      dialogueUiRelease();
+    } finally {
+      dialogueUiRelease = null;
+    }
+  }
+}
 
 function setCharacterState(name, speaking, pose) {
   const ch = window[name];
@@ -274,6 +285,13 @@ function playDialogue(scene, callback) {
       d.setState('backwards');
     }
   }
+  if (
+    typeof GameStateManager !== 'undefined' &&
+    typeof GameStateManager.lockUi === 'function'
+  ) {
+    releaseDialogueLock();
+    dialogueUiRelease = GameStateManager.lockUi();
+  }
   dialogueActive = true;
   box.style.display = 'block';
   let index = 0;
@@ -288,6 +306,7 @@ function playDialogue(scene, callback) {
         if (prevSpeaker) setCharacterState(prevSpeaker, false);
         box.style.display = 'none';
         box.onclick = null;
+        releaseDialogueLock();
         dialogueActive = false;
         dialoguesPlayed[scene] = true;
         if (scene === 'benchIntro' || scene === 'benchRest') {
@@ -345,6 +364,7 @@ function stopDialogue() {
   }
   duckFacingBackwards = false;
   dialogueActive = false;
+  releaseDialogueLock();
 }
 
 if (typeof window !== 'undefined') {

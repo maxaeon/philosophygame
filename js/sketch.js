@@ -141,6 +141,26 @@ let fieldVisits = 0;
 let mirrorVisits = 0;
 let flowersVisits = 0;
 
+function isUiLocked() {
+  return (
+    typeof GameStateManager !== 'undefined' &&
+    typeof GameStateManager.isUiLocked === 'function' &&
+    GameStateManager.isUiLocked()
+  );
+}
+
+function handleSceneTransition(prevScene, nextScene) {
+  if (typeof SoundManager !== 'undefined' && typeof SoundManager.stopAll === 'function') {
+    SoundManager.stopAll();
+  }
+  if (typeof Overlay !== 'undefined' && typeof Overlay.hideAll === 'function') {
+    Overlay.hideAll();
+  }
+  if (typeof GameStateManager !== 'undefined' && typeof GameStateManager.reset === 'function') {
+    GameStateManager.reset();
+  }
+}
+
 function preload() {
   if (typeof preloadSounds === 'function') preloadSounds();
   duck = new Character('duck', [
@@ -597,7 +617,9 @@ function draw() {
       ['swim-left','swim-right','swim-up','swim-down'].includes(duck.state)) {
     duck.setState('mouth-closed');
   }
-  if (sceneHistory[sceneHistory.length - 1] !== currentScene) {
+  const previousScene = sceneHistory[sceneHistory.length - 1];
+  if (previousScene !== currentScene) {
+    handleSceneTransition(previousScene, currentScene);
     sceneHistory.push(currentScene);
     if (typeof window.maybeOpenSceneInquiry === 'function') {
       window.maybeOpenSceneInquiry(currentScene);
@@ -726,6 +748,9 @@ function draw() {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
           sceneCharacterSettings['dogHouse'].dog.state = 'happy';
         }
+        if (sceneCharacterSettings['farmMap'] && sceneCharacterSettings['farmMap'].dog) {
+          sceneCharacterSettings['farmMap'].dog.state = 'happy';
+        }
         if (typeof dog !== 'undefined') {
           dog.baseState = 'happy';
           dog.setState('happy');
@@ -735,6 +760,9 @@ function draw() {
       if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
         sceneCharacterSettings['dogHouse'].dog.state = 'happy';
       }
+      if (sceneCharacterSettings['farmMap'] && sceneCharacterSettings['farmMap'].dog) {
+        sceneCharacterSettings['farmMap'].dog.state = 'happy';
+      }
       if (typeof dog !== 'undefined') {
         dog.baseState = 'happy';
         dog.setState('happy');
@@ -742,6 +770,9 @@ function draw() {
       playDialogue('dogHouseReturn', () => {
         if (sceneCharacterSettings['dogHouse'] && sceneCharacterSettings['dogHouse'].dog) {
           sceneCharacterSettings['dogHouse'].dog.state = 'happy';
+        }
+        if (sceneCharacterSettings['farmMap'] && sceneCharacterSettings['farmMap'].dog) {
+          sceneCharacterSettings['farmMap'].dog.state = 'happy';
         }
         if (typeof dog !== 'undefined') {
           dog.baseState = 'happy';
@@ -968,6 +999,9 @@ function draw() {
 }
 
 function mousePressed() {
+  if (isUiLocked()) {
+    return;
+  }
   // When dialogue is active, let the dialogue box handle clicks to
   // advance the conversation instead of closing it immediately.
   if (isDialogueActive()) {
@@ -1092,7 +1126,10 @@ function mousePressed() {
 }
 
 function showAdvice() {
-  const box = document.getElementById('adviceBox');
+  const useOverlay = typeof Overlay !== 'undefined' && typeof Overlay.show === 'function';
+  const box = useOverlay
+    ? Overlay.show('adviceBox', { lock: false })
+    : document.getElementById('adviceBox');
   if (!box) return;
   let msg;
   if (lettersFoundCount >= 26) {
@@ -1101,10 +1138,16 @@ function showAdvice() {
     msg = 'Duck-Rabbit says: Think about things from a different perspective!';
   }
   box.textContent = msg;
-  box.style.display = 'block';
+  if (!useOverlay) {
+    box.style.display = 'block';
+  }
   if (typeof box.focus === 'function') box.focus();
   const hide = () => {
-    box.style.display = 'none';
+    if (useOverlay && typeof Overlay.hide === 'function') {
+      Overlay.hide('adviceBox');
+    } else {
+      box.style.display = 'none';
+    }
     box.onclick = null;
   };
   box.onclick = hide;
@@ -1113,13 +1156,23 @@ function showAdvice() {
 }
 
 function showStartNotification() {
-  const box = document.getElementById('notificationBox');
-  if (!box || startNotificationShown) return;
+  if (startNotificationShown) return;
+  const useOverlay = typeof Overlay !== 'undefined' && typeof Overlay.show === 'function';
+  const box = useOverlay
+    ? Overlay.show('notificationBox', { lock: false })
+    : document.getElementById('notificationBox');
+  if (!box) return;
   startNotificationShown = true;
   box.innerHTML = '<strong>Welcome!</strong><br>Click the dialogue box to keep the adventure going!';
-  box.style.display = 'block';
+  if (!useOverlay) {
+    box.style.display = 'block';
+  }
   const hide = () => {
-    box.style.display = 'none';
+    if (useOverlay && typeof Overlay.hide === 'function') {
+      Overlay.hide('notificationBox');
+    } else {
+      box.style.display = 'none';
+    }
     box.removeEventListener('click', hide);
   };
   box.addEventListener('click', hide);
@@ -1127,7 +1180,10 @@ function showStartNotification() {
 }
 
 function showAnswers() {
-  const box = document.getElementById('answersBox');
+  const useOverlay = typeof Overlay !== 'undefined' && typeof Overlay.show === 'function';
+  const box = useOverlay
+    ? Overlay.show('answersBox')
+    : document.getElementById('answersBox');
   const content = document.getElementById('answersContent');
   if (!box || !content) return;
   let html = '';
@@ -1139,7 +1195,9 @@ function showAnswers() {
       `<label class="answer-fill">because <input type="text" maxlength="160" value="${becauseVal}" data-letter="${l.letter}" data-part="because"></label></div>`;
   });
   content.innerHTML = html;
-  box.style.display = 'block';
+  if (!useOverlay) {
+    box.style.display = 'block';
+  }
   // Add export button inside modal
   var expDivider = document.createElement('hr');
   var exp = document.createElement('button');
@@ -1168,7 +1226,11 @@ function showAnswers() {
         else if (because) combined = `Because ${because}`;
         lt.answer = combined;
       });
-      box.style.display = 'none';
+      if (useOverlay && typeof Overlay.hide === 'function') {
+        Overlay.hide('answersBox');
+      } else {
+        box.style.display = 'none';
+      }
     };
   }
 }
@@ -1287,6 +1349,7 @@ function goBackScene() {
 }
 
 function keyPressed() {
+  if (isUiLocked()) return;
   if (currentScene === 'pond2' && isDialogueActive()) return;
   if (keyCode === LEFT_ARROW) moveLeft = true;
   if (keyCode === RIGHT_ARROW) moveRight = true;
@@ -1295,6 +1358,7 @@ function keyPressed() {
 }
 
 function keyReleased() {
+  if (isUiLocked()) return;
   if (currentScene === 'pond2' && isDialogueActive()) return;
   if (keyCode === LEFT_ARROW) moveLeft = false;
   if (keyCode === RIGHT_ARROW) moveRight = false;
