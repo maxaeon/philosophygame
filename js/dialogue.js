@@ -235,6 +235,7 @@ function setCharacterState(name, speaking, pose) {
     if (speaking) {
       ch.setState(pose || 'in-egg-open');
     } else {
+      if (dialogueActive) return;
       if (dialoguesPlayed['radioRoom']) {
         ch.setState('in-egg-open');
       } else {
@@ -251,6 +252,9 @@ function setCharacterState(name, speaking, pose) {
       ch.setState(pose || 'default');
     }
   } else {
+    if (dialogueActive) {
+      return;
+    }
     // When done speaking, return to the character's base pose
     if (name === 'duck' && duckFacingBackwards) {
       ch.setState('backwards');
@@ -302,8 +306,6 @@ function playDialogue(scene, callback) {
         duckFacingBackwards = false;
       }
       if (index >= lines.length) {
-        if (callback) callback();
-        if (prevSpeaker) setCharacterState(prevSpeaker, false);
         box.style.display = 'none';
         box.onclick = null;
         releaseDialogueLock();
@@ -312,6 +314,8 @@ function playDialogue(scene, callback) {
         if (scene === 'benchIntro' || scene === 'benchRest') {
           dialoguesPlayed['bench'] = true;
         }
+        if (prevSpeaker) setCharacterState(prevSpeaker, false);
+        if (callback) callback();
         if (continueBtn) {
           if (
           scene === 'barnInside' ||
